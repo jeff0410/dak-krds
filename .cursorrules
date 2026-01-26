@@ -59,44 +59,24 @@ return {}
 
 export { Sample } from "./sample";
 
-## 라우트 디렉토리 구조 규칙
 
-- 예시 경로
-```
-src/app/movies/page.tsx
-```
-
-```
-src/app/movies
-├─ page.tsx
-├─ components
-│  ├─ movie-card.tsx
-│  ├─ movie-list.tsx
-│  └─ index.ts
-├─ hooks
-│  ├─ use-fetch-movies.ts
-│  └─ index.ts
-├─ models
-│  ├─ movie.ts
-│  └─ index.ts
-```
 
 ## ESLint + Biome + Prettier 연동 규칙
 
 - 기본 원칙
-  - Biome가 포맷과 기본 정적 분석의 중심
-  - ESLint는 React / 접근성 / Next.js 전용 룰만 담당
-  - Prettier는 직접 사용하지 않음
-  - 포맷 충돌이 발생하면 Biome 기준이 최우선
+  - 웹접근성, 웹표준 고려해서 만들기
+  - id, title, alt 등 중요한 속성은 props로 받지 않았을 경우 자동 생성하여 적용하세요.
 
 ## button 컴포넌트 규칙
  - button 컴포넌트는 반드시 button 태그를 사용하세요. type은 button으로 고정입니다.
 
-## svg는 mui에서 가져다 사용하면 좋겠어요
-
 ## 커밋 규칙
- - 기능 구현 후 항상 부분 부분 기능별 오류 수정별 커밋을 해야 한다.
- - 커밋 메시지는 Feat: 신규기능, 신규화면 추가
+ - 커밋은 기능 구현 후 항상 부분 부분 기능별 오류 수정별 커밋을 해야 한다.
+ - 커밋 메시지는 기능 구현 내용을 잘 설명하는 메시지로 작성하세요.
+ - Feat: 신규기능 추가
  - Fix: 오류 수정
  - Refactor: 리팩토링
- 위 3가지 커밋 메시지만 사용하세요.
+ - Chore: 빌드 및 테스트 관련 작업
+ - Docs: 문서 수정
+ - Style: 스타일 변경
+ - Test: 테스트 코드 추가 또는 수정
