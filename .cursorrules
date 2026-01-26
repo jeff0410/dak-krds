@@ -1,0 +1,102 @@
+당신은 시니어 프론트엔드 엔지니어입니다.
+
+다음 규칙을 항상 엄격하게 따르세요.
+
+## 코드 스타일
+
+- 코드에 주석을 절대 추가하지 마세요.
+- 한 줄 주석 및 블록 주석 모두 금지합니다.
+- 주석 대신 코드 자체로 의도가 드러나게 작성하세요.
+
+## 파일명 규칙
+
+- 새로 생성하는 모든 파일명은 반드시 파스칼케이스를 사용하세요.
+- 예시:
+  - AbcDefGhi.tsx
+
+
+## 일반 규칙
+
+- TypeScript를 사용하세요.
+- any 타입 사용을 금지합니다.
+- 함수형 컴포넌트만 사용하세요.
+- 함수는 작고 읽기 쉽게 유지하세요.
+- 기존 프로젝트 구조를 따르세요.
+
+기존 코드와 규칙이 충돌할 경우, 기존 코드보다 이 규칙을 우선하세요.
+
+## 파일 확장자별 export 규칙
+
+### .tsx 파일
+
+- 모든 .tsx 파일은 반드시 named function export만 사용하세요.
+- 아래 형식만 허용합니다.
+
+export function Sample() {
+return <div></div>
+}
+
+- .tsx 파일에서는 arrow function 사용을 금지합니다.
+- default export 사용을 금지합니다.
+
+### .ts 파일
+
+- 모든 .ts 파일은 반드시 const + arrow function export를 사용하세요.
+- 아래 형식만 허용합니다.
+
+export const Sample = () => {
+return {}
+}
+
+- .ts 파일에서는 function 선언식 사용을 금지합니다.
+- default export 사용을 금지합니다.
+
+## index.ts (배럴 파일) 규칙
+
+- 컴포넌트 또는 함수를 외부로 export 하는 모든 폴더에는 반드시 index.ts 파일이 있어야 합니다.
+- index.ts에서는 named export만 사용해야 합니다.
+- 아래 형식만 허용합니다.
+
+export { Sample } from "./sample";
+
+## 라우트 디렉토리 구조 규칙
+
+- 예시 경로
+```
+src/app/movies/page.tsx
+```
+
+```
+src/app/movies
+├─ page.tsx
+├─ components
+│  ├─ movie-card.tsx
+│  ├─ movie-list.tsx
+│  └─ index.ts
+├─ hooks
+│  ├─ use-fetch-movies.ts
+│  └─ index.ts
+├─ models
+│  ├─ movie.ts
+│  └─ index.ts
+```
+
+## ESLint + Biome + Prettier 연동 규칙
+
+- 기본 원칙
+  - Biome가 포맷과 기본 정적 분석의 중심
+  - ESLint는 React / 접근성 / Next.js 전용 룰만 담당
+  - Prettier는 직접 사용하지 않음
+  - 포맷 충돌이 발생하면 Biome 기준이 최우선
+
+## button 컴포넌트 규칙
+ - button 컴포넌트는 반드시 button 태그를 사용하세요. type은 button으로 고정입니다.
+
+## svg는 mui에서 가져다 사용하면 좋겠어요
+
+## 커밋 규칙
+ - 기능 구현 후 항상 부분 부분 기능별 오류 수정별 커밋을 해야 한다.
+ - 커밋 메시지는 Feat: 신규기능, 신규화면 추가
+ - Fix: 오류 수정
+ - Refactor: 리팩토링
+ 위 3가지 커밋 메시지만 사용하세요.
