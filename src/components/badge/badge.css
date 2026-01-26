@@ -1,0 +1,48 @@
+.dak-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dak-badge--primary {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.dak-badge--success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.dak-badge--warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.dak-badge--error {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.dak-badge--info {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.dak-badge--small {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.dak-badge--medium {
+  padding: 6px 14px;
+  font-size: 14px;
+}
+
+.dak-badge--large {
+  padding: 8px 18px;
+  font-size: 16px;
+}
