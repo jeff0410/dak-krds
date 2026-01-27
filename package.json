@@ -30,20 +30,50 @@
     "design-system",
     "typescript"
   ],
-  "author": "Jeff Kim",
+  "author": "TeamJeff",
+  "contributors": [
+    {
+      "name": "SUBIN",
+      "url": "https://github.com/Da1re"
+    },
+    {
+      "name": "yo-ong",
+      "url": "https://github.com/yo-ong"
+    },
+    {
+      "name": "imdam2",
+      "url": "https://github.com/imdam2"
+    },
+    {
+      "name": "jiyoon",
+      "url": "https://github.com/yCZwIqY"
+    },
+    {
+      "name": "안진형",
+      "url": "https://github.com/AnJinHyeong"
+    },
+    {
+      "name": "ranyoung.kim",
+      "url": "https://github.com/fks1311"
+    },
+    {
+      "name": "jeffkim",
+      "url": "https://github.com/jeff0410"
+    }
+  ],
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.5",
-    "@types/react": "^18.2.48",
-    "@types/react-dom": "^18.2.18",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tsup": "^8.4.0",
+    "typescript": "^5.9.4"
   },
   "repository": {
     "type": "git",

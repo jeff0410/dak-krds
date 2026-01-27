@@ -214,6 +214,20 @@ const customButton: ButtonProps = {
 };
 ```
 
+## 팀
+
+**TeamJeff**
+
+이 프로젝트는 다음 팀원들과 함께 개발되었습니다:
+
+- [SUBIN](https://github.com/Da1re)
+- [yo-ong](https://github.com/yo-ong)
+- [imdam2](https://github.com/imdam2)
+- [jiyoon](https://github.com/yCZwIqY)
+- [안진형](https://github.com/AnJinHyeong)
+- [ranyoung.kim](https://github.com/fks1311)
+- [jeffkim](https://github.com/jeff0410)
+
 ## 라이센스
 
 MIT
