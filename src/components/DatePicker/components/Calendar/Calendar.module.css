@@ -1,0 +1,236 @@
+.calendar {
+	border-radius: 0.75rem;
+	background-color: var(--krds-color-secondary-5);
+	border: 1px solid var(--krds-color-gray-20);
+	font-family: inherit;
+	width: 328px;
+	height: fit-content;
+	padding-top: 16px;
+}
+
+.headerContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 3px 24px;
+	height: 56px;
+	gap: 16px;
+}
+
+.headerContainer > div {
+	text-align: center;
+}
+.header {
+	display: flex;
+	width: 32px;
+	height: 32px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 100%;
+	background-color: var(--krds-color-gray-0);
+	border: 1px solid var(--krds-color-gray-20);
+}
+.header:hover {
+	background-color: var(--krds-color-gray-10);
+	border-color: var(--krds-color-gray-30);
+	cursor: pointer;
+}
+.header:focus {
+	outline: none;
+	box-shadow:
+		0 0 0 2px var(--krds-color-gray-0),
+		0 0 0 4px var(--krds-color-primary-40);
+}
+
+.calendarBody {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	padding: 16px 0;
+	gap: 16px;
+	width: 328px;
+}
+
+.weekdaysContainer {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 4px;
+	text-align: center;
+	color: var(--krds-color-gray-90);
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 24px;
+	padding: 0 12px;
+	height: 24px;
+}
+
+.daysContainer {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	padding: 0 12px;
+	gap: 4px;
+}
+
+.day {
+	display: flex;
+	width: 40px;
+	height: 40px;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5rem;
+	border: none;
+	border-radius: 50%;
+	background: var(--krds-color-secondary-5);
+	color: var(--krds-color-gray-80);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	position: relative;
+	font-size: 17px;
+	line-height: 26px;
+	font-weight: 400;
+	font-family: "pretendard GOV";
+}
+.day:hover {
+	background: var(--krds-color-secondary-10);
+	color: var(--krds-color-gray-90);
+}
+.day:focus {
+	outline: none;
+	box-shadow:
+		0 0 0 2px var(--krds-color-gray-0),
+		0 0 0 4px var(--krds-color-primary-40);
+}
+
+.dayToday::after {
+	content: "";
+	position: absolute;
+	bottom: 3px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 4px;
+	height: 4px;
+	background-color: var(--krds-color-danger-50);
+	border-radius: 50%;
+}
+
+.daySelected {
+	background: var(--krds-color-secondary-70);
+	color: var(--krds-color-gray-0);
+}
+.dayDisabled {
+	color: var(--krds-color-gray-20);
+	background-color: transparent;
+	cursor: default;
+	pointer-events: none;
+	opacity: 0.2;
+}
+
+.calendarFooter {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 24px;
+	border-bottom-left-radius: 0.75rem;
+	border-bottom-right-radius: 0.75rem;
+	background-color: var(--krds-color-gray-0);
+	border-top: 1px solid var(--krds-color-gray-20);
+
+	height: 72px;
+	box-sizing: border-box;
+}
+.footerButton {
+	display: inline-flex;
+	gap: 0.5rem;
+}
+
+.rangeStart {
+	background: var(--krds-color-secondary-70);
+	color: var(--krds-color-gray-0);
+	border-radius: 50% 0 0 50%;
+	position: relative;
+	box-shadow: 5px 0 0 var(--krds-color-gray-0);
+}
+
+.rangeEnd {
+	background: var(--krds-color-secondary-70);
+	color: var(--krds-color-gray-0);
+	border-radius: 0 50% 50% 0;
+	position: relative;
+	box-shadow: -5px 0 0 var(--krds-color-gray-0);
+}
+
+.rangeMiddle {
+	background: var(--krds-color-gray-0);
+	color: var(--krds-color-gray-90);
+	border-radius: 0;
+	position: relative;
+	box-shadow:
+		-5px 0 0 var(--krds-color-gray-0),
+		5px 0 0 var(--krds-color-gray-0);
+}
+
+.rangeStartOnly {
+	background: var(--krds-color-secondary-70);
+	color: var(--krds-color-gray-0);
+	border-radius: 50%;
+	position: relative;
+}
+
+.rangeSingle {
+	background: var(--krds-color-secondary-70);
+	color: var(--krds-color-gray-0);
+	border-radius: 50%;
+	position: relative;
+}
+
+.dayOutOfMonth {
+	color: var(--krds-color-gray-90);
+	opacity: 0.7;
+}
+
+/* 호버 효과 */
+.day:hover:not(.rangeStart):not(.rangeEnd):not(.rangeMiddle) {
+	background: var(--krds-color-primary-10);
+	opacity: 0.8;
+}
+
+/* Range 날짜들의 호버 효과 */
+.rangeStart:hover,
+.rangeEnd:hover,
+.rangeStartOnly:hover,
+.rangeSingle:hover {
+	background: var(--krds-color-secondary-80);
+}
+
+.rangeMiddle:hover {
+	background: var(--krds-color-primary-5);
+}
+
+.rangeStartFirstWeek {
+	border-top-left-radius: 50%;
+	border-top-right-radius: 0;
+}
+
+.rangeStartLastWeek {
+	border-bottom-left-radius: 50%;
+	border-bottom-right-radius: 0;
+}
+
+.rangeEndFirstWeek {
+	border-top-left-radius: 0;
+	border-top-right-radius: 50%;
+}
+
+.rangeEndLastWeek {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 50%;
+}
+
+.rangeMiddleLeftmost {
+	border-top-left-radius: 50%;
+	border-bottom-left-radius: 50%;
+}
+
+.rangeMiddleRightmost {
+	border-top-right-radius: 50%;
+	border-bottom-right-radius: 50%;
+}

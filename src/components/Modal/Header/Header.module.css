@@ -1,0 +1,86 @@
+.modalHeader {
+	display: grid;
+	gap: 0.5rem 0.25rem;
+	grid-template-columns: auto auto;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.modalHeaderSmall {
+	grid-template-columns: auto 24px;
+	padding: 1rem 16px 8px 1rem;
+}
+
+.modalHeaderMedium {
+	padding: 19px 16px 13px 1.25rem;
+}
+
+.modalHeaderLarge {
+	padding: 19px 1.25rem 19px 1.5rem;
+}
+
+.modalHeaderTitle {
+	text-align: left;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	padding: 0;
+	font-weight: 700;
+}
+
+.modalHeaderTitle > span {
+	margin-right: 2px;
+	margin-left: -4px;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.modalHeaderTitle > span svg {
+	vertical-align: middle;
+}
+
+.modalHeaderTitle > div {
+	display: inline;
+	vertical-align: middle;
+	margin: 0;
+}
+
+.modalHeaderSmallTitle {
+	line-height: 2.25rem;
+}
+
+.modalHeaderMediumTitle {
+	line-height: 2.25rem;
+}
+
+.modalHeaderLargeTitle {
+	line-height: 2.25rem;
+}
+
+.modalHeaderSubTitle {
+	font-size: 0.875rem;
+	color: var(--krds-color-gray-50);
+	text-align: left;
+	white-space: break-spaces;
+	font-weight: 500;
+	margin: 0;
+	grid-column: 1/3;
+}
+
+.modalHeaderRight {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.modalHeaderExtra {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.dialogTitle {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 36px;
+}

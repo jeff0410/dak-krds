@@ -1,0 +1,14 @@
+.backDrop {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: flex;
+	opacity: 0;
+	align-items: center;
+	justify-content: center;
+}
+
+.contentWrapper:focus {
+	outline: none;
+}

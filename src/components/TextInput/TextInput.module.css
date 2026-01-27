@@ -1,0 +1,359 @@
+/* Wrapper Styles */
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+.inputGroup {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+/* Title Styles */
+.titleWrapper {
+	display: flex;
+	gap: 0.25rem;
+	align-items: center;
+	width: fit-content;
+	line-height: 24px;
+	flex-shrink: 0;
+}
+
+.horizontal {
+	flex-direction: row;
+	align-items: flex-start;
+}
+.horizontal > div:last-child {
+	flex: 1;
+}
+
+/* Input Styles */
+.input {
+	width: 100%;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	border: 1px solid var(--krds-color-gray-60);
+	color: var(--krds-color-gray-90);
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 26px;
+	transition:
+		border 0.15s,
+		box-shadow 0.15s,
+		background-color 0.15s;
+	outline: none;
+	background-color: var(--krds-color-gray-0);
+	box-sizing: border-box;
+}
+.input:focus {
+	border-color: var(--krds-color-primary-50);
+	box-shadow: 0 0 0 2px var(--krds-color-primary-40);
+}
+.input::placeholder {
+	color: var(--krds-color-gray-40);
+}
+.input:disabled::placeholder,
+.inputDisabled::placeholder {
+	color: var(--krds-color-gray-60);
+	opacity: 1;
+}
+
+/* Input Disabled Styles */
+.inputDisabled {
+	background-color: var(--krds-color-gray-10);
+	color: var(--krds-color-gray-70);
+	transition: background-color 0.15s;
+	border: 1px solid var(--krds-color-gray-60);
+}
+
+/* Input Icon Padding Styles */
+.inputLeftIcon {
+	/* 왼쪽 아이콘 있을 때 */
+	padding-left: 2.2rem;
+}
+.inputRightIcon {
+	/* 오른쪽 아이콘 있을 때 */
+	padding-right: 2.5rem;
+}
+.inputRightDefault {
+	/* 오른쪽 아이콘 없고 삭제버튼만 있을 때 */
+	padding-right: 2.5rem;
+}
+
+.inputLeftIconSvg,
+.inputRightIconSvg,
+.passwordIcon,
+.deleteButton {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+	z-index: 2;
+}
+
+.inputLeftIconSvg {
+	left: clamp(0.3rem, calc(var(--input-width, 100%) * 0.02), 1rem);
+	pointer-events: none;
+}
+
+.inputRightIconSvg {
+	right: clamp(0.3rem, calc(var(--input-width, 100%) * 0.02), 1rem);
+	pointer-events: none;
+}
+
+.inputLeftIconSvg.clickable,
+.inputRightIconSvg.clickable {
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+/* Password Icon */
+.passwordIcon {
+	right: clamp(0.5rem, calc(var(--input-width, 100%) * 0.02), 1rem);
+	width: 24px;
+	height: auto !important;;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	padding: 0;
+	border-radius: 50%;
+}
+
+.passwordIcon:hover {
+	background-color: var(--krds-color-gray-10);
+	opacity: 0.9;
+}
+
+.deleteButton {
+	opacity: 0;
+	pointer-events: none;
+	transition:
+		opacity 0.2s ease,
+		transform 0.1s ease;
+
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	padding: 0;
+	border-radius: 50%;
+	z-index: 3;
+}
+
+.deleteButton.show {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.deleteButton:hover {
+	filter: brightness(0.9);
+}
+
+.deleteButton svg circle {
+	transition: fill 0.15s;
+}
+
+/* Delete Button 위치 */
+.deleteButtonRight {
+	right: clamp(0.5rem, calc(var(--input-width, 100%) * 0.02), 1rem);
+}
+
+.deleteButtonWithIcon {
+	right: clamp(1rem, calc(var(--input-width, 100%) * 0.05 + 1.2rem), 3rem);
+}
+
+@media (max-width: 600px) {
+	.inputRightIcon {
+		padding-right: 3rem;
+	}
+	.inputRightDefault {
+		padding-right: 1.5rem;
+	}
+
+	.deleteButtonRight {
+		right: 0.5rem;
+	}
+	.deleteButtonWithIcon {
+		right: 2rem;
+	}
+
+	.inputRightIconSvg {
+		right: 0.5rem;
+	}
+
+	/* passwordIcon도 동일하게 */
+	.passwordIcon {
+		right: 0.5rem;
+	}
+}
+
+@container (max-width: 200px) {
+	/* transform 제거 - 이제 필요 없음 */
+	.inputLeftIconSvg,
+	.inputRightIconSvg,
+	.deleteButton,
+	.passwordIcon {
+		/* transform 제거 */
+	}
+
+	.deleteButtonWithIcon {
+		right: 1.8rem;
+	}
+}
+
+@container (min-width: 500px) {
+	.inputLeftIconSvg {
+		left: 1rem;
+	}
+
+	.inputRightIconSvg,
+	.deleteButtonRight,
+	.passwordIcon {
+		right: 1rem;
+	}
+
+	.deleteButtonWithIcon {
+		right: 3rem;
+	}
+}
+
+.inputLeftIcon {
+	padding-left: clamp(2rem, calc(var(--input-width, 100%) * 0.08), 3rem);
+}
+
+.inputRightIcon {
+	padding-right: clamp(2.5rem, calc(var(--input-width, 100%) * 0.1), 4rem);
+}
+
+.inputRightDefault {
+	padding-right: clamp(2rem, calc(var(--input-width, 100%) * 0.08), 3rem);
+}
+/* Input State Styles */
+.normal {
+	border-color: var(--krds-color-gray-50);
+}
+.error {
+	border-color: var(--krds-color-danger-50);
+	box-shadow: 0 0 0 2px var(--krds-color-danger-40);
+}
+
+/* Status Text Styles */
+
+.inputContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.statusContainer {
+	display: flex;
+	justify-content: space-between;
+	letter-spacing: -0.02rem;
+	align-items: flex-start;
+	padding-top: 0.25rem;
+	transition: opacity 0.2s ease;
+	pointer-events: none;
+	font-family: "pretendard, system-ui, sans-serif";
+	min-height: 24px;
+}
+
+.statusContainer.visible {
+	display: flex;
+}
+.statusContainer.hidden {
+	display: none;
+}
+.leftContent {
+	flex: 1;
+}
+
+.charCountWrapper {
+	display: flex;
+	gap: 0.25rem;
+	color: var(--krds-color-gray-70);
+	font-size: 0.8125rem;
+	line-height: 17px;
+	font-family: "pretendard, system-ui, sans-serif";
+	flex-shrink: 0;
+}
+
+.infoText,
+.errorText {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-size: 0.825rem;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+.errorText {
+	color: var(--krds-color-danger-60);
+}
+
+.infoText svg,
+.errorText svg {
+	vertical-align: middle;
+	flex-shrink: 0;
+}
+
+/* ------------------- */
+/* 반응형 (Mobile) */
+/* ------------------- */
+@media (max-width: 600px) {
+	/* Input Icon Padding Styles (Mobile) */
+	.inputRightIcon {
+		padding-right: 3rem;
+	}
+	.inputRightDefault {
+		padding-right: 1.5rem;
+	}
+
+	/* Delete Button Position Styles (Mobile) */
+	.deleteButtonRight {
+		right: 0.5rem;
+	}
+	.deleteButtonWithIcon {
+		right: 2rem;
+	}
+
+	/* Icon Position Styles (Mobile) */
+	.inputRightIconSvg {
+		right: 0.5rem;
+	}
+}
+
+@container (max-width: 200px) {
+	.inputLeftIconSvg,
+	.inputRightIconSvg,
+	.deleteButtonRight,
+	.passwordIcon {
+		transform: translateY(-50%) scale(calc(var(--icon-scale, 1) * 0.8));
+	}
+
+	.deleteButtonWithIcon {
+		right: 1.8rem;
+	}
+}
+
+/* 큰 너비에서 최대 간격 제한 */
+@container (min-width: 500px) {
+	.inputLeftIconSvg {
+		left: 1rem;
+	}
+
+	.inputRightIconSvg,
+	.deleteButtonRight,
+	.passwordIcon {
+		right: 1rem;
+	}
+
+	.deleteButtonWithIcon {
+		right: 3rem;
+	}
+}

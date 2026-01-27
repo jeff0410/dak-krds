@@ -1,0 +1,99 @@
+/* 라벨 텍스트 스타일 */
+.checkboxLabel {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 26px;
+	color: var(--krds-color-gray-90);
+	cursor: pointer;
+	width: 100%;
+}
+
+.checkboxWrapper {
+	display: flex;
+	align-items: center;
+	gap: 8px; /* 체크박스와 라벨 간격 */
+}
+
+.checkboxInput {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.checkboxBox.disabled {
+	cursor: not-allowed;
+}
+
+/* disabled 라벨 텍스트 색상 */
+.disabledLabel {
+	color: var(--krds-color-gray-40);
+}
+
+/* 체크박스 기본 */
+.checkboxBox {
+	width: 20px;
+	height: 20px;
+	border-radius: 6px;
+	border: 1px solid var(--krds-color-gray-60);
+	background-color: var(--krds-color-gray-0);
+	position: relative;
+	box-sizing: border-box;
+	transition: all 0.2s;
+}
+
+/* large 사이즈 */
+.large {
+	width: 24px;
+	height: 24px;
+}
+
+/* 체크 상태 */
+.checked {
+	background-color: var(--krds-color-primary-50);
+	border-color: var(--krds-color-primary-50);
+}
+
+/* disabled 체크 상태 */
+.checked.disabled {
+	background-color: var(--krds-color-gray-20);
+	border-color: var(--krds-color-gray-30);
+}
+
+/* 체크 아이콘 */
+.checked::after {
+	content: "";
+	position: absolute;
+	left: 5px;
+	top: 1px;
+	width: 6px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+/* disabled 체크 아이콘 색상 */
+.checked.disabled::after {
+	border-color: var(--krds-color-gray-40);
+}
+
+/* disabled 미체크 상태 */
+.disabled:not(.checked) {
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+.large.checked::after {
+	left: 6px; /* 위치 조정 */
+	top: 2px; /* 위치 조정 */
+	width: 8px; /* 화살표 길이 증가 */
+	height: 12px; /* 화살표 길이 증가 */
+	border-width: 0 2.5px 2.5px 0; /* 선 두께 조정 */
+}

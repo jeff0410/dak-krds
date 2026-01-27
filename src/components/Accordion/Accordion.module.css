@@ -1,0 +1,101 @@
+.accordion {
+	border-top: 1px solid var(--krds-color-gray-20);
+	overflow: hidden;
+}
+
+.accordionItem {
+	width: 100%;
+	border-bottom: 1px solid var(--krds-color-gray-20);
+}
+
+.plain {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 8px 0;
+
+	.chevronContainer {
+		margin: 0 !important;
+	}
+
+	label {
+		flex: 1;
+	}
+
+	.accordionItem {
+		border-bottom: none !important;
+		border-radius: 12px;
+	}
+
+	.accordionItem[data-isopen="true"] {
+		background-color: var(--krds-color-primary-5);
+
+		label {
+			color: var(--krds-color-secondary-80);
+		}
+	}
+
+	.accordionButton:focus-visible {
+		outline: 2px solid var(--krds-color-primary-50);
+		outline-offset: 2px;
+		border-radius: 8px;
+	}
+}
+
+.accordionButton {
+	width: 100%;
+	text-align: left;
+	padding: 24px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: none;
+	background: none;
+	cursor: pointer;
+	outline: none;
+}
+
+.accordionButton:focus-visible {
+	box-shadow: 0 0 0 2px var(--krds-color-primary-50);
+	outline: 2px solid transparent;
+	outline-offset: 2px;
+}
+
+.accordionTitle {
+	cursor: pointer;
+}
+
+.chevronContainer {
+	margin-left: 24px;
+	flex-shrink: 0;
+}
+
+.chevronIcon {
+	transform: rotate(180deg);
+	transition: transform 0.3s ease;
+}
+
+.chevronIconOpen {
+	transform: rotate(0);
+}
+
+.accordionContent {
+	overflow: hidden;
+	transition: max-height 0.3s ease-in-out;
+}
+
+.accordionContentInner {
+	padding: 24px;
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}

@@ -1,0 +1,56 @@
+.modalContent {
+	text-align: left;
+	display: grid;
+	overflow: auto;
+	scrollbar-gutter: stable;
+}
+.modalContent:focus-visible {
+	outline: none;
+	box-shadow:
+		0 0 0 2px var(--krds-color-gray-0),
+		0 0 0 4px var(--krds-color-primary-40);
+}
+
+.modalContentSmall {
+	margin: 0 1rem;
+}
+
+.modalContentMedium {
+	margin: 0 1.25rem;
+	padding-right: 8px;
+}
+
+.modalContentLarge {
+	margin: 0 1rem 0 1.5rem;
+	padding-right: 8px;
+}
+
+.modalContentDialog {
+	position: relative;
+	width: 100%;
+	display: flex;
+	text-align: left;
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 26px;
+	white-space: break-spaces;
+}
+
+.dialogIcon {
+	display: inherit;
+	text-align: left;
+}
+
+.modalContent::-webkit-scrollbar {
+	width: 8px;
+}
+.modalContent::-webkit-scrollbar-track {
+	background: var(--krds-color-secondary-5);
+}
+.modalContent::-webkit-scrollbar-thumb {
+	background-color: var(--krds-color-secondary-10);
+	border-radius: 2px;
+}
+.modalContent::-webkit-scrollbar-thumb:hover {
+	background-color: var(--krds-color-secondary-20);
+}

@@ -1,0 +1,84 @@
+.switchContainer {
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.switchContainer.disabled {
+	cursor: default;
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+.srOnly:focus + .switchTrack {
+	outline: none;
+	box-shadow:
+		0 0 0 2px var(--krds-color-gray-0),
+		0 0 0 4px var(--krds-color-primary-40);
+}
+.switchTrack {
+	display: inline-block;
+	position: relative;
+	border-radius: 14px;
+	transition:
+		background 0.2s,
+		outline 0.2s,
+		box-shadow 0.2s;
+	background: var(--krds-color-gray-50);
+}
+
+/* 활성화(bar) */
+.switchContainer input:checked + .switchTrack {
+	background: var(--krds-color-primary-50);
+}
+
+/* 비활성화(bar) */
+.switchContainer input:disabled + .switchTrack,
+.switchContainer input:checked:disabled + .switchTrack {
+	background: var(--krds-color-gray-20);
+}
+
+.switchThumb {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 1.7px;
+	background: var(--krds-color-gray-0);
+	border-radius: 50%;
+	transition:
+		left 0.2s,
+		background 0.2s;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.closeIcon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.checkIcon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 비활성화(thumb) */
+.switchContainer input:disabled + .switchTrack .switchThumb,
+.switchContainer input:checked:disabled + .switchTrack .switchThumb {
+	background: var(--krds-color-gray-40);
+}
+
+.labelMarginRight {
+	margin-right: 0.5rem;
+}
+.labelMarginLeft {
+	margin-left: 0.5rem;
+}

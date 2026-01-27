@@ -1,0 +1,131 @@
+.radioContainer {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	flex-wrap: wrap;
+
+	/*&:focus-within {*/
+	/*	border-radius: 2px;*/
+	/*	outline: 2px solid var(--krds-color-primary-50);*/
+	/*	outline-offset: 2px;*/
+	/*}*/
+}
+
+/* 화면이 500px 이하로 줄어들면 세로 정렬 */
+@media (max-width: 500px) {
+	.radioContainer {
+        /*flex-direction: column;*/
+		align-items: flex-start;
+	}
+}
+
+.radioOuterCircle {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	box-sizing: border-box;
+	background-color: var(--krds-color-gray-0);
+	border: 1px solid var(--krds-color-gray-60);
+	transition: all 0.2s ease-in-out;
+}
+
+.radioInnerCircle {
+	width: 0.625rem;
+	height: 0.625rem;
+	border-radius: 50%;
+	background-color: transparent;
+	transition: all 0.2s ease-in-out;
+}
+
+.checked {
+	border: 2px solid var(--krds-color-primary-50);
+}
+
+.innerChecked {
+	background-color: var(--krds-color-primary-50);
+}
+
+.unchecked {
+	border-color: var(--krds-color-gray-60);
+}
+
+.innerUnchecked {
+	background-color: transparent;
+}
+
+.disabled {
+	background-color: var(--krds-color-gray-20);
+	border-color: var(--krds-color-gray-40);
+	cursor: not-allowed;
+}
+
+.innerDisabled {
+	background-color: var(--krds-color-gray-40);
+}
+
+.label {
+	cursor: pointer;
+	transition: color 0.3s;
+	font-weight: 400;
+}
+
+.labelDisabled {
+	cursor: not-allowed;
+	color: var(--krds-color-gray-50);
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.group {
+	display: flex;
+}
+
+.groupVertical {
+	flex-direction: column;
+	gap: 20px;
+}
+
+.groupHorizontal {
+	flex-direction: row;
+	gap: 20px;
+}
+
+.label_m {
+	font-size: 1.063rem;
+}
+
+.label_l {
+	font-size: 1.188rem;
+}
+
+.radioOuter_m {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+.radioInner_m {
+	width: 0.75rem;
+	height: 0.75rem;
+}
+
+.radioOuter_l {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.radioInner_l {
+	width: 0.75rem;
+	height: 0.75rem;
+}

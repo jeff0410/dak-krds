@@ -1,1 +1,2 @@
-export * from './textarea';
+export * from './TextArea';
+export * from './TextArea.type';

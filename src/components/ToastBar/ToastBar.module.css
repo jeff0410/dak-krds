@@ -1,0 +1,129 @@
+/* px 단위 변환 */
+.toastBar {
+	border-radius: 8px;
+	display: flex;
+	padding: 16px;
+	gap: 8px;
+	align-items: flex-start;
+	width: 720px;
+	max-height: 118px;
+}
+
+.toastBar:focus {
+	outline: 3px solid var(--krds-color-information-60);
+	outline-offset: 2px;
+}
+
+.toastBar.danger:focus {
+	outline-color: var(--krds-color-danger-60);
+}
+
+.toastBar.warning:focus {
+	outline-color: var(--krds-color-warning-60);
+}
+
+.toastBar.success:focus {
+	outline-color: var(--krds-color-success-60);
+}
+
+@media screen and (max-width: 768px) {
+	.toastBar {
+		width: 329px;
+		max-height: 162px;
+	}
+}
+
+.description {
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 26px;
+	color: var(--krds-color-gray-90);
+}
+
+.descriptionIndented {
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 26px;
+	color: var(--krds-color-gray-90);
+}
+
+@media screen and (max-width: 768px) {
+	.descriptionIndented {
+		font-size: 15px;
+	}
+}
+
+.titleRow {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.title {
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 26px;
+}
+
+.title_danger {
+	color: var(--krds-color-danger-60);
+}
+
+.title_success {
+	color: var(--krds-color-success-60);
+}
+
+.title_warning {
+	color: var(--krds-color-warning-60);
+}
+
+.title_information {
+	color: var(--krds-color-information-60);
+}
+
+.danger {
+	background-color: var(--krds-color-danger-5);
+	border: 1px solid var(--krds-color-danger-10);
+	color: var(--krds-color-danger-60);
+}
+
+.warning {
+	background-color: var(--krds-color-warning-5);
+	border: 1px solid var(--krds-color-warning-10);
+	color: var(--krds-color-warning-60);
+}
+
+.success {
+	background-color: var(--krds-color-success-5);
+	border: 1px solid var(--krds-color-success-10);
+	color: var(--krds-color-success-60);
+}
+
+.information {
+	background-color: var(--krds-color-information-5);
+	border: 1px solid var(--krds-color-information-10);
+	color: var(--krds-color-information-60);
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.icon {
+	margin-top: 2px;
+}
+
+.toastBarWrapper {
+	position: fixed;
+	top: 50px;
+	right: 16px;
+	display: grid;
+	justify-content: flex-end;
+	flex-direction: column-reverse;
+	gap: 10px;
+	pointer-events: none;
+	z-index: 2500;
+	min-width: 100vw;
+}

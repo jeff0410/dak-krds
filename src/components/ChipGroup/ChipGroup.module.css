@@ -1,0 +1,68 @@
+.chipGroup {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	width: 100%;
+}
+
+.formChip {
+	display: inline-block;
+}
+
+.radio {
+	display: none;
+}
+
+.outline {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	border: 1px solid var(--krds-color-gray-30);
+	border-radius: 6px;
+	font-weight: 400;
+	cursor: pointer;
+	background-color: var(--krds-color-gray-0);
+	color: var(--krds-color-gray-90);
+	transition: 0.2s ease;
+	width: auto; /* 글자 길이만큼 자동 조절 */
+	padding: 8px 10px; /* 기본 패딩 (height prop이 없을 때) */
+	box-sizing: border-box;
+}
+
+.checked {
+	border-color: var(--krds-color-primary-50);
+	background-color: #e6f0ff;
+	color: var(--krds-color-primary-60);
+}
+
+.disabled {
+	border-color: var(--krds-color-gray-30);
+	background-color: var(--krds-color-gray-20);
+	color: var(--krds-color-gray-50);
+	cursor: not-allowed;
+}
+
+.checkIcon {
+	width: 1.25rem;
+	height: 1.25rem;
+	flex-shrink: 0;
+}
+
+/* size modifiers - height prop이 제공되지 않았을 때만 적용 */
+.l .outline:not([style*="height"]) {
+	font-size: 15px;
+	line-height: 24px;
+	padding: 12px 15px;
+}
+
+.m .outline:not([style*="height"]) {
+	font-size: 14px;
+	line-height: 24px;
+	padding: 10px 11px;
+}
+
+.s .outline:not([style*="height"]) {
+	font-size: 13px;
+	line-height: 24px;
+	padding: 7px 9px;
+}

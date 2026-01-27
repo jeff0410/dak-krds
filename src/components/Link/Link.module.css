@@ -1,0 +1,26 @@
+.link {
+	color: var(--krds-color-primary-50);
+	text-decoration: underline;
+	cursor: pointer;
+	font-weight: 400;
+}
+
+.size_s {
+	font-size: 15px;
+	line-height: 24px;
+}
+.size_m {
+	font-size: 17px;
+	line-height: 26px;
+}
+.size_l {
+	font-size: 19px;
+	line-height: 30px;
+}
+
+.weight_regular {
+	font-weight: 400;
+}
+.weight_bold {
+	font-weight: 700;
+}

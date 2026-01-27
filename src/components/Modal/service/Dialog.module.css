@@ -1,0 +1,20 @@
+.dialogCloseIcon {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+}
+
+.dialogBody {
+	width: 100%;
+	padding: 8px 16px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+}
+
+.defaultDialogButton {
+	display: flex;
+	gap: 16px;
+	width: 164px;
+}

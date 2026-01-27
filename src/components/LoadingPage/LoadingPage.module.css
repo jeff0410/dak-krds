@@ -1,0 +1,16 @@
+.loadingPageContent {
+    font-weight: 400;
+    color: var(--krds-color-gray-70);
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.loadingPageContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}

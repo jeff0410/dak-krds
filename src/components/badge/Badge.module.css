@@ -1,0 +1,134 @@
+.badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2px 8px;
+	width: fit-content;
+}
+
+.normalWeight {
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 24px;
+}
+
+/* Variant + Appearance */
+.defaultStroke {
+	background-color: transparent;
+	border: 1px solid var(--krds-color-gray-40);
+	color: var(--krds-color-gray-40);
+}
+.defaultFillStrong {
+	background-color: var(--krds-color-gray-10);
+	color: var(--krds-color-gray-50);
+}
+.defaultFillSoft {
+	background-color: var(--krds-color-gray-10);
+	color: var(--krds-color-gray-50);
+}
+.primaryStroke {
+	background: transparent;
+	border: 1px solid var(--krds-color-primary-50);
+	color: var(--krds-color-primary-60);
+}
+.primaryFillStrong {
+	background: var(--krds-color-primary-50);
+	color: var(--krds-color-gray-0);
+}
+.primaryFillSoft {
+	background: var(--krds-color-primary-5);
+	color: var(--krds-color-primary-60);
+}
+.secondaryStroke {
+	background: transparent;
+	border: 1px solid var(--krds-color-secondary-70);
+	color: var(--krds-color-secondary-80);
+}
+.secondaryFillStrong {
+	background: var(--krds-color-secondary-70);
+	color: var(--krds-color-gray-0);
+}
+.secondaryFillSoft {
+	background: var(--krds-color-secondary-5);
+	color: var(--krds-color-secondary-80);
+}
+.successStroke {
+	background: transparent;
+	border: 1px solid var(--krds-color-success-50);
+	color: var(--krds-color-success-60);
+}
+.successFillStrong {
+	background: var(--krds-color-success-50);
+	color: var(--krds-color-gray-0);
+}
+.successFillSoft {
+	background: var(--krds-color-success-5);
+	color: var(--krds-color-success-60);
+}
+.warningStroke {
+	background: transparent;
+	border: 1px solid var(--krds-color-warning-50);
+	color: var(--krds-color-warning-60);
+}
+.warningFillStrong {
+	background: var(--krds-color-warning-50);
+	color: var(--krds-color-gray-0);
+}
+.warningFillSoft {
+	background: var(--krds-color-warning-5);
+	color: var(--krds-color-warning-60);
+}
+.dangerStroke {
+	background: transparent;
+	border: 1px solid var(--krds-color-danger-50);
+	color: var(--krds-color-danger-60);
+}
+.dangerFillStrong {
+	background: var(--krds-color-danger-50);
+	color: var(--krds-color-gray-0);
+}
+.dangerFillSoft {
+	background: var(--krds-color-danger-5);
+	color: var(--krds-color-danger-60);
+}
+.informationStroke {
+	background: transparent;
+	border: 1px solid var(--krds-color-information-50);
+	color: var(--krds-color-information-60);
+}
+.informationFillStrong {
+	background: var(--krds-color-information-50);
+	color: var(--krds-color-gray-0);
+}
+.informationFillSoft {
+	background: var(--krds-color-information-5);
+	color: var(--krds-color-information-60);
+}
+.pointStroke {
+	background: transparent;
+	border: 1px solid var(--krds-color-point-50);
+	color: var(--krds-color-point-60);
+}
+.pointFillStrong {
+	background: var(--krds-color-point-50);
+	color: var(--krds-color-gray-0);
+}
+.pointFillSoft {
+	background: var(--krds-color-point-5);
+	color: var(--krds-color-point-60);
+}
+
+.errorStroke {
+	background: var(--krds-color-point-5);
+	color: var(--krds-color-point-60);
+}
+.errorFillStrong {
+	background: var(--krds-color-point-5);
+	color: var(--krds-color-point-60);
+}
+.errorFillSoft {
+	background: var(--krds-color-point-5);
+	color: var(--krds-color-point-60);
+}
+
+/* ======================================================= */

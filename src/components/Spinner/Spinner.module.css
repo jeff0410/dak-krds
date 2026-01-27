@@ -1,0 +1,38 @@
+.spinner {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.svg {
+	animation: spin 1s linear infinite;
+}
+
+.circle {
+	opacity: 0.25;
+}
+
+.path {
+	opacity: 0.75;
+}
+
+.s {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+.m {
+	width: 2rem;
+	height: 2rem;
+}
+
+.l {
+	width: 3rem;
+	height: 3rem;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}

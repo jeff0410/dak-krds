@@ -1,0 +1,20 @@
+.NotFountPage {
+	border-radius: 16px;
+	background-color: var(--krds-color-gray-0);
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: var(--krds-color-gray-80);
+	font-size: 16px;
+	line-height: 24px;
+	gap: 40px;
+}
+
+.NotFountPageContent {
+	display: grid;
+	gap: 8px;
+	text-align: center;
+}

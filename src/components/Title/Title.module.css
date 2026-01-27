@@ -1,0 +1,51 @@
+.title {
+	margin: 0;
+}
+
+.size_xxl {
+	font-size: 2.5rem;
+}
+.size_xl {
+	font-size: 2.125rem;
+}
+.size_l {
+	font-size: 1.75rem;
+}
+.size_m {
+	font-size: 1.5rem;
+}
+.size_s {
+	font-size: 1.25rem;
+}
+.size_xs {
+	font-size: 1rem;
+}
+.size_1 {
+	font-size: 19px;
+	line-height: 30px;
+}
+.size_2 {
+	font-size: 17px;
+	line-height: 26px;
+}
+
+@media (max-width: 600px) {
+	.size_xxl {
+		font-size: 2rem;
+	}
+	.size_xl {
+		font-size: 1.5rem;
+	}
+	.size_l {
+		font-size: 1.25rem;
+	}
+	.size_m {
+		font-size: 1.125rem;
+	}
+	.size_s {
+		font-size: 1rem;
+	}
+	.size_xs {
+		font-size: 0.875rem;
+	}
+}

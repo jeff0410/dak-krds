@@ -1,0 +1,153 @@
+.container {
+	width: 100%;
+	background-color: var(--krds-color-gray-0);
+	box-sizing: border-box;
+}
+
+.title {
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 2.25rem;
+	margin: 0 !important;
+}
+
+.description {
+	color: var(--krds-color-gray-70);
+	margin-bottom: 1rem;
+	font-size: 1.063rem;
+}
+
+.subDescription {
+	font-size: 0.938rem;
+	color: var(--krds-color-gray-70);
+	text-align: center;
+	margin: 0 !important;
+}
+
+.dropZone {
+	border: 2px solid var(--krds-color-gray-20);
+	background-color: var(--krds-color-gray-5);
+	border-radius: 12px;
+	padding: 2rem;
+	text-align: center;
+	cursor: pointer;
+	transition: border-color 0.2s ease;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.infoLabel {
+	font-weight: 400;
+	font-size: 1.188rem;
+	color: var(--krds-color-gray-70);
+	line-height: 1.875rem;
+}
+
+.fileList {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+	gap: 1rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.fileItemHeader {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.fileItem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid var(--krds-color-gray-30);
+	padding: 1rem;
+	border-radius: 8px;
+	gap: 0.5rem;
+}
+
+.fileListHeader {
+	display: flex;
+	align-items: center;
+}
+
+.error {
+	border: 2px solid var(--krds-color-danger-60);
+	background-color: var(--krds-color-danger-5);
+}
+
+.errorMessage {
+	width: 100%;
+	padding-top: 1rem;
+	background-color: var(--krds-color-danger-5);
+	border-top: 1px solid var(--krds-color-gray-40);
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+}
+
+.errorMessageLabel {
+	font-size: 1.063rem !important;
+	font-weight: 400 !important;
+	color: var(--krds-color-danger-60) !important;
+	line-height: 1.625rem !important;
+}
+
+.deleteButton {
+	display: flex;
+	align-items: center;
+	color: var(--krds-color-gray-90);
+	font-size: 1.063rem;
+	cursor: pointer;
+	min-height: unset;
+	min-width: unset;
+	padding: 0;
+}
+
+.deleteButton:hover {
+	color: var(--krds-color-gray-90) !important;
+}
+
+.hiddenInput {
+	display: none;
+}
+
+.countLabel {
+	margin: 0 !important;
+}
+
+.currentLabel {
+	color: var(--krds-color-primary-60);
+	font-weight: 700;
+	font-size: 1.063rem;
+}
+
+.totalLabel {
+	color: var(--krds-color-gray-90);
+	font-weight: 700;
+}
+
+.compactFileLabel {
+	padding: 16px;
+	border: 1px solid var(--krds-color-gray-20);
+	border-radius: 8px;
+	font-size: 1.063rem;
+	font-weight: 500;
+	color: var(--krds-color-gray-90);
+	box-sizing: border-box;
+	margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.fileNameLabel {
+		max-width: 12.25rem !important;
+	}
+}

@@ -1,0 +1,33 @@
+.buttonWrap {
+	text-align: right;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.buttonWrap button + button {
+	margin-left: 10px;
+}
+
+.buttonWrapSmall {
+	padding: 0.625rem 1rem 1rem;
+}
+
+.buttonWrapMedium {
+	padding: 1rem 1.25rem;
+}
+
+.buttonWrapLarge {
+	padding: 1.5rem 2rem;
+}
+
+.buttonWrapDialog {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	width: 100%;
+	height: 88px;
+}
+
+.buttonWrap .dangerousButton {
+	margin: 0;
+}

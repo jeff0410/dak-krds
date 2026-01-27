@@ -1,0 +1,41 @@
+.list {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 0;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.label {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	font-weight: 500;
+	cursor: pointer;
+	max-width: none;
+	white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+	.labelText {
+		display: inline-block;
+		max-width: 64px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		vertical-align: bottom;
+	}
+}
+
+.label:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px var(--ring-primary);
+	outline-offset: 2px;
+}

@@ -1,0 +1,28 @@
+.icon {
+	display: inline-block;
+	flex-shrink: 0;
+	color: inherit;
+}
+
+.icon path {
+	fill: var(--icon-color);
+}
+
+.stroke path {
+	fill: none;
+	stroke: var(--icon-color);
+}
+
+.multiColor {
+	display: inline-block;
+	flex-shrink: 0;
+	color: inherit;
+}
+
+.multiColor path {
+	fill: var(--icon-primary, var(--krds-color-primary-50));
+}
+
+.multiColor path:nth-child(2) {
+	fill: var(--icon-secondary, var(--krds-color-gray-0));
+}

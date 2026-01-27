@@ -1,0 +1,28 @@
+.checkboxGroup {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+.horizontal {
+	display: flex;
+	gap: 16px;
+}
+
+.vertical {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+/* 접근성용 숨김 레전드 */
+.visuallyHidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}

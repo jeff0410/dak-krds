@@ -1,0 +1,180 @@
+.stepList {
+	overflow-x: auto;
+	white-space: nowrap;
+	display: flex;
+	align-items: flex-start;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	counter-reset: step;
+	width: 100%;
+}
+
+.stepBox {
+	overflow-x: auto;
+	white-space: nowrap;
+	display: flex;
+	justify-content: space-between;
+	align-items: center !important;
+	gap: 24px;
+	margin: 0;
+	list-style: none;
+	background-color: var(--krds-color-gray-5);
+	border-radius: 12px;
+	padding: 8px;
+
+	.stepItem {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex: 0 !important;
+		background-color: transparent;
+	}
+
+	& > * {
+		flex-shrink: 0;
+	}
+
+	.ongoing {
+		color: var(--krds-color-primary-60);
+	}
+
+	.stepCircle {
+		margin: 0;
+	}
+
+	.stepLabelGroup {
+		padding: 0;
+	}
+
+	li::after {
+		display: none !important;
+	}
+
+	.stepLabel {
+		display: none;
+	}
+
+	.stepTitle {
+		margin: 0;
+	}
+}
+
+.stepItem {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1;
+	text-align: center;
+}
+
+.left {
+	align-items: flex-start;
+
+	.stepLabelGroup {
+		padding-left: 0 !important;
+	}
+}
+
+.left:not(:last-child)::after {
+	left: 0 !important;
+}
+
+.stepItem:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	top: 14%;
+	left: 50%;
+	transform: translateX(0%);
+	width: 100%;
+	height: 2px;
+	background-color: var(--krds-color-gray-20);
+	z-index: 0;
+}
+
+.flex-start:not(:last-child)::after {
+	left: 0;
+}
+
+.completed:not(:last-child)::after {
+	background-color: var(--krds-color-gray-50);
+}
+
+.stepCircle {
+	z-index: 1;
+	width: 24px;
+	height: 24px;
+	box-sizing: border-box;
+	border-radius: 50%;
+	background-color: var(--krds-color-gray-10);
+	border: 1px solid var(--krds-color-gray-20);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+
+.completed .stepCircle {
+	background-color: var(--krds-color-gray-50);
+	color: var(--krds-color-gray-0);
+	border: none;
+}
+
+.ongoing .stepCircle {
+	border: 2px solid var(--krds-color-primary-50);
+	background-color: var(--krds-color-gray-0);
+}
+
+.stepLabel {
+	font-size: 13px;
+	color: var(--krds-color-gray-70);
+	font-weight: 400;
+}
+
+.stepLabelGroup {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding-left: 30px;
+}
+
+.stepTitle {
+	font-weight: 600;
+	font-size: 15px;
+	margin-top: 4px;
+	color: var(--krds-color-gray-70);
+}
+
+.stepButton {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
+	text-align: center;
+}
+
+.stepButton:focus-visible {
+	outline: 2px solid var(--krds-color-primary-50);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+.stepBox .stepButton {
+	flex-direction: row;
+	gap: 10px;
+	padding: 18px 24px;
+	border-radius: 8px;
+	transition: background-color 500ms ease;
+}
+
+.stepBox .ongoing .stepButton {
+	background-color: #fff;
+	padding: 16px 24px;
+}

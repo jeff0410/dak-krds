@@ -1,0 +1,23 @@
+.detail {
+	margin: 0;
+}
+
+.size_l {
+	font-size: 1.125rem;
+}
+
+.size_m {
+	font-size: 1rem;
+}
+
+.size_s {
+	font-size: 0.875rem;
+}
+
+.weight_regular {
+	font-weight: 400;
+}
+
+.weight_bold {
+	font-weight: 700;
+}

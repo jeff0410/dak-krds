@@ -1,0 +1,49 @@
+.linkButton {
+	width: fit-content;
+	height: 40px;
+	text-decoration: underline;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	outline: none;
+	transition:
+		color 0.2s,
+		background 0.2s;
+	white-space: nowrap;
+}
+
+.linkButton .icon {
+	text-decoration: none;
+	display: inline-block;
+	margin-left: 0.1rem;
+	vertical-align: middle;
+	align-items: center;
+}
+
+.linkButtonAccent {
+	font-weight: 700;
+}
+
+.linkButtonDefault {
+	font-weight: 400;
+}
+
+.linkButton:hover {
+	color: var(--krds-color-primary-60);
+}
+.linkButton:focus {
+	color: var(--krds-color-primary-60);
+}
+
+.linkButtonSmall {
+	font-size: 0.875rem;
+	padding: 0.25rem 0.5rem;
+}
+.linkButtonMedium {
+	font-size: 1rem;
+	padding: 0.5rem 0.75rem;
+}
+.linkButtonLarge {
+	font-size: 1.125rem;
+	padding: 0.75rem 1rem;
+}

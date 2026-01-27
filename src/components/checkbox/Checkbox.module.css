@@ -1,0 +1,130 @@
+.checkboxContainer {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	cursor: pointer;
+
+	/*아웃라인 크기*/
+	padding: 4px;
+}
+
+.checkboxBox {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	border: 1px solid var(--krds-color-gray-60);
+	border-radius: 4px;
+	position: relative;
+	transition: all 0.3s ease;
+	flex-shrink: 0;
+}
+
+.checkbox_m {
+	width: 1.25rem;
+	height: 1.25rem;
+	font-size: 1.063rem;
+}
+
+.checkbox_l {
+	width: 1.5rem;
+	height: 1.5rem;
+	font-size: 1.188rem;
+}
+
+.on {
+	background-color: var(--checkbox-bg, var(--krds-color-primary-50));
+	border-color: var(--checkbox-border, var(--krds-color-primary-50));
+	color: var(--checkbox-icon, var(--krds-color-gray-0));
+	/* background-color: var(--krds-color-primary-50);
+	border-color: var(--krds-color-primary-50);
+	color: var(--krds-color-gray-0); */
+}
+
+.off {
+	background-color: var(--krds-color-gray-0);
+	border-color: var(--krds-color-gray-60);
+}
+
+.disabled {
+	background-color: var(--krds-color-gray-20);
+	border-color: var(--krds-color-gray-30);
+	color: var(--krds-color-gray-40);
+	cursor: not-allowed;
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* 실제 input을 시각적으로 숨기되 포커스 가능하게 */
+.checkboxInput {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* input 포커스 시 시각적 박스에 표시 */
+.checkboxInput:focus-visible + .checkboxBox {
+	box-shadow: 0 0 0 2px white, 0 0 0 4px var(--krds-color-primary-50);
+	/*outline: 2px solid var(--krds-color-primary-50);*/
+	/*outline-offset: 2px;*/
+}
+
+/* 라벨 스타일 */
+.checkboxLabel {
+	cursor: pointer;
+	transition: color 0.3s ease;
+	font-weight: 400;
+	color: var(--krds-color-gray-90);
+}
+
+.label_m {
+	font-size: 15px;
+	line-height: 24px;
+}
+
+.label_l {
+	font-size: 17px;
+	line-height: 26px;
+}
+
+.group {
+	display: flex;
+}
+
+.groupHorizontal {
+	flex-direction: row;
+	gap: 20px;
+}
+
+.groupVertical {
+	flex-direction: column;
+	gap: 20px;
+}
+
+.label {
+	cursor: pointer;
+	transition: color 0.3s ease;
+	font-weight: 400;
+	color: var(--krds-color-gray-90);
+}
+
+.labelDisabled {
+	cursor: not-allowed;
+	color: var(--krds-color-gray-50);
+}

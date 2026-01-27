@@ -1,0 +1,31 @@
+.display {
+	margin: 0;
+}
+
+.size_l {
+	font-size: 3.75rem;
+}
+
+.size_m {
+	font-size: 2.75rem;
+}
+
+.size_s {
+	font-size: 2.25rem;
+}
+
+.weight_bold {
+	font-weight: 700;
+}
+
+@media (max-width: 600px) {
+	.size_l {
+		font-size: 2.75rem;
+	}
+	.size_m {
+		font-size: 2rem;
+	}
+	.size_s {
+		font-size: 1.75rem;
+	}
+}

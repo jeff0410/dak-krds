@@ -1,0 +1,44 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	justify-content: center;
+}
+
+.titleWrapper {
+	display: flex;
+	gap: 0.25rem;
+	align-items: center;
+	width: fit-content;
+	line-height: 24px;
+	flex-shrink: 0;
+}
+
+.horizontal {
+	flex-direction: row;
+	align-items: flex-start;
+}
+.horizontal > div:last-child {
+	flex: 1;
+}
+.requiredIndicator {
+	color: var(--krds-color-danger-50);
+	font-size: 15px;
+	line-height: 24px;
+}
+
+.inputGroup {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	justify-content: center;
+}
+.input {
+	flex: 1 1 0;
+	min-width: 6rem;
+}
+.separator {
+	color: var(--krds-color-gray-70);
+	font-size: 1.0625rem;
+	font-weight: 800;
+}

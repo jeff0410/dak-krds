@@ -1,0 +1,180 @@
+/* css for only stories */
+
+/* reset css
+ * storybook 기본 css 룰이 있으니 필요할 때 필요한거 추가
+ */
+
+body {
+	padding: 0 !important;
+}
+
+ul,
+ol,
+li {
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+}
+
+html section {
+	max-width: inherit;
+	padding: 0;
+	margin: 0;
+}
+html h1 + section {
+	margin-top: 20px;
+}
+
+/* element css */
+/* header for page */
+html h2 {
+	margin-bottom: 20px !important;
+}
+
+h3 {
+	font-size: 24px;
+	margin-bottom: 16px;
+	padding-bottom: 8px;
+	color: var(--krds-color-gray-00);
+}
+/* css for story */
+.centerWrapOnlyForStory {
+	padding: 60px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.inputOnlyForStory {
+	box-sizing: border-box;
+	padding: 0;
+}
+.cursorDivOnlyForStory {
+	background: var(--plttBlue6);
+	padding: 80px;
+	border-radius: var(--border-radius-md);
+}
+.storybookButton {
+	border-radius: var(--border-radius-md);
+	border: 1px solid var(--greyScale9);
+	line-height: 40px;
+	padding: 4px 8px;
+}
+
+/* default css for code */
+code {
+	font-family:
+		source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+	font-weight: normal;
+}
+
+/* css for mdx stories */
+.storySection {
+	text-align: center;
+}
+
+.storySection + .storySection {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid var(--greyScale3);
+}
+
+.storySection + h2 {
+	margin-top: 60px;
+}
+
+.storySection .storySectionCode {
+	margin-top: -25px;
+	text-align: left;
+}
+
+.storySectionEx {
+	background-color: var(--krds-color-gray-0);
+	border: 1px solid var(--greyScale4);
+	outline: 4px solid var(--greyScale2);
+	padding: 20px 8px;
+	border-radius: 8px;
+}
+
+.storySectionEx + * {
+	padding-top: 16px;
+}
+
+.storySectionExText {
+	display: flex;
+	align-items: baseline;
+	gap: 16px;
+	line-height: 24px;
+	text-align: left;
+	padding: 16px 0;
+	font-size: 14px;
+}
+
+.storySectionExText b {
+	font-size: 16px;
+}
+
+.storySectionExText p {
+	margin: 0;
+	font-size: 14px;
+}
+.storySectionExText p b {
+	font-size: inherit;
+}
+.storyDivider {
+	margin-top: 20px;
+	padding-bottom: 20px;
+	border-top: 1px solid var(--greyScale3);
+}
+
+.codeBlock {
+	font-family:
+		ui-monospace, Menlo, Monaco, "Roboto Mono", "Oxygen Mono",
+		"Ubuntu Monospace", "Source Code Pro", "Droid Sans Mono", "Courier New",
+		monospace;
+	font-size: 12px !important;
+	line-height: 13px;
+	background-color: #f8f8f8;
+	border: 1px solid #eee;
+	border-radius: 3px;
+	padding: 3px 5px;
+}
+
+.storyList {
+	text-align: center;
+}
+
+.storyListItemEx {
+	position: relative;
+}
+
+.storyListItemEx * {
+	text-align: left;
+}
+
+.storyItemExTitle {
+	position: absolute;
+	transform: translateY(-50%);
+}
+
+.storyListItemCode {
+	text-align: left;
+}
+
+.storyListItemCode + .storyListItemEx {
+	border-top: 1px solid var(--greyScale3);
+	padding-top: 20px;
+}
+
+.sbdocs ul {
+	padding-left: 30px !important;
+}
+
+.storySectionExText {
+	color: #2e3438;
+	line-height: 24px;
+}
+
+.storySectionExText a {
+	color: #029cfd;
+	text-decoration: none;
+}

@@ -1,0 +1,41 @@
+.wrapperContainer {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+
+    z-index: 999;
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--krds-color-gray-0);
+
+
+}
+
+.icons {
+    display: flex;
+    gap: 24px
+}
+
+.rightIcon {
+    transform: rotate(180deg);
+}
+
+.description {
+    font-weight: 600
+}
+
+.subDescription {
+    font-weight: 400
+}

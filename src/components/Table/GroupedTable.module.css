@@ -1,0 +1,29 @@
+.groupedTable {
+	overflow: visible;
+}
+
+.mergedCell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: none !important;
+	position: relative;
+	z-index: 1;
+}
+
+.hiddenCell {
+	display: none !important;
+	padding: 0 !important;
+	height: 0 !important;
+	border: none !important;
+}
+
+.groupedRow {
+	height: 0;
+}
+
+.groupedRow td {
+	padding: 0;
+	border-bottom: none;
+	height: 0;
+}

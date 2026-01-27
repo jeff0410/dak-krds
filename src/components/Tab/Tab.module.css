@@ -1,0 +1,191 @@
+.tabsContainer {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.tabList {
+	display: flex;
+	justify-content: space-between; /* 탭은 왼쪽, 버튼은 오른쪽 */
+	align-items: center; /* 높이 정렬 */
+	flex: 0 0 auto; /* 고정 높이 */
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background-color: var(--krds-color-gray-0);
+}
+
+.tabListInner {
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
+
+.sideButtonContainer {
+	display: flex;
+	align-items: center;
+	margin-left: auto; /* 왼쪽 탭과 최대한 떨어지게 */
+}
+
+.tabContentContainer {
+	flex: 1 1 auto; /* 콘텐츠 영역은 남은 공간을 모두 사용 */
+	position: relative;
+}
+
+.tabpannelLayout {
+	width: 100%;
+	height: 100%;
+}
+
+.hidden {
+	display: none;
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.tabButton {
+	padding: 12px 24px;
+	transition: all 0.4s ease-in-out;
+	outline: none;
+	border: none;
+	background: none;
+}
+
+.tabButton:hover {
+	background-color: var(--krds-color-primary-5);
+}
+
+.tabButtonSelected {
+	border-bottom: 4px solid var(--krds-color-secondary-70);
+}
+
+.tabButtonUnselected {
+	border-bottom: none;
+}
+
+.tabLabel {
+	cursor: pointer;
+	font-size: 1.188rem;
+	font-weight: 400;
+	color: var(--krds-color-gray-70);
+	line-height: 1.875rem;
+}
+
+.tabButtonSelected .tabLabel {
+	font-weight: 700;
+}
+
+/* Variant: underline */
+.variantUnderline {
+	border-bottom: 1px solid var(--krds-color-gray-40);
+}
+
+/* Variant: plain */
+.variantPlain {
+	border-bottom: none;
+}
+
+/* Variant: box */
+.variantBox {
+	display: flex;
+	border: none;
+	gap: 0;
+}
+
+.variantBox .tabButton {
+	border: 1px solid var(--krds-color-gray-30);
+	background-color: transparent;
+	padding: 0 1rem !important;
+}
+
+.variantBox .tabButton:hover:not(.tabButtonSelected) {
+	background-color: var(--krds-color-secondary-5);
+}
+
+.variantBox .tabLabel {
+	font-size: 1.063rem;
+}
+
+.variantBox .tabButtonSelected {
+	background-color: var(--krds-color-secondary-70);
+	color: var(--krds-color-gray-0);
+}
+
+.variantBox .tabButtonSelected .tabLabel {
+	color: var(--krds-color-gray-0);
+	font-weight: 600;
+}
+
+.variantBox .tabButton:first-child {
+	border-radius: 6px 0 0 6px !important;
+}
+
+.variantBox .tabButton:not(:first-child):not(:last-child) {
+	border-left: none;
+	border-radius: 0;
+}
+
+.variantBox .tabButton:last-child {
+	border-left: none;
+	border-radius: 0 6px 6px 0 !important;
+}
+
+/* Variant: fill */
+.variantFill {
+	display: flex;
+	border: none;
+	gap: 0;
+	width: 100%;
+}
+
+.variantFill .tabButton {
+	flex: 1;
+	border: 1px solid var(--krds-color-gray-30);
+	border-radius: 8px 8px 0 0;
+	background-color: transparent;
+	width: 100%;
+	padding: 0 1rem !important;
+}
+
+.variantFill .tabLabel {
+	font-size: 1.063rem;
+}
+
+.variantFill .tabButton:hover:not(.tabButtonSelected) {
+	background-color: var(--krds-color-secondary-5);
+}
+
+.variantFill .tabButtonSelected {
+	background-color: var(--krds-color-secondary-70);
+	color: var(--krds-color-gray-0);
+}
+
+.variantFill .tabButtonSelected .tabLabel {
+	color: var(--krds-color-gray-0);
+	font-weight: 600;
+}
+
+.variantFill .tabButton:first-child {
+	border-radius: 6px 0 0 6px !important;
+}
+
+.variantFill .tabButton:not(:first-child):not(:last-child) {
+	border-left: none;
+	border-radius: 0;
+}
+
+.variantFill .tabButton:last-child {
+	border-left: none;
+	border-radius: 0 6px 6px 0 !important;
+}

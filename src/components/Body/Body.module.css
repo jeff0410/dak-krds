@@ -1,0 +1,22 @@
+.body {
+	margin: 0;
+}
+
+.size_1 {
+	font-size: 20px;
+	line-height: 30px;
+}
+.size_2 {
+	font-size: 18px;
+	line-height: 26px;
+}
+
+.weight_regular {
+	font-weight: 400;
+}
+.weight_semibold {
+	font-weight: 600;
+}
+.weight_bold {
+	font-weight: 700;
+}

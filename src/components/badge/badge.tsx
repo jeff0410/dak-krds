@@ -1,31 +1,39 @@
-import React from 'react';
-import './badge.css';
+import * as style from './Badge.module.css';
+import { Label } from '../Label';
+import type { BadgeProps } from './Badge.type';
 
-export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: 'primary' | 'success' | 'warning' | 'error' | 'info';
-  size?: 'small' | 'medium' | 'large';
-  children: React.ReactNode;
-}
-
-export function Badge({
-  variant = 'primary',
-  size = 'medium',
+export const Badge = ({
+  label,
+  variant = 'default',
+  size = 's',
+  appearance = 'fill-strong',
   className = '',
-  children,
-  ...props
-}: BadgeProps) {
-  const classNames = [
-    'dak-badge',
-    `dak-badge--${variant}`,
-    `dak-badge--${size}`,
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  width = '',
+  height = '',
+  radius = '4px',
+}: BadgeProps) => {
+  const variantKey = `${variant}${toPascalCase(appearance)}`;
+  const variantClass = style[variantKey] ?? '';
 
   return (
-    <span className={classNames} {...props}>
-      {children}
-    </span>
+    <output
+      className={`${style.badge} ${variantClass} ${className}`}
+      style={{
+        width,
+        height,
+        borderRadius: radius,
+      }}
+      aria-label={label}>
+      <Label id={`badge-${label}`} size={size} className={`${style.normalWeight}`}>
+        {label}
+      </Label>
+    </output>
   );
+};
+
+function toPascalCase(value: string) {
+  return value
+    .split('-')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
 }
