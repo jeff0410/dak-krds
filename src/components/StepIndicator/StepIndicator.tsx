@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 import { Icon } from '../Icon';
-import styles from './StepIndicator.module.css';
+import * as styles from './StepIndicator.module.css';
 import type { StepIndicatorProps } from './StepIndicator.type';
 
 

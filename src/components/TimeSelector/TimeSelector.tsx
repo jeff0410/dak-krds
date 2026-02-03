@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Icon, TextInput } from 'src/components';
 import { TimeSelectorProps } from 'src/components/TimeSelector/TimeSelector.type';
 import { TimeSelectorPopup } from 'src/components/TimeSelector/TimeSelectorPopup';
-import styles from './TimeSelector.module.css';
+import * as styles from './TimeSelector.module.css';
 
 export function TimeSelector({
   value,

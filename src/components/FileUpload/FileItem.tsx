@@ -3,7 +3,7 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Label } from '../Label';
 import { Spinner } from '../Spinner';
-import styles from './FileItem.module.css';
+import * as styles from './FileItem.module.css';
 import type { FileItemProps } from './FileItem.type';
 
 export const FileItem: FC<FileItemProps> = ({

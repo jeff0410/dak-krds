@@ -1,7 +1,7 @@
 import type React from "react";
 import type { MouseEvent } from "react";
 import { Spinner } from "../Spinner";
-import styles from "./Button.module.css";
+import * as styles from "./Button.module.css";
 import type { ButtonProps } from "./Button.type";
 
 export function Button({
@@ -32,13 +32,11 @@ export function Button({
 	const hasText = !!(children || label || loadingText);
 	const isDisabled = disabled || loading;
 
-	const variantClass = (styles as Record<string, string>)[variant] || "";
-	const sizeClass = (styles as Record<string, string>)[size] || "";
-	const disabledClass = isDisabled
-		? (styles as Record<string, string>).disabled
-		: "";
+	const variantClass = styles[variant] || "";
+	const sizeClass = styles[size] || "";
+	const disabledClass = isDisabled ? styles.disabled : "";
 	const buttonClass =
-		`${(styles as Record<string, string>).button} ${variantClass} ${sizeClass} ${disabledClass} ${className}`.trim();
+		`${styles.button} ${variantClass} ${sizeClass} ${disabledClass} ${className}`.trim();
 
 	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 		if (loading || disabled) {
@@ -73,31 +71,19 @@ export function Button({
 			{...props}
 		>
 			{loading && (
-				<span className={(styles as Record<string, string>).icon}>
+				<span className={styles.icon}>
 					<Spinner size="s" />
 				</span>
 			)}
 
 			{shouldUseIcon && iconPosition === "left" && (
-				<span
-					className={iconClassName || (styles as Record<string, string>).icon}
-				>
-					{icon}
-				</span>
+				<span className={iconClassName || styles.icon}>{icon}</span>
 			)}
 
-			{hasText && (
-				<span className={(styles as Record<string, string>).content}>
-					{displayText}
-				</span>
-			)}
+			{hasText && <span className={styles.content}>{displayText}</span>}
 
 			{shouldUseIcon && iconPosition === "right" && (
-				<span
-					className={iconClassName || (styles as Record<string, string>).icon}
-				>
-					{icon}
-				</span>
+				<span className={iconClassName || styles.icon}>{icon}</span>
 			)}
 		</button>
 	);

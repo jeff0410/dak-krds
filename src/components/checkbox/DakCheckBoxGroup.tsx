@@ -1,5 +1,5 @@
 import { DakCheckBox } from './DakCheckBox';
-import styles from './DakCheckBoxGroup.module.css';
+import * as styles from './DakCheckBoxGroup.module.css';
 import { DakCheckBoxGroupProps } from './DakCheckBoxGroup.type';
 
 export const DakCheckBoxGroup = ({

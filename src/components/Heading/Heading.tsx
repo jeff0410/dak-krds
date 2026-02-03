@@ -1,4 +1,4 @@
-import styles from './Heading.module.css';
+import * as styles from './Heading.module.css';
 import * as React from 'react';
 import { colors, getColor } from '../../styles/color/color';
 import type { HeadingProps } from './Heading.type';

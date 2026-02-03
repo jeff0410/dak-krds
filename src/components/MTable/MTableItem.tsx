@@ -1,4 +1,4 @@
-import styles from './MTable.module.css';
+import * as styles from './MTable.module.css';
 import type { MTableItemProps } from 'src/components';
 import type { TableRowData } from 'src/components/Table/Table.type';
 
@@ -20,7 +20,7 @@ export function MTableItem<T extends TableRowData>({
             className={styles.mTableItemContent}>
             {customLabel?.[key]?.(data) ?? labelMap[key]}
             {' : '}
-            {customContent?.[key]?.(data) ?? data[key]}
+            {customContent?.[key]?.(data) ?? (data[key] as React.ReactNode)}
           </div>
         ))}
     </>

@@ -1,5 +1,5 @@
 import type { ElementType } from 'react';
-import styles from './Label.module.css';
+import * as styles from './Label.module.css';
 import type { LabelProps } from './Label.type';
 import { uniqueId } from 'lodash-es';
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Icon, Label } from 'src/components';
 import { usePopup } from 'src/components/TimeSelector/usePopup';
-import styles from './TimeSelector.module.css';
+import * as styles from './TimeSelector.module.css';
 
 interface CustomTimeSelectorProps {
   options: string[];

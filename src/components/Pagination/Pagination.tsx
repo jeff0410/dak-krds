@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 import { Icon } from '../Icon';
-import styles from './Pagination.module.css';
+import * as styles from './Pagination.module.css';
 import type { PaginationData, PaginationItemProps, PaginationProps } from './Pagination.type';
 import { useIsMobile } from './useIsMobile';
 

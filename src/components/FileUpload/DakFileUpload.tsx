@@ -6,7 +6,7 @@ import { useCallback, useRef, useState } from "react";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { Label } from "../Label";
-import styles from "./DakFileUpload.module.css";
+import * as styles from './DakFileUpload.module.css';
 import type {
 	DakFileItem,
 	DakFileUploadProps,

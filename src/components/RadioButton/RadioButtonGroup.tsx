@@ -1,6 +1,6 @@
 import { KeyboardEvent, ReactNode, useRef } from 'react';
 import { RadioButton } from './RadioButton';
-import styles from './RadioButton.module.css';
+import * as styles from './RadioButton.module.css';
 import { RadioButtonGroupProps } from './RadioButton.type';
 import { uniqueId } from 'lodash-es';
 

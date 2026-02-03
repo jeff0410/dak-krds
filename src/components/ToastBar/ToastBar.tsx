@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useAnimationToggle } from '../../hooks/use-animation-toggle';
-import styles from './ToastBar.module.css';
+import * as styles from './ToastBar.module.css';
 import type { ToastBarProps } from './ToastBar.type';
 
 const TYPE_CLASS_MAP: Record<ToastBarProps['type'], string> = {

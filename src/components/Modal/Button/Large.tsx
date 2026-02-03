@@ -1,5 +1,5 @@
 import type { HTMLAttributes, PropsWithChildren } from 'react';
-import styles from './Button.module.css';
+import * as styles from './Button.module.css';
 
 export const LargeModalButton = ({
   children,

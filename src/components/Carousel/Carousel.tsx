@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Icon } from '../Icon';
-import styles from './Carousel.module.css';
+import * as styles from './Carousel.module.css';
 import { CarouselProps } from './Carousel.type';
 
 export const Carousel = <T,>({

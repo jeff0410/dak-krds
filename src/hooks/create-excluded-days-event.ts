@@ -1,4 +1,4 @@
-import { ScheduleEvent } from 'src/components';
+import type { ScheduleEvent } from 'src/components/ScheduleCalendar/ScheduleCalendar.type';
 
 /**
  * 특정 요일과 날짜를 제외한 연속 이벤트 생성 함수

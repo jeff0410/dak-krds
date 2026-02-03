@@ -4,7 +4,7 @@ import { Icon } from '../../index';
 import { Backdrop } from '../BackDrop';
 import { EscKeyEventHandler } from '../KeyEventHandler';
 import type { ModalContainerProps } from '../Modal.type';
-import styles from './Container.module.css';
+import * as styles from './Container.module.css';
 
 export const LargeModalContainer = forwardRef<
   HTMLDivElement,

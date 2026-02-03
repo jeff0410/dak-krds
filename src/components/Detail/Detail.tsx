@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { colors, getColor } from 'src/styles/color/color';
-import styles from './Detail.module.css';
+import * as styles from './Detail.module.css';
 import type { DetailProps } from './Detail.type';
 
 /**

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
-import styles from './ScheduleCalendar.module.css';
+import * as styles from './ScheduleCalendar.module.css';
 import {
   DateNavigationInfo,
   RecurringEventConfig,

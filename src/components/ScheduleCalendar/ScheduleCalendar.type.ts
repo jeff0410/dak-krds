@@ -1,10 +1,20 @@
-import { DateSelectArg, EventClickArg, EventInput } from '@fullcalendar/core';
+export interface DateSelectArg {
+  start: Date;
+  end: Date;
+  startStr: string;
+  endStr: string;
+  allDay: boolean;
+  view: unknown;
+}
 
-/**
- * 스케줄 이벤트를 정의하는 인터페이스
- * FullCalendar의 EventInput을 확장하여 추가 속성들을 포함
- */
-export interface ScheduleEvent extends EventInput {
+export interface EventClickArg {
+  el: HTMLElement;
+  event: unknown;
+  jsEvent: MouseEvent;
+  view: unknown;
+}
+
+export interface ScheduleEvent {
   /** 이벤트의 고유 식별자 */
   id: string;
 

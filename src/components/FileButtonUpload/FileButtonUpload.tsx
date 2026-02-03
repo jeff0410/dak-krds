@@ -1,7 +1,7 @@
 import { type ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
-import styles from './FileButtonUpload.module.css';
+import * as styles from './FileButtonUpload.module.css';
 import type { FileButtonUploadProps } from './FileButtonUpload.type';
 
 export const FileButtonUpload = ({

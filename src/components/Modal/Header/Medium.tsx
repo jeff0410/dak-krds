@@ -1,4 +1,4 @@
-import styles from './Header.module.css';
+import * as styles from './Header.module.css';
 import { forwardRef } from 'react';
 import { Heading, Icon } from '../../index';
 import type { ModalHeaderProps } from './Header.type';

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Heading, Icon } from '../../index';
-import styles from './Header.module.css';
+import * as styles from './Header.module.css';
 import type { ModalLargeHeaderProps } from './Header.type';
 
 export const LargeModalHeader = forwardRef<HTMLDivElement, ModalLargeHeaderProps>(

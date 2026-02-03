@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/a11y/noStaticElementInteractions: drag and drop requires mouse events */
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Icon } from '../Icon';
-import styles from './Table.module.css';
+import * as styles from './Table.module.css';
 import type { TableProps, TableRowWithIconProps } from './Table.type';
 import {
   type MRT_ColumnDef,
@@ -146,7 +146,7 @@ export function Table<T extends MRT_RowData>({
     ...(dragHandlePosition === 'right' ? [dragHandleColumn()] : []),
   ];
 
-  const modifiedColumns = useMemo(() => {
+  const modifiedColumns: MRT_ColumnDef<T>[] = useMemo(() => {
     const currentColumns = draggable ? draggableColumns : columns;
     
     if (!enableAccordion || !accordionToggleColumnKey) {
@@ -160,18 +160,18 @@ export function Table<T extends MRT_RowData>({
       ) {
         return {
           ...column,
-          Cell: ({ row, cell, column: col, renderedCellValue, ...restProps }: unknown) => {
+          Cell: ({ row, cell, column: col, renderedCellValue, ...restProps }: Record<string, unknown>) => {
             const originalCell = column.Cell;
             const cellContent = originalCell
-              ? originalCell({ row, cell, column: col, renderedCellValue, table, ...restProps })
-              : cell.getValue();
+              ? originalCell({ row, cell, column: col, renderedCellValue, table, ...restProps } as never)
+              : (cell as { getValue: () => unknown }).getValue();
 
             return (
-              <div className={styles.toggleColumnStyle} key={row.id}>
-                <div className={styles.toggleColumnLabel}>{cellContent}</div>
+              <div className={styles.toggleColumnStyle} key={(row as { id: string }).id}>
+                <div className={styles.toggleColumnLabel}>{cellContent as React.ReactNode}</div>
                 <div className={styles.toggleColumnIcon}>
                   <Icon
-                    icon={row.getIsExpanded() ? 'ArrowUp' : 'ArrowDown'}
+                    icon={(row as { getIsExpanded: () => boolean }).getIsExpanded() ? 'ArrowUp' : 'ArrowDown'}
                     size={20}
                     style={{
                       cursor: 'pointer',
@@ -180,7 +180,7 @@ export function Table<T extends MRT_RowData>({
                     }}
                     onClick={(e) => {
                       e.stopPropagation();
-                      row.toggleExpanded();
+                      (row as { toggleExpanded: () => void }).toggleExpanded();
                     }}
                   />
                 </div>
@@ -191,7 +191,7 @@ export function Table<T extends MRT_RowData>({
       }
       return column;
     });
-  }, [columns, draggable, enableAccordion, accordionToggleColumnKey, dragHandlePosition, customDropColumnOption, table]);
+  }, [columns, draggable, enableAccordion, accordionToggleColumnKey, dragHandlePosition, customDropColumnOption]);
 
   const table = useMaterialReactTable({
     columns: modifiedColumns,

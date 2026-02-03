@@ -1,4 +1,4 @@
-import styles from './TextInput.module.css';
+import * as styles from './TextInput.module.css';
 import { Icon, Label } from '../index';
 
 interface StatusLabelProps {

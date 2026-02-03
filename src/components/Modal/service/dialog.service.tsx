@@ -3,7 +3,7 @@ import { Button, Icon } from 'src/design-index';
 import { DialogModal } from '../Dialog';
 import type { DialogProps, ModalListProps } from '../Modal.type';
 import { MODAL_LIST_TYPE } from '../Modal.type';
-import styles from './Dialog.module.css';
+import * as styles from './Dialog.module.css';
 import { modalService } from './modal.service';
 import { uniqueId } from 'lodash-es';
 

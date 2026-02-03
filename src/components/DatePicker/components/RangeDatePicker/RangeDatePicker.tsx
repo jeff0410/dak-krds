@@ -2,7 +2,7 @@ import type React from 'react';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Icon, Label, TextInput } from '../../../index';
-import styles from '../../DatePicker.module.css';
+import * as styles from '../../DatePicker.module.css';
 import type { RangeDatePickerProps } from '../../DatePicker.type';
 import { useCalendarPosition } from '../../hooks/useCalendarPosition';
 import { useRangeDatePickerState } from '../../hooks/useRangeDatePickerState';

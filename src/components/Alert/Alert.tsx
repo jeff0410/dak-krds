@@ -1,5 +1,5 @@
 import { Icon } from '../Icon';
-import styles from './Alert.module.css';
+import * as styles from './Alert.module.css';
 import type { AlertProps, AlertVariant, IconName } from './Alert.type';
 
 const VARIANT_CLASS_MAP: Record<AlertVariant, string> = {
