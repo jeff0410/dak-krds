@@ -7,7 +7,6 @@ import * as styles from './Dialog.module.css';
 import { modalService } from './modal.service';
 import { uniqueId } from 'lodash-es';
 
-// 타입 정의
 export enum DefaultDialogTypes {
   BOTH = 0,
   CONFIRM = 1,
@@ -39,7 +38,6 @@ export interface DefaultDialogProps {
 
 const type = MODAL_LIST_TYPE.DIALOG;
 
-// 확인 버튼 렌더링 함수
 const renderConfirmButton = (
   buttonType: DefaultDialogButtonTypes,
   label: string,
@@ -58,7 +56,6 @@ const renderConfirmButton = (
   return <ButtonComponent {...buttonProps} />;
 };
 
-// 안전한 콜백 실행 함수
 const safeExecuteCallback = (callback: VoidFunction | undefined, errorMessage: string): void => {
   if (!callback) return;
 
@@ -69,7 +66,6 @@ const safeExecuteCallback = (callback: VoidFunction | undefined, errorMessage: s
   }
 };
 
-// Dialog Service
 export const dialogService = {
   defaultDialog(text: ReactNode, props?: DefaultDialogProps): string {
     const uid = props?.id ?? uniqueId();
@@ -101,7 +97,6 @@ export const dialogService = {
 
     const contents = (
       <DialogModal onClose={handleClose} style={{ width, height }}>
-        {/* 닫기 버튼 */}
         {closeButton && (
           <div className={styles.dialogCloseIcon}>
             <Button
@@ -114,7 +109,6 @@ export const dialogService = {
           </div>
         )}
 
-        {/* 다이얼로그 본문 */}
         <div
           className={`${styles.dialogBody} ${bodyClassName}`}
           style={title ? { gap: '16px' } : undefined}>
@@ -122,7 +116,6 @@ export const dialogService = {
           <DialogModal.Content>{text}</DialogModal.Content>
         </div>
 
-        {/* 푸터 버튼들 */}
         <DialogModal.Footer>
           <div
             className={`${buttonType === DefaultDialogTypes.BOTH && styles.defaultDialogButton} ${footerClassName || ''}`.trim()}>
@@ -137,7 +130,6 @@ export const dialogService = {
       </DialogModal>
     );
 
-    // 모달 아이템 생성 및 추가
     const dialogItem: ModalListProps = {
       type,
       id: uid,
@@ -175,7 +167,6 @@ export const dialogService = {
   },
 };
 
-// Dialog 유틸리티 서비스
 export const dialogUtilService = {
   handleKeydownById(e: KeyboardEvent, dialogId: string, onKeydown?: VoidFunction): void {
     if (e.key === 'Enter') {

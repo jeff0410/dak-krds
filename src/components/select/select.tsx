@@ -17,7 +17,7 @@ export const Select = ({
 	size = "m",
 	variant = "box",
 	disabled = false,
-	width, // 고정 폭 (없으면 기본 200)
+	width,
 	className = "",
 	state = "default",
 	valueKey = "value",
@@ -25,7 +25,7 @@ export const Select = ({
 	labelFontSize = "m",
 	labelFontWeight = "regular",
 	direction = "vertical",
-	maxVisibleItems = 5, // 기본값을 5로 변경
+	maxVisibleItems = 5,
 	multiDisplaySeparator = ", ",
 	multiDisplayStrategy = "ellipsis",
 	multiCountPattern = "{first} 외 {count}건",
@@ -47,11 +47,8 @@ export const Select = ({
 	const selectId = useId();
 
 	const fixedWidth = width ?? 200;
-
-	// maxVisibleItems를 실제 스크롤 임계값으로 사용
 	const actualScrollThreshold = maxVisibleItems + 1;
 
-	// 선택 값 배열화
 	const selectedValues: string[] = isMulti
 		? Array.isArray(value)
 			? value
@@ -123,7 +120,6 @@ export const Select = ({
 			next = [...current, selectedValue];
 		}
 		(onChange as (v: string[]) => void)(next);
-		// 멀티셀렉트에서 선택 후 버튼에 포커스 유지
 		setTimeout(() => {
 			buttonRef.current?.focus();
 		}, 0);
@@ -160,7 +156,6 @@ export const Select = ({
 					if (isMulti) toggleMultiValue(targetOption[valueKey]);
 					else commitSingleSelection(targetOption[valueKey]);
 				} else {
-					// 드롭다운이 열려있고 포커스된 옵션이 없으면 닫기
 					closeDropdown();
 				}
 				break;
@@ -176,7 +171,6 @@ export const Select = ({
 			case "ArrowUp": {
 				event.preventDefault();
 				setIsOpen(true);
-				// 첫 번째 옵션에서 위로 가면 토글 버튼으로 (focusedIndex = null)
 				setFocusedIndex((prev) =>
 					prev === null ? options.length - 1 : prev === 0 ? null : prev - 1,
 				);
@@ -189,9 +183,7 @@ export const Select = ({
 			case "Tab": {
 				if (isOpen) {
 					event.preventDefault();
-					// Tab 키로도 다음 옵션으로 이동 (Shift+Tab은 이전 옵션)
 					if (event.shiftKey) {
-						// 첫 번째 옵션에서 Shift+Tab -> 토글 버튼으로 (focusedIndex = null)
 						setFocusedIndex((prev) =>
 							prev === null ? options.length - 1 : prev === 0 ? null : prev - 1,
 						);
@@ -206,12 +198,11 @@ export const Select = ({
 		}
 	};
 
-	useEffect(() => {
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => document.removeEventListener("mousedown", handleClickOutside);
-	}, []);
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [handleClickOutside]);
 
-	// 포커스된 옵션이 보이도록 스크롤
 	useEffect(() => {
 		if (isOpen && focusedIndex !== null && listRef.current) {
 			const focusedOption = listRef.current.querySelector(
@@ -223,7 +214,6 @@ export const Select = ({
 		}
 	}, [focusedIndex, isOpen, id, selectId]);
 
-	// 스크롤 처리: maxVisibleItems보다 많은 옵션이 있을 때 스크롤 생성 (수정된 부분)
 	const optionBaseHeight = 40;
 	const dynamicMaxHeight =
 		options.length > actualScrollThreshold
@@ -237,7 +227,6 @@ export const Select = ({
 
 	const sizeClass =
 		size === "s" ? style.sizeS : size === "l" ? style.sizeL : style.sizeM;
-	// isValid가 false이고 disabled가 아닐 때 error 스타일 적용
 	const effectiveState = !isValid && !disabled ? "error" : state;
 	const stateClass = style[effectiveState] ?? style.default;
 	const variantClass =
@@ -276,7 +265,6 @@ export const Select = ({
 					</Label>
 				)}
 				<div className={style.selectContent}>
-					{/* 멀티셀렉트 태그 모드: 태그를 버튼 밖에 배치하여 개별 포커스 가능하게 함 */}
 					{isMulti &&
 					multiDisplayStrategy === "tags" &&
 					selectedOptions.length > 0 ? (

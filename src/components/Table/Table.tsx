@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/a11y/noStaticElementInteractions: <explanation> */
+/** biome-ignore-all lint/a11y/noStaticElementInteractions: drag and drop requires mouse events */
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Icon } from '../Icon';
 import * as styles from './Table.module.css';
@@ -146,23 +146,21 @@ export function Table<T extends MRT_RowData>({
     ...(dragHandlePosition === 'right' ? [dragHandleColumn()] : []),
   ];
 
-  // columns 수정 로직 개선
   const modifiedColumns = useMemo(() => {
+    const currentColumns = draggable ? draggableColumns : columns;
+    
     if (!enableAccordion || !accordionToggleColumnKey) {
-      return draggable ? draggableColumns : columns;
+      return currentColumns;
     }
 
-    const targetColumns = draggable ? draggableColumns : columns;
-
-    return targetColumns.map((column) => {
+    return currentColumns.map((column) => {
       if (
         column.accessorKey === accordionToggleColumnKey ||
         column.id === accordionToggleColumnKey
       ) {
         return {
           ...column,
-          Cell: ({ row, cell, column: col, renderedCellValue, ...restProps }: any) => {
-            // 기존 Cell 렌더러가 있는지 확인
+          Cell: ({ row, cell, column: col, renderedCellValue, ...restProps }: unknown) => {
             const originalCell = column.Cell;
             const cellContent = originalCell
               ? originalCell({ row, cell, column: col, renderedCellValue, table, ...restProps })
@@ -170,9 +168,7 @@ export function Table<T extends MRT_RowData>({
 
             return (
               <div className={styles.toggleColumnStyle} key={row.id}>
-                {/* 기존 셀 내용 유지 */}
                 <div className={styles.toggleColumnLabel}>{cellContent}</div>
-                {/* 토글 아이콘 */}
                 <div className={styles.toggleColumnIcon}>
                   <Icon
                     icon={row.getIsExpanded() ? 'ArrowUp' : 'ArrowDown'}
@@ -180,7 +176,7 @@ export function Table<T extends MRT_RowData>({
                     style={{
                       cursor: 'pointer',
                       transition: 'transform 0.2s ease',
-                      flexShrink: 0, // 아이콘 크기 고정
+                      flexShrink: 0,
                     }}
                     onClick={(e) => {
                       e.stopPropagation();
@@ -195,13 +191,12 @@ export function Table<T extends MRT_RowData>({
       }
       return column;
     });
-  }, [columns, draggableColumns, draggable, enableAccordion, accordionToggleColumnKey]);
+  }, [columns, draggable, enableAccordion, accordionToggleColumnKey, dragHandlePosition, customDropColumnOption, table]);
 
   const table = useMaterialReactTable({
     columns: modifiedColumns,
     data,
     enableStickyHeader,
-    //다중 솔팅 관련 옵션 활성화
     manualSorting: true,
     enableMultiSort: true,
     isMultiSortEvent: () => true,
@@ -212,13 +207,11 @@ export function Table<T extends MRT_RowData>({
           setSorting(typeof updater === 'function' ? updater(sorting) : updater),
       }),
 
-    //툴바 및 보조도구 비활성화
     enableTopToolbar: false,
     enableBottomToolbar: false,
     enableColumnActions: false,
     enableColumnFilters: false,
 
-    // 테이블 스타일
     muiTablePaperProps: {
       sx: {
         boxShadow: 'none',
@@ -252,7 +245,6 @@ export function Table<T extends MRT_RowData>({
       },
     },
 
-    // 헤더 스타일
     muiTableHeadCellProps: {
       tabIndex: -1,
       sx: {
@@ -271,7 +263,6 @@ export function Table<T extends MRT_RowData>({
         boxSizing: 'border-box',
         padding: '8px 0 !important',
 
-        // sticky 헤더 강화
         position: enableStickyHeader ? 'sticky' : 'static',
         top: 0,
         zIndex: enableStickyHeader ? 10 : 'auto',
@@ -281,7 +272,6 @@ export function Table<T extends MRT_RowData>({
       align: 'center',
     },
 
-    // 바디 스,타일
     muiTableBodyCellProps: ({ column, row }) => {
       return {
         tabIndex: -1,
@@ -314,7 +304,6 @@ export function Table<T extends MRT_RowData>({
         align: 'center',
       };
     },
-    // sort 아이콘
     icons: {
       ArrowDownwardIcon: (props: { className: string }) => {
         const isDesc = props.className?.includes('iconDirectionDesc');
@@ -342,7 +331,6 @@ export function Table<T extends MRT_RowData>({
       ),
     },
 
-    // tooltip 비활성화
     localization: {
       sortByColumnAsc: '',
       sortByColumnDesc: '',
@@ -365,7 +353,6 @@ export function Table<T extends MRT_RowData>({
         removeDropImage();
       },
       onClick: (e) => {
-        // accordionToggleColumnKey가 설정된 경우 행 클릭으로는 토글하지 않음
         onRowClick?.(row, e);
         if (enableAccordion && !accordionToggleColumnKey) {
           row.toggleExpanded();
@@ -376,13 +363,11 @@ export function Table<T extends MRT_RowData>({
     enableExpanding: enableAccordion,
     renderDetailPanel: accordionContent ? ({ row }) => accordionContent(row) : undefined,
 
-    // expand 컬럼을 완전히 숨기기
     displayColumnDefOptions: {
       'mrt-row-expand': {
         size: 0,
         minSize: 0,
         maxSize: 0,
-        // 컬럼을 완전히 숨김
         muiTableHeadCellProps: {
           sx: {
             display: 'none',
@@ -408,7 +393,7 @@ export function Table<T extends MRT_RowData>({
     <div
       style={{
         position: 'relative',
-        height: height, // 최외곽 div에도 높이 적용
+        height: height,
         display: 'flex',
         flexDirection: 'column',
       }}>

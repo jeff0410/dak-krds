@@ -8,7 +8,7 @@ import type {
 } from 'material-react-table';
 
 export interface TableRowData extends MRT_RowData {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface TableProps<T extends TableRowData> {
@@ -30,9 +30,7 @@ export interface TableProps<T extends TableRowData> {
   customRowStyleAction?: (row: MRT_Row<T>) => CSSProperties;
   customTableOption?: Partial<MRT_TableOptions<T>>;
   onRowClick?: (row: MRT_Row<T>, e?: MouseEvent<HTMLTableRowElement>) => void;
-  //hover
   useHover?: boolean;
-  // 어코디언 관련 props
   enableAccordion?: boolean;
   accordionContent?: (row: MRT_Row<T>) => ReactNode;
   defaultExpanded?: boolean;

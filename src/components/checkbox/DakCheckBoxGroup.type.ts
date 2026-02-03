@@ -1,7 +1,7 @@
 export interface CheckBoxOption {
-  [key: string]: any;
   label: string;
   value: string;
+  [key: string]: unknown;
 }
 
 export interface DakCheckBoxGroupProps {

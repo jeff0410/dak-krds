@@ -8,8 +8,6 @@ interface UseFocusInModalManagerProps {
 }
 
 export const useFocusInModalManager = ({ id, type }: UseFocusInModalManagerProps) => {
-  // modal의 경우
   useFocusInContent({ id: type === MODAL_LIST_TYPE.MODAL ? id : undefined });
-  // dialog의 경우
   useFocusInDialog({ id: type === MODAL_LIST_TYPE.DIALOG ? id : undefined });
 };
