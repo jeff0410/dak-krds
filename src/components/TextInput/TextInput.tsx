@@ -167,7 +167,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                   if (e.key === 'Enter' || e.key === ' ') handleDelete();
                 }}
                 aria-label='입력값 삭제'>
-                <Icon icon='DeleteIcon' size={18} viewBox='0 0 18 18' />
+                <Icon icon='Delete' size={18} viewBox='0 0 18 18' />
               </button>
             )}
 

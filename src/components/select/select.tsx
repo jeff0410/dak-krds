@@ -285,7 +285,7 @@ export const Select = ({
                         alignItems: 'center',
                         borderRadius: '2px',
                       }}>
-                      <Icon icon='DeleteIcon' size={14} viewBox='0 0 16 16' aria-hidden='true' />
+                      <Icon icon='Delete' size={14} viewBox='0 0 16 16' aria-hidden='true' />
                     </button>
                   </span>
                 ))}

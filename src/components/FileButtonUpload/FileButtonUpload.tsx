@@ -102,7 +102,7 @@ export const FileButtonUpload = ({
                 aria-label={`${file.name} 파일 삭제`}
                 title={`${file.name} 파일 삭제`}
                 className={styles.deleteButton}>
-                <Icon icon='DeleteIcon' size={14} viewBox='0 0 14 14' />
+                <Icon icon='Delete' size={14} viewBox='0 0 14 14' />
               </button>
             </li>
           ))}
@@ -118,7 +118,7 @@ export const FileButtonUpload = ({
               aria-label={`${initialFile} 파일 삭제`}
               title={`${initialFile} 파일 삭제`}
               className={styles.deleteButton}>
-              <Icon icon='DeleteIcon' size={14} viewBox='0 0 14 14' />
+              <Icon icon='Delete' size={14} viewBox='0 0 14 14' />
             </button>
           </li>
         </ul>

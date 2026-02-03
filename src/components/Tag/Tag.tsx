@@ -64,7 +64,7 @@ export const Tag: React.FC<TagProps> = ({
           className={`${style.deleteButton} ${buttonCursorClass}`}
           onClick={handleDelete}
           onKeyDown={handleDeleteKeyDown}>
-          <Icon icon='DeleteIcon' size={16} viewBox='0 0 16 16' aria-label='태그 삭제' />
+          <Icon icon='Delete' size={16} viewBox='0 0 16 16' aria-label='태그 삭제' />
         </span>
       )}
     </div>

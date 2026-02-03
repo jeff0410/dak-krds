@@ -309,7 +309,7 @@ export const DakFileUpload = ({
                   variant='text'
                   label='삭제'
                   height='auto'
-                  icon={<Icon icon='DeleteIcon' size={16} viewBox='0 0 16 16' />}
+                  icon={<Icon icon='Delete' size={16} viewBox='0 0 16 16' />}
                   iconPosition='right'
                   className={styles.deleteButton}
                   disabled={disabled}
