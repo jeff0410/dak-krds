@@ -1,5 +1,5 @@
 import type React from 'react';
-import * as styles from './Checkbox.module.css';
+import styles from './Checkbox.module.css';
 import type { CheckboxGroupProps, CheckboxProps } from './Checkbox.type';
 
 // ✅ 체크 아이콘 컴포넌트 (status === 'on'일 때 표시)

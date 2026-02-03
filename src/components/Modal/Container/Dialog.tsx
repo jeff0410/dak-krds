@@ -2,7 +2,7 @@ import { PropsWithChildren, forwardRef, useCallback } from 'react';
 import { Backdrop } from '../BackDrop';
 import { EscKeyEventHandler } from '../KeyEventHandler';
 import { ModalContainerProps } from '../Modal.type';
-import * as styles from './Container.module.css';
+import styles from './Container.module.css';
 
 export const DialogModalContainer = forwardRef<
   HTMLDivElement,

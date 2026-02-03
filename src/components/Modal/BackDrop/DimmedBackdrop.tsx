@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import { useHandleClickBackdrop } from 'src/hooks/use-handle-click-backdrop';
 import type { DimmedBackdropProps } from '../Modal.type';
-import * as styles from './Backdrop.module.css';
+import styles from './Backdrop.module.css';
 
 export const DimmedBackdrop = ({
   children,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { colors, getColor } from 'src/styles/color/color';
-import * as styles from './Display.module.css';
+import styles from './Display.module.css';
 import type { DisplayProps } from './Display.type';
 
 /**

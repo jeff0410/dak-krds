@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import * as styles from './Content.module.css';
+import styles from './Content.module.css';
 import type { ModalContentProps } from './Modal.type';
 
 export const MediumModalContent = ({

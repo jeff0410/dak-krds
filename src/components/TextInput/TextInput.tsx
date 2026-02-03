@@ -3,7 +3,7 @@ import { forwardRef, useState } from 'react';
 import { getColor } from 'src/styles/color/color';
 import { Icon, Label } from '../index';
 import { StatusLabel } from './StatusLabel';
-import * as styles from './TextInput.module.css';
+import styles from './TextInput.module.css';
 import type { TextInputProps } from './TextInput.type';
 
 const calculateGap = (

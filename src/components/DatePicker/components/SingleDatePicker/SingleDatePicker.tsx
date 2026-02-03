@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Icon, TextInput } from '../../../index';
-import * as styles from '../../DatePicker.module.css';
+import styles from '../../DatePicker.module.css';
 import type { SingleDatePickerProps } from '../../DatePicker.type';
 import { useCalendarPosition } from '../../hooks/useCalendarPosition';
 import { useDatePickerState } from '../../hooks/useDatePickerState';

@@ -4,7 +4,7 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Label } from '../Label';
 import { FileItem } from './FileItem';
-import * as styles from './FileUpload.module.css';
+import styles from './FileUpload.module.css';
 import type { FileObject, FileUploadComponentProps } from './FileUpload.type';
 import { useFileuploadAlertModal } from './use-fileupload-alert-modal';
 

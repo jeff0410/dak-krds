@@ -1,4 +1,4 @@
-import * as styles from './MTable.module.css';
+import styles from './MTable.module.css';
 import type { MTableItemProps } from 'src/components';
 import type { TableRowData } from 'src/components/Table/Table.type';
 

@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/a11y/noStaticElementInteractions: drag and drop requires mouse events */
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Icon } from '../Icon';
-import * as styles from './Table.module.css';
+import styles from './Table.module.css';
 import type { TableProps, TableRowWithIconProps } from './Table.type';
 import {
   type MRT_ColumnDef,

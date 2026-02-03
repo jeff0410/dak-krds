@@ -1,6 +1,6 @@
 import { useCalendar } from '../../hooks/useCalendar';
 import { Button, Icon } from '../../../index';
-import * as styles from './Calendar.module.css';
+import styles from './Calendar.module.css';
 import type { CalendarProps } from './Calendar.type';
 import { YearMonthSelector } from './YearMonthSelector/YearMonthSelector';
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { getColor } from 'src/styles/color/color';
 import { Label, TextInput } from '../index';
-import * as styles from './PhoneInput.module.css';
+import styles from './PhoneInput.module.css';
 import type { PhoneInputProps } from './PhoneInput.type';
 import { splitPhoneNumber } from './splitPhoneNumber';
 

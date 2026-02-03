@@ -1,7 +1,7 @@
 import type {MTabScrollWrapperProps} from 'src/components';
 import {Button, Icon, Tabs} from 'src/components';
 import {useEffect, useMemo, useRef, useState} from 'react';
-import * as styles from './MScrollTab.module.css';
+import styles from './MScrollTab.module.css';
 
 export function MScrollTab(tabProps: MTabScrollWrapperProps) {
   const {scrollByAmount = 200, tabs: tabList, selectedIndex, autoScroll = false} = tabProps;

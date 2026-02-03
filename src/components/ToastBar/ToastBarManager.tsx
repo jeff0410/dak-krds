@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useToastBarCustomEventListener } from './utils';
 import { ToastBar } from './ToastBar';
-import * as styles from './ToastBar.module.css';
+import styles from './ToastBar.module.css';
 import type { ToastBarProps } from './ToastBar.type';
 
 export const ToastBarManager = () => {

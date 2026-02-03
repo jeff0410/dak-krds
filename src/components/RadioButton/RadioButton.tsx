@@ -2,7 +2,7 @@
 /** biome-ignore-all lint/a11y/useSemanticElements: <explanation> */
 import type React from 'react';
 import { Label } from '../Label';
-import * as styles from './RadioButton.module.css';
+import styles from './RadioButton.module.css';
 import type { RadioButtonProps } from './RadioButton.type';
 import { uniqueId } from 'lodash-es';
 

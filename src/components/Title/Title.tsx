@@ -1,6 +1,6 @@
 import type React from 'react';
 import { colors, getColor } from 'src/styles/color/color';
-import * as styles from './Title.module.css';
+import styles from './Title.module.css';
 import type { TitleProps } from './Title.type';
 
 /**

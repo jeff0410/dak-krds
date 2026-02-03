@@ -1,4 +1,4 @@
-import * as styles from './Body.module.css';
+import styles from './Body.module.css';
 import * as React from 'react';
 import { colors, getColor } from '../../styles/color/color';
 import type { BodyProps } from './Body.type';

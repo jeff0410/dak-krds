@@ -2,7 +2,7 @@ import { MainImagePath } from 'src/assets/main-assets-path';
 import { Body } from '../Body';
 import { Button } from '../Button';
 import { Heading } from '../Heading';
-import * as styles from './ErrorPage.module.css';
+import styles from './ErrorPage.module.css';
 import { ErrorPageProps } from './ErrorPage.type';
 
 export function ErrorPage({ onClick }: ErrorPageProps) {

@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent } from 'react';
-import * as styles from './DakCheckBox.module.css';
+import styles from './DakCheckBox.module.css';
 import { DakCheckBoxProps } from './DakCheckBox.type';
 
 export const DakCheckBox = ({

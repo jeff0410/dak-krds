@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Button, Label, TimeSelectorPopupProps } from 'src/components';
-import * as styles from './TimeSelector.module.css';
+import styles from './TimeSelector.module.css';
 import { TimeSelectorInput } from './TimeSelectorInput';
 
 export const HOUR_OPTIONS = Array.from({ length: 24 }).map((_it, index) =>

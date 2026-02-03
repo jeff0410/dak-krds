@@ -1,5 +1,5 @@
 import type {MTableGuideWrapperProps} from 'src/components/MTableGuideWrapper';
-import * as styles from './MTableGuideWrapper.module.css';
+import styles from './MTableGuideWrapper.module.css';
 import {useState} from 'react';
 import {Icon} from 'src/components';
 

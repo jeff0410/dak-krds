@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from '../Icon';
 import { Link } from '../Link';
-import * as styles from './LinkButton.module.css';
+import styles from './LinkButton.module.css';
 import type { LinkButtonProps } from './LinkButton.type';
 
 /**

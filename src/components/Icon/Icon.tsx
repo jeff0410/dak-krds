@@ -1,5 +1,5 @@
 import React, { type CSSProperties } from 'react';
-import * as styles from './Icon.module.css';
+import styles from './Icon.module.css';
 import type { IconProps } from './Icon.type';
 import { getIconCategory, getIconProps } from './Icon.utils';
 import { ICON_IMPORT_CONFIG } from './icon.import';

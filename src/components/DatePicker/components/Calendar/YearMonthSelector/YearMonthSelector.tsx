@@ -1,6 +1,6 @@
 import { useYearMonthSelector } from '../../../hooks/useSelector';
 import { Icon } from '../../../../index';
-import * as styles from './YearMonthSelector.module.css';
+import styles from './YearMonthSelector.module.css';
 import type { LocalDate } from '@js-joda/core';
 
 interface YearMonthSelectorProps {

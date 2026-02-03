@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Icon } from 'src/components';
 import type { DrawerProps } from 'src/components/Drawer/Drawer.type';
-import * as styles from './Drawer.module.css';
+import styles from './Drawer.module.css';
 
 export function Drawer({
   open,

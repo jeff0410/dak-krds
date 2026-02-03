@@ -2,7 +2,7 @@ import type React from 'react';
 import { forwardRef } from 'react';
 import { getColor } from 'src/styles/color/color';
 import { Label, StatusLabel } from '../index';
-import * as styles from './TextArea.module.css';
+import styles from './TextArea.module.css';
 import type { TextAreaProps } from './TextArea.type';
 
 /* eslint-disable no-undef */

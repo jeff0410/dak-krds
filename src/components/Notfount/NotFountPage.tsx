@@ -2,7 +2,7 @@ import { MainImagePath } from 'src/assets/main-assets-path';
 import { Body } from '../Body';
 import { Button } from '../Button';
 import { Heading } from '../Heading';
-import * as styles from './NotFountPage.module.css';
+import styles from './NotFountPage.module.css';
 import { NotFountPageProps } from './NotFountPage.type';
 
 export function NotFountPage({ onClick }: NotFountPageProps) {

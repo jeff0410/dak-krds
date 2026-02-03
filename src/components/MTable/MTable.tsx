@@ -1,7 +1,7 @@
 import type { MTableLabelMap, MTableProps } from 'src/components';
 import type { TableRowData } from 'src/components/Table/Table.type';
 import { MTableItem } from 'src/components/MTable/MTableItem';
-import * as styles from './MTable.module.css';
+import styles from './MTable.module.css';
 
 export function MTable<T extends TableRowData>({
   data,
