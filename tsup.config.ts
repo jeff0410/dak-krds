@@ -18,12 +18,12 @@ export default defineConfig({
 	],
 	treeshake: true,
 	minify: false,
+	injectStyle: true,
 	esbuildOptions(options) {
 		options.banner = {
 			js: '"use client";',
 		};
 		options.loader = {
-			".css": "empty",
 			".svg": "empty",
 			".png": "empty",
 			".jpg": "empty",
