@@ -1,5 +1,5 @@
 import type { MouseEvent, ReactElement } from 'react';
-import type { TableRowData } from 'src/components';
+import type { TableRowData } from 'src/components/Table/Table.type';
 import type { MRT_ColumnDef } from 'material-react-table';
 
 export interface MTableProps<T extends TableRowData> {

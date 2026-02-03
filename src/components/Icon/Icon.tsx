@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import React, { type CSSProperties } from 'react';
 import * as styles from './Icon.module.css';
 import type { IconProps } from './Icon.type';
 import { getIconCategory, getIconProps } from './Icon.utils';
@@ -20,7 +20,7 @@ export const Icon = ({
   viewBox = '0 0 24 24',
   ...props
 }: IconProps) => {
-  const SvgIcon = ICON_IMPORT_CONFIG[iconComponent];
+  const SvgIcon = ICON_IMPORT_CONFIG[iconComponent] as React.ComponentType<React.SVGProps<SVGSVGElement>>;
   const category = getIconCategory(iconComponent);
   const iconProps = getIconProps(iconComponent, color, primary, secondary);
   const applyColor = color || primary || secondary;
