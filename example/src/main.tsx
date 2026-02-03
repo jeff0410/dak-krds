@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'dak-krds/styles.css';
 import App from './app';
 import './index.css';
 

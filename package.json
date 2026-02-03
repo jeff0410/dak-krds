@@ -11,13 +11,14 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./styles.css": "./dist/index.css"
+    "./styles.css": "./dist/styles.css"
   },
 	"files": [
 		"dist"
 	],
 	"scripts": {
-		"build": "tsup",
+		"build": "tsup && pnpm run build:css",
+		"build:css": "node scripts/BuildCss.js",
 		"dev": "tsup --watch",
 		"lint": "eslint .",
 		"typecheck": "tsc --noEmit",
