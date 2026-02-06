@@ -1,5 +1,5 @@
 import flagUrl from "./flag.svg?url";
-import * as style from "./Masthead.module.css";
+import * as style from './Masthead.module.css';
 
 export const Masthead = () => {
 	return (

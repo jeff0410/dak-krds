@@ -1,6 +1,6 @@
 import type { MTableItemProps } from "src/components";
 import type { TableRowData } from "src/components/Table/Table.type";
-import * as styles from "./MTable.module.css";
+import * as styles from './MTable.module.css';
 
 export function MTableItem<T extends TableRowData>({
 	data,

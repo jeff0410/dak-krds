@@ -4,7 +4,7 @@ import { DakCheckBox } from "../Checkbox/DakCheckBox";
 import { Icon } from "../Icon";
 import { Label } from "../Label";
 import { StatusLabel } from "../TextInput/StatusLabel";
-import * as style from "./Select.module.css";
+import * as style from './Select.module.css';
 import type { SelectProps } from "./Select.type";
 
 export const Select = ({

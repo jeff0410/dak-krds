@@ -1,5 +1,5 @@
 import { useId, useState } from "react";
-import * as style from "./Tooltip.module.css";
+import * as style from './Tooltip.module.css';
 import type { TooltipProps } from "./Tooltip.type";
 
 function kebabToPascal(str: string) {

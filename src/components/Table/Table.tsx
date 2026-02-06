@@ -8,7 +8,7 @@ import {
 } from "material-react-table";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Icon } from "../Icon";
-import * as styles from "./Table.module.css";
+import * as styles from './Table.module.css';
 import type { TableProps, TableRowWithIconProps } from "./Table.type";
 
 export function TableRowWithIcon({
