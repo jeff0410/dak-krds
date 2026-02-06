@@ -1,5 +1,4 @@
-import type * as React from 'react';
-
+import type * as React from "react";
 
 /**
  * TextInput 컴포넌트 😸
@@ -35,34 +34,34 @@ import type * as React from 'react';
  */
 
 export type TextInputProps = {
-  id: string;
-  type?: 'text' | 'password';
-  title?: string;
-  titlePosition?: 'vertical' | 'horizontal';
-  gap?: string | number;
-  description?: string;
-  isValid?: boolean;
-  isRequired?: boolean;
-  error?: string;
-  info?: string;
-  placeholder?: string;
-  className?: string;
-  titleClassName?: string;
-  inputClassName?: string;
-  width?: string | number;
-  height?: '40px' | '48px' | '56px' | string | number;
-  minHeight?: string | number;
-  maxHeight?: string | number;
-  style?: React.CSSProperties;
-  maxLength?: number;
-  value?: string;
-  useIcon?: boolean;
-  icon?: React.ReactNode;
-  useDelete?: boolean;
-  iconPosition?: 'left' | 'right';
-  clickableIcon?: boolean;
-  deleteAction?: () => void;
-  onEnterKeyPress?: () => void;
-  setValue?: (value: string) => void;
-  titleAttr?: string;
+	id: string;
+	type?: "text" | "password";
+	title?: string;
+	titlePosition?: "vertical" | "horizontal";
+	gap?: string | number;
+	description?: string;
+	isValid?: boolean;
+	isRequired?: boolean;
+	error?: string;
+	info?: string;
+	placeholder?: string;
+	className?: string;
+	titleClassName?: string;
+	inputClassName?: string;
+	width?: string | number;
+	height?: "40px" | "48px" | "56px" | string | number;
+	minHeight?: string | number;
+	maxHeight?: string | number;
+	style?: React.CSSProperties;
+	maxLength?: number;
+	value?: string;
+	useIcon?: boolean;
+	icon?: React.ReactNode;
+	useDelete?: boolean;
+	iconPosition?: "left" | "right";
+	clickableIcon?: boolean;
+	deleteAction?: () => void;
+	onEnterKeyPress?: () => void;
+	setValue?: (value: string) => void;
+	titleAttr?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;

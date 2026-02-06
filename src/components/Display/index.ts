@@ -1,2 +1,2 @@
-export * from './Display';
-export * from './Display.type';
+export * from "./Display";
+export * from "./Display.type";

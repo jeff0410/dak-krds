@@ -1,4 +1,5 @@
 /** biome-ignore-all lint/a11y/useKeyWithClickEvents: file upload area requires click events */
+/** biome-ignore-all lint/correctness/useExhaustiveDependencies: <explanation> */
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: error index is unique per render */
 /** biome-ignore-all lint/a11y/noStaticElementInteractions: drag and drop requires mouse events */
 import type { ChangeEvent, DragEvent } from "react";
@@ -6,7 +7,7 @@ import { useCallback, useRef, useState } from "react";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import { Label } from "../Label";
-import * as styles from './DakFileUpload.module.css';
+import styles from "./DakFileUpload.module.css";
 import type {
 	DakFileItem,
 	DakFileUploadProps,
@@ -40,7 +41,7 @@ export const DakFileUpload = ({
 		const k = 1024;
 		const sizes = ["Bytes", "KB", "MB", "GB"];
 		const i = Math.floor(Math.log(bytes) / Math.log(k));
-		return parseFloat((bytes / k ** i)?.toFixed(2)) + " " + sizes[i];
+		return `${parseFloat((bytes / k ** i)?.toFixed(2))} ${sizes[i]}`;
 	};
 
 	const validateFileType = (file: File): boolean => {

@@ -133,7 +133,7 @@
 }
 
 .deleteButton:hover {
-	color: var(--krds-color-gray-90) !important;
+	color: var(--krds-color-gray-90);
 }
 
 .deleteButton:disabled {

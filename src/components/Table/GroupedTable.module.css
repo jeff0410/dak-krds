@@ -6,16 +6,16 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-bottom: none !important;
+	border-bottom: none;
 	position: relative;
 	z-index: 1;
 }
 
 .hiddenCell {
-	display: none !important;
-	padding: 0 !important;
-	height: 0 !important;
-	border: none !important;
+	display: none;
+	padding: 0;
+	height: 0;
+	border: none;
 }
 
 .groupedRow {

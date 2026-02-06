@@ -1,14 +1,17 @@
-import type { HTMLAttributes, PropsWithChildren } from 'react';
-import * as styles from './Button.module.css';
+import type { HTMLAttributes, PropsWithChildren } from "react";
+import styles from "./Button.module.css";
 
 export const MediumModalButton = ({
-  children,
-  className = '',
-  ...props
+	children,
+	className = "",
+	...props
 }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) => {
-  return (
-    <div {...props} className={`${className} ${styles.buttonWrap} ${styles.buttonWrapMedium}`}>
-      {children}
-    </div>
-  );
+	return (
+		<div
+			{...props}
+			className={`${className} ${styles.buttonWrap} ${styles.buttonWrapMedium}`}
+		>
+			{children}
+		</div>
+	);
 };

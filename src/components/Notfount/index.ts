@@ -1,2 +1,2 @@
-export * from './NotFountPage';
-export * from './NotFountPage.type';
+export * from "./NotFountPage";
+export * from "./NotFountPage.type";

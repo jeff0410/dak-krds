@@ -8,7 +8,7 @@
 	font-size: 1.5rem;
 	font-weight: 700;
 	line-height: 2.25rem;
-	margin: 0 !important;
+	margin: 0;
 }
 
 .description {
@@ -21,7 +21,7 @@
 	font-size: 0.938rem;
 	color: var(--krds-color-gray-70);
 	text-align: center;
-	margin: 0 !important;
+	margin: 0;
 }
 
 .dropZone {
@@ -95,10 +95,10 @@
 }
 
 .errorMessageLabel {
-	font-size: 1.063rem !important;
-	font-weight: 400 !important;
-	color: var(--krds-color-danger-60) !important;
-	line-height: 1.625rem !important;
+	font-size: 1.063rem;
+	font-weight: 400;
+	color: var(--krds-color-danger-60);
+	line-height: 1.625rem;
 }
 
 .deleteButton {
@@ -113,7 +113,7 @@
 }
 
 .deleteButton:hover {
-	color: var(--krds-color-gray-90) !important;
+	color: var(--krds-color-gray-90);
 }
 
 .hiddenInput {
@@ -121,7 +121,7 @@
 }
 
 .countLabel {
-	margin: 0 !important;
+	margin: 0;
 }
 
 .currentLabel {
@@ -148,6 +148,6 @@
 
 @media screen and (max-width: 768px) {
 	.fileNameLabel {
-		max-width: 12.25rem !important;
+		max-width: 12.25rem;
 	}
 }

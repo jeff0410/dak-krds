@@ -1,12 +1,12 @@
 .tableContainer {
 	font-family: "pretendard GOV";
 
-    div:has(span[data-mui-internal-clone-element="true"]) {
-        overflow: visible !important;
-    }
+	div:has(span[data-mui-internal-clone-element="true"]) {
+		overflow: visible;
+	}
 
-    & span[data-mui-internal-clone-element="true"] {
-        margin-left: 2px;
+	& span[data-mui-internal-clone-element="true"] {
+		margin-left: 2px;
 		&:active {
 			opacity: 1;
 		}
@@ -15,13 +15,13 @@
 			opacity: 1;
 
 			span {
-                outline: 1px solid var(--krds-color-primary-50);
-                border-radius: 2px;
-                opacity: 1;
+				outline: 1px solid var(--krds-color-primary-50);
+				border-radius: 2px;
+				opacity: 1;
 
-                svg {
-                    opacity: 0.3;
-                }
+				svg {
+					opacity: 0.3;
+				}
 			}
 		}
 
@@ -32,7 +32,7 @@
 	}
 
 	.MuiTableRow-root {
-		outline: unset !important;
+		outline: unset;
 	}
 }
 .sortIcon {
@@ -54,10 +54,10 @@
 }
 
 .allowOverflow {
-	overflow: visible !important;
-	white-space: wrap !important;
-	text-overflow: unset !important;
-	word-break: break-word !important;
+	overflow: visible;
+	white-space: wrap;
+	text-overflow: unset;
+	word-break: break-word;
 	/*flex-grow: 1;*/
 	min-width: 0;
 }
@@ -79,7 +79,7 @@
 }
 
 .tableRow:active td::after {
-	background-color: var(--krds-color-information-5) !important;
+	background-color: var(--krds-color-information-5);
 }
 
 .accordionContent {

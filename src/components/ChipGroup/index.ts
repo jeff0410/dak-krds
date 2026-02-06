@@ -1,2 +1,2 @@
-export * from './ChipGroup';
-export * from './ChipGroup.type';
+export * from "./ChipGroup";
+export * from "./ChipGroup.type";

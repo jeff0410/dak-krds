@@ -1,94 +1,92 @@
 .wrapper {
-    display: flex;
-    align-items: center;
-    position: relative;
+	display: flex;
+	align-items: center;
+	position: relative;
 }
 
 .scrollContainer {
-    display: flex;
-    flex: 1;
-    justify-content: flex-start;
-    overflow-x: auto;
-    overflow-y: visible;
-    padding: 4px;
+	display: flex;
+	flex: 1;
+	justify-content: flex-start;
+	overflow-x: auto;
+	overflow-y: visible;
+	padding: 4px;
 
-
-    /* 스크롤바 숨김 */
-    -ms-overflow-style: none; /* IE/Edge */
-    scrollbar-width: none; /* Firefox */
+	/* 스크롤바 숨김 */
+	-ms-overflow-style: none; /* IE/Edge */
+	scrollbar-width: none; /* Firefox */
 }
 
 .scrollContainer::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+	display: none; /* Chrome/Safari */
 }
 
 .overlayLeft,
 .overlayRight {
-    z-index: 10;
-    display: flex;
-    position: absolute;
-    height: 100%;
-    top: 0;
-    bottom: 0;
+	z-index: 10;
+	display: flex;
+	position: absolute;
+	height: 100%;
+	top: 0;
+	bottom: 0;
 }
 
 .overlayLeft {
-    left: 0;
+	left: 0;
 }
 
 .overlayRight {
-    right: 0;
+	right: 0;
 }
 
 .innerLeft,
 .innerRight {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    background-color: var(--krds-color-gray-0);
+	display: flex;
+	align-items: center;
+	height: 100%;
+	background-color: var(--krds-color-gray-0);
 }
 
 .gradientLeft,
 .gradientRight {
-    height: 100%;
-    width: 24px;
+	height: 100%;
+	width: 24px;
 }
 
 .gradientLeft {
-    background: linear-gradient(
-            to left,
-            rgba(255, 255, 255, 0.25),
-            rgba(255, 255, 255, 1)
-    );
+	background: linear-gradient(
+		to left,
+		rgba(255, 255, 255, 0.25),
+		rgba(255, 255, 255, 1)
+	);
 }
 
 .gradientRight {
-    background: linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0.25),
-            rgba(255, 255, 255, 1)
-    );
+	background: linear-gradient(
+		to right,
+		rgba(255, 255, 255, 0.25),
+		rgba(255, 255, 255, 1)
+	);
 }
 
 /* 구분선 */
 .separator {
-    width: 1px;
-    height: 100%;
-    background: var(--krds-color-gray-20, rgba(0, 0, 0, 0.08));
+	width: 1px;
+	height: 100%;
+	background: var(--krds-color-gray-20, rgba(0, 0, 0, 0.08));
 }
 
-
 .buttonLeft {
-    padding-left: 4px;
-    padding-right: 8px;
-    height: 100%;
-    width: 100%;
-    z-index: 10;
+	padding-left: 4px;
+	padding-right: 8px;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
 }
 
 .buttonRight {
-    padding-left: 8px;
-    padding-right: 4px;
-    height: 100%;
-    width: 100%;
+	padding-left: 8px;
+	padding-right: 4px;
+	height: 100%;
+	width: 100%;
 }

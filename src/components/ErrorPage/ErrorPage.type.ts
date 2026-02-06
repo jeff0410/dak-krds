@@ -1,3 +1,3 @@
 export interface ErrorPageProps {
-  onClick: () => void;
+	onClick: () => void;
 }

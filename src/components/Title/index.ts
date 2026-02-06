@@ -1,2 +1,2 @@
-export * from './Title';
-export * from './Title.type';
+export * from "./Title";
+export * from "./Title.type";

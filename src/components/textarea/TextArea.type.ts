@@ -1,4 +1,4 @@
-import type * as React from 'react';
+import type * as React from "react";
 
 /**
  * TextArea 컴포넌트 😸
@@ -27,28 +27,28 @@ import type * as React from 'react';
  */
 
 export type TextAreaProps = {
-  id: string;
-  title?: string;
-  titlePosition?: 'vertical' | 'horizontal';
-  gap?: string | number;
-  description?: string;
-  placeholder?: string;
-  size?: 's' | 'm' | 'l';
-  useCount?: boolean;
-  maxLength?: number;
-  isValid?: boolean;
-  isRequired?: boolean;
-  error?: string;
-  info?: string;
-  value: string;
-  setValue: (value: string) => void;
-  disabled?: boolean;
-  className?: string;
-  titleClassName?: string;
-  inputClassName?: string;
-  width?: string | number;
-  height?: string | number;
-  minHeight?: string | number;
-  maxHeight?: string | number;
-  /* eslint-disable no-undef */
+	id: string;
+	title?: string;
+	titlePosition?: "vertical" | "horizontal";
+	gap?: string | number;
+	description?: string;
+	placeholder?: string;
+	size?: "s" | "m" | "l";
+	useCount?: boolean;
+	maxLength?: number;
+	isValid?: boolean;
+	isRequired?: boolean;
+	error?: string;
+	info?: string;
+	value: string;
+	setValue: (value: string) => void;
+	disabled?: boolean;
+	className?: string;
+	titleClassName?: string;
+	inputClassName?: string;
+	width?: string | number;
+	height?: string | number;
+	minHeight?: string | number;
+	maxHeight?: string | number;
+	/* eslint-disable no-undef */
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;

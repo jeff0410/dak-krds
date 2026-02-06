@@ -1,4 +1,4 @@
 export type SpinnerProps = {
-  size?: 's' | 'm' | 'l';
-  className?: string;
+	size?: "s" | "m" | "l";
+	className?: string;
 };

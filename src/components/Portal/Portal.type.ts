@@ -1,6 +1,6 @@
-import { CSSProperties } from 'react';
+import type { CSSProperties } from "react";
 
 export interface PortalProps {
-  style?: CSSProperties;
-  container?: HTMLElement | null;
+	style?: CSSProperties;
+	container?: HTMLElement | null;
 }

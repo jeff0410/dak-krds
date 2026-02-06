@@ -1,2 +1,2 @@
-export * from './MTableGuideWrapper';
-export * from './MTableGuideWrapper.type';
+export * from "./MTableGuideWrapper";
+export * from "./MTableGuideWrapper.type";

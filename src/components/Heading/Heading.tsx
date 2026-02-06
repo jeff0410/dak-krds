@@ -1,7 +1,7 @@
-import * as styles from './Heading.module.css';
-import * as React from 'react';
-import { colors, getColor } from '../../styles/color/color';
-import type { HeadingProps } from './Heading.type';
+import * as React from "react";
+import { colors, getColor } from "../../styles/color/color";
+import styles from "./Heading.module.css";
+import type { HeadingProps } from "./Heading.type";
 
 /**
  * Heading 컴포넌트 😸🐖
@@ -15,28 +15,28 @@ import type { HeadingProps } from './Heading.type';
  */
 
 export function Heading({
-  size = 1,
-  color = 'gray-90',
-  children,
-  className = '',
-  ...props
+	size = 1,
+	color = "gray-90",
+	children,
+	className = "",
+	...props
 }: HeadingProps) {
-  const tag = `h${size}`;
+	const tag = `h${size}`;
 
-  const colorStyle: React.CSSProperties = {};
-  if (color in colors) {
-    colorStyle.color = getColor(color as keyof typeof colors);
-  } else {
-    colorStyle.color = color;
-  }
+	const colorStyle: React.CSSProperties = {};
+	if (color in colors) {
+		colorStyle.color = getColor(color as keyof typeof colors);
+	} else {
+		colorStyle.color = color;
+	}
 
-  return React.createElement(
-    tag,
-    {
-      className: `${styles.heading} ${styles[`h${size}`]} ${className}`.trim(),
-      style: colorStyle,
-      ...props,
-    },
-    children,
-  );
+	return React.createElement(
+		tag,
+		{
+			className: `${styles.heading} ${styles[`h${size}`]} ${className}`.trim(),
+			style: colorStyle,
+			...props,
+		},
+		children,
+	);
 }

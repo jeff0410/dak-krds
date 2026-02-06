@@ -1,102 +1,103 @@
 .container {
-    position: relative;
+	position: relative;
 }
 
 .popupContainer {
-  margin-top: 2px;
+	margin-top: 2px;
 }
 
 .timeInputContainer {
-    padding: 9px 24px;
+	padding: 9px 24px;
 }
 
 .timeInput {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .selector {
-    display: flex;
-    gap: 4px;
-    height: 48px;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 6px;
-    background-color: var(--krds-color-alpha-white100);
-    padding: 8px 24px;
-    cursor: pointer;
-    box-sizing: border-box;
-    user-select: none;
+	display: flex;
+	gap: 4px;
+	height: 48px;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 6px;
+	background-color: var(--krds-color-alpha-white100);
+	padding: 8px 24px;
+	cursor: pointer;
+	box-sizing: border-box;
+	user-select: none;
 }
 
 .iconWrapper {
-    display: flex;
-    height: 16px;
-    width: 16px;
-    align-items: center;
-    justify-content: flex-end;
+	display: flex;
+	height: 16px;
+	width: 16px;
+	align-items: center;
+	justify-content: flex-end;
 }
 
 .popup {
-    position: absolute;
-    top: 105%;
-    z-index: 50;
-    height: 200px;
-    width: 90px;
-    overflow-y: scroll;
-    border-radius: 8px;
-    background-color: var(--krds-color-alpha-white100);
-    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+	position: absolute;
+	top: 105%;
+	z-index: 50;
+	height: 200px;
+	width: 90px;
+	overflow-y: scroll;
+	border-radius: 8px;
+	background-color: var(--krds-color-alpha-white100);
+	filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+		drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
 }
 
 .popupContainer {
-    position: absolute;
-    z-index: 50;
-    width: 328px;
-    border-radius: 0.75rem;
-    border: 1px solid var(--krds-color-gray-20);
-    background-color: var(--krds-color-secondary-5);
+	position: absolute;
+	z-index: 50;
+	width: 328px;
+	border-radius: 0.75rem;
+	border: 1px solid var(--krds-color-gray-20);
+	background-color: var(--krds-color-secondary-5);
 }
 
 .timeSelectorWrapper {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1.5rem;
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 1.5rem;
 }
 
 .meridiemWrapper {
-    width: 44px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px
+	width: 44px;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
 }
 
 .meridiemButton {
-    font-weight: bold;
-    border: 1px solid var(--krds-color-primary-50) !important;
-    background-color: var(--krds-color-alpha-white100) !important;
-    color: var(--krds-color-primary-50) !important;
+	font-weight: bold;
+	border: 1px solid var(--krds-color-primary-50);
+	background-color: var(--krds-color-alpha-white100);
+	color: var(--krds-color-primary-50);
 }
 
 .disabledMeridiemButton {
-    font-weight: bold;
-    border: none !important;
-    background-color: var(--krds-color-secondary-10) !important;
-    color: var(--krds-color-gray-70) !important;
+	font-weight: bold;
+	border: none;
+	background-color: var(--krds-color-secondary-10);
+	color: var(--krds-color-gray-70);
 }
 
 .popupFooter {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    background-color: var(--krds-color-alpha-white100);
-    padding: 1rem 1.5rem;
-    box-sizing: border-box;
-    border-bottom-left-radius: 0.75rem;
-    border-bottom-right-radius: 0.75rem;
+	display: flex;
+	width: 100%;
+	justify-content: flex-end;
+	gap: 0.5rem;
+	background-color: var(--krds-color-alpha-white100);
+	padding: 1rem 1.5rem;
+	box-sizing: border-box;
+	border-bottom-left-radius: 0.75rem;
+	border-bottom-right-radius: 0.75rem;
 }
 
 .fullWidth {
-    width: 100%;
+	width: 100%;
 }

@@ -1,2 +1,2 @@
-export * from './Heading';
-export * from './Heading.type';
+export * from "./Heading";
+export * from "./Heading.type";

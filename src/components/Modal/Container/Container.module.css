@@ -29,7 +29,7 @@
 	display: grid;
 	box-shadow: var(--shadow-bold);
 	background-color: var(--krds-color-gray-0);
-	box-sizing: border-box !important;
+	box-sizing: border-box;
 }
 
 .modalCloseContainer {

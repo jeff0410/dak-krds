@@ -1,12 +1,12 @@
 export interface PaginationData {
-  currentPage: number;
-  onChangePage: (page: number) => void;
+	currentPage: number;
+	onChangePage: (page: number) => void;
 }
 
 export interface PaginationProps extends PaginationData {
-  totalPage: number;
+	totalPage: number;
 }
 
 export interface PaginationItemProps {
-  children: number;
+	children: number;
 }

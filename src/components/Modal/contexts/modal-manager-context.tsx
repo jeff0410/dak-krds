@@ -1,15 +1,17 @@
-import { createContext, useContext } from 'react';
-import type { ModalListProps } from '../Modal.type';
+import { createContext, useContext } from "react";
+import type { ModalListProps } from "../Modal.type";
 
 interface ModalManagerContextProps {
-  modalList: ModalListProps[];
+	modalList: ModalListProps[];
 }
-export const ModalManagerContext = createContext<ModalManagerContextProps | undefined>(undefined);
+export const ModalManagerContext = createContext<
+	ModalManagerContextProps | undefined
+>(undefined);
 
 export const useModalManagerContext = () => {
-  const context = useContext(ModalManagerContext);
+	const context = useContext(ModalManagerContext);
 
-  if (!context) throw new Error('ModalManagerContext is undefined');
+	if (!context) throw new Error("ModalManagerContext is undefined");
 
-  return context;
+	return context;
 };

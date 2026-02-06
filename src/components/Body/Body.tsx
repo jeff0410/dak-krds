@@ -1,7 +1,7 @@
-import * as styles from './Body.module.css';
-import * as React from 'react';
-import { colors, getColor } from '../../styles/color/color';
-import type { BodyProps } from './Body.type';
+import type * as React from "react";
+import { colors, getColor } from "../../styles/color/color";
+import styles from "./Body.module.css";
+import type { BodyProps } from "./Body.type";
 
 /**
  * Body 컴포넌트 😸
@@ -16,28 +16,29 @@ import type { BodyProps } from './Body.type';
  * - @param label - 본문 텍스트의 레이블
  */
 
-export function Body<E extends React.ElementType = 'p'>({
-  size = 1,
-  weight = 'regular',
-  color = 'gray-90',
-  children,
-  label,
-  className = '',
-  ...props
+export function Body<E extends React.ElementType = "p">({
+	size = 1,
+	weight = "regular",
+	color = "gray-90",
+	children,
+	label,
+	className = "",
+	...props
 }: BodyProps<E>) {
-  let colorStyle: React.CSSProperties = {};
-  if (color in colors) {
-    colorStyle.color = getColor(color as keyof typeof colors);
-  } else {
-    colorStyle.color = color;
-  }
+	const colorStyle: React.CSSProperties = {};
+	if (color in colors) {
+		colorStyle.color = getColor(color as keyof typeof colors);
+	} else {
+		colorStyle.color = color;
+	}
 
-  return (
-    <p
-      className={`${styles.body} ${styles[`size_${size}`]} ${styles[`weight_${weight}`]} ${className}`.trim()}
-      style={colorStyle}
-      {...props}>
-      {children ? children : label}
-    </p>
-  );
+	return (
+		<p
+			className={`${styles.body} ${styles[`size_${size}`]} ${styles[`weight_${weight}`]} ${className}`.trim()}
+			style={colorStyle}
+			{...props}
+		>
+			{children ? children : label}
+		</p>
+	);
 }

@@ -1,2 +1,2 @@
-export * from './Switch';
-export * from './Switch.type';
+export * from "./Switch";
+export * from "./Switch.type";

@@ -29,7 +29,7 @@
 
 .selectBox {
 	display: flex;
-	box-sizing: border-box !important;
+	box-sizing: border-box;
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 16px;

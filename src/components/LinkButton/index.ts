@@ -1,2 +1,2 @@
-export * from './LinkButton';
-export * from './LinkButton.type';
+export * from "./LinkButton";
+export * from "./LinkButton.type";

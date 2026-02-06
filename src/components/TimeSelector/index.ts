@@ -1,2 +1,2 @@
-export * from './TimeSelector';
-export * from './TimeSelector.type';
+export * from "./TimeSelector";
+export * from "./TimeSelector.type";

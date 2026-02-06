@@ -8,7 +8,7 @@ import {
 } from "material-react-table";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Icon } from "../Icon";
-import * as styles from './Table.module.css';
+import styles from "./Table.module.css";
 import type { TableProps, TableRowWithIconProps } from "./Table.type";
 
 export function TableRowWithIcon({
@@ -153,14 +153,15 @@ export function Table<T extends MRT_RowData>({
 			...customDropColumnOption,
 		}) as MRT_ColumnDef<T>;
 
-	const draggableColumns = [
-		...(dragHandlePosition === "left" ? [dragHandleColumn()] : []),
-		...columns,
-		...(dragHandlePosition === "right" ? [dragHandleColumn()] : []),
-	];
-
 	const modifiedColumns: MRT_ColumnDef<T>[] = useMemo(() => {
-		const currentColumns = draggable ? draggableColumns : columns;
+		const draggableColumns = draggable
+			? [
+					...(dragHandlePosition === "left" ? [dragHandleColumn()] : []),
+					...columns,
+					...(dragHandlePosition === "right" ? [dragHandleColumn()] : []),
+				]
+			: columns;
+		const currentColumns = draggableColumns;
 
 		if (!enableAccordion || !accordionToggleColumnKey) {
 			return currentColumns;
@@ -178,6 +179,7 @@ export function Table<T extends MRT_RowData>({
 						cell,
 						column: col,
 						renderedCellValue,
+						table: tableInstance,
 						...restProps
 					}: Record<string, unknown>) => {
 						const originalCell = column.Cell;
@@ -187,7 +189,7 @@ export function Table<T extends MRT_RowData>({
 									cell,
 									column: col,
 									renderedCellValue,
-									table,
+									table: tableInstance,
 									...restProps,
 								} as never)
 							: (cell as { getValue: () => unknown }).getValue();

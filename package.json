@@ -1,6 +1,6 @@
 {
 	"name": "dak-krds",
-	"version": "0.1.6",
+	"version": "0.1.8",
 	"description": "DAK React UI Component Design System",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",

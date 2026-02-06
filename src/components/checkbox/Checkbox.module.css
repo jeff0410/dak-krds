@@ -80,7 +80,9 @@
 
 /* input 포커스 시 시각적 박스에 표시 */
 .checkboxInput:focus-visible + .checkboxBox {
-	box-shadow: 0 0 0 2px white, 0 0 0 4px var(--krds-color-primary-50);
+	box-shadow:
+		0 0 0 2px white,
+		0 0 0 4px var(--krds-color-primary-50);
 	/*outline: 2px solid var(--krds-color-primary-50);*/
 	/*outline-offset: 2px;*/
 }

@@ -1,2 +1,2 @@
-export * from './MScrollTab';
-export * from './MScrollTab.type';
+export * from "./MScrollTab";
+export * from "./MScrollTab.type";

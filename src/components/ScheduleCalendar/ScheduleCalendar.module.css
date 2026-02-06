@@ -266,7 +266,7 @@
 .scheduleCalendarContainer :global(.korean-holiday .fc-daygrid-day-number),
 .scheduleCalendarContainer :global(.korean-holiday .fc-daygrid-day-top),
 .scheduleCalendarContainer :global(.korean-holiday .holiday-date) {
-	color: #dc3545 !important;
+	color: #dc3545;
 	font-weight: 600;
 }
 
@@ -276,8 +276,8 @@
 .scheduleCalendarContainer
 	:global(.fc-day-today.korean-holiday .fc-daygrid-day-top > *),
 .scheduleCalendarContainer :global(.fc-day-today.korean-holiday .holiday-date) {
-	background-color: #dc3545 !important;
-	color: white !important;
+	background-color: #dc3545;
+	color: white;
 }
 
 /* 공휴일 툴팁 스타일 */
@@ -288,7 +288,7 @@
 
 /* 공휴일 배경색 (선택사항) */
 .scheduleCalendarContainer :global(.korean-holiday) {
-	background-color: #fff5f5 !important;
+	background-color: #fff5f5;
 }
 
 /* 반응형 스타일 */

@@ -117,7 +117,7 @@
 .passwordIcon {
 	right: clamp(0.5rem, calc(var(--input-width, 100%) * 0.02), 1rem);
 	width: 24px;
-	height: auto !important;;
+	height: auto;
 	border: none;
 	background: transparent;
 	cursor: pointer;

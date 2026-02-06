@@ -1,6 +1,6 @@
-import type { PropsWithChildren } from 'react';
-import * as styles from './Header.module.css';
+import type { PropsWithChildren } from "react";
+import styles from "./Header.module.css";
 
 export const DialogModalHeader = ({ children }: PropsWithChildren) => {
-  return <div className={styles.dialogTitle}>{children}</div>;
+	return <div className={styles.dialogTitle}>{children}</div>;
 };

@@ -1,3 +1,2 @@
-export * from './FileButtonUpload';
-export * from './FileButtonUpload.type';
-
+export * from "./FileButtonUpload";
+export * from "./FileButtonUpload.type";

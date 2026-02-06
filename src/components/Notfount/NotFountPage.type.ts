@@ -1,3 +1,3 @@
 export interface NotFountPageProps {
-  onClick: () => void;
+	onClick: () => void;
 }

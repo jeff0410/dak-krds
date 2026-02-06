@@ -23,7 +23,7 @@
 	align-items: center;
 	width: 100%;
 	transition: all 0.2s ease;
-    word-break: keep-all;
+	word-break: keep-all;
 }
 
 .iconButton {

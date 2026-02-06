@@ -15,7 +15,7 @@
 	padding: 8px 0;
 
 	.chevronContainer {
-		margin: 0 !important;
+		margin: 0;
 	}
 
 	label {
@@ -23,7 +23,7 @@
 	}
 
 	.accordionItem {
-		border-bottom: none !important;
+		border-bottom: none;
 		border-radius: 12px;
 	}
 

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { colors, getColor } from 'src/styles/color/color';
-import * as styles from './Detail.module.css';
-import type { DetailProps } from './Detail.type';
+import type * as React from "react";
+import { colors, getColor } from "src/styles/color/color";
+import styles from "./Detail.module.css";
+import type { DetailProps } from "./Detail.type";
 
 /**
  * Detail 컴포넌트 😸
@@ -14,26 +14,27 @@ import type { DetailProps } from './Detail.type';
  * @param className - 추가로 적용할 클래스 이름
  */
 
-export function Detail<E extends React.ElementType = 'span'>({
-  size = 'm',
-  weight = 'regular',
-  color = 'gray-90',
-  children,
-  className = '',
-  ...props
+export function Detail<E extends React.ElementType = "span">({
+	size = "m",
+	weight = "regular",
+	color = "gray-90",
+	children,
+	className = "",
+	...props
 }: DetailProps<E>) {
-  let colorStyle: React.CSSProperties = {};
-  if (color in colors) {
-    colorStyle.color = getColor(color as keyof typeof colors);
-  } else {
-    colorStyle.color = color;
-  }
-  return (
-    <span
-      className={`${styles.detail} ${styles[`size_${size}`]} ${styles[`weight_${weight}`]} ${className}`.trim()}
-      style={colorStyle}
-      {...props}>
-      {children}
-    </span>
-  );
+	const colorStyle: React.CSSProperties = {};
+	if (color in colors) {
+		colorStyle.color = getColor(color as keyof typeof colors);
+	} else {
+		colorStyle.color = color;
+	}
+	return (
+		<span
+			className={`${styles.detail} ${styles[`size_${size}`]} ${styles[`weight_${weight}`]} ${className}`.trim()}
+			style={colorStyle}
+			{...props}
+		>
+			{children}
+		</span>
+	);
 }

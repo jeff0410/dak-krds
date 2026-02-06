@@ -1,2 +1,2 @@
-export { Carousel } from './Carousel';
-export * from './Carousel.type';
+export { Carousel } from "./Carousel";
+export * from "./Carousel.type";

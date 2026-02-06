@@ -1,2 +1,2 @@
-export * from './StepIndicator';
-export * from './StepIndicator.type';
+export * from "./StepIndicator";
+export * from "./StepIndicator.type";

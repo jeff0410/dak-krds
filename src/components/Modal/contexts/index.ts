@@ -1,1 +1,1 @@
-export * from './modal-manager-context';
+export * from "./modal-manager-context";

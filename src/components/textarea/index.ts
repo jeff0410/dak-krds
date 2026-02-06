@@ -1,2 +1,2 @@
-export * from './TextArea';
-export * from './TextArea.type';
+export * from "./TextArea";
+export * from "./TextArea.type";

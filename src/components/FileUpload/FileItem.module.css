@@ -59,23 +59,23 @@
 .viewButton {
 	min-height: unset;
 	min-width: unset;
-	padding: 0 !important;
+	padding: 0;
 	height: fit-content;
 }
 
 .viewButton:hover {
-	color: var(--krds-color-gray-90) !important;
+	color: var(--krds-color-gray-90);
 }
 
 .deleteButton:hover {
-	color: var(--krds-color-gray-90) !important;
+	color: var(--krds-color-gray-90);
 }
 
 .errorMessageLabel {
-	font-size: 1.063rem !important;
-	font-weight: 400 !important;
-	color: var(--krds-color-danger-60) !important;
-	line-height: 1.625rem !important;
+	font-size: 1.063rem;
+	font-weight: 400;
+	color: var(--krds-color-danger-60);
+	line-height: 1.625rem;
 }
 
 .buttonGroup {

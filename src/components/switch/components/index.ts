@@ -1,2 +1,2 @@
-export * from './switch-label';
-export * from './switch-track';
+export * from "./switch-label";
+export * from "./switch-track";

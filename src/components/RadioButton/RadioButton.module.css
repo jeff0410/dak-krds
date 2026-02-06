@@ -15,7 +15,7 @@
 /* 화면이 500px 이하로 줄어들면 세로 정렬 */
 @media (max-width: 500px) {
 	.radioContainer {
-        /*flex-direction: column;*/
+		/*flex-direction: column;*/
 		align-items: flex-start;
 	}
 }

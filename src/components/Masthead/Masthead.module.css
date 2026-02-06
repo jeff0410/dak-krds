@@ -24,7 +24,7 @@
 
 @media (max-width: 768px) {
 	.masthead {
-		padding-left: 0 !important;
-		justify-content: center !important;
+		padding-left: 0;
+		justify-content: center;
 	}
 }

@@ -1,4 +1,4 @@
-export * from './StatusLabel';
-export * from './TextInput';
+export * from "./StatusLabel";
+export * from "./TextInput";
 
-export * from './TextInput.type';
+export * from "./TextInput.type";

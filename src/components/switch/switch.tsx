@@ -1,7 +1,7 @@
-import { uniqueId } from 'lodash-es';
-import { SwitchLabel, SwitchTrack } from './components';
-import * as style from './Switch.module.css';
-import type { SwitchProps } from './Switch.type';
+import { uniqueId } from "lodash-es";
+import { SwitchLabel, SwitchTrack } from "./components";
+import * as style from "./Switch.module.css";
+import type { SwitchProps } from "./Switch.type";
 
 /**
  * Switch 컴포넌트 😸
@@ -26,81 +26,83 @@ import type { SwitchProps } from './Switch.type';
  */
 
 export function Switch({
-  id,
-  status = false,
-  onChange = () => {},
-  size = 'm',
-  label,
-  labelPosition = 'right',
-  disabled = false,
-  useIcon = false,
-  checkedIcon,
-  uncheckedIcon,
-  className = '',
-  barWidth,
-  barHeight,
-  thumbSize,
-  labelClassName,
-  labelSize,
-  labelWeight,
-  inputClassName,
-  isLabelClickable = true,
+	id,
+	status = false,
+	onChange = () => {},
+	size = "m",
+	label,
+	labelPosition = "right",
+	disabled = false,
+	useIcon = false,
+	checkedIcon,
+	uncheckedIcon,
+	className = "",
+	barWidth,
+	barHeight,
+	thumbSize,
+	labelClassName,
+	labelSize,
+	labelWeight,
+	inputClassName,
+	isLabelClickable = true,
 }: SwitchProps) {
-  const switchId = id || `switch-${uniqueId()}`;
-  const defaultLabelSize = size === 'l' ? 'm' : 's';
+	const switchId = id || `switch-${uniqueId()}`;
+	const defaultLabelSize = size === "l" ? "m" : "s";
 
-  const handleLabelClick = () => {
-    if (isLabelClickable && !disabled) {
-      onChange(!status);
-    }
-  };
+	const handleLabelClick = () => {
+		if (isLabelClickable && !disabled) {
+			onChange(!status);
+		}
+	};
 
-  return (
-    <div className={className}>
-      <div className={`${style.switchContainer} ${disabled ? style.disabled : ''}`}>
-        {labelPosition === 'left' && (
-          <SwitchLabel
-            label={label}
-            position='left'
-            size={labelSize || defaultLabelSize}
-            weight={labelWeight}
-            className={labelClassName}
-            isClickable={isLabelClickable}
-            onClick={handleLabelClick}
-            disabled={disabled}
-            htmlFor={switchId}
-          />
-        )}
+	return (
+		<div className={className}>
+			<div
+				className={`${style.switchContainer} ${disabled ? style.disabled : ""}`}
+			>
+				{labelPosition === "left" && (
+					<SwitchLabel
+						label={label}
+						position="left"
+						size={labelSize || defaultLabelSize}
+						weight={labelWeight}
+						className={labelClassName}
+						isClickable={isLabelClickable}
+						onClick={handleLabelClick}
+						disabled={disabled}
+						htmlFor={switchId}
+					/>
+				)}
 
-        <SwitchTrack
-          id={switchId}
-          label={typeof label === 'string' ? label : undefined}
-          status={status}
-          disabled={disabled}
-          onChange={onChange}
-          size={size}
-          useIcon={useIcon}
-          checkedIcon={checkedIcon}
-          uncheckedIcon={uncheckedIcon}
-          barWidth={barWidth}
-          barHeight={barHeight}
-          thumbSize={thumbSize}
-          inputClassName={inputClassName}
-        />
+				<SwitchTrack
+					id={switchId}
+					label={typeof label === "string" ? label : undefined}
+					status={status}
+					disabled={disabled}
+					onChange={onChange}
+					size={size}
+					useIcon={useIcon}
+					checkedIcon={checkedIcon}
+					uncheckedIcon={uncheckedIcon}
+					barWidth={barWidth}
+					barHeight={barHeight}
+					thumbSize={thumbSize}
+					inputClassName={inputClassName}
+				/>
 
-        {labelPosition === 'right' && (
-          <SwitchLabel
-            label={label}
-            position='right'
-            size={labelSize || defaultLabelSize}
-            weight={labelWeight}
-            className={labelClassName}
-            isClickable={isLabelClickable}
-            onClick={handleLabelClick}
-            htmlFor={switchId}
-          />
-        )}
-      </div>
-    </div>
-  );
+				{labelPosition === "right" && (
+					<SwitchLabel
+						label={label}
+						position="right"
+						size={labelSize || defaultLabelSize}
+						weight={labelWeight}
+						className={labelClassName}
+						isClickable={isLabelClickable}
+						onClick={handleLabelClick}
+						htmlFor={switchId}
+					/>
+				)}
+			</div>
+		</div>
+	);
 }

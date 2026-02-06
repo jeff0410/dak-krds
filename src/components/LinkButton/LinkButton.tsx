@@ -1,8 +1,9 @@
-import React from 'react';
-import { Icon } from '../Icon';
-import { Link } from '../Link';
-import * as styles from './LinkButton.module.css';
-import type { LinkButtonProps } from './LinkButton.type';
+/** biome-ignore-all lint/a11y/useSemanticElements: <explanation> */
+import type React from "react";
+import { Icon } from "../Icon";
+import { Link } from "../Link";
+import styles from "./LinkButton.module.css";
+import type { LinkButtonProps } from "./LinkButton.type";
 
 /**
  * LinkButton 컴포넌트 😸
@@ -20,57 +21,66 @@ import type { LinkButtonProps } from './LinkButton.type';
  * @param iconClassName - 아이콘에 적용할 클래스 이름
  */
 
-export function LinkButton<E extends React.ElementType = 'a'>({
-  variant = 'default',
-  size = 'm',
-  children,
-  className = '',
-  href,
-  title,
-  useIcon = true,
-  icon,
-  iconColor,
-  iconClassName = '',
-  ...props
+export function LinkButton<E extends React.ElementType = "a">({
+	variant = "default",
+	size = "m",
+	children,
+	className = "",
+	href,
+	title,
+	useIcon = true,
+	icon,
+	iconColor,
+	iconClassName = "",
+	...props
 }: LinkButtonProps<E>) {
-  const parsingHref = href
-    ? href.startsWith('http://') || href.startsWith('https://') || href.startsWith('//')
-      ? href
-      : `https://${href}`
-    : href;
-  return (
-    <Link
-      className={`
+	const parsingHref = href
+		? href.startsWith("http://") ||
+			href.startsWith("https://") ||
+			href.startsWith("//")
+			? href
+			: `https://${href}`
+		: href;
+	return (
+		<Link
+			className={`
         ${styles.linkButton}
-        ${variant === 'accent' ? styles.linkButtonAccent : styles.linkButtonDefault}
-        ${size === 's' ? styles.linkButtonSmall : size === 'l' ? styles.linkButtonLarge : styles.linkButtonMedium}
+        ${variant === "accent" ? styles.linkButtonAccent : styles.linkButtonDefault}
+        ${size === "s" ? styles.linkButtonSmall : size === "l" ? styles.linkButtonLarge : styles.linkButtonMedium}
         ${className}
       `.trim()}
-      href={parsingHref}
-      role='link'
-      title={title}
-      target={
-        href && (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('//'))
-          ? '_blank'
-          : undefined
-      }
-      rel={
-        href && (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('//'))
-          ? 'noopener noreferrer'
-          : undefined
-      }
-      {...props}>
-      {children}
-      {useIcon &&
-        (icon ? (
-          icon
-        ) : (
-          <Icon
-            icon='OpenNewWindow'
-            color={iconColor || 'var(--krds-color-primary-50)'}
-            className={`${styles.icon} ${iconClassName}`}
-          />
-        ))}
-    </Link>
-  );
+			href={parsingHref}
+			role="link"
+			title={title}
+			target={
+				href &&
+				(href.startsWith("http://") ||
+					href.startsWith("https://") ||
+					href.startsWith("//"))
+					? "_blank"
+					: undefined
+			}
+			rel={
+				href &&
+				(href.startsWith("http://") ||
+					href.startsWith("https://") ||
+					href.startsWith("//"))
+					? "noopener noreferrer"
+					: undefined
+			}
+			{...props}
+		>
+			{children}
+			{useIcon &&
+				(icon ? (
+					icon
+				) : (
+					<Icon
+						icon="OpenNewWindow"
+						color={iconColor || "var(--krds-color-primary-50)"}
+						className={`${styles.icon} ${iconClassName}`}
+					/>
+				))}
+		</Link>
+	);
 }

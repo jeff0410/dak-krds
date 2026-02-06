@@ -1,7 +1,7 @@
-import type { ElementType } from 'react';
-import * as styles from './Label.module.css';
-import type { LabelProps } from './Label.type';
-import { uniqueId } from 'lodash-es';
+import { uniqueId } from "lodash-es";
+import type { ElementType } from "react";
+import styles from "./Label.module.css";
+import type { LabelProps } from "./Label.type";
 
 /**
  *
@@ -16,40 +16,42 @@ import { uniqueId } from 'lodash-es';
  * - @param label - label이 있는 경우 우선 표시됩니다. children보다 우선합니다.
  * - @returns
  */
-export const Label = <E extends ElementType = 'label'>({
-  id,
-  size = 'm',
-  weight = 'regular',
-  children,
-  className = '',
-  required = false,
-  as,
-  label,
-  ...props
+export const Label = <E extends ElementType = "label">({
+	id,
+	size = "m",
+	weight = "regular",
+	children,
+	className = "",
+	required = false,
+	as,
+	label,
+	...props
 }: LabelProps<E>) => {
-  const Component = (as || 'label') as ElementType;
+	const Component = (as || "label") as ElementType;
 
-  const uId = id || uniqueId();
+	const uId = id || uniqueId();
 
-  if (label) {
-    return (
-      <Component
-        className={`${styles.label} ${styles[`size_${size}`]} ${styles[`weight_${weight}`]} ${className}`}
-        htmlFor={uId}
-        {...props}>
-        {label}
-        {required && <span className={styles.required}>*</span>}
-      </Component>
-    );
-  }
+	if (label) {
+		return (
+			<Component
+				className={`${styles.label} ${styles[`size_${size}`]} ${styles[`weight_${weight}`]} ${className}`}
+				htmlFor={uId}
+				{...props}
+			>
+				{label}
+				{required && <span className={styles.required}>*</span>}
+			</Component>
+		);
+	}
 
-  return (
-    <Component
-      className={`${styles.label} ${styles[`size_${size}`]} ${styles[`weight_${weight}`]} ${className}`}
-      htmlFor={uId}
-      {...props}>
-      {children}
-      {required && <span className={styles.required}>*</span>}
-    </Component>
-  );
+	return (
+		<Component
+			className={`${styles.label} ${styles[`size_${size}`]} ${styles[`weight_${weight}`]} ${className}`}
+			htmlFor={uId}
+			{...props}
+		>
+			{children}
+			{required && <span className={styles.required}>*</span>}
+		</Component>
+	);
 };

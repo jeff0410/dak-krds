@@ -1,3 +1,3 @@
-export * from './PhoneInput';
-export * from './PhoneInput.type';
-export * from './splitPhoneNumber';
+export * from "./PhoneInput";
+export * from "./PhoneInput.type";
+export * from "./splitPhoneNumber";

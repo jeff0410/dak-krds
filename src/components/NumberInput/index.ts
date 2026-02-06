@@ -1,2 +1,2 @@
-export * from './NumberInput';
-export * from './NumberInput.type';
+export * from "./NumberInput";
+export * from "./NumberInput.type";

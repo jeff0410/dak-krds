@@ -1,7 +1,7 @@
-import type React from 'react';
-import { colors, getColor } from 'src/styles/color/color';
-import * as styles from './Title.module.css';
-import type { TitleProps } from './Title.type';
+import type React from "react";
+import { colors, getColor } from "src/styles/color/color";
+import styles from "./Title.module.css";
+import type { TitleProps } from "./Title.type";
 
 /**
  * Title 컴포넌트 😸
@@ -14,31 +14,32 @@ import type { TitleProps } from './Title.type';
  * @param weight - 폰트 굵기 ('bold' | 'semi-bold' | 'medium' | 'regular')
  */
 
-export function Title<E extends React.ElementType = 'h3'>({
-  size = 1,
-  color = 'gray-90',
-  children,
-  className = '',
-  weight = 'bold',
-  ...props
+export function Title<E extends React.ElementType = "h3">({
+	size = 1,
+	color = "gray-90",
+	children,
+	className = "",
+	weight = "bold",
+	...props
 }: TitleProps<E>) {
-  const titleClass = styles.title;
-  const sizeClass = styles[`size_${size}`];
-  const fontWeifht = `font-dak-${weight}`;
+	const titleClass = styles.title;
+	const sizeClass = styles[`size_${size}`];
+	const fontWeifht = `font-dak-${weight}`;
 
-  const colorStyle: React.CSSProperties = {};
-  if (color in colors) {
-    colorStyle.color = getColor(color as keyof typeof colors);
-  } else {
-    colorStyle.color = color;
-  }
+	const colorStyle: React.CSSProperties = {};
+	if (color in colors) {
+		colorStyle.color = getColor(color as keyof typeof colors);
+	} else {
+		colorStyle.color = color;
+	}
 
-  return (
-    <h3
-      className={`${titleClass} ${sizeClass} ${fontWeifht} ${className}`.trim()}
-      style={colorStyle}
-      {...props}>
-      {children}
-    </h3>
-  );
+	return (
+		<h3
+			className={`${titleClass} ${sizeClass} ${fontWeifht} ${className}`.trim()}
+			style={colorStyle}
+			{...props}
+		>
+			{children}
+		</h3>
+	);
 }
