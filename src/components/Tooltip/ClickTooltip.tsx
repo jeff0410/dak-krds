@@ -4,7 +4,7 @@ import { Tooltip, type TooltipProps, tooltipClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import type { ReactNode } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Icon } from "../../Icon";
+import { Icon } from "../Icon";
 import type { TooltipPosition } from "./HoverTooltip.type";
 
 export interface ClickTooltipProps {

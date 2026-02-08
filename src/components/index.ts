@@ -43,3 +43,4 @@ export * from "./TextInput";
 export * from "./TimeSelector";
 export * from "./Title";
 export * from "./ToastBar";
+export * from "./Tooltip";
