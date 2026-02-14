@@ -1,0 +1,118 @@
+.datePicker {
+	display: flex;
+	flex-direction: column;
+}
+
+.titleWrapper {
+	gap: 0.25rem;
+	align-items: center;
+	width: fit-content;
+	line-height: 24px;
+	flex-shrink: 0;
+}
+
+.horizontal {
+	flex-direction: row;
+	align-items: flex-start;
+	white-space: nowrap;
+}
+
+.wrapper {
+	gap: 0.25rem;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	transition: all 0.2s ease;
+}
+
+.iconButton {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	transition: all 0.2s ease;
+	width: calc(var(--input-height, 56px) * 0.4);
+	height: calc(var(--input-height, 56px) * 0.4);
+	min-width: 20px;
+	min-height: 20px;
+	max-width: 32px;
+	max-height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	z-index: 1;
+}
+
+.iconButton:hover {
+	background-color: var(--krds-color-gray-10);
+	opacity: 0.9;
+}
+.iconButton:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px var(--krds-color-primary-50);
+}
+
+.iconButton:disabled {
+	cursor: default;
+	background-color: var(--krds-color-gray-20);
+	opacity: 0.5;
+}
+
+.icon {
+	display: block;
+}
+
+.calendarDropdown {
+	position: absolute;
+	right: 0;
+	z-index: 10;
+	opacity: 0;
+	transform: translateY(-5px);
+	transition: all 0.2s ease;
+	pointer-events: none;
+	display: none;
+}
+.calendarDropdown.open {
+	display: block;
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.calendarDropdown.bottom {
+	top: 100%;
+	transform: translateY(-5px);
+}
+
+.calendarDropdown.bottom.open {
+	transform: translateY(0);
+}
+
+.calendarDropdown.top {
+	bottom: 100%;
+	transform: translateY(5px);
+}
+
+.calendarDropdown.top.open {
+	transform: translateY(0);
+}
+
+.rangeInputContainer {
+	display: flex;
+	gap: 8px;
+	flex: 1;
+	align-items: flex-start;
+	position: relative;
+}
+.rangeInput {
+	flex: 1;
+}
+
+.rangeSeparator {
+	color: var(--krds-color-gray-60);
+	font-weight: 500;
+	flex-shrink: 0;
+	height: var(--input-height, 56px);
+	display: flex;
+	align-items: center;
+}

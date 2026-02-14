@@ -1,0 +1,125 @@
+.container {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+	justify-content: center;
+	width: 184px;
+}
+
+.selector {
+	position: relative;
+}
+
+.selectorButton {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 0 8px;
+	background: transparent;
+	border: none;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--krds-color-gray-90);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	min-width: 70px;
+	justify-content: space-between;
+	font-size: 19px;
+	font-weight: 700;
+	line-height: 30px;
+	font-family: "pretendard GOV";
+}
+
+.selectorButton:hover {
+	background: var(--krds-color-primary-10);
+	border-color: var(--krds-color-primary-10);
+	opacity: 0.9;
+}
+
+.selectorButton:focus {
+	outline: none;
+	box-shadow:
+		0 0 0 2px var(--krds-color-gray-0),
+		0 0 0 4px var(--krds-color-primary-40);
+}
+
+.dropdown {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	background: var(--krds-color-gray-0);
+	border: none;
+	border-radius: 6px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	z-index: 20;
+	max-height: 200px;
+	overflow-y: auto;
+	margin-top: 4px;
+	opacity: 0;
+	transform: translateY(-5px);
+	transition:
+		opacity 0.1s ease,
+		transform 0.1s ease;
+	pointer-events: none;
+}
+
+.dropdown.open {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+.option {
+	display: block;
+	width: 100%;
+	padding: 8px 12px;
+	background: none;
+	border: none;
+	text-align: left;
+	font-size: 14px;
+	color: var(--krds-color-gray-90);
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+	font-family: "pretendard GOV";
+}
+
+.option:hover {
+	background: var(--krds-color-primary-5);
+}
+
+.option.selected {
+	background: var(--krds-color-primary-5);
+	color: var(--krds-color-primary-50);
+	font-weight: 600;
+}
+
+.option:first-child {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+.option:last-child {
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+/* 스크롤바 스타일링 */
+.dropdown::-webkit-scrollbar {
+	width: 6px;
+}
+
+.dropdown::-webkit-scrollbar-track {
+	background: var(--krds-color-secondary-5);
+	border-radius: 3px;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+	background-color: var(--krds-color-secondary-10);
+	border-radius: 2px;
+}
+
+.dropdown::-webkit-scrollbar-thumb:hover {
+	background-color: var(--krds-color-secondary-20);
+}

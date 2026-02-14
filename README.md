@@ -92,6 +92,7 @@ import 'dak-krds/styles.css';
 - **Switch**: 토글 스위치
 - **Select**: 드롭다운 선택
 - **ChipGroup**: 칩 형태의 선택
+- **CitySelect**: 시/도·구/군 지역 선택
 
 #### 입력
 - **TextInput**: 텍스트 입력
@@ -99,6 +100,7 @@ import 'dak-krds/styles.css';
 - **NumberInput**: 숫자 입력
 - **PhoneInput**: 전화번호 입력
 - **DatePicker**: 날짜 선택
+- **CustomDatePicker**: 커스텀 날짜 선택 (단일/범위)
 - **TimeSelector**: 시간 선택
 
 #### 피드백
@@ -106,6 +108,7 @@ import 'dak-krds/styles.css';
 - **Modal**: 모달 다이얼로그
 - **ToastBar**: 토스트 알림
 - **Spinner**: 로딩 인디케이터
+- **ProgressBar**: 진행률 표시
 
 #### 레이아웃 및 표현
 - **Accordion**: 접을 수 있는 콘텐츠
@@ -271,6 +274,65 @@ const options = [
 <TextArea 
   label="설명"
   error="내용이 너무 짧습니다"
+/>
+```
+
+### CitySelect
+
+시/도, 구/군 지역 선택 컴포넌트입니다.
+
+```tsx
+import { CitySelect } from 'dak-krds';
+
+<CitySelect
+  id="region"
+  label="지역"
+  value={{ sido: '서울', gugun: '강남구', sidoCode: '11', gugunCode: '11680', fullName: '서울특별시 강남구' }}
+  onChange={(value) => console.log(value)}
+  useGugun={true}
+/>
+```
+
+### CustomDatePicker
+
+다양한 날짜 패턴을 지원하는 커스텀 날짜 선택 컴포넌트입니다. 단일 선택용 CustomDatePicker와 범위 선택용 CustomRangeDatePicker를 제공합니다.
+
+```tsx
+import { CustomDatePicker, CustomRangeDatePicker } from 'dak-krds';
+
+<CustomDatePicker
+  id="date"
+  label="날짜"
+  value="2024-01-15"
+  onChange={(date) => console.log(date)}
+  pattern="yyyy-MM-dd"
+/>
+
+<CustomRangeDatePicker
+  id="date-range"
+  label="기간"
+  value={['2024-01-01', '2024-01-31']}
+  onChange={(range) => console.log(range)}
+  pattern="yyyy-MM-dd"
+/>
+```
+
+### ProgressBar
+
+진행률을 시각적으로 표시하는 컴포넌트입니다.
+
+```tsx
+import { ProgressBar } from 'dak-krds';
+
+<ProgressBar
+  length={10}
+  currentProgress={3}
+/>
+
+<ProgressBar
+  length={5}
+  currentProgress={5}
+  className="custom-progress"
 />
 ```
 

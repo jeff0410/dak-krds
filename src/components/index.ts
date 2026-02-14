@@ -7,6 +7,7 @@ export * from "./Button";
 export * from "./Checkbox";
 export * from "./ChipGroup";
 export * from "./City";
+export * from "./CustomDatePicker";
 export * from "./DatePicker";
 export * from "./Detail";
 export * from "./Display";
