@@ -1,4 +1,4 @@
-import * as style from "../Switch.module.css";
+import styles from "../Switch.module.css";
 import type { SwitchTrackProps } from "../Switch.type";
 
 export function SwitchTrack({
@@ -40,14 +40,14 @@ export function SwitchTrack({
 				checked={status}
 				onChange={(e) => !disabled && onChange(e.target.checked)}
 				disabled={disabled}
-				className={`${inputClassName} ${style.srOnly}`}
+				className={`${inputClassName} ${styles.srOnly}`}
 				role="switch"
 				aria-label={label ?? "토글 버튼"}
 				aria-checked={status}
 				aria-disabled={disabled}
 			/>
 			<span
-				className={style.switchTrack}
+				className={styles.switchTrack}
 				style={{
 					width: trackWidth,
 					height: trackHeight,
@@ -56,7 +56,7 @@ export function SwitchTrack({
 				tabIndex={-1}
 			>
 				<span
-					className={style.switchThumb}
+					className={styles.switchThumb}
 					style={{
 						left: thumbLeft,
 						width: thumbDiameter,
@@ -65,7 +65,7 @@ export function SwitchTrack({
 				>
 					{useIcon && (
 						<span
-							className={status ? style.checkIcon : style.closeIcon}
+							className={status ? styles.checkIcon : styles.closeIcon}
 							style={{
 								color: status ? checkIconColor : closeIconColor,
 							}}

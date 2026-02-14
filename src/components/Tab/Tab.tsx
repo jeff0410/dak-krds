@@ -1,6 +1,6 @@
 import { Button } from "../Button";
 import { Label } from "../Label";
-import * as style from "./Tab.module.css";
+import styles from "./Tab.module.css";
 import type { InternalTabProps } from "./Tab.type";
 
 // ▶️ 각 개별 탭을 렌더링하는 컴포넌트
@@ -28,20 +28,20 @@ export const Tab = ({
 			size="m"
 			rounded="0"
 			disabled={disabled}
-			className={`${style.tabButton} ${
-				isSelected ? style.tabButtonSelected : style.tabButtonUnselected
+			className={`${styles.tabButton} ${
+				isSelected ? styles.tabButtonSelected : styles.tabButtonUnselected
 			}`}
 		>
 			{/* 탭 라벨 */}
 			<Label
 				id={`tab-label-${label}`}
-				className={style.tabLabel}
+				className={styles.tabLabel}
 				size="l"
 				weight="bold"
 			>
 				{label}
 			</Label>
-			{isSelected && <span className={style.srOnly}>선택됨</span>}
+			{isSelected && <span className={styles.srOnly}>선택됨</span>}
 		</Button>
 	);
 };

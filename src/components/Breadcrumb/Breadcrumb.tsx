@@ -1,7 +1,7 @@
 import type React from "react";
 import { Icon } from "../Icon";
 import { Label } from "../Label";
-import * as style from "./Breadcrumb.module.css";
+import styles from "./Breadcrumb.module.css";
 import type { BreadcrumbProps } from "./Breadcrumb.type";
 import useIsMobile from "./useIsMobile";
 
@@ -13,9 +13,9 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
 	return (
 		<nav aria-label="브레드크럼">
-			<ol className={style.list}>
+			<ol className={styles.list}>
 				{items.map((item, index) => (
-					<li key={item.label} className={style.item}>
+					<li key={item.label} className={styles.item}>
 						{index > 0 && (
 							<Icon icon="ArrowRight" size={20} viewBox="0 0 20 20" />
 						)}
@@ -27,7 +27,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 							}}
 							color="gray-90"
 							size="xs"
-							className={style.label}
+							className={styles.label}
 							tabIndex={0}
 						>
 							{index === 0 && (

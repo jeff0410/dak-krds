@@ -1,20 +1,20 @@
-import * as style from "./Spinner.module.css";
+import styles from "./Spinner.module.css";
 import type { SpinnerProps } from "./Spinner.type.ts";
 
 export const Spinner = ({ size = "m", className = "" }: SpinnerProps) => {
-	const sizeClass = style[size] ?? "";
-	const spinnerClass = `${style.spinner} ${sizeClass} ${className}`.trim();
+	const sizeClass = styles[size] ?? "";
+	const spinnerClass = `${styles.spinner} ${sizeClass} ${className}`.trim();
 
 	return (
 		<div className={spinnerClass} role="status" aria-hidden="true">
 			<svg
-				className={style.svg}
+				className={styles.svg}
 				viewBox="0 0 24 24"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<circle
-					className={style.circle}
+					className={styles.circle}
 					cx="12"
 					cy="12"
 					r="9"
@@ -22,7 +22,7 @@ export const Spinner = ({ size = "m", className = "" }: SpinnerProps) => {
 					strokeWidth="2"
 				/>
 				<path
-					className={style.path}
+					className={styles.path}
 					fill="#256EF4"
 					d="M12 2a10 10 0 0110 10 10 10 0 01-5 8.66l-1-1.73a8 8 0 004-6.93 8 8 0 00-8-8V2z"
 				/>

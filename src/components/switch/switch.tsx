@@ -1,6 +1,6 @@
 import { uniqueId } from "lodash-es";
 import { SwitchLabel, SwitchTrack } from "./components";
-import * as style from "./Switch.module.css";
+import styles from "./Switch.module.css";
 import type { SwitchProps } from "./Switch.type";
 
 /**
@@ -58,7 +58,7 @@ export function Switch({
 	return (
 		<div className={className}>
 			<div
-				className={`${style.switchContainer} ${disabled ? style.disabled : ""}`}
+				className={`${styles.switchContainer} ${disabled ? styles.disabled : ""}`}
 			>
 				{labelPosition === "left" && (
 					<SwitchLabel

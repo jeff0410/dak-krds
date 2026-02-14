@@ -4,7 +4,7 @@ import { DakCheckBox } from "../Checkbox/DakCheckBox";
 import { Icon } from "../Icon";
 import { Label } from "../Label";
 import { StatusLabel } from "../TextInput/StatusLabel";
-import * as style from "./Select.module.css";
+import styles from "./Select.module.css";
 import type { SelectProps } from "./Select.type";
 
 export const Select = ({
@@ -226,15 +226,15 @@ export const Select = ({
 	};
 
 	const sizeClass =
-		size === "s" ? style.sizeS : size === "l" ? style.sizeL : style.sizeM;
+		size === "s" ? styles.sizeS : size === "l" ? styles.sizeL : styles.sizeM;
 	const effectiveState = !isValid && !disabled ? "error" : state;
-	const stateClass = style[effectiveState] ?? style.default;
+	const stateClass = styles[effectiveState] ?? styles.default;
 	const variantClass =
-		variant === "text" ? style.variantText : style.variantBox;
+		variant === "text" ? styles.variantText : styles.variantBox;
 	const directionClass =
 		direction === "horizontal"
-			? style.directionHorizontal
-			: style.directionVertical;
+			? styles.directionHorizontal
+			: styles.directionVertical;
 
 	const listboxId = `${id ?? selectId}-listbox`;
 	const labelId = `${id ?? selectId}-label`;
@@ -245,12 +245,12 @@ export const Select = ({
 
 	return (
 		<div
-			className={`${style.selectWrapper} ${className}`}
+			className={`${styles.selectWrapper} ${className}`}
 			ref={wrapperRef}
 			style={{ width: fixedWidth }}
 		>
 			<div
-				className={`${style.select} ${directionClass}`}
+				className={`${styles.select} ${directionClass}`}
 				style={{ width: "100%" }}
 			>
 				{label && (
@@ -264,12 +264,12 @@ export const Select = ({
 						{label}
 					</Label>
 				)}
-				<div className={style.selectContent}>
+				<div className={styles.selectContent}>
 					{isMulti &&
 					multiDisplayStrategy === "tags" &&
 					selectedOptions.length > 0 ? (
 						<div
-							className={`${style.selectBox} ${sizeClass} ${stateClass} ${variantClass}`}
+							className={`${styles.selectBox} ${sizeClass} ${stateClass} ${variantClass}`}
 							style={{
 								width: "",
 								display: "flex",
@@ -330,7 +330,7 @@ export const Select = ({
 								ref={buttonRef}
 								id={id ?? selectId}
 								type="button"
-								className={style.dropdownToggle}
+								className={styles.dropdownToggle}
 								disabled={disabled || state === "disabled"}
 								onKeyDown={handleKeyDown}
 								onClick={toggleDropdown}
@@ -362,7 +362,7 @@ export const Select = ({
 							ref={buttonRef}
 							id={id ?? selectId}
 							type="button"
-							className={`${style.selectBox} ${sizeClass} ${stateClass} ${variantClass}`}
+							className={`${styles.selectBox} ${sizeClass} ${stateClass} ${variantClass}`}
 							disabled={disabled || state === "disabled"}
 							onKeyDown={handleKeyDown}
 							onClick={toggleDropdown}
@@ -382,13 +382,13 @@ export const Select = ({
 							style={{ width: "" }}
 						>
 							<span
-								className={`${style.value} ${
+								className={`${styles.value} ${
 									size === "s"
-										? style.valueS
+										? styles.valueS
 										: size === "m"
-											? style.valueM
-											: style.valueL
-								} ${!selectedValues.length ? style.placeholder : ""}`}
+											? styles.valueM
+											: styles.valueL
+								} ${!selectedValues.length ? styles.placeholder : ""}`}
 								title={displayText}
 								style={{
 									overflow: "hidden",
@@ -430,10 +430,10 @@ export const Select = ({
 				</div>
 
 				{isOpen && (
-					<div className={style.dropdownWrapper} style={{ width: "100%" }}>
+					<div className={styles.dropdownWrapper} style={{ width: "100%" }}>
 						<div
 							id={listboxId}
-							className={style.dropdown}
+							className={styles.dropdown}
 							ref={listRef}
 							role="listbox"
 							aria-labelledby={label ? labelId : undefined}
@@ -492,7 +492,7 @@ export const Select = ({
 										role="option"
 										aria-selected={isSelected}
 										tabIndex={-1}
-										className={style.option}
+										className={styles.option}
 										title={opt[labelKey]}
 										style={{
 											background: isFocused

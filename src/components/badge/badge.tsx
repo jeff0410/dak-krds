@@ -1,5 +1,5 @@
 import { Label } from "../Label";
-import * as style from "./Badge.module.css";
+import styles from "./Badge.module.css";
 import type { BadgeProps } from "./Badge.type";
 
 export const Badge = ({
@@ -13,11 +13,11 @@ export const Badge = ({
 	radius = "4px",
 }: BadgeProps) => {
 	const variantKey = `${variant}${toPascalCase(appearance)}`;
-	const variantClass = style[variantKey] ?? "";
+	const variantClass = styles[variantKey] ?? "";
 
 	return (
 		<output
-			className={`${style.badge} ${variantClass} ${className}`}
+			className={`${styles.badge} ${variantClass} ${className}`}
 			style={{
 				width,
 				height,
@@ -28,7 +28,7 @@ export const Badge = ({
 			<Label
 				id={`badge-${label}`}
 				size={size}
-				className={`${style.normalWeight}`}
+				className={`${styles.normalWeight}`}
 			>
 				{label}
 			</Label>

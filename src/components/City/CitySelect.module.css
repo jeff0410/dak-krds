@@ -1,0 +1,13 @@
+.citySelect {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+/* 모바일 반응형 - 세로 배치 */
+@media (max-width: 768px) {
+	.citySelect {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}

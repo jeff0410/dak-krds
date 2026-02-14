@@ -1,7 +1,7 @@
 import type React from "react";
 import { useRef, useState } from "react";
 import { Label } from "../Label";
-import * as style from "./Accordion.module.css";
+import styles from "./Accordion.module.css";
 import type {
 	AccordionProps,
 	ChevronIconProps,
@@ -14,7 +14,7 @@ const ChevronIcon: React.FC<ChevronIconProps> = ({ isOpen }) => (
 		viewBox="0 0 24 24"
 		width="24"
 		height="24"
-		className={`${style.chevronIcon} ${isOpen ? style.chevronIconOpen : ""}`}
+		className={`${styles.chevronIcon} ${isOpen ? styles.chevronIconOpen : ""}`}
 		aria-hidden="true"
 	>
 		<path
@@ -39,10 +39,10 @@ const AccordionItem: React.FC<InternalAccordionItemProps> = ({
 	const contentId = `accordion-content-${typeof title === "string" ? title.replace(/\s+/g, "-").toLowerCase() : id}`;
 
 	return (
-		<div className={style.accordionItem} data-isopen={isOpen.toString()}>
+		<div className={styles.accordionItem} data-isopen={isOpen.toString()}>
 			<button
 				type="button"
-				className={style.accordionButton}
+				className={styles.accordionButton}
 				onClick={onClick}
 				aria-expanded={isOpen}
 				aria-controls={contentId}
@@ -51,22 +51,22 @@ const AccordionItem: React.FC<InternalAccordionItemProps> = ({
 				<Label id={buttonId} size={size} weight="bold" className={className}>
 					{title}
 				</Label>
-				<span className={style.chevronContainer}>
+				<span className={styles.chevronContainer}>
 					<ChevronIcon isOpen={isOpen} />
 				</span>
-				<span className={style.srOnly}>{isOpen ? "접기" : "펼치기"}</span>
+				<span className={styles.srOnly}>{isOpen ? "접기" : "펼치기"}</span>
 			</button>
 			<section
 				ref={contentRef}
 				aria-labelledby={buttonId}
 				id={contentId}
-				className={style.accordionContent}
+				className={styles.accordionContent}
 				style={{
 					maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px",
 				}}
 				inert={!isOpen ? true : undefined}
 			>
-				<div className={`${style.accordionContentInner} ${childrenClassName}`}>
+				<div className={`${styles.accordionContentInner} ${childrenClassName}`}>
 					{children}
 				</div>
 			</section>
@@ -89,7 +89,7 @@ export const Accordion: React.FC<AccordionProps> = ({
 	return (
 		<div
 			{...props}
-			className={`${className} ${style.accordion} ${style[variant]}`}
+			className={`${className} ${styles.accordion} ${styles[variant]}`}
 		>
 			{items.map((item, index) => (
 				<AccordionItem
@@ -103,7 +103,7 @@ export const Accordion: React.FC<AccordionProps> = ({
 					isOpen={openIndex === index}
 					size={item.size || "m"}
 					onClick={() => handleItemClick(index)}
-					className={item.className || style.accordionTitle}
+					className={item.className || styles.accordionTitle}
 				/>
 			))}
 		</div>

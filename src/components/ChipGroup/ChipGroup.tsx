@@ -2,7 +2,7 @@ import { uniqueId } from "lodash-es";
 import type { KeyboardEvent } from "react";
 import { Icon } from "../Icon";
 import { Label } from "../Label";
-import * as style from "./ChipGroup.module.css";
+import styles from "./ChipGroup.module.css";
 import type { ChipGroupProps, ChipProps } from "./ChipGroup.type";
 
 export const Chip = ({
@@ -41,11 +41,11 @@ export const Chip = ({
 		}
 	};
 
-	const wrapperClass = [style.formChip, style[size]].join(" ");
+	const wrapperClass = [styles.formChip, styles[size]].join(" ");
 	const labelClass = [
-		style.outline,
-		checked && style.checked,
-		disabled && style.disabled,
+		styles.outline,
+		checked && styles.checked,
+		disabled && styles.disabled,
 	]
 		.filter(Boolean)
 		.join(" ");
@@ -58,7 +58,7 @@ export const Chip = ({
 		<div className={wrapperClass}>
 			<input
 				type={type === "multi" ? "checkbox" : "radio"}
-				className={style.radio}
+				className={styles.radio}
 				id={id}
 				checked={checked}
 				disabled={disabled}
@@ -80,7 +80,7 @@ export const Chip = ({
 					<Icon
 						icon={iconName}
 						size={16}
-						className={style.checkIcon}
+						className={styles.checkIcon}
 						aria-hidden="true"
 					/>
 				)}
@@ -102,7 +102,7 @@ export const ChipGroup = ({
 	className = "",
 	height,
 }: ChipGroupProps) => {
-	const chipGroupClass = [style.chipGroup, className].filter(Boolean).join(" ");
+	const chipGroupClass = [styles.chipGroup, className].filter(Boolean).join(" ");
 
 	return (
 		<div className={chipGroupClass}>

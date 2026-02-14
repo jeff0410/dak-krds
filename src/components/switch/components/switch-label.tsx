@@ -1,5 +1,5 @@
 import { Label } from "../../Label";
-import * as style from "../Switch.module.css";
+import styles from "../Switch.module.css";
 import type { SwitchLabelProps } from "../Switch.type";
 
 export function SwitchLabel({
@@ -16,7 +16,7 @@ export function SwitchLabel({
 	if (!label) return null;
 
 	const commonProps = {
-		className: `${className} ${position === "left" ? style.labelMarginRight : style.labelMarginLeft}`,
+		className: `${className} ${position === "left" ? styles.labelMarginRight : styles.labelMarginLeft}`,
 		onClick: isClickable && !disabled ? onClick : undefined,
 		style: {
 			cursor: isClickable && !disabled ? "pointer" : "default",

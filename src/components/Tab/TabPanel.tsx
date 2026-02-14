@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import * as style from "./Tab.module.css";
+import styles from "./Tab.module.css";
 
 interface TabPanelProps {
 	children: ReactNode;
@@ -13,8 +13,8 @@ export function TabPanel({ children, id, tabId, isSelected }: TabPanelProps) {
 		<div
 			role="tabpanel"
 			id={id}
-			aria-labelledby={tabId} // 연결된 탭 ID
-			className={`${isSelected ? "" : style.hidden} ${style.tabpannelLayout}`} // 선택된 탭만 표시
+			aria-labelledby={tabId}
+			className={`${isSelected ? "" : styles.hidden} ${styles.tabpannelLayout}`}
 		>
 			{children}
 		</div>

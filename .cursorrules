@@ -70,13 +70,9 @@ export { Sample } from "./sample";
 ## button 컴포넌트 규칙
  - button 컴포넌트는 반드시 button 태그를 사용하세요. type은 button으로 고정입니다.
 
-## 커밋 규칙
- - 커밋은 기능 구현 후 항상 부분 부분 기능별 오류 수정별 커밋을 해야 한다.
- - 커밋 메시지는 기능 구현 내용을 잘 설명하는 메시지로 작성하세요.
- - Feat: 신규기능 추가
- - Fix: 오류 수정
- - Refactor: 리팩토링
- - Chore: 빌드 및 테스트 관련 작업
- - Docs: 문서 수정
- - Style: 스타일 변경
- - Test: 테스트 코드 추가 또는 수정
+
+ ## style 규칙
+ - style 파일은 반드시 CSS Modules를 사용하세요.
+ - style 파일은 반드시 파스칼케이스를 사용하세요.
+ - import styles from "./컴포넌트명.module.css";
+ - styles.className 형식으로 사용하세요.

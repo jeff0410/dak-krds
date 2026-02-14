@@ -4,7 +4,7 @@ import type React from "react";
 import type { KeyboardEvent, MouseEvent } from "react";
 import { Icon } from "../Icon";
 import { Label } from "../Label/Label";
-import * as style from "./Tag.module.css";
+import styles from "./Tag.module.css";
 import type { TagProps } from "./Tag.type";
 
 export const Tag: React.FC<TagProps> = ({
@@ -39,27 +39,27 @@ export const Tag: React.FC<TagProps> = ({
 	};
 	const fontSizeClass =
 		size === "s"
-			? style.textSmall
+			? styles.textSmall
 			: size === "m"
-				? style.textMedium
-				: style.textLarge;
+				? styles.textMedium
+				: styles.textLarge;
 
-	const sizeClass = style[size];
-	const variantClass = isTextTag ? style.text : style.removable;
+	const sizeClass = styles[size];
+	const variantClass = isTextTag ? styles.text : styles.removable;
 	const labelCursorClass =
-		disabled || isTextTag ? style.cursorDefault : style.cursorPointer;
-	const buttonCursorClass = disabled ? style.cursorNotAllowed : "";
+		disabled || isTextTag ? styles.cursorDefault : styles.cursorPointer;
+	const buttonCursorClass = disabled ? styles.cursorNotAllowed : "";
 
 	return (
 		<div
-			className={`${style.tag} ${sizeClass} ${variantClass} ${className}`}
+			className={`${styles.tag} ${sizeClass} ${variantClass} ${className}`}
 			tabIndex={disabled ? -1 : 0}
 			onKeyDown={handleKeyDown}
 		>
 			<Label
 				id={`tag-label-${label}`}
 				weight="regular"
-				className={`${fontSizeClass} ${style.normalWeight} ${labelCursorClass}`}
+				className={`${fontSizeClass} ${styles.normalWeight} ${labelCursorClass}`}
 				color={disabled ? "gray-50" : "gray-90"}
 				style={{ paddingBottom: 0 }}
 			>
@@ -68,7 +68,7 @@ export const Tag: React.FC<TagProps> = ({
 
 			{showDelete && (
 				<span
-					className={`${style.deleteButton} ${buttonCursorClass}`}
+					className={`${styles.deleteButton} ${buttonCursorClass}`}
 					onClick={handleDelete}
 					onKeyDown={handleDeleteKeyDown}
 				>

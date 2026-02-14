@@ -1,6 +1,6 @@
 import { type KeyboardEvent, useState } from "react";
 import { Tab } from "./Tab";
-import * as style from "./Tab.module.css";
+import styles from "./Tab.module.css";
 import type { TabsProps } from "./Tab.type";
 import { TabPanel } from "./TabPanel";
 
@@ -87,15 +87,15 @@ export const Tabs = ({
 	};
 
 	return (
-		<div className={style.tabsContainer} style={{ width, gap }}>
+		<div className={styles.tabsContainer} style={{ width, gap }}>
 			{/* 탭 리스트 영역 - 상단 고정 */}
 			<div
 				role="tablist"
 				aria-label="탭 목록"
 				style={{ height: tabHeight }}
-				className={`${style.tabList} ${style[`variant${variant[0].toUpperCase()}${variant.slice(1)}`]} ${tabListPosition}`}
+				className={`${styles.tabList} ${styles[`variant${variant[0].toUpperCase()}${variant.slice(1)}`]} ${tabListPosition}`}
 			>
-				<div className={style.tabListInner}>
+				<div className={styles.tabListInner}>
 					{tabs.map((tab, index) => (
 						<Tab
 							key={tab.id}
@@ -110,13 +110,13 @@ export const Tabs = ({
 					))}
 				</div>
 				{sideButton && (
-					<div className={style.sideButtonContainer}>{sideButton}</div>
+					<div className={styles.sideButtonContainer}>{sideButton}</div>
 				)}
 			</div>
 
 			{/* 탭 패널 영역 - 스크롤 가능 */}
 			<div
-				className={style.tabContentContainer}
+				className={styles.tabContentContainer}
 				style={{
 					overflowX: overflowX ?? "hidden",
 					overflowY: overflowY ?? "auto",
