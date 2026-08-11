@@ -5,7 +5,7 @@ import { Label, StatusLabel } from "../index";
 import styles from "./TextArea.module.css";
 import type { TextAreaProps } from "./TextArea.type";
 
-/* eslint-disable no-undef */
+ 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	(
 		{

@@ -50,5 +50,5 @@ export type TextAreaProps = {
 	height?: string | number;
 	minHeight?: string | number;
 	maxHeight?: string | number;
-	/* eslint-disable no-undef */
+	 
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;

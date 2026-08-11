@@ -2,7 +2,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import styles from '../../CustomDatePicker.module.css';
 import { CustomEventCalendar } from '../EventCalendar';
-import type { LocalDate } from '@js-joda/core';
+import { LocalDate } from '@js-joda/core';
 
 interface CustomDatePickerCalendarProps {
   type: 'single' | 'range';
@@ -40,7 +40,7 @@ export function CustomDatePickerCalendar({
 }: CustomDatePickerCalendarProps) {
   const handleDateChange = (dateString: string) => {
     const [year, month, day] = dateString.split('-').map(Number);
-    const localDate = require('@js-joda/core').LocalDate.of(year, month, day);
+    const localDate = LocalDate.of(year, month, day);
     onDateSelect(localDate);
     onConfirm();
   };

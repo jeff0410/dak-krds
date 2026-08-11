@@ -280,13 +280,6 @@ export const DakFileUpload = ({
 											src={previewUrl}
 											alt={fileItem.name}
 											className={styles.preview}
-											onLoad={() => {
-												if (
-													fileItem.type === "local" &&
-													previewUrl.startsWith("blob:")
-												) {
-												}
-											}}
 										/>
 									)}
 
