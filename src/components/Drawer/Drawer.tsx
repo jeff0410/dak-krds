@@ -16,13 +16,16 @@ export function Drawer({
 	const [closing, setClosing] = useState(true);
 	const appContainer = document.getElementById(parentId);
 	useEffect(() => {
-		if (appContainer) {
-			appContainer.style.maxWidth = open ? "100dvw" : "initial";
-			appContainer.style.maxHeight = open ? "100dvh" : "initial";
-			appContainer.style.overflow = open ? "hidden" : "initial";
+		const container = document.getElementById(parentId);
+		if (container) {
+			container.style.maxWidth = open ? "100dvw" : "initial";
+			container.style.maxHeight = open ? "100dvh" : "initial";
+			container.style.overflow = open ? "hidden" : "initial";
 		}
-		setTimeout(() => setClosing(!open), 230);
-	}, [open, appContainer]);
+
+		const closingTimer = setTimeout(() => setClosing(!open), 230);
+		return () => clearTimeout(closingTimer);
+	}, [open, parentId]);
 
 	if (!appContainer) return null;
 	return (
@@ -62,10 +65,11 @@ export function Drawer({
 									type={"button"}
 									onClick={() => {
 										setOpen(false);
-										if (appContainer) {
-											appContainer.style.maxWidth = "initial";
-											appContainer.style.maxHeight = "initial";
-											appContainer.style.overflow = "initial";
+										const container = document.getElementById(parentId);
+										if (container) {
+											container.style.maxWidth = "initial";
+											container.style.maxHeight = "initial";
+											container.style.overflow = "initial";
 										}
 									}}
 								>

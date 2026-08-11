@@ -14,7 +14,7 @@ export const RedButton = ({
 			variant="danger"
 			label="삭제"
 			width="fit-content"
-			onClick={onClick ? () => onClick({} as any) : undefined}
+			onClick={onClick}
 		>
 			{children}
 		</Button>

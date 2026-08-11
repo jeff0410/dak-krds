@@ -6,6 +6,14 @@ interface UseModalCustomEventListenerProps {
 	modalList: ModalListProps[];
 	setModalList: Dispatch<SetStateAction<ModalListProps[]>>;
 }
+
+const cb =
+	<T>(event: Event) =>
+	(handler: (e: T) => void) => {
+		const eventData = event as CustomEvent<T>;
+		return handler(eventData.detail);
+	};
+
 export const useModalCustomEventListener = ({
 	modalList,
 	setModalList,
@@ -15,41 +23,34 @@ export const useModalCustomEventListener = ({
 		setModalList,
 	});
 
-	const cb =
-		<T>(event: Event) =>
-		(handler: (e: T) => void) => {
-			const eventData = event as CustomEvent<T>;
-			return handler(eventData.detail);
-		};
-
-	const pushCb = (e: Event) =>
-		cb<ModalListProps>(e)((newItem) =>
-			setModalList((prev) => prev.concat(newItem)),
-		);
-
-	const popCb = (e: Event) => cb(e)(hideLatestModal);
-
-	const popByIdCb = (e: Event) => cb<string>(e)(hideModalById);
-
-	const popAllCb = (e: Event) => cb(e)(hideAllModal);
-
 	useEffect(() => {
+		const pushCb = (e: Event) =>
+			cb<ModalListProps>(e)((newItem) =>
+				setModalList((prev) => prev.concat(newItem)),
+			);
+
 		document.addEventListener("push", pushCb);
 		return () => document.removeEventListener("push", pushCb);
-	}, [pushCb]);
+	}, [setModalList]);
 
 	useEffect(() => {
+		const popCb = (e: Event) => cb(e)(hideLatestModal);
+
 		document.addEventListener("pop", popCb);
 		return () => document.removeEventListener("pop", popCb);
-	}, [popCb]);
+	}, [hideLatestModal]);
 
 	useEffect(() => {
+		const popByIdCb = (e: Event) => cb<string>(e)(hideModalById);
+
 		document.addEventListener("popById", popByIdCb);
 		return () => document.removeEventListener("popById", popByIdCb);
-	}, [popByIdCb]);
+	}, [hideModalById]);
 
 	useEffect(() => {
+		const popAllCb = (e: Event) => cb(e)(hideAllModal);
+
 		document.addEventListener("popAll", popAllCb);
 		return () => document.removeEventListener("popAll", popAllCb);
-	}, [popAllCb]);
+	}, [hideAllModal]);
 };

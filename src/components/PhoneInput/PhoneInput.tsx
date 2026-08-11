@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { getColor } from "src/styles/color/color";
 import { Label, TextInput } from "../index";
 import styles from "./PhoneInput.module.css";
@@ -24,11 +24,9 @@ export function PhoneInput({
 	className,
 	...props
 }: PhoneInputProps) {
-	const inputRefs = [
-		useRef<HTMLInputElement>(null),
-		useRef<HTMLInputElement>(null),
-		useRef<HTMLInputElement>(null),
-	];
+	const firstInputRef = useRef<HTMLInputElement>(null);
+	const secondInputRef = useRef<HTMLInputElement>(null);
+	const thirdInputRef = useRef<HTMLInputElement>(null);
 
 	const { className: firstClassName, ...firstInputProps } =
 		inputProps?.[0] ?? {};
@@ -37,12 +35,13 @@ export function PhoneInput({
 	const { className: thirdClassName, ...thirdInputProps } =
 		inputProps?.[2] ?? {};
 
-	const [fields, setFields] = useState(["", "", ""]);
-	useEffect(() => {
-		if (value !== fields.join("")) {
-			setFields(splitPhoneNumber(value));
-		}
-	}, [value, fields]);
+	const [fields, setFields] = useState(() => splitPhoneNumber(value));
+	const [syncedValue, setSyncedValue] = useState(value);
+
+	if (syncedValue !== value) {
+		setSyncedValue(value);
+		setFields(splitPhoneNumber(value));
+	}
 
 	const handleChange = (idx: number, v: string) => {
 		const num = v.replace(/\D/g, "");
@@ -55,7 +54,7 @@ export function PhoneInput({
 		setFields(next);
 		setValue(next.join(""));
 
-		const nextRef = inputRefs[idx + 1];
+		const nextRef = idx === 0 ? secondInputRef : thirdInputRef;
 		if (
 			nextRef?.current &&
 			((idx === 0 && next[0].length === 3) ||
@@ -100,7 +99,7 @@ export function PhoneInput({
 			<div className={styles.inputGroup}>
 				<TextInput
 					id={`${id}-0`}
-					ref={inputRefs[0]}
+					ref={firstInputRef}
 					value={fields[0]}
 					setValue={(v) => handleChange(0, v)}
 					maxLength={3}
@@ -121,7 +120,7 @@ export function PhoneInput({
 				<TextInput
 					id={`${id}-1`}
 					titleAttr={`${title ?? "전화번호"} 중간자리`}
-					ref={inputRefs[1]}
+					ref={secondInputRef}
 					value={fields[1]}
 					setValue={(v) => handleChange(1, v)}
 					maxLength={4}
@@ -141,7 +140,7 @@ export function PhoneInput({
 				<TextInput
 					id={`${id}-2`}
 					titleAttr={`${title ?? "전화번호"} 끝자리`}
-					ref={inputRefs[2]}
+					ref={thirdInputRef}
 					value={fields[2]}
 					setValue={(v) => handleChange(2, v)}
 					maxLength={4}

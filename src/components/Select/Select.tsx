@@ -1,5 +1,5 @@
 import type { CSSProperties, KeyboardEvent } from "react";
-import { useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { DakCheckBox } from "../Checkbox/DakCheckBox";
 import { Icon } from "../Icon";
 import { Label } from "../Label";
@@ -99,10 +99,10 @@ export const Select = ({
 		setIsOpen((prev) => !prev);
 	};
 
-	const closeDropdown = () => {
+	const closeDropdown = useCallback(() => {
 		setIsOpen(false);
 		setFocusedIndex(null);
-	};
+	}, []);
 
 	const commitSingleSelection = (selectedValue: string) => {
 		if (disabled || state === "disabled" || state === "view") return;
@@ -130,15 +130,6 @@ export const Select = ({
 			toggleMultiValue(selectedValue);
 		} else {
 			commitSingleSelection(selectedValue);
-		}
-	};
-
-	const handleClickOutside = (event: MouseEvent) => {
-		if (
-			wrapperRef.current &&
-			!wrapperRef.current.contains(event.target as Node)
-		) {
-			closeDropdown();
 		}
 	};
 
@@ -199,9 +190,18 @@ export const Select = ({
 	};
 
 	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				wrapperRef.current &&
+				!wrapperRef.current.contains(event.target as Node)
+			) {
+				closeDropdown();
+			}
+		};
+
 		document.addEventListener("mousedown", handleClickOutside);
 		return () => document.removeEventListener("mousedown", handleClickOutside);
-	}, [handleClickOutside]);
+	}, [closeDropdown]);
 
 	useEffect(() => {
 		if (isOpen && focusedIndex !== null && listRef.current) {

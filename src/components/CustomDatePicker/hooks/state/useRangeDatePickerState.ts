@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   autoFormatDate,
   convertToDateRange,
@@ -39,9 +39,12 @@ export const useCustomRangeDatePickerState = (
     [pattern],
   );
 
-  useEffect(() => {
+  const [syncedValue, setSyncedValue] = useState(value);
+
+  if (syncedValue !== value) {
+    setSyncedValue(value);
     syncState(value);
-  }, [value, syncState]);
+  }
 
   const formatMinDate = normalizeDate(minDate, pattern);
   const formatMaxDate = normalizeDate(maxDate, pattern);

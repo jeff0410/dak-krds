@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Icon } from "../Icon";
 import styles from "./Carousel.module.css";
 import type { CarouselProps } from "./Carousel.type";
@@ -11,10 +11,12 @@ export const Carousel = <T,>({
 	disabled = false,
 }: CarouselProps<T>) => {
 	const [currentIndex, setCurrentIndex] = useState(initialIndex);
+	const [syncedInitialIndex, setSyncedInitialIndex] = useState(initialIndex);
 
-	useEffect(() => {
+	if (syncedInitialIndex !== initialIndex) {
+		setSyncedInitialIndex(initialIndex);
 		setCurrentIndex(initialIndex);
-	}, [initialIndex]);
+	}
 
 	const handlePrev = () => {
 		if (currentIndex > 0) {

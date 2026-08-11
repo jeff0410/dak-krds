@@ -103,8 +103,8 @@ export const RadioButton = ({
 					color={disabled ? "gray-40" : "gray-90"}
 					className={`${disabled ? styles.labelDisabled : styles.label} ${styles[`label_${size}`]}`}
 					onClick={() => {
-						if (onChange) {
-							!disabled && onChange(value);
+						if (onChange && !disabled) {
+							onChange(value);
 						}
 					}}
 				>

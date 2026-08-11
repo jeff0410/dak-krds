@@ -44,24 +44,47 @@ export function useCustomYearMonthSelector({
     }
   };
 
+  const [syncedYearOpen, setSyncedYearOpen] = useState(isYearOpen);
+  const [syncedMonthOpen, setSyncedMonthOpen] = useState(isMonthOpen);
+
+  if (syncedYearOpen !== isYearOpen) {
+    setSyncedYearOpen(isYearOpen);
+    setYearDropdownOpenClass(false);
+  }
+
+  if (syncedMonthOpen !== isMonthOpen) {
+    setSyncedMonthOpen(isMonthOpen);
+    setMonthDropdownOpenClass(false);
+  }
+
   useEffect(() => {
-    if (isYearOpen) {
-      setYearDropdownOpenClass(false);
-      setTimeout(() => setYearDropdownOpenClass(true), 20);
-      setTimeout(() => scrollToSelected(yearDropdownRef, currentDate.year(), years), 0);
-    } else {
-      setYearDropdownOpenClass(false);
-    }
+    if (!isYearOpen) return;
+
+    const openTimer = setTimeout(() => setYearDropdownOpenClass(true), 20);
+    const scrollTimer = setTimeout(
+      () => scrollToSelected(yearDropdownRef, currentDate.year(), years),
+      0,
+    );
+
+    return () => {
+      clearTimeout(openTimer);
+      clearTimeout(scrollTimer);
+    };
   }, [isYearOpen, currentDate, years]);
 
   useEffect(() => {
-    if (isMonthOpen) {
-      setMonthDropdownOpenClass(false);
-      setTimeout(() => setMonthDropdownOpenClass(true), 20);
-      setTimeout(() => scrollToSelected(monthDropdownRef, currentDate.monthValue(), months), 0);
-    } else {
-      setMonthDropdownOpenClass(false);
-    }
+    if (!isMonthOpen) return;
+
+    const openTimer = setTimeout(() => setMonthDropdownOpenClass(true), 20);
+    const scrollTimer = setTimeout(
+      () => scrollToSelected(monthDropdownRef, currentDate.monthValue(), months),
+      0,
+    );
+
+    return () => {
+      clearTimeout(openTimer);
+      clearTimeout(scrollTimer);
+    };
   }, [isMonthOpen, currentDate, months]);
 
   useEffect(() => {

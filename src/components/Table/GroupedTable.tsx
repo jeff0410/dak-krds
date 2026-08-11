@@ -1,6 +1,7 @@
 /** biome-ignore-all lint/a11y/noStaticElementInteractions: <explanation> */
 
 import type { MRT_RowData } from "material-react-table";
+import type { ReactNode } from "react";
 import { useMemo } from "react";
 import type { GroupedTableProps } from "./GroupedTable.type";
 import { Table } from "./Table";
@@ -15,7 +16,7 @@ function detectMergeColumns<T extends MRT_RowData>(
 	let currentGroup: T[] = [];
 
 	data.forEach((row) => {
-		const rowSpan = (row as any)[rowSpanKey] || 0;
+		const rowSpan = (row as Record<string, number>)[rowSpanKey] || 0;
 
 		if (rowSpan > 0) {
 			if (currentGroup.length > 0) {
@@ -62,10 +63,10 @@ function processRowSpanData<T extends MRT_RowData>(
 	rowSpanKey: string = "__rowSpan",
 ): T[] {
 	return data.map((row, index) => {
-		const rowSpan = (row as any)[rowSpanKey] || 0;
+		const rowSpan = (row as Record<string, number>)[rowSpanKey] || 0;
 		const nextRow = data[index + 1];
 		const isLastInGroup =
-			rowSpan === 0 && (!nextRow || (nextRow as any)[rowSpanKey] > 0);
+			rowSpan === 0 && (!nextRow || (nextRow as Record<string, number>)[rowSpanKey] > 0);
 
 		return {
 			...row,
@@ -94,7 +95,7 @@ export function GroupedTable<T extends MRT_RowData>({
 		if (
 			rowSpanKey &&
 			data.length > 0 &&
-			(data[0] as any)[rowSpanKey] !== undefined
+			(data[0] as Record<string, unknown>)[rowSpanKey] !== undefined
 		) {
 			return detectMergeColumns(data, rowSpanKey);
 		}
@@ -106,7 +107,7 @@ export function GroupedTable<T extends MRT_RowData>({
 		if (
 			rowSpanKey &&
 			data.length > 0 &&
-			(data[0] as any)[rowSpanKey] !== undefined
+			(data[0] as Record<string, unknown>)[rowSpanKey] !== undefined
 		) {
 			return processRowSpanData(data, rowSpanKey);
 		}
@@ -124,9 +125,9 @@ export function GroupedTable<T extends MRT_RowData>({
 			if (detectedMergeColumns.includes(accessorKey)) {
 				return {
 					...column,
-					Cell: (props: any) => {
+					Cell: (props: Parameters<NonNullable<typeof column.Cell>>[0]) => {
 						const { cell } = props;
-						const value = cell.getValue();
+						const value = cell.getValue() as ReactNode;
 						const original = props.row.original as T & {
 							_rowSpan?: number;
 							_isGrouped?: boolean;

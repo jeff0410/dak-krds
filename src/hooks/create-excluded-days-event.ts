@@ -176,7 +176,7 @@ export const createExcludedDaysEvent = (
 		const segmentEnd = new Date(end);
 		segmentEnd.setDate(segmentEnd.getDate() + 1);
 		events.push({
-			id: `${id}-${segmentId++}`,
+			id: `${id}-${segmentId}`,
 			title,
 			start: segmentStart.toISOString().split("T")[0],
 			end: segmentEnd.toISOString().split("T")[0],

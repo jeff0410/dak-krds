@@ -1,5 +1,5 @@
 import { DateTimeFormatter, LocalDate } from "@js-joda/core";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useRangeValidation } from "./useRangeValidation";
 
 /**
@@ -62,7 +62,10 @@ export const useRangeDatePickerState = (
 			: "",
 	);
 
-	useEffect(() => {
+	const [syncedInitialValue, setSyncedInitialValue] = useState(initialValue);
+
+	if (syncedInitialValue !== initialValue) {
+		setSyncedInitialValue(initialValue);
 		const range = convertType(initialValue);
 		setSelectedRange(range);
 		setStartInputValue(
@@ -75,7 +78,7 @@ export const useRangeDatePickerState = (
 				? range[1].format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
 				: "",
 		);
-	}, [initialValue]);
+	}
 
 	const formatMinDate = minDate
 		? typeof minDate === "string"

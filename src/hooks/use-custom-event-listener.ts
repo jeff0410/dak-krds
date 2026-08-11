@@ -33,5 +33,6 @@ export const useCustomEventListener = <T extends string, P = void>({
     };
     customEventService.subscribe<T>(eventType, cb);
     return () => customEventService.unSubscribe<T>(eventType, cb);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- depths 는 호출자가 주입하는 추가 의존성 배열이라 정적으로 검증할 수 없다
   }, [eventType, handler, ...depths]);
 };

@@ -1,5 +1,5 @@
 import { DayOfWeek, LocalDate, TemporalAdjusters } from "@js-joda/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getFirstDayAndLastDayOfMonth } from "src/hooks";
 import type { DayInfo } from "../DatePicker.type";
 
@@ -29,11 +29,14 @@ export const useCalendar = ({
 	const today = LocalDate.now();
 	const [currentDate, setCurrentDate] = useState(selectedDate || today);
 
-	useEffect(() => {
+	const [syncedSelectedDate, setSyncedSelectedDate] = useState(selectedDate);
+
+	if (syncedSelectedDate !== selectedDate) {
+		setSyncedSelectedDate(selectedDate);
 		if (selectedDate) {
 			setCurrentDate(selectedDate);
 		}
-	}, [selectedDate]);
+	}
 
 	const goToPrevMonth = () => {
 		setCurrentDate(currentDate.minusMonths(1));

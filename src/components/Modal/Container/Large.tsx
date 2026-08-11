@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { forwardRef, useCallback } from "react";
+import { forwardRef } from "react";
 import { Icon } from "../../index";
 import { Backdrop } from "../BackDrop";
 import { EscKeyEventHandler } from "../KeyEventHandler";
@@ -28,12 +28,9 @@ export const LargeModalContainer = forwardRef<
 			const customEvent = new CustomEvent("pop");
 			document.dispatchEvent(customEvent);
 		};
-		const onEscKeyDown = useCallback(_onEscKeyDown ?? _onClose ?? onClose, []);
+		const onEscKeyDown = _onEscKeyDown ?? _onClose ?? onClose;
 
-		const onClickBackdrop = useCallback(
-			_onClickBackdrop ?? _onClose ?? onClose,
-			[],
-		);
+		const onClickBackdrop = _onClickBackdrop ?? _onClose ?? onClose;
 
 		const onClick = _onClose ?? onClose;
 

@@ -3,7 +3,7 @@
 import { Tooltip, type TooltipProps, tooltipClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import type { ReactNode } from "react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Icon } from "../Icon";
 import type { TooltipPosition } from "./HoverTooltip.type";
 
@@ -103,9 +103,15 @@ export const ClickTooltip = ({
 	const triggerRef = useRef<HTMLButtonElement>(null);
 	const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-	const tooltipId = useMemo(() => {
-		return id || `tooltip-${Math.random().toString(36).substr(2, 9)}`;
-	}, [id]);
+	const generatedTooltipId = useId();
+	const tooltipId = id || `tooltip-${generatedTooltipId}`;
+
+	const handleClose = () => {
+		setOpen(false);
+		setTimeout(() => {
+			triggerRef.current?.focus();
+		}, 0);
+	};
 
 	useEffect(() => {
 		if (tooltipId) {
@@ -144,14 +150,6 @@ export const ClickTooltip = ({
 		"left-top": "left-start",
 		"left-center": "left",
 		"left-bottom": "left-end",
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-		// 닫힐 때 원래 버튼으로 포커스 복귀
-		setTimeout(() => {
-			triggerRef.current?.focus();
-		}, 0);
 	};
 
 	const handleToggle = () => {

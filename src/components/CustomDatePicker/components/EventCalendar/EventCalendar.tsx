@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Icon } from '../../../index';
 import { CustomYearMonthSelector } from '../Calendar/YearMonthSelector/YearMonthSelector';
 import styles from './EventCalendar.module.css';
@@ -26,10 +26,12 @@ export function CustomEventCalendar({
   ...props
 }: CustomEventCalendarProps) {
   const [selectedValue, setSelectedValue] = useState(value);
+  const [syncedValue, setSyncedValue] = useState(value);
 
-  useEffect(() => {
+  if (syncedValue !== value) {
+    setSyncedValue(value);
     setSelectedValue(value);
-  }, [value]);
+  }
 
   const selectedDate = useMemo(() => {
     if (!selectedValue) {

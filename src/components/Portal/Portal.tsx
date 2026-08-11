@@ -16,6 +16,7 @@ export const Portal = ({
 
 	useEffect(() => {
 		const parent = container || document.body;
+		// eslint-disable-next-line react-hooks/immutability -- container 는 데이터가 아니라 포탈을 붙일 실제 DOM 노드이며, 위치 기준을 잡기 위한 의도된 조작이다
 		parent.style.position = "relative";
 
 		if (parent instanceof HTMLElement) {
