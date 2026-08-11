@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   autoFormatDate,
   formatDateToString,
@@ -26,11 +26,17 @@ export const useCustomDatePickerState = (
     tempSelectedDate ? formatDateToString(tempSelectedDate, pattern) : '',
   );
 
-  useEffect(() => {
+  const [syncedSource, setSyncedSource] = useState({ initialValue, pattern });
+
+  if (
+    syncedSource.initialValue !== initialValue ||
+    syncedSource.pattern !== pattern
+  ) {
+    setSyncedSource({ initialValue, pattern });
     const nextDate = normalizeDate(initialValue, pattern);
     setTempSelectedDate(nextDate);
     setTempInputValue(nextDate ? formatDateToString(nextDate, pattern) : '');
-  }, [initialValue, pattern]);
+  }
 
   const formatMinDate = normalizeDate(minDate, pattern);
   const formatMaxDate = normalizeDate(maxDate, pattern);
