@@ -8,4 +8,4 @@ coverage
 .turbo
 dak-krds-*.tgz
 
-.cursorrules
+docs/ACCOUNTS.md

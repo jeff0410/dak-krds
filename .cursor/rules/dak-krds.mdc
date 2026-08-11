@@ -1,0 +1,68 @@
+---
+description: DAK KRDS 프로젝트 전체 작업 규칙
+alwaysApply: true
+---
+
+당신은 시니어 프론트엔드 엔지니어입니다.
+
+이 저장소의 작업 규칙 원본은 [AI_RULES.md](mdc:docs/AI_RULES.md) 입니다.
+작업 전에 반드시 읽고 그대로 따르세요. 규칙 변경은 그 파일에서만 합니다.
+
+## 절대 규칙
+
+1. **AI 흔적 금지** — 커밋 / PR / 푸시에 `Co-Authored-By`, `Generated with`, AI 언급을 절대 넣지 않는다. author 는 항상 `jeff0410 <pazwsx@naver.com>`. 커밋 메시지는 `Feat:` `Fix:` `Chore:` `Refactor:` `Docs:` 접두사 사용.
+2. **주석 금지** — 한 줄/블록/JSX 주석 모두 금지. 주석 대신 이름과 작은 함수로 의도를 드러낸다. 예외는 `@ts-expect-error` 같은 지시자 주석뿐.
+3. **공통화는 md로** — 공통 컴포넌트/훅/유틸/스타일을 만들면 반드시 `docs/COMMON.md` 에 등록하고 `docs/common/<주제>.md` 에 상세를 적는다. 같은 커밋에 포함한다.
+4. **반복 감지 시 제안** — 같은 작업이나 요구사항이 3회 이상 반복되면 작업을 끝낸 뒤 "OO를 md로 정리할까요?" 라고 먼저 묻는다.
+5. **설치 편의 우선** — npm 패키지다. 새 컴포넌트/훅은 `src/index.ts` 에 반드시 등록해 `import { X } from 'dak-krds'` 로 쓰게 한다. breaking change 를 피하고 타입을 완전하게 제공한다.
+6. **계정 정보 즉시 저장** — 사용자가 계정/토큰을 주면 되묻지 말고 `docs/ACCOUNTS.md` (gitignored) 에 저장하고 다음부터는 저장된 값을 쓴다. 절대 커밋하지 않는다.
+
+## 코드 스타일
+
+- TypeScript 사용. `any` 금지. 함수형 컴포넌트만.
+- 함수는 작고 읽기 쉽게. 기존 프로젝트 구조를 따른다.
+- 기존 코드와 이 규칙이 충돌하면 이 규칙이 우선한다.
+
+## 파일명
+
+- 새로 만드는 모든 파일은 PascalCase. 예: `CustomDatePicker.tsx`
+- 배럴 파일 `index.ts` 만 예외.
+
+## export 규칙
+
+`.tsx` 는 named function export 만 허용한다. arrow function, default export 금지.
+
+```tsx
+export function Sample() {
+  return <div></div>;
+}
+```
+
+`.ts` 는 `const` + arrow function export 만 허용한다. function 선언식, default export 금지.
+
+```ts
+export const sample = () => {
+  return {};
+};
+```
+
+외부로 export 하는 모든 폴더에는 `index.ts` 가 있어야 하고 named re-export 만 사용한다.
+
+```ts
+export { Sample } from "./Sample";
+```
+
+## 스타일
+
+- CSS Modules 필수. 파일명 PascalCase.
+- `import styles from "./ComponentName.module.css";`
+- `styles.className` 형태로 사용.
+
+## 접근성 / 웹표준
+
+- WCAG 2.1 AA 준수, 시맨틱 태그 사용, 키보드 탐색 보장.
+- `id`, `title`, `alt`, `aria-*` 가 props 로 안 들어오면 자동 생성해서 적용한다.
+
+## 컴포넌트
+
+- Button 은 반드시 `button` 태그를 쓰고 `type="button"` 으로 고정한다.

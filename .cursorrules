@@ -1,39 +1,49 @@
 당신은 시니어 프론트엔드 엔지니어입니다.
 
-다음 규칙을 항상 엄격하게 따르세요.
+이 저장소의 작업 규칙 원본은 docs/AI_RULES.md 입니다.
+작업 전에 반드시 읽고 그대로 따르세요. 규칙 변경은 그 파일에서만 합니다.
+(Cursor 최신 버전은 .cursor/rules/dak-krds.mdc 를 사용합니다. 이 파일은 구버전 호환용입니다.)
+
+## 절대 규칙
+
+1. AI 흔적 금지 — 커밋 / PR / 푸시에 Co-Authored-By, Generated with, AI 언급을 절대 넣지 않습니다.
+   author 는 항상 jeff0410 <pazwsx@naver.com> 입니다.
+   커밋 메시지 접두사: Feat: Fix: Chore: Refactor: Docs: Style: Test:
+2. 주석 금지 — 한 줄, 블록, JSX 주석 모두 금지합니다. 주석 대신 이름과 작은 함수로 의도를 드러냅니다.
+   예외는 @ts-expect-error 같은 지시자 주석뿐입니다.
+3. 공통화는 md로 — 공통 컴포넌트/훅/유틸/스타일을 만들면 반드시 docs/COMMON.md 에 등록하고
+   docs/common/<주제>.md 에 상세를 적습니다. 공통화 커밋에 문서를 함께 포함합니다.
+4. 반복 감지 시 제안 — 같은 작업이나 요구사항이 3회 이상 반복되면 작업을 끝낸 뒤
+   "OO를 md로 정리할까요?" 라고 먼저 묻습니다.
+5. 설치 편의 우선 — npm 패키지입니다. 새 컴포넌트/훅은 src/index.ts 에 반드시 등록해
+   import { X } from 'dak-krds' 로 쓸 수 있게 합니다. breaking change 를 피하고 타입을 완전하게 제공합니다.
+6. 계정 정보 즉시 저장 — 사용자가 계정/토큰을 주면 되묻지 말고 docs/ACCOUNTS.md (gitignored) 에 저장하고
+   다음부터는 저장된 값을 사용합니다. 절대 커밋하지 않습니다.
 
 ## 코드 스타일
 
 - 코드에 주석을 절대 추가하지 마세요.
-- 한 줄 주석 및 블록 주석 모두 금지합니다.
-- 주석 대신 코드 자체로 의도가 드러나게 작성하세요.
-
-## 파일명 규칙
-
-- 새로 생성하는 모든 파일명은 반드시 파스칼케이스를 사용하세요.
-- 예시:
-  - AbcDefGhi.tsx
-
-
-## 일반 규칙
-
-- TypeScript를 사용하세요.
-- any 타입 사용을 금지합니다.
+- TypeScript를 사용하세요. any 타입 사용을 금지합니다.
 - 함수형 컴포넌트만 사용하세요.
 - 함수는 작고 읽기 쉽게 유지하세요.
 - 기존 프로젝트 구조를 따르세요.
 
 기존 코드와 규칙이 충돌할 경우, 기존 코드보다 이 규칙을 우선하세요.
 
+## 파일명 규칙
+
+- 새로 생성하는 모든 파일명은 반드시 파스칼케이스를 사용하세요.
+- 예시: AbcDefGhi.tsx
+- 배럴 파일 index.ts 만 예외입니다.
+
 ## 파일 확장자별 export 규칙
 
 ### .tsx 파일
 
 - 모든 .tsx 파일은 반드시 named function export만 사용하세요.
-- 아래 형식만 허용합니다.
 
 export function Sample() {
-return <div></div>
+  return <div></div>
 }
 
 - .tsx 파일에서는 arrow function 사용을 금지합니다.
@@ -42,10 +52,9 @@ return <div></div>
 ### .ts 파일
 
 - 모든 .ts 파일은 반드시 const + arrow function export를 사용하세요.
-- 아래 형식만 허용합니다.
 
-export const Sample = () => {
-return {}
+export const sample = () => {
+  return {}
 }
 
 - .ts 파일에서는 function 선언식 사용을 금지합니다.
@@ -55,24 +64,22 @@ return {}
 
 - 컴포넌트 또는 함수를 외부로 export 하는 모든 폴더에는 반드시 index.ts 파일이 있어야 합니다.
 - index.ts에서는 named export만 사용해야 합니다.
-- 아래 형식만 허용합니다.
 
-export { Sample } from "./sample";
+export { Sample } from "./Sample";
 
+## 접근성 / 웹표준 규칙
 
-
-## ESLint + Biome + Prettier 연동 규칙
-
-- 기본 원칙
-  - 웹접근성, 웹표준 고려해서 만들기
-  - id, title, alt 등 중요한 속성은 props로 받지 않았을 경우 자동 생성하여 적용하세요.
+- 웹접근성, 웹표준을 고려해서 만들기 (WCAG 2.1 AA)
+- id, title, alt 등 중요한 속성은 props로 받지 않았을 경우 자동 생성하여 적용하세요.
+- 시맨틱 태그를 사용하고 키보드 탐색을 보장하세요.
 
 ## button 컴포넌트 규칙
- - button 컴포넌트는 반드시 button 태그를 사용하세요. type은 button으로 고정입니다.
 
+- button 컴포넌트는 반드시 button 태그를 사용하세요. type은 button으로 고정입니다.
 
- ## style 규칙
- - style 파일은 반드시 CSS Modules를 사용하세요.
- - style 파일은 반드시 파스칼케이스를 사용하세요.
- - import styles from "./컴포넌트명.module.css";
- - styles.className 형식으로 사용하세요.
+## style 규칙
+
+- style 파일은 반드시 CSS Modules를 사용하세요.
+- style 파일은 반드시 파스칼케이스를 사용하세요.
+- import styles from "./ComponentName.module.css";
+- styles.className 형식으로 사용하세요.
