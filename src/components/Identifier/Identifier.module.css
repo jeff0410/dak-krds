@@ -1,0 +1,42 @@
+.identifier {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	padding: 16px 24px;
+	box-sizing: border-box;
+}
+
+.light {
+	background-color: var(--krds-color-gray-5);
+	color: var(--krds-color-gray-80);
+}
+
+.dark {
+	background-color: var(--krds-color-gray-90);
+	color: var(--krds-color-gray-20);
+}
+
+.logo {
+	height: 32px;
+	width: auto;
+	flex-shrink: 0;
+}
+
+.description {
+	margin: 0;
+	font-size: 0.938rem;
+	font-weight: 400;
+	line-height: 1.5;
+	word-break: keep-all;
+}
+
+@media (max-width: 768px) {
+	.identifier {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+		padding: 16px;
+	}
+}

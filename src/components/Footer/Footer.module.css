@@ -1,0 +1,164 @@
+.footer {
+	width: 100%;
+	background-color: var(--krds-color-gray-95);
+	color: var(--krds-color-gray-30);
+}
+
+.inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 40px 24px 32px;
+	box-sizing: border-box;
+}
+
+.top {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 32px;
+	padding-bottom: 24px;
+}
+
+.logo {
+	flex-shrink: 0;
+	color: var(--krds-color-gray-0);
+}
+
+.contacts {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 0;
+	font-size: 0.938rem;
+	line-height: 1.5;
+}
+
+.contact {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+}
+
+.contactLabel {
+	flex-shrink: 0;
+	font-weight: 700;
+	color: var(--krds-color-gray-20);
+}
+
+.contactValue {
+	margin: 0;
+	word-break: keep-all;
+}
+
+.contactLink {
+	color: inherit;
+	text-decoration: none;
+}
+
+.contactLink:hover,
+.contactLink:focus-visible {
+	text-decoration: underline;
+}
+
+.middle {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	padding: 20px 0;
+	border-top: 1px solid var(--krds-color-gray-80);
+	border-bottom: 1px solid var(--krds-color-gray-80);
+}
+
+.utilityList,
+.policyList,
+.socialList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 20px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.socialList {
+	gap: 12px;
+}
+
+.utilityLink,
+.policyLink {
+	font-size: 0.938rem;
+	line-height: 1.5;
+	color: inherit;
+	text-decoration: none;
+}
+
+.utilityLink:hover,
+.utilityLink:focus-visible,
+.policyLink:hover,
+.policyLink:focus-visible {
+	text-decoration: underline;
+}
+
+.emphasis {
+	font-weight: 700;
+	color: var(--krds-color-gray-0);
+}
+
+.socialLink {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	color: inherit;
+	background-color: var(--krds-color-gray-80);
+}
+
+.socialLink:hover,
+.socialLink:focus-visible {
+	background-color: var(--krds-color-gray-70);
+}
+
+.bottom {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding-top: 24px;
+}
+
+.copyright {
+	margin: 0;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: var(--krds-color-gray-40);
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+@media (max-width: 768px) {
+	.inner {
+		padding: 32px 16px 24px;
+	}
+
+	.top,
+	.middle {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}

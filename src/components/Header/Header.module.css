@@ -1,0 +1,287 @@
+.header {
+	position: relative;
+	width: 100%;
+	background-color: var(--krds-color-gray-0);
+	border-bottom: 1px solid var(--krds-color-gray-20);
+	box-sizing: border-box;
+}
+
+.skipLink {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	z-index: 100;
+	transform: translate(-50%, -100%);
+	padding: 12px 24px;
+	font-size: 0.938rem;
+	font-weight: 700;
+	color: var(--krds-color-gray-0);
+	background-color: var(--krds-color-primary-60);
+	text-decoration: none;
+}
+
+.skipLink:focus {
+	transform: translate(-50%, 0);
+}
+
+.inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 24px;
+	box-sizing: border-box;
+}
+
+.top {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	min-height: 72px;
+}
+
+.logo {
+	display: inline-flex;
+	align-items: center;
+	color: var(--krds-color-gray-90);
+	text-decoration: none;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.horizontal {
+	flex-direction: row;
+}
+
+.vertical {
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 8px;
+}
+
+.utilityList,
+.iconList,
+.menuList,
+.submenu {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.utilityList {
+	flex-direction: row;
+	align-items: center;
+	gap: 16px;
+}
+
+.utilityLink {
+	font-size: 0.875rem;
+	color: var(--krds-color-gray-70);
+	text-decoration: none;
+}
+
+.utilityLink:hover,
+.utilityLink:focus-visible {
+	text-decoration: underline;
+}
+
+.iconList {
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+}
+
+.iconButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	border: 0;
+	border-radius: 6px;
+	background-color: transparent;
+	color: var(--krds-color-gray-80);
+	cursor: pointer;
+}
+
+.iconButton:hover,
+.iconButton:focus-visible {
+	background-color: var(--krds-color-gray-5);
+}
+
+.hamburger {
+	display: none;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	border: 0;
+	border-radius: 6px;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.hamburgerBar,
+.hamburgerBar::before,
+.hamburgerBar::after {
+	position: absolute;
+	left: 10px;
+	width: 20px;
+	height: 2px;
+	background-color: var(--krds-color-gray-90);
+}
+
+.hamburgerBar {
+	top: 19px;
+}
+
+.hamburgerBar::before {
+	content: "";
+	left: 0;
+	top: -6px;
+}
+
+.hamburgerBar::after {
+	content: "";
+	left: 0;
+	top: 6px;
+}
+
+.mainMenu {
+	border-top: 1px solid var(--krds-color-gray-10);
+}
+
+.menuList {
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+}
+
+.menuItem {
+	position: relative;
+}
+
+.menuTrigger,
+.menuLink {
+	display: inline-flex;
+	align-items: center;
+	min-height: 52px;
+	padding: 0 16px;
+	border: 0;
+	background-color: transparent;
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--krds-color-gray-90);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.menuTrigger:hover,
+.menuTrigger:focus-visible,
+.menuLink:hover,
+.menuLink:focus-visible {
+	color: var(--krds-color-primary-60);
+}
+
+.menuTrigger[aria-expanded="true"] {
+	color: var(--krds-color-primary-60);
+}
+
+.submenu {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	z-index: 20;
+	flex-direction: column;
+	min-width: 180px;
+	padding: 8px 0;
+	background-color: var(--krds-color-gray-0);
+	border: 1px solid var(--krds-color-gray-20);
+	border-radius: 6px;
+}
+
+.submenu.open {
+	display: flex;
+}
+
+.submenuLink {
+	display: block;
+	padding: 10px 16px;
+	font-size: 0.938rem;
+	color: var(--krds-color-gray-80);
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.submenuLink:hover,
+.submenuLink:focus-visible {
+	background-color: var(--krds-color-gray-5);
+	color: var(--krds-color-primary-60);
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+@media (max-width: 768px) {
+	.inner {
+		padding: 0 16px;
+	}
+
+	.top {
+		min-height: 56px;
+	}
+
+	.utility {
+		display: none;
+	}
+
+	.hamburger {
+		display: inline-flex;
+	}
+
+	.mainMenu {
+		display: none;
+	}
+
+	.mainMenu.open {
+		display: block;
+	}
+
+	.menuList {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+	}
+
+	.menuTrigger,
+	.menuLink {
+		width: 100%;
+		min-height: 48px;
+		padding: 0;
+		justify-content: flex-start;
+	}
+
+	.submenu {
+		position: static;
+		min-width: 0;
+		border: 0;
+		border-radius: 0;
+		padding: 0 0 8px 16px;
+	}
+}
