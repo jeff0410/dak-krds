@@ -466,9 +466,16 @@ import { Icon } from 'dak-krds';
 </details>
 
 <details>
+<summary><b>아이덴티티</b></summary>
+
+`Masthead` `Identifier` `Header` `Footer`
+
+</details>
+
+<details>
 <summary><b>탐색</b></summary>
 
-`Breadcrumb` `Tab` `Tabs` `TabPanel` `MScrollTab` `Pagination` `StepIndicator` `Masthead`
+`Breadcrumb` `Tab` `Tabs` `TabPanel` `MScrollTab` `Pagination` `StepIndicator`
 
 </details>
 
