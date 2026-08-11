@@ -27,7 +27,7 @@
   ```
 
 - 커밋 메시지는 사람이 쓴 것처럼 한 줄 요약 + (필요 시) 본문만 씁니다.
-- 커밋 메시지 형식은 저장소 기존 이력을 따릅니다.
+- 형식은 **`Type: 요약`** 하나로 고정합니다. 접두사는 **대문자로 시작**하고 요약은 한글로 씁니다.
 
   ```
   Feat: customDatePicker 추가
@@ -37,15 +37,35 @@
 
   접두사: `Feat:` `Fix:` `Chore:` `Refactor:` `Docs:` `Style:` `Test:`
 
+- 한 커밋 = 하나의 논리적 변경. 구조 변경과 구현을 섞지 않습니다.
+- 본문은 규모가 큰 변경에만 붙이고 `-` 불릿으로 **무엇을 왜** 바꿨는지 적습니다.
+
+**형식 금지 사항**
+
+- 소문자 접두사 금지. `fix:` 가 아니라 `Fix:` 입니다.
+- `[수정]` 같은 대괄호 표기, `fix(scope):` 같은 스코프 표기, 접두사 없는 맨 문장을 쓰지 않습니다.
+- `misc`, `update`, `wip`, `수정`, `저장` 같은 모호한 메시지를 쓰지 않습니다.
+
 **커밋 전 자가 점검**
 
-```bash
-git log -1 --pretty=full
-```
+- `git status` 로 변경 파일을 확인하고 의도하지 않은 파일은 제외합니다.
+- `pnpm run typecheck` `pnpm run lint` `pnpm run build` 가 통과하는 상태에서 커밋합니다.
+- 작성자를 확인합니다.
 
-`Author` / `Committer` 가 `jeff0410 <pazwsx@naver.com>` 이고, 메시지에 AI 관련 문자열이 없어야 합니다.
+  ```bash
+  git log -1 --pretty=full
+  ```
+
+  `Author` / `Committer` 가 `jeff0410 <pazwsx@naver.com>` 이고, 메시지에 AI 관련 문자열이 없어야 합니다.
+
+**브랜치 / 푸시**
+
+- `main` 직접 push 금지. 작업 브랜치(`feat/*`, `fix/*`, `refactor/*`)에서 작업합니다.
+- 이미 push 한 커밋은 `--amend` / rebase 하지 않습니다. push 전에만 정리합니다.
 
 **커밋 / 푸시 / PR 생성은 사용자가 명시적으로 요청할 때만 수행합니다.**
+
+> 이 커밋 규칙은 `~/Documents/jeff/rtmc/project/` 아래 저장소들의 `.cursor/rules/git-commit.mdc` 와 동일한 형식입니다.
 
 ---
 
