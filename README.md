@@ -7,7 +7,7 @@
 [KRDS(Korea Design System)](https://www.krds.go.kr) 디자인 원칙을 준수하는 React UI 컴포넌트 라이브러리
 
 [![npm version](https://img.shields.io/npm/v/dak-krds?color=0B50D0&label=npm)](https://www.npmjs.com/package/dak-krds)
-![license](https://img.shields.io/npm/l/dak-krds?color=0B50D0)
+[![license](https://img.shields.io/npm/l/dak-krds?color=0B50D0)](./LICENSE)
 [![React](https://img.shields.io/badge/React-19+-0B50D0?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-0B50D0?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
@@ -600,4 +600,4 @@ CSS 변수로 제공되어 그대로 가져다 쓸 수 있습니다.
 
 ## 라이센스
 
-MIT
+[MIT](./LICENSE) © TeamJeff
