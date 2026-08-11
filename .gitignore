@@ -6,6 +6,6 @@ dist
 .env.local
 coverage
 .turbo
-.cursorrulesdak-krds-*.tgz
+dak-krds-*.tgz
 
 .cursorrules
