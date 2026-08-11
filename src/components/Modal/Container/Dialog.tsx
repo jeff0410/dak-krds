@@ -1,4 +1,4 @@
-import { forwardRef, type PropsWithChildren, useCallback } from "react";
+import { forwardRef, type PropsWithChildren } from "react";
 import { Backdrop } from "../BackDrop";
 import { EscKeyEventHandler } from "../KeyEventHandler";
 import type { ModalContainerProps } from "../Modal.type";
@@ -24,12 +24,9 @@ export const DialogModalContainer = forwardRef<
 			const customEvent = new CustomEvent("pop");
 			document.dispatchEvent(customEvent);
 		};
-		const onEscKeyDown = useCallback(_onEscKeyDown ?? _onClose ?? onClose, []);
+		const onEscKeyDown = _onEscKeyDown ?? _onClose ?? onClose;
 
-		const onClickBackdrop = useCallback(
-			_onClickBackdrop ?? _onClose ?? onClose,
-			[],
-		);
+		const onClickBackdrop = _onClickBackdrop ?? _onClose ?? onClose;
 
 		return (
 			<EscKeyEventHandler onEscKeyDown={onEscKeyDown}>

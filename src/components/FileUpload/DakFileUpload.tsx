@@ -44,71 +44,83 @@ export const DakFileUpload = ({
 		return `${parseFloat((bytes / k ** i)?.toFixed(2))} ${sizes[i]}`;
 	};
 
-	const validateFileType = (file: File): boolean => {
-		if (!accept) return true;
+	const validateFileType = useCallback(
+		(file: File): boolean => {
+			if (!accept) return true;
 
-		const acceptedTypes = accept.split(",").map((type) => type.trim());
+			const acceptedTypes = accept.split(",").map((type) => type.trim());
 
-		return acceptedTypes.some((acceptedType) => {
-			if (acceptedType.startsWith(".")) {
-				return file.name.toLowerCase().endsWith(acceptedType.toLowerCase());
-			} else if (acceptedType.includes("*")) {
-				const [mainType] = acceptedType.split("/");
-				const [fileMainType] = file.type.split("/");
-				return mainType === fileMainType;
-			} else {
-				return file.type === acceptedType;
+			return acceptedTypes.some((acceptedType) => {
+				if (acceptedType.startsWith(".")) {
+					return file.name.toLowerCase().endsWith(acceptedType.toLowerCase());
+				} else if (acceptedType.includes("*")) {
+					const [mainType] = acceptedType.split("/");
+					const [fileMainType] = file.type.split("/");
+					return mainType === fileMainType;
+				} else {
+					return file.type === acceptedType;
+				}
+			});
+		},
+		[accept],
+	);
+
+	const validateFiles = useCallback(
+		(files: File[]): FileValidationResult => {
+			const errors: string[] = [];
+			const currentFileCount = value.length;
+
+			if (maxFiles && currentFileCount + files.length > maxFiles) {
+				errors.push(`최대 ${maxFiles}개의 파일만 업로드 가능합니다.`);
 			}
-		});
-	};
 
-	const validateFiles = (files: File[]): FileValidationResult => {
-		const errors: string[] = [];
-		const currentFileCount = value.length;
+			files.forEach((file) => {
+				if (file.size > maxSize) {
+					errors.push(
+						`${file.name}: 파일 크기가 ${formatFileSize(maxSize)}를 초과합니다.`,
+					);
+				}
 
-		if (maxFiles && currentFileCount + files.length > maxFiles) {
-			errors.push(`최대 ${maxFiles}개의 파일만 업로드 가능합니다.`);
-		}
+				if (!validateFileType(file)) {
+					errors.push(`${file.name}: 지원하지 않는 파일 형식입니다.`);
+				}
+			});
 
-		files.forEach((file) => {
-			if (file.size > maxSize) {
-				errors.push(
-					`${file.name}: 파일 크기가 ${formatFileSize(maxSize)}를 초과합니다.`,
+			if (maxTotalSize) {
+				const currentTotalSize = value.reduce(
+					(total, item) => total + item.size,
+					0,
 				);
-			}
-
-			if (!validateFileType(file)) {
-				errors.push(`${file.name}: 지원하지 않는 파일 형식입니다.`);
-			}
-		});
-
-		if (maxTotalSize) {
-			const currentTotalSize = value.reduce(
-				(total, item) => total + item.size,
-				0,
-			);
-			const newTotalSize = files.reduce((total, file) => total + file.size, 0);
-
-			if (currentTotalSize + newTotalSize > maxTotalSize) {
-				errors.push(
-					`전체 파일 크기가 ${formatFileSize(maxTotalSize)}를 초과합니다.`,
+				const newTotalSize = files.reduce(
+					(total, file) => total + file.size,
+					0,
 				);
+
+				if (currentTotalSize + newTotalSize > maxTotalSize) {
+					errors.push(
+						`전체 파일 크기가 ${formatFileSize(maxTotalSize)}를 초과합니다.`,
+					);
+				}
 			}
-		}
 
-		return {
-			valid: errors.length === 0,
-			errors,
-		};
-	};
+			return {
+				valid: errors.length === 0,
+				errors,
+			};
+		},
+		[value, maxFiles, maxSize, maxTotalSize, validateFileType],
+	);
 
-	const fileToFileItem = (file: File): DakFileItem => ({
-		id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-		name: file.name,
-		size: file.size,
-		type: "local",
-		file,
-	});
+	const fileToFileItem = useCallback(
+		(file: File): DakFileItem => ({
+			id: `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`,
+			name: file.name,
+			size: file.size,
+			type: "local",
+			file,
+		}),
+		[],
+	);
 
 	const handleFiles = useCallback(
 		(files: FileList | null) => {

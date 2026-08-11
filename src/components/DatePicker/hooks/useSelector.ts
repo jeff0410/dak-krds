@@ -1,6 +1,6 @@
 import type { LocalDate } from "@js-joda/core";
 import type React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useYearMonthSelector({
 	currentDate,
@@ -32,22 +32,25 @@ export function useYearMonthSelector({
 	);
 	const months = Array.from({ length: 12 }, (_, i) => i + 1);
 
-	const scrollToSelected = (
-		dropdownRef: React.RefObject<HTMLDivElement | null>,
-		selectedValue: number,
-		items: number[],
-	) => {
-		if (dropdownRef.current) {
-			const selectedIndex = items.indexOf(selectedValue);
-			const itemHeight = 32;
-			const dropdownHeight = dropdownRef.current.clientHeight;
-			const scrollTop =
-				selectedIndex * itemHeight - dropdownHeight / 2 + itemHeight / 2;
+	const scrollToSelected = useCallback(
+		(
+			dropdownRef: React.RefObject<HTMLDivElement | null>,
+			selectedValue: number,
+			items: number[],
+		) => {
+			if (dropdownRef.current) {
+				const selectedIndex = items.indexOf(selectedValue);
+				const itemHeight = 32;
+				const dropdownHeight = dropdownRef.current.clientHeight;
+				const scrollTop =
+					selectedIndex * itemHeight - dropdownHeight / 2 + itemHeight / 2;
 
-			dropdownRef.current.style.scrollBehavior = "auto";
-			dropdownRef.current.scrollTop = Math.max(0, scrollTop);
-		}
-	};
+				dropdownRef.current.style.scrollBehavior = "auto";
+				dropdownRef.current.scrollTop = Math.max(0, scrollTop);
+			}
+		},
+		[],
+	);
 
 	const [syncedYearOpen, setSyncedYearOpen] = useState(isYearOpen);
 	const [syncedMonthOpen, setSyncedMonthOpen] = useState(isMonthOpen);
