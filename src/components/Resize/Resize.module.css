@@ -1,0 +1,115 @@
+.resize {
+	position: relative;
+	display: inline-block;
+}
+
+.trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 44px;
+	padding: 0 12px;
+	border: 1px solid var(--krds-color-gray-30);
+	border-radius: 6px;
+	background-color: var(--krds-color-gray-0);
+	font-family: inherit;
+	font-size: 0.875rem;
+	color: var(--krds-color-gray-80);
+	cursor: pointer;
+}
+
+.trigger:hover,
+.trigger:focus-visible,
+.trigger[aria-expanded="true"] {
+	border-color: var(--krds-color-primary-50);
+	color: var(--krds-color-primary-60);
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+}
+
+.triggerLabel {
+	white-space: nowrap;
+}
+
+.current {
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.chevron {
+	width: 7px;
+	height: 7px;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(45deg) translate(-2px, -2px);
+	transition: transform 0.15s;
+}
+
+.trigger[aria-expanded="true"] .chevron {
+	transform: rotate(225deg) translate(-2px, -2px);
+}
+
+.list {
+	display: none;
+	position: absolute;
+	right: 0;
+	top: calc(100% + 4px);
+	z-index: 40;
+	flex-direction: column;
+	min-width: 200px;
+	max-height: 320px;
+	overflow-y: auto;
+	margin: 0;
+	padding: 4px 0;
+	list-style: none;
+	background-color: var(--krds-color-gray-0);
+	border: 1px solid var(--krds-color-gray-20);
+	border-radius: 6px;
+}
+
+.list.open {
+	display: flex;
+}
+
+.option {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	width: 100%;
+	min-height: 44px;
+	padding: 10px 16px;
+	border: 0;
+	background-color: transparent;
+	font-family: inherit;
+	font-size: 0.875rem;
+	text-align: left;
+	color: var(--krds-color-gray-80);
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.option:hover,
+.option:focus-visible {
+	background-color: var(--krds-color-gray-5);
+	color: var(--krds-color-primary-60);
+}
+
+.option[aria-current] {
+	font-weight: 700;
+	color: var(--krds-color-primary-60);
+}
+
+.percent {
+	color: var(--krds-color-gray-50);
+}
+
+.option[aria-current] .percent {
+	color: inherit;
+}
