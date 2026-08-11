@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Select } from "../Select";
 import { cityData } from "./CitySelect.Model";
 import styles from "./CitySelect.module.css";
@@ -17,12 +17,15 @@ export function CitySelect({
 		value?.gugunCode ?? "",
 	);
 
-	useEffect(() => {
+	const [syncedValue, setSyncedValue] = useState(value);
+
+	if (syncedValue !== value) {
+		setSyncedValue(value);
 		if (value) {
 			setInternalSidoCode(value.sidoCode);
 			setInternalGugunCode(value.gugunCode);
 		}
-	}, [value]);
+	}
 
 	const sidoOptions = useMemo(
 		() =>

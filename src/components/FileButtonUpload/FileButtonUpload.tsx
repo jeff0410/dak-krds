@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> */
-import { type ChangeEvent, useEffect, useRef, useState } from "react";
+import { type ChangeEvent, useRef, useState } from "react";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import styles from "./FileButtonUpload.module.css";
@@ -22,9 +22,12 @@ export const FileButtonUpload = ({
 	);
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
-	useEffect(() => {
+	const [syncedFileName, setSyncedFileName] = useState(initialFileName);
+
+	if (syncedFileName !== initialFileName) {
+		setSyncedFileName(initialFileName);
 		setInitialFile(initialFileName ?? null);
-	}, [initialFileName]);
+	}
 
 	const handleFileClick = () => {
 		fileInputRef.current?.click();
