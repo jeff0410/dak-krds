@@ -480,6 +480,13 @@ import { Icon } from 'dak-krds';
 </details>
 
 <details>
+<summary><b>모바일</b></summary>
+
+`BottomSheet` `TabBars` `BackButton` `QuantityToggle` `RangeSlider` `Snackbar` `SplashScreen` `ToastBar`
+
+</details>
+
+<details>
 <summary><b>피드백</b></summary>
 
 `Alert` `Modal` `SmallModal` `MediumModal` `LargeModal` `DialogModal` `ToastBar` `ToastBarManager` `Spinner` `ProgressBar` `LoadingPage` `ErrorPage` `NotFountPage`
