@@ -149,6 +149,49 @@ git log -1 --pretty=full
 
 ---
 
+## 7. 버전 자동 증가
+
+**PR 을 생성할 때마다 `package.json` 의 patch 버전을 1 올립니다.** 사용자가 따로 요청하지 않아도 항상 수행합니다.
+
+- `0.1.13` 상태에서 다음 PR 은 `0.1.14`, 그다음 PR 은 `0.1.15` 입니다.
+- **PR 하나당 정확히 한 번만** 올립니다. 같은 PR 에 커밋을 더 쌓아도 다시 올리지 않습니다.
+- 문서만 고치는 PR 도 동일하게 올립니다.
+- 버전 변경은 그 PR 안에 포함시킵니다. 별도 PR 로 분리하지 않습니다.
+
+**사용자가 버전을 지정한 경우**
+
+> "버전 0.2.0 으로 해주세요"
+
+- 지정된 값을 그대로 씁니다.
+- 이 지정은 **해당 PR 1회에만** 적용됩니다. 다음 PR 부터는 다시 자동 patch 증가로 돌아갑니다.
+
+---
+
+## 8. 릴리즈 / npm 배포
+
+**GitHub Release 를 발행하면 `.github/workflows/release.yml` 이 npm 에 자동 배포합니다.**
+
+**릴리즈 절차**
+
+1. `package.json` 버전이 배포하려는 값인지 확인합니다.
+2. GitHub 에서 Release 를 발행합니다. 태그는 반드시 `v<package.json version>` 형식입니다.
+
+   ```
+   package.json 0.1.14  →  태그 v0.1.14
+   ```
+
+3. 워크플로가 태그와 `package.json` 버전 일치를 검증한 뒤 typecheck / build 를 거쳐 배포합니다. (build 는 `prepublishOnly` 에서 실행됩니다.)
+
+**주의**
+
+- 태그와 `package.json` 버전이 다르면 워크플로가 **실패하고 배포되지 않습니다.** 잘못된 버전이 npm 에 올라가는 것을 막기 위한 의도된 동작입니다.
+- 인증은 **npm OIDC Trusted Publisher** 를 씁니다. `NPM_TOKEN` 같은 시크릿은 저장하지 않으며, 워크플로에 토큰을 추가하지 마세요.
+- 워크플로 파일명 `release.yml` 은 npm Trusted Publisher 설정에 등록된 값입니다. **파일명을 바꾸면 npm 쪽 설정도 같이 바꿔야** 배포가 계속 동작합니다.
+- publish 스텝만 `npm publish` 를 씁니다. pnpm 은 OIDC 배포가 아직 불안정하므로 install / typecheck / lint 에만 사용합니다.
+- 배포 시 provenance(공급망 서명)는 npm 이 자동으로 생성합니다. `--provenance` 플래그를 붙이지 않습니다.
+
+---
+
 ## 코드 컨벤션
 
 ### 언어 / 기본
@@ -223,3 +266,4 @@ src/components/ComponentName/
 - [ ] `pnpm run typecheck` `pnpm run lint` 통과
 - [ ] 커밋 메시지에 AI 흔적 없음, author 가 jeff0410
 - [ ] `docs/ACCOUNTS.md` 가 스테이징에 없음
+- [ ] PR 생성 시 `package.json` patch 버전을 1 올렸음 (PR 당 1회)
