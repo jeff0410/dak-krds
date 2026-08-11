@@ -2,16 +2,21 @@
   "name": "dak-krds",
   "version": "0.1.15",
   "description": "DAK React UI Component Design System",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css",
+    "**/*.css.mjs",
+    "**/*.css.cjs"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "require": "./dist/index.cjs"
     },
-    "./styles.css": "./dist/index.css"
+    "./styles.css": "./dist/styles.css"
   },
   "files": [
     "dist"
@@ -68,12 +73,18 @@
     "react-dom": ">=19.0.0"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@fullcalendar/core": "~6.1.20",
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/interaction": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
     "@js-joda/core": "^5.6.3",
+    "@mui/icons-material": "^6.3.1",
     "@mui/material": "^6.3.1",
+    "@mui/system": "^6.3.1",
+    "@mui/x-date-pickers": "^7.15.0",
+    "@types/lodash-es": "^4.17.12",
     "lodash-es": "^4.17.21",
     "material-react-table": "^3.2.1"
   },
@@ -85,7 +96,6 @@
     "@rollup/plugin-url": "^8.0.2",
     "@svgr/core": "^8.1.0",
     "@svgr/rollup": "^8.1.0",
-    "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.10.7",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
