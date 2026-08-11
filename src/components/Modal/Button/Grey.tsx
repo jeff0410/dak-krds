@@ -12,7 +12,7 @@ export const GreyButton = ({
 		size="m"
 		label="닫기"
 		width="78px"
-		onClick={onClick ? () => onClick({} as any) : undefined}
+		onClick={onClick}
 	>
 		{children}
 	</Button>

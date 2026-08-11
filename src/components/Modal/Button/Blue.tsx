@@ -11,7 +11,7 @@ export const BlueButton = ({
 			{...props}
 			label="확인"
 			width="78px"
-			onClick={onClick ? () => onClick({} as any) : undefined}
+			onClick={onClick}
 		>
 			{children}
 		</Button>

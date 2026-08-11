@@ -1,3 +1,9 @@
+import type {
+	DatesSetArg,
+	DayCellContentArg,
+	DayHeaderContentArg,
+	EventContentArg,
+} from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";
@@ -200,13 +206,13 @@ export const ScheduleCalendar = ({
 	}, [goToDate]);
 
 	// 요일 헤더 커스터마이징 (한국어)
-	const dayHeaderContent = (arg: any) => {
+	const dayHeaderContent = (arg: DayHeaderContentArg) => {
 		const dayNames = ["일", "월", "화", "수", "목", "금", "토"];
 		return dayNames[arg.date.getDay()];
 	};
 
 	// 날짜 숫자 표시 커스터마이징 (공휴일 색상 포함)
-	const dayCellContent = (arg: any) => {
+	const dayCellContent = (arg: DayCellContentArg) => {
 		const dayNumber = arg.date.getDate();
 		const dateString = arg.date.toISOString().split("T")[0];
 		const holidayName = showHolidays ? getHolidayData(dateString) : null;
@@ -224,7 +230,7 @@ export const ScheduleCalendar = ({
 	};
 
 	// 날짜 셀에 CSS 클래스 추가 (공휴일 스타일링용)
-	const dayCellClassNames = (arg: any) => {
+	const dayCellClassNames = (arg: DayCellContentArg) => {
 		const dateString = arg.date.toISOString().split("T")[0];
 		const holidayName = showHolidays ? getHolidayData(dateString) : null;
 
@@ -235,25 +241,12 @@ export const ScheduleCalendar = ({
 	};
 
 	// 이벤트 렌더링 커스터마이징 (borderRadius 적용)
-	const eventContent = (arg: any) => {
-		const event = arg.event;
-		const borderRadius = event.extendedProps?.borderRadius;
-
-		if (borderRadius) {
-			// 이벤트 요소에 직접 스타일 적용
-			setTimeout(() => {
-				const eventEl = arg.el;
-				if (eventEl) {
-					eventEl.style.borderRadius = borderRadius;
-				}
-			}, 0);
-		}
-
-		return { html: `<div class="fc-event-title">${event.title}</div>` };
+	const eventContent = (arg: EventContentArg) => {
+		return { html: `<div class="fc-event-title">${arg.event.title}</div>` };
 	};
 
 	// 달력의 날짜가 변경될 때 외부에 알림
-	const handleDatesSet = (dateInfo: any) => {
+	const handleDatesSet = (dateInfo: DatesSetArg) => {
 		if (onDateChange) {
 			const navigationInfo: DateNavigationInfo = {
 				currentDate: dateInfo.start,

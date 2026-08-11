@@ -1,3 +1,5 @@
+import type { Duration, EventApi } from "@fullcalendar/core";
+
 export interface DateSelectArg {
 	start: Date;
 	end: Date;
@@ -59,7 +61,7 @@ export interface ScheduleEvent {
 	category?: "meeting" | "deadline" | "personal" | "other";
 
 	/** 추가 커스텀 데이터를 저장할 수 있는 객체 */
-	extendedProps?: Record<string, any>;
+	extendedProps?: Record<string, unknown>;
 }
 
 /**
@@ -112,7 +114,7 @@ export interface RecurringEventConfig {
 	continuous?: boolean;
 
 	/** 반복 이벤트에 추가할 커스텀 데이터 */
-	extendedProps?: Record<string, any>;
+	extendedProps?: Record<string, unknown>;
 }
 
 /**
@@ -121,16 +123,16 @@ export interface RecurringEventConfig {
  */
 export interface EventResizeInfo {
 	/** 크기 조정된 후의 이벤트 객체 */
-	event: any;
+	event: EventApi;
 
 	/** 크기 조정되기 전의 원본 이벤트 객체 */
-	oldEvent: any;
+	oldEvent: EventApi;
 
 	/** 종료 시간의 변화량 (Duration 객체) */
-	endDelta: any;
+	endDelta: Duration;
 
 	/** 시작 시간의 변화량 (Duration 객체) */
-	startDelta: any;
+	startDelta: Duration;
 
 	/** 변경사항을 되돌리는 함수 */
 	revert: () => void;
@@ -142,13 +144,13 @@ export interface EventResizeInfo {
  */
 export interface EventDropInfo {
 	/** 이동된 후의 이벤트 객체 */
-	event: any;
+	event: EventApi;
 
 	/** 이동되기 전의 원본 이벤트 객체 */
-	oldEvent: any;
+	oldEvent: EventApi;
 
 	/** 시간의 변화량 (Duration 객체) */
-	delta: any;
+	delta: Duration;
 
 	/** 변경사항을 되돌리는 함수 */
 	revert: () => void;
@@ -160,10 +162,10 @@ export interface EventDropInfo {
  */
 export interface EventChangeInfo {
 	/** 변경된 후의 이벤트 객체 */
-	event: any;
+	event: EventApi;
 
 	/** 변경되기 전의 원본 이벤트 객체 */
-	oldEvent: any;
+	oldEvent: EventApi;
 
 	/** 변경사항을 되돌리는 함수 */
 	revert: () => void;
@@ -175,7 +177,7 @@ export interface EventChangeInfo {
  */
 export interface EventAddInfo {
 	/** 추가된 이벤트 객체 */
-	event: any;
+	event: EventApi;
 
 	/** 추가를 되돌리는 함수 (이벤트 삭제) */
 	revert: () => void;
@@ -187,7 +189,7 @@ export interface EventAddInfo {
  */
 export interface EventRemoveInfo {
 	/** 제거된 이벤트 객체 */
-	event: any;
+	event: EventApi;
 }
 
 /**
