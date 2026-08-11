@@ -1,0 +1,129 @@
+.contextualHelp {
+	position: relative;
+	display: inline-flex;
+	vertical-align: middle;
+}
+
+.trigger {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.triggerMark {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	font-size: 0.75rem;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--krds-color-gray-0);
+}
+
+.info .triggerMark {
+	background-color: var(--krds-color-secondary-50);
+}
+
+.help .triggerMark {
+	background-color: var(--krds-color-primary-50);
+}
+
+.trigger:hover .triggerMark,
+.trigger:focus-visible .triggerMark {
+	background-color: var(--krds-color-primary-70);
+}
+
+.panel {
+	display: none;
+	position: absolute;
+	z-index: 50;
+	width: 280px;
+	padding: 16px 40px 16px 16px;
+	background-color: var(--krds-color-gray-0);
+	border: 1px solid var(--krds-color-gray-30);
+	border-radius: 8px;
+	box-shadow: 0 4px 16px var(--krds-color-alpha-black10);
+	box-sizing: border-box;
+}
+
+.panel.open {
+	display: block;
+}
+
+.placement_bottom_start {
+	left: 0;
+	top: calc(100% - 4px);
+}
+
+.placement_bottom {
+	left: 50%;
+	top: calc(100% - 4px);
+	transform: translateX(-50%);
+}
+
+.placement_bottom_end {
+	right: 0;
+	top: calc(100% - 4px);
+}
+
+.placement_top_start {
+	left: 0;
+	bottom: calc(100% - 4px);
+}
+
+.placement_top {
+	left: 50%;
+	bottom: calc(100% - 4px);
+	transform: translateX(-50%);
+}
+
+.placement_top_end {
+	right: 0;
+	bottom: calc(100% - 4px);
+}
+
+.title {
+	margin: 0 0 6px;
+	font-size: 0.938rem;
+	font-weight: 700;
+	color: var(--krds-color-gray-90);
+	word-break: keep-all;
+}
+
+.body {
+	font-size: 0.875rem;
+	line-height: 1.6;
+	color: var(--krds-color-gray-70);
+	word-break: keep-all;
+}
+
+.close {
+	position: absolute;
+	right: 8px;
+	top: 8px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	border: 0;
+	border-radius: 4px;
+	background-color: transparent;
+	color: var(--krds-color-gray-70);
+	cursor: pointer;
+}
+
+.close:hover,
+.close:focus-visible {
+	background-color: var(--krds-color-gray-5);
+}

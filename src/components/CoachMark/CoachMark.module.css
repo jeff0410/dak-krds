@@ -1,0 +1,116 @@
+.coachMark {
+	position: fixed;
+	inset: 0;
+	z-index: 1500;
+}
+
+.overlay {
+	position: absolute;
+	inset: 0;
+	background-color: var(--krds-color-alpha-black75);
+}
+
+.spotlight {
+	position: absolute;
+	border-radius: 6px;
+	box-shadow: 0 0 0 9999px var(--krds-color-alpha-black75);
+	outline: 2px solid var(--krds-color-gray-0);
+	outline-offset: 2px;
+	pointer-events: none;
+}
+
+.popover {
+	position: absolute;
+	z-index: 1;
+	width: 320px;
+	max-width: calc(100vw - 32px);
+	padding: 20px;
+	background-color: var(--krds-color-gray-0);
+	border-radius: 8px;
+	box-shadow: 0 8px 24px var(--krds-color-alpha-black50);
+	box-sizing: border-box;
+}
+
+.popover:focus {
+	outline: none;
+}
+
+.counter {
+	margin: 0 0 4px;
+	font-size: 0.813rem;
+	font-weight: 700;
+	color: var(--krds-color-primary-60);
+}
+
+.title {
+	margin: 0 0 6px;
+	font-size: 1.063rem;
+	font-weight: 700;
+	color: var(--krds-color-gray-90);
+	word-break: keep-all;
+}
+
+.instruction {
+	margin: 0 0 16px;
+	font-size: 0.938rem;
+	line-height: 1.6;
+	color: var(--krds-color-gray-70);
+	word-break: keep-all;
+}
+
+.actions {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.navigation {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+}
+
+.skip,
+.prev,
+.next {
+	min-height: 40px;
+	padding: 0 14px;
+	border-radius: 6px;
+	font-family: inherit;
+	font-size: 0.875rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.skip {
+	border: 0;
+	background-color: transparent;
+	color: var(--krds-color-gray-60);
+	text-decoration: underline;
+	padding: 0;
+}
+
+.prev {
+	border: 1px solid var(--krds-color-gray-30);
+	background-color: var(--krds-color-gray-0);
+	color: var(--krds-color-gray-80);
+}
+
+.next {
+	border: 0;
+	background-color: var(--krds-color-primary-50);
+	color: var(--krds-color-gray-0);
+}
+
+.prev:hover,
+.prev:focus-visible {
+	border-color: var(--krds-color-primary-50);
+	color: var(--krds-color-primary-60);
+}
+
+.next:hover,
+.next:focus-visible {
+	background-color: var(--krds-color-primary-60);
+}

@@ -1,0 +1,50 @@
+.textToSpeech {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 12px;
+	border: 1px solid var(--krds-color-gray-20);
+	border-radius: 24px;
+	background-color: var(--krds-color-gray-0);
+}
+
+.label {
+	font-size: 0.875rem;
+	color: var(--krds-color-gray-70);
+	white-space: nowrap;
+}
+
+.controls {
+	display: inline-flex;
+	gap: 4px;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background-color: var(--krds-color-primary-5);
+	color: var(--krds-color-primary-60);
+	cursor: pointer;
+}
+
+.button:hover:not(:disabled),
+.button:focus-visible:not(:disabled) {
+	background-color: var(--krds-color-primary-10);
+}
+
+.button:disabled {
+	background-color: var(--krds-color-gray-5);
+	color: var(--krds-color-gray-30);
+	cursor: not-allowed;
+}
+
+.icon {
+	font-size: 0.75rem;
+	line-height: 1;
+}
