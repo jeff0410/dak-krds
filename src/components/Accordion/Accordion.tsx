@@ -1,5 +1,5 @@
 import type React from "react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Label } from "../Label";
 import styles from "./Accordion.module.css";
 import type {
@@ -35,7 +35,21 @@ const AccordionItem: React.FC<InternalAccordionItemProps> = ({
 	onClick,
 }) => {
 	const contentRef = useRef<HTMLDivElement>(null);
-	const buttonId = `accordion-button-${typeof title === "string" ? title.replace(/\s+/g, "-").toLowerCase() : id}`;
+	const [contentHeight, setContentHeight] = useState(0);
+
+	useEffect(() => {
+		const contentElement = contentRef.current;
+		if (!contentElement) return;
+
+		const observer = new ResizeObserver(() =>
+			setContentHeight(contentElement.scrollHeight),
+		);
+		observer.observe(contentElement);
+
+		return () => observer.disconnect();
+	}, []);
+
+	const buttonId =`accordion-button-${typeof title === "string" ? title.replace(/\s+/g, "-").toLowerCase() : id}`;
 	const contentId = `accordion-content-${typeof title === "string" ? title.replace(/\s+/g, "-").toLowerCase() : id}`;
 
 	return (
@@ -62,7 +76,7 @@ const AccordionItem: React.FC<InternalAccordionItemProps> = ({
 				id={contentId}
 				className={styles.accordionContent}
 				style={{
-					maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px",
+					maxHeight: isOpen ? `${contentHeight}px` : "0px",
 				}}
 				inert={!isOpen ? true : undefined}
 			>

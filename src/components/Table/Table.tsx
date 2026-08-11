@@ -6,7 +6,7 @@ import {
 	type MRT_RowData,
 	useMaterialReactTable,
 } from "material-react-table";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Icon } from "../Icon";
 import styles from "./Table.module.css";
 import type { TableProps, TableRowWithIconProps } from "./Table.type";
@@ -60,17 +60,18 @@ export function Table<T extends MRT_RowData>({
 	caption,
 }: TableProps<T>) {
 	const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
-	const [dragImage, setDragImage] = useState<HTMLElement | null>(null);
+	const dragImageRef = useRef<HTMLElement | null>(null);
 
 	const onMouseMove = useCallback(
 		(e: MouseEvent) => {
+			const dragImage = dragImageRef.current;
 			if (dragImage) {
 				const rect = dragImage.getBoundingClientRect();
 				dragImage.style.left = `${e.pageX - (dragHandlePosition === "right" ? rect.width : -5)}px`;
 				dragImage.style.top = `${e.pageY}px`;
 			}
 		},
-		[dragHandlePosition, dragImage],
+		[dragHandlePosition],
 	);
 
 	useEffect(() => {
@@ -79,8 +80,9 @@ export function Table<T extends MRT_RowData>({
 	}, [onMouseMove]);
 
 	const removeDropImage = () => {
+		const dragImage = dragImageRef.current;
 		dragImage?.parentElement?.removeChild(dragImage);
-		setDragImage(null);
+		dragImageRef.current = null;
 	};
 
 	const dragHandleColumn = () =>
@@ -138,7 +140,7 @@ export function Table<T extends MRT_RowData>({
 							clone.style.backgroundColor = "var(--krds-color-information-5)";
 
 							document.body.appendChild(ghostWrapper);
-							setDragImage(ghostWrapper);
+							dragImageRef.current = ghostWrapper;
 
 							const hidden = document.getElementById("hidden");
 							if (hidden) e.dataTransfer.setDragImage(hidden, 0, 0);

@@ -29,5 +29,5 @@ export const useEscKeyEventListener = ({
 		return () => {
 			document.removeEventListener("keydown", handleKeydown);
 		};
-	}, [onEscKeyDown, ref.current]);
+	}, [onEscKeyDown, ref]);
 };
