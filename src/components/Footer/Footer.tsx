@@ -1,3 +1,4 @@
+import a11y from "../../styles/a11y.module.css";
 import styles from "./Footer.module.css";
 import type { FooterLink, FooterProps } from "./Footer.type";
 
@@ -60,7 +61,7 @@ export function Footer({
 											>
 												{link.label}
 												{link.external && (
-													<span className={styles.srOnly}>새 창 열림</span>
+													<span className={a11y.srOnly}>새 창 열림</span>
 												)}
 											</a>
 										</li>
@@ -79,7 +80,7 @@ export function Footer({
 											rel="noreferrer noopener"
 										>
 											{social.icon}
-											<span className={styles.srOnly}>
+											<span className={a11y.srOnly}>
 												{social.label} 새 창 열림
 											</span>
 										</a>
@@ -104,7 +105,7 @@ export function Footer({
 									>
 										{link.label}
 										{link.external && (
-											<span className={styles.srOnly}>새 창 열림</span>
+											<span className={a11y.srOnly}>새 창 열림</span>
 										)}
 									</a>
 								</li>

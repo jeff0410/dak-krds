@@ -139,18 +139,6 @@
 	color: var(--krds-color-gray-40);
 }
 
-.srOnly {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border: 0;
-}
-
 @media (max-width: 768px) {
 	.inner {
 		padding: 32px 16px 24px;

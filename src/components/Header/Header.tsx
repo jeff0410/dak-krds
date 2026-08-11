@@ -1,4 +1,7 @@
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useId, useState } from "react";
+import a11y from "../../styles/a11y.module.css";
+import { MainMenu } from "../MainMenu";
+import { SkipLink } from "../SkipLink";
 import styles from "./Header.module.css";
 import type { HeaderProps } from "./Header.type";
 
@@ -10,6 +13,7 @@ export function Header({
 	iconActions = [],
 	masthead,
 	variant = "horizontal",
+	skipLinks,
 	skipTargetId = "main-content",
 	skipLabel = "본문 바로가기",
 	className = "",
@@ -17,41 +21,17 @@ export function Header({
 }: HeaderProps) {
 	const baseId = useId();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [openIndex, setOpenIndex] = useState<number | null>(null);
-	const navRef = useRef<HTMLDivElement>(null);
-
-	const closeAll = useCallback(() => {
-		setIsMenuOpen(false);
-		setOpenIndex(null);
-	}, []);
-
-	useEffect(() => {
-		if (!isMenuOpen && openIndex === null) return;
-
-		const onKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") closeAll();
-		};
-		const onPointerDown = (event: MouseEvent) => {
-			if (!navRef.current?.contains(event.target as Node)) closeAll();
-		};
-
-		document.addEventListener("keydown", onKeyDown);
-		document.addEventListener("mousedown", onPointerDown);
-		return () => {
-			document.removeEventListener("keydown", onKeyDown);
-			document.removeEventListener("mousedown", onPointerDown);
-		};
-	}, [isMenuOpen, openIndex, closeAll]);
+	const menuId = `${baseId}-menu`;
 
 	return (
 		<header className={`${styles.header} ${className}`.trim()} {...props}>
-			<a href={`#${skipTargetId}`} className={styles.skipLink}>
-				{skipLabel}
-			</a>
+			<SkipLink
+				items={skipLinks ?? [{ label: skipLabel, targetId: skipTargetId }]}
+			/>
 
 			{masthead}
 
-			<div className={styles.inner} ref={navRef}>
+			<div className={styles.inner}>
 				<div className={styles.top}>
 					<a href={logoHref} className={styles.logo}>
 						{logo}
@@ -72,7 +52,7 @@ export function Header({
 											>
 												{link.label}
 												{link.external && (
-													<span className={styles.srOnly}>새 창 열림</span>
+													<span className={a11y.srOnly}>새 창 열림</span>
 												)}
 											</a>
 										</li>
@@ -88,7 +68,7 @@ export function Header({
 										<li key={action.label}>
 											<a href={action.href} className={styles.iconButton}>
 												{action.icon}
-												<span className={styles.srOnly}>{action.label}</span>
+												<span className={a11y.srOnly}>{action.label}</span>
 											</a>
 										</li>
 									) : (
@@ -99,7 +79,7 @@ export function Header({
 												onClick={action.onClick}
 											>
 												{action.icon}
-												<span className={styles.srOnly}>{action.label}</span>
+												<span className={a11y.srOnly}>{action.label}</span>
 											</button>
 										</li>
 									),
@@ -112,11 +92,11 @@ export function Header({
 								type="button"
 								className={styles.hamburger}
 								aria-expanded={isMenuOpen}
-								aria-controls={`${baseId}-menu`}
+								aria-controls={menuId}
 								onClick={() => setIsMenuOpen((open) => !open)}
 							>
 								<span className={styles.hamburgerBar} aria-hidden="true" />
-								<span className={styles.srOnly}>
+								<span className={a11y.srOnly}>
 									{isMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
 								</span>
 							</button>
@@ -125,71 +105,9 @@ export function Header({
 				</div>
 
 				{menu.length > 0 && (
-					<nav
-						id={`${baseId}-menu`}
-						aria-label="주메뉴"
-						className={`${styles.mainMenu} ${isMenuOpen ? styles.open : ""}`.trim()}
-					>
-						<ul className={styles.menuList}>
-							{menu.map((item, index) => {
-								const submenuId = `${baseId}-submenu-${index}`;
-								const hasItems = Boolean(item.items?.length);
-
-								return (
-									<li key={item.label} className={styles.menuItem}>
-										{hasItems ? (
-											<button
-												type="button"
-												className={styles.menuTrigger}
-												aria-expanded={openIndex === index}
-												aria-controls={submenuId}
-												onClick={() =>
-													setOpenIndex(openIndex === index ? null : index)
-												}
-											>
-												{item.label}
-											</button>
-										) : (
-											<a href={item.href} className={styles.menuLink}>
-												{item.label}
-											</a>
-										)}
-
-										{hasItems && (
-											<ul
-												id={submenuId}
-												className={`${styles.submenu} ${
-													openIndex === index ? styles.open : ""
-												}`.trim()}
-											>
-												{item.items?.map((sub) => (
-													<li key={sub.href}>
-														<a
-															href={sub.href}
-															className={styles.submenuLink}
-															{...(sub.external
-																? {
-																		target: "_blank",
-																		rel: "noreferrer noopener",
-																	}
-																: {})}
-														>
-															{sub.label}
-															{sub.external && (
-																<span className={styles.srOnly}>
-																	새 창 열림
-																</span>
-															)}
-														</a>
-													</li>
-												))}
-											</ul>
-										)}
-									</li>
-								);
-							})}
-						</ul>
-					</nav>
+					<div className={styles.mainMenuArea}>
+						<MainMenu items={menu} menuId={menuId} isMobileOpen={isMenuOpen} />
+					</div>
 				)}
 			</div>
 		</header>

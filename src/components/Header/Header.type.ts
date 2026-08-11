@@ -1,18 +1,8 @@
 import type React from "react";
+import type { MainMenuItem } from "../MainMenu";
+import type { SkipLinkItem } from "../SkipLink";
 
 export type HeaderVariant = "horizontal" | "vertical";
-
-export type HeaderSubMenuItem = {
-	label: string;
-	href: string;
-	external?: boolean;
-};
-
-export type HeaderMenuItem = {
-	label: string;
-	href?: string;
-	items?: HeaderSubMenuItem[];
-};
 
 export type HeaderUtilityLink = {
 	label: string;
@@ -30,11 +20,12 @@ export type HeaderIconAction = {
 export type HeaderProps = {
 	logo: React.ReactNode;
 	logoHref?: string;
-	menu?: HeaderMenuItem[];
+	menu?: MainMenuItem[];
 	utilityLinks?: HeaderUtilityLink[];
 	iconActions?: HeaderIconAction[];
 	masthead?: React.ReactNode;
 	variant?: HeaderVariant;
+	skipLinks?: SkipLinkItem[];
 	skipTargetId?: string;
 	skipLabel?: string;
 	className?: string;
