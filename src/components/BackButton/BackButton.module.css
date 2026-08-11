@@ -1,0 +1,41 @@
+.topBar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 4px;
+	width: 100%;
+	min-height: 56px;
+	padding: 0 8px;
+	background-color: var(--krds-color-gray-0);
+	box-sizing: border-box;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	border: 0;
+	border-radius: 6px;
+	background-color: transparent;
+	color: var(--krds-color-gray-90);
+	cursor: pointer;
+}
+
+.button:hover,
+.button:focus-visible {
+	background-color: var(--krds-color-gray-5);
+}
+
+.title {
+	margin: 0;
+	font-size: 1.063rem;
+	font-weight: 700;
+	color: var(--krds-color-gray-90);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
