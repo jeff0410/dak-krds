@@ -4,7 +4,7 @@
 기준 버전: `dak-krds@0.1.15`
 최종 확인: 2026-08-11
 
-**전체 55개 중 28개 구현 (51%) · 부분 구현 3개 · 미구현 24개**
+**전체 55개 중 32개 구현 (58%) · 부분 구현 2개 · 미구현 21개**
 
 구현 수치는 ✅ 만 셉니다. 🟡 는 별도로 표기합니다.
 
@@ -15,13 +15,13 @@
 | 피드백 (Feedback) | 2 / 2 | 100% |
 | 액션 (Action) | 2 / 3 | 67% |
 | 레이아웃 및 표현 | 7 / 13 (🟡 1) | 54% |
-| 탐색 (Navigation) | 2 / 6 (🟡 1) | 33% |
+| 탐색 (Navigation) | 6 / 6 | 100% |
 | 아이덴티티 (Identity) | 4 / 4 | 100% |
 | 도움 (Help) | 1 / 6 | 17% |
 | 모바일 (Mobile) | 1 / 8 (🟡 1) | 13% |
 | 설정 (Settings) | 0 / 2 | 0% |
 | 콘텐츠 (Content) | 0 / 2 | 0% |
-| **합계** | **28 / 55 (🟡 3)** | **51%** |
+| **합계** | **32 / 55 (🟡 2)** | **58%** |
 
 범례: ✅ 구현 · 🟡 부분 구현 · ❌ 미구현
 
@@ -40,11 +40,11 @@
 
 | 상태 | KRDS (KO) | KRDS (EN) | 프로젝트 컴포넌트 |
 | --- | --- | --- | --- |
-| 🟡 | 건너뛰기 링크 | Skip link | `Header` 내부에 포함. 독립 컴포넌트는 미구현 |
-| ❌ | 메인 메뉴 | Main menu | |
+| ✅ | 건너뛰기 링크 | Skip link | `SkipLink` — 숨김/노출 변형, 최대 3개, 대상으로 포커스 이동 |
+| ✅ | 메인 메뉴 | Main menu | `MainMenu` — 3뎁스 · 설명형 드롭다운 · Esc 시 트리거로 포커스 복귀 |
 | ✅ | 브레드크럼 | Breadcrumb | `Breadcrumb` |
-| ❌ | 사이드 메뉴 | Side navigation | |
-| ❌ | 콘텐츠 내 탐색 | In-page navigation | |
+| ✅ | 사이드 메뉴 | Side navigation | `SideNavigation` — 헤더 · 2뎁스 · 다중 확장 · 구분선 |
+| ✅ | 콘텐츠 내 탐색 | In-page navigation | `InPageNavigation` — 스크롤 추적 · sticky · 3단계 계층 |
 | ✅ | 페이지네이션 | Pagination | `Pagination` |
 
 ## 레이아웃 및 표현 (Layout & Presentation)
@@ -122,7 +122,7 @@
 | 상태 | KRDS (KO) | KRDS (EN) | 프로젝트 컴포넌트 |
 | --- | --- | --- | --- |
 | ❌ | 접근 가능한 미디어 | Accessible multimedia | |
-| ❌ | 숨긴 콘텐츠 | Visually hidden | `Header` · `Footer` 내부에 지역 클래스로만 존재. 공개 유틸 미제공 |
+| ❌ | 숨긴 콘텐츠 | Visually hidden | `src/styles/a11y.module.css` 로 내부 공유 중. 공개 컴포넌트/유틸 미제공 |
 
 ## 모바일 (Mobile)
 
@@ -158,8 +158,7 @@ KRDS 목록에는 없지만 이 라이브러리가 제공하는 것들입니다.
 
 **1순위 — 접근성 / 정부 사이트 필수**
 
-- 건너뛰기 링크 (Skip link) — `Header` 에서 분리해 독립 컴포넌트화
-- 숨긴 콘텐츠 (Visually hidden) — 공개 유틸 클래스로 추출
+- 숨긴 콘텐츠 (Visually hidden) — 내부 공유 모듈을 공개 컴포넌트로 승격
 
 **2순위 — 사용 빈도 높음**
 

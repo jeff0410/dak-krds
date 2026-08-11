@@ -475,7 +475,7 @@ import { Icon } from 'dak-krds';
 <details>
 <summary><b>탐색</b></summary>
 
-`Breadcrumb` `Tab` `Tabs` `TabPanel` `MScrollTab` `Pagination` `StepIndicator`
+`SkipLink` `MainMenu` `SideNavigation` `InPageNavigation` `Breadcrumb` `Tab` `Tabs` `TabPanel` `MScrollTab` `Pagination` `StepIndicator`
 
 </details>
 
