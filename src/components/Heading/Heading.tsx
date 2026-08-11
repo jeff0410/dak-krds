@@ -20,8 +20,8 @@ export function Heading({
 	children,
 	className = "",
 	...props
-}: HeadingProps) {
-	const tag = `h${size}`;
+}: HeadingProps): React.ReactElement {
+	const tag = `h${size}` as "h1" | "h2" | "h3" | "h4" | "h5";
 
 	const colorStyle: React.CSSProperties = {};
 	if (color in colors) {
