@@ -35,7 +35,6 @@ export const useCustomCalendar = ({
 
   const goToPrevMonth = () => {
     setCurrentDate(currentDate.minusMonths(1));
-    console.log('goToPrevMonth', currentDate.toString());
   };
 
   const goToNextMonth = () => {
