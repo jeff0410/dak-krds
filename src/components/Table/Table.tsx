@@ -85,75 +85,78 @@ export function Table<T extends MRT_RowData>({
 		dragImageRef.current = null;
 	};
 
-	const dragHandleColumn = () =>
-		({
-			accessorKey: "draggable",
-			header: "",
-			Header: () => (
-				<div
-					style={{
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-					}}
-				>
-					<Icon icon={"Menu"} size={20} viewBox={"0 0 20 20"} />
-				</div>
-			),
-			Cell: ({ row }) => (
-				<div
-					draggable={true}
-					style={{
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						cursor: "grab",
-					}}
-					onDragStart={async (e) => {
-						const rowIndex = row.index;
+	const dragHandleColumn = useCallback(
+		() =>
+			({
+				accessorKey: "draggable",
+				header: "",
+				Header: () => (
+					<div
+						style={{
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+						}}
+					>
+						<Icon icon={"Menu"} size={20} viewBox={"0 0 20 20"} />
+					</div>
+				),
+				Cell: ({ row }) => (
+					<div
+						draggable={true}
+						style={{
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							cursor: "grab",
+						}}
+						onDragStart={async (e) => {
+							const rowIndex = row.index;
 
-						setDraggedIndex(rowIndex);
-						const rowTr = e.currentTarget.closest("tr") as HTMLElement;
-						if (rowTr) {
-							const ghostWrapper = document.createElement("div");
-							const clone = rowTr.cloneNode(true) as HTMLElement;
-							const table = document.createElement("table");
-							const tbody = document.createElement("tbody");
+							setDraggedIndex(rowIndex);
+							const rowTr = e.currentTarget.closest("tr") as HTMLElement;
+							if (rowTr) {
+								const ghostWrapper = document.createElement("div");
+								const clone = rowTr.cloneNode(true) as HTMLElement;
+								const table = document.createElement("table");
+								const tbody = document.createElement("tbody");
 
-							tbody.appendChild(clone);
-							table.appendChild(tbody);
-							ghostWrapper.appendChild(table);
+								tbody.appendChild(clone);
+								table.appendChild(tbody);
+								ghostWrapper.appendChild(table);
 
-							Object.assign(ghostWrapper.style, {
-								width: `${rowTr.offsetWidth}px`,
-								height: `${rowTr.offsetHeight}px`,
-								position: "absolute",
-								top: "-9999px",
-								left: "-9999px",
-								border: "2px solid var(--krds-color-information-5)",
-								pointerEvent: "none",
-								zIndex: 999,
-							});
+								Object.assign(ghostWrapper.style, {
+									width: `${rowTr.offsetWidth}px`,
+									height: `${rowTr.offsetHeight}px`,
+									position: "absolute",
+									top: "-9999px",
+									left: "-9999px",
+									border: "2px solid var(--krds-color-information-5)",
+									pointerEvent: "none",
+									zIndex: 999,
+								});
 
-							table.style.borderCollapse = "collapse";
-							table.style.width = "100%";
-							clone.style.backgroundColor = "var(--krds-color-information-5)";
+								table.style.borderCollapse = "collapse";
+								table.style.width = "100%";
+								clone.style.backgroundColor = "var(--krds-color-information-5)";
 
-							document.body.appendChild(ghostWrapper);
-							dragImageRef.current = ghostWrapper;
+								document.body.appendChild(ghostWrapper);
+								dragImageRef.current = ghostWrapper;
 
-							const hidden = document.getElementById("hidden");
-							if (hidden) e.dataTransfer.setDragImage(hidden, 0, 0);
-						}
-					}}
-				>
-					<Icon icon={"Menu"} size={20} viewBox={"0 0 20 20"} />
-				</div>
-			),
-			enableSorting: false,
-			size: 52,
-			...customDropColumnOption,
-		}) as MRT_ColumnDef<T>;
+								const hidden = document.getElementById("hidden");
+								if (hidden) e.dataTransfer.setDragImage(hidden, 0, 0);
+							}
+						}}
+					>
+						<Icon icon={"Menu"} size={20} viewBox={"0 0 20 20"} />
+					</div>
+				),
+				enableSorting: false,
+				size: 52,
+				...customDropColumnOption,
+			}) as MRT_ColumnDef<T>,
+		[customDropColumnOption],
+	);
 
 	const modifiedColumns: MRT_ColumnDef<T>[] = useMemo(() => {
 		const draggableColumns = draggable
@@ -236,7 +239,7 @@ export function Table<T extends MRT_RowData>({
 		enableAccordion,
 		accordionToggleColumnKey,
 		dragHandlePosition,
-		customDropColumnOption,
+		dragHandleColumn,
 	]);
 
 	const table = useMaterialReactTable({

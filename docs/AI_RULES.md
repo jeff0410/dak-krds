@@ -180,7 +180,7 @@ git log -1 --pretty=full
    package.json 0.1.14  →  태그 v0.1.14
    ```
 
-3. 워크플로가 태그와 `package.json` 버전 일치를 검증한 뒤 typecheck / build 를 거쳐 배포합니다. (build 는 `prepublishOnly` 에서 실행됩니다.)
+3. 워크플로가 태그와 `package.json` 버전 일치를 검증한 뒤 typecheck / lint / build 를 거쳐 배포합니다. (build 는 `prepublishOnly` 에서 실행됩니다.)
 
 **주의**
 

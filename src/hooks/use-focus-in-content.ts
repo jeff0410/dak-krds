@@ -19,38 +19,41 @@ const focusableElements =
 export const useFocusInContent = ({ id }: UseFocusInContentProps) => {
   const lastFocusedElement = useRef<HTMLElement | null>(null);
 
-  const handleKeydown = (e: KeyboardEvent) => {
-    if (!id) return;
+  const handleKeydown = useCallback(
+    (e: KeyboardEvent) => {
+      if (!id) return;
 
-    const portals = document.getElementsByClassName('portal-wrap');
-    const contentEl = Array.from(portals ?? []).find(
-      (portal) => portal.getAttribute('data-id') === id,
-    );
+      const portals = document.getElementsByClassName('portal-wrap');
+      const contentEl = Array.from(portals ?? []).find(
+        (portal) => portal.getAttribute('data-id') === id,
+      );
 
-    if (!contentEl) return;
+      if (!contentEl) return;
 
-    // tab키 입력할 때 마다 focusable element 탐색을 위해
-    const focusableList = contentEl.querySelectorAll(focusableElements);
-    const firstElement = focusableList[0];
-    const lastElement = focusableList[focusableList.length - 1];
-    const isTabPressed = e.key === 'Tab';
+      // tab키 입력할 때 마다 focusable element 탐색을 위해
+      const focusableList = contentEl.querySelectorAll(focusableElements);
+      const firstElement = focusableList[0];
+      const lastElement = focusableList[focusableList.length - 1];
+      const isTabPressed = e.key === 'Tab';
 
-    if (!isTabPressed) return;
+      if (!isTabPressed) return;
 
-    if (e.shiftKey) {
-      if (document.activeElement === firstElement) {
-        if (lastElement instanceof HTMLElement) lastElement.focus();
-        e.preventDefault();
-        return;
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          if (lastElement instanceof HTMLElement) lastElement.focus();
+          e.preventDefault();
+          return;
+        }
       }
-    }
 
-    if (document.activeElement === lastElement) {
-      if (firstElement instanceof HTMLElement) firstElement.focus();
+      if (document.activeElement === lastElement) {
+        if (firstElement instanceof HTMLElement) firstElement.focus();
 
-      e.preventDefault();
-    }
-  };
+        e.preventDefault();
+      }
+    },
+    [id],
+  );
 
   const addEventForFocus = useCallback(() => {
     if (!id) return;
@@ -83,7 +86,7 @@ export const useFocusInContent = ({ id }: UseFocusInContentProps) => {
         lastFocusedElement.current.focus();
       }
     };
-  }, [id, addEventForFocus]);
+  }, [id, addEventForFocus, handleKeydown]);
 };
 
 const checkElementIsFocused = (el: Element) => {
