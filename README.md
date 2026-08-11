@@ -461,7 +461,7 @@ import { Icon } from 'dak-krds';
 <details>
 <summary><b>액션</b></summary>
 
-`Button` `LinkButton` `Link`
+`Button` `LinkButton` `Link` `FloatingButton`
 
 </details>
 
@@ -476,6 +476,13 @@ import { Icon } from 'dak-krds';
 <summary><b>탐색</b></summary>
 
 `SkipLink` `MainMenu` `SideNavigation` `InPageNavigation` `Breadcrumb` `Tab` `Tabs` `TabPanel` `MScrollTab` `Pagination` `StepIndicator`
+
+</details>
+
+<details>
+<summary><b>도움 · 설정 · 접근성</b></summary>
+
+`ContextualHelp` `CoachMark` `HelpPanel` `TutorialPanel` `TextToSpeech` `LanguageSwitcher` `Resize` `VisuallyHidden` `AccessibleMedia`
 
 </details>
 
@@ -496,7 +503,7 @@ import { Icon } from 'dak-krds';
 <details>
 <summary><b>데이터 표시 · 레이아웃</b></summary>
 
-`Table` `GroupedTable` `MTable` `Accordion` `Carousel` `Drawer` `Portal` `Calendar` `ScheduleCalendar` `CustomEventCalendar`
+`Table` `GroupedTable` `MTable` `Accordion` `Disclosure` `Carousel` `Drawer` `Portal` `Calendar` `ScheduleCalendar` `CustomEventCalendar` `StructuredList` `TextList` `Image` `CriticalAlerts`
 
 </details>
 

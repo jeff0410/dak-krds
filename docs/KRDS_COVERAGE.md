@@ -4,7 +4,9 @@
 기준 버전: `dak-krds@0.1.15`
 최종 확인: 2026-08-11
 
-**전체 55개 중 39개 구현 (71%) · 부분 구현 1개 · 미구현 15개**
+**전체 55개 중 54개 구현 (98%) · 미구현 1개**
+
+미구현은 파비콘(Favicon) 하나입니다. 이미지 파일과 `<link>` 태그 규격 가이드라, React 컴포넌트로 제공할 대상이 아닙니다.
 
 구현 수치는 ✅ 만 셉니다. 🟡 는 별도로 표기합니다.
 
@@ -13,15 +15,15 @@
 | 선택 (Selection) | 5 / 5 | 100% |
 | 입력 (Input) | 4 / 4 | 100% |
 | 피드백 (Feedback) | 2 / 2 | 100% |
-| 액션 (Action) | 2 / 3 | 67% |
-| 레이아웃 및 표현 | 7 / 13 (🟡 1) | 54% |
+| 액션 (Action) | 3 / 3 | 100% |
+| 레이아웃 및 표현 | 12 / 13 | 92% |
 | 탐색 (Navigation) | 6 / 6 | 100% |
 | 아이덴티티 (Identity) | 4 / 4 | 100% |
-| 도움 (Help) | 1 / 6 | 17% |
+| 도움 (Help) | 6 / 6 | 100% |
 | 모바일 (Mobile) | 8 / 8 | 100% |
-| 설정 (Settings) | 0 / 2 | 0% |
-| 콘텐츠 (Content) | 0 / 2 | 0% |
-| **합계** | **39 / 55 (🟡 1)** | **71%** |
+| 설정 (Settings) | 2 / 2 | 100% |
+| 콘텐츠 (Content) | 2 / 2 | 100% |
+| **합계** | **54 / 55** | **98%** |
 
 범례: ✅ 구현 · 🟡 부분 구현 · ❌ 미구현
 
@@ -51,19 +53,19 @@
 
 | 상태 | KRDS (KO) | KRDS (EN) | 프로젝트 컴포넌트 |
 | --- | --- | --- | --- |
-| ❌ | 구조화 목록 | Structured list | |
-| 🟡 | 긴급 공지 | Critical alerts | `Alert` — variant 기반 인라인 알림. 페이지 상단 긴급 공지 형태는 미구현 |
+| ✅ | 구조화 목록 | Structured list | `StructuredList` — dl/dt/dd, 가로·세로 배치 |
+| ✅ | 긴급 공지 | Critical alerts | `CriticalAlerts` — role=banner, 긴급도 3단계, 닫기 버튼 없음 |
 | ✅ | 달력 | Calendar | `ScheduleCalendar` |
-| ❌ | 디스클로저 | Disclosure | `Accordion` 과 별개 컴포넌트 |
+| ✅ | 디스클로저 | Disclosure | `Disclosure` — 기본 접힘, aria-expanded |
 | ✅ | 모달 | Modal | `Modal`, `Portal` |
 | ✅ | 배지 | Badge | `Badge` |
 | ✅ | 아코디언 | Accordion | `Accordion` |
-| ❌ | 이미지 | Image | |
+| ✅ | 이미지 | Image | `Image` — 비율·figcaption·긴 설명 연결·lazy |
 | ✅ | 캐러셀 | Carousel | `Carousel` |
 | ✅ | 탭 | Tab | `Tab`, `MScrollTab` |
 | ✅ | 표 | Table | `Table`, `GroupedTable`, `MTable`, `MTableGuideWrapper` |
-| ❌ | 텍스트 목록 | Text list | |
-| ❌ | 파비콘 | Favicon | 가이드 성격, 컴포넌트 불필요할 수 있음 |
+| ✅ | 텍스트 목록 | Text list | `TextList` — 불릿·번호·대시, 중첩 |
+| ❌ | 파비콘 | Favicon | 이미지 파일·`<link>` 규격 가이드. React 컴포넌트 대상 아님 |
 
 ## 액션 (Action)
 
@@ -71,7 +73,7 @@
 | --- | --- | --- | --- |
 | ✅ | 링크 | Link | `Link` |
 | ✅ | 버튼 | Button | `Button`, `LinkButton` |
-| ❌ | 플로팅 버튼 | FAB | |
+| ✅ | 플로팅 버튼 | FAB | `FloatingButton` — 단일·확장형(3개), 우측 하단 고정 |
 
 ## 선택 (Selection)
 
@@ -94,12 +96,12 @@
 
 | 상태 | KRDS (KO) | KRDS (EN) | 프로젝트 컴포넌트 |
 | --- | --- | --- | --- |
-| ❌ | 도움 패널 | Help panel | |
-| ❌ | 따라하기 패널 | Tutorial panel | |
-| ❌ | 맥락적 도움말 | Contextual help | |
-| ❌ | 코치마크 | Coach mark | |
+| ✅ | 도움 패널 | Help panel | `HelpPanel` — 사이드 패널, 관련 링크 |
+| ✅ | 따라하기 패널 | Tutorial panel | `TutorialPanel` — 단계 진행, 미디어 슬롯 |
+| ✅ | 맥락적 도움말 | Contextual help | `ContextualHelp` — i/? 유형, 팝오버 6방향 |
+| ✅ | 코치마크 | Coach mark | `CoachMark` — 스포트라이트, 단계 분수 표기 |
 | ✅ | 툴팁 | Tooltip | `Tooltip` |
-| ❌ | 음성지원 | TTS | |
+| ✅ | 음성지원 | TTS | `TextToSpeech` — Web Speech API, 미지원 시 미표시 |
 
 ## 입력 (Input)
 
@@ -114,15 +116,15 @@
 
 | 상태 | KRDS (KO) | KRDS (EN) | 프로젝트 컴포넌트 |
 | --- | --- | --- | --- |
-| ❌ | 언어 변경 | Language switcher | |
-| ❌ | 화면 크기 조정 | Resize | |
+| ✅ | 언어 변경 | Language switcher | `LanguageSwitcher` — 2개 링크형/3개+ 드롭다운, lang 속성 |
+| ✅ | 화면 크기 조정 | Resize | `Resize` — 90/100/110/130/150%, 방향키 이동 |
 
 ## 콘텐츠 (Content)
 
 | 상태 | KRDS (KO) | KRDS (EN) | 프로젝트 컴포넌트 |
 | --- | --- | --- | --- |
-| ❌ | 접근 가능한 미디어 | Accessible multimedia | |
-| ❌ | 숨긴 콘텐츠 | Visually hidden | `src/styles/a11y.module.css` 로 내부 공유 중. 공개 컴포넌트/유틸 미제공 |
+| ✅ | 접근 가능한 미디어 | Accessible multimedia | `AccessibleMedia` — track 자막, 대본 |
+| ✅ | 숨긴 콘텐츠 | Visually hidden | `VisuallyHidden` — focusable 옵션 |
 
 ## 모바일 (Mobile)
 
