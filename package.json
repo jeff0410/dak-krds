@@ -1,6 +1,6 @@
 {
   "name": "dak-krds",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "DAK React UI Component Design System",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -8,7 +8,9 @@
   "sideEffects": [
     "**/*.css",
     "**/*.css.mjs",
-    "**/*.css.cjs"
+    "**/*.css.cjs",
+    "./dist/index.mjs",
+    "./dist/index.cjs"
   ],
   "exports": {
     ".": {
