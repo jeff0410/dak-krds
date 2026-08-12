@@ -80,6 +80,8 @@ export default defineConfig({
 			include: ["src"],
 			exclude: [
 				"src/**/*.stories.tsx",
+				"src/stories/**",
+				"src/setupTests.ts",
 				"src/**/*.test.tsx",
 				"src/**/__tests__/**",
 			],

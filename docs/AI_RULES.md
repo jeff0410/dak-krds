@@ -27,29 +27,40 @@
   ```
 
 - 커밋 메시지는 사람이 쓴 것처럼 한 줄 요약 + (필요 시) 본문만 씁니다.
-- 형식은 **`Type: 요약`** 하나로 고정합니다. 접두사는 **대문자로 시작**하고 요약은 한글로 씁니다.
+- 형식은 **[Conventional Commits](https://www.conventionalcommits.org/ko/v1.0.0/)** 를 따릅니다.
+  이 저장소는 npm 에 공개되는 라이브러리이므로 국제 표준 표기를 씁니다.
 
   ```
-  Feat: customDatePicker 추가
-  Fix: Tooltip 컴포넌트 이동 후 빌드 오류 수정
-  Chore: 버전 0.1.11로 업데이트
+  type(scope): 소문자 영문 한 줄 요약
+
+  본문. 무엇을 왜 바꿨는지 적는다.
   ```
 
-  접두사: `Feat:` `Fix:` `Chore:` `Refactor:` `Docs:` `Style:` `Test:`
+  ```
+  feat(storybook): add component catalog covering all KRDS categories
+  fix(build): keep stories out of dist and inside typecheck
+  test(visual): gate unintended UI changes with Playwright screenshots
+  ```
 
+  타입: `feat` `fix` `refactor` `perf` `test` `docs` `style` `build` `ci` `chore` `revert`
+  스코프는 선택입니다. 있으면 바뀐 영역을 좁게 씁니다 (`storybook` `build` `Button`).
+
+- 요약은 **영문 소문자, 명령형**으로 쓰고 마침표를 찍지 않습니다.
 - 한 커밋 = 하나의 논리적 변경. 구조 변경과 구현을 섞지 않습니다.
-- 본문은 규모가 큰 변경에만 붙이고 `-` 불릿으로 **무엇을 왜** 바꿨는지 적습니다.
+- 본문은 규모가 큰 변경에만 붙이고 **무엇을 왜** 바꿨는지 적습니다.
+- 호환이 깨지면 타입 뒤에 `!` 를 붙이고 (`feat(api)!:`) 본문에 `BREAKING CHANGE:` 를 씁니다.
 
 **형식 금지 사항**
 
-- 소문자 접두사 금지. `fix:` 가 아니라 `Fix:` 입니다.
-- `[수정]` 같은 대괄호 표기, `fix(scope):` 같은 스코프 표기, 접두사 없는 맨 문장을 쓰지 않습니다.
+- 대문자 접두사 금지. `Fix:` 가 아니라 `fix:` 입니다.
+- `[수정]` 같은 대괄호 표기, 접두사 없는 맨 문장을 쓰지 않습니다.
 - `misc`, `update`, `wip`, `수정`, `저장` 같은 모호한 메시지를 쓰지 않습니다.
 
 **커밋 전 자가 점검**
 
 - `git status` 로 변경 파일을 확인하고 의도하지 않은 파일은 제외합니다.
-- `pnpm run typecheck` `pnpm run lint` `pnpm run build` 가 통과하는 상태에서 커밋합니다.
+- `pnpm run verify` (린트 · 타입 · 테스트 · 빌드 · 산출물 · 문서) 가 통과하는 상태에서 커밋합니다.
+- 화면에 보이는 부분을 바꿨다면 `pnpm run test:visual` 도 통과해야 합니다. ([VISUAL_REGRESSION.md](VISUAL_REGRESSION.md))
 - 작성자를 확인합니다.
 
   ```bash
@@ -65,7 +76,8 @@
 
 **커밋 / 푸시 / PR 생성은 사용자가 명시적으로 요청할 때만 수행합니다.**
 
-> 이 커밋 규칙은 `~/Documents/jeff/rtmc/project/` 아래 저장소들의 `.cursor/rules/git-commit.mdc` 와 동일한 형식입니다.
+> `~/Documents/jeff/rtmc/project/` 아래 사내 저장소들은 아직 `Type: 요약` (대문자 접두사 + 한글 요약)
+> 형식을 씁니다. 공개 라이브러리인 이 저장소만 Conventional Commits 를 따릅니다.
 
 ---
 
@@ -147,7 +159,7 @@
 - **Tree-shaking 을 깨지 않습니다.** 부수효과 있는 top-level 코드 금지.
 - **peerDependencies 를 dependencies 로 옮기지 않습니다.** (`react`, `react-dom`)
 - 새 컴포넌트를 추가하면 README 의 컴포넌트 목록과 사용 예시를 함께 갱신합니다.
-- 배포 전 확인: `pnpm run typecheck && pnpm run lint && pnpm run build`
+- 배포 전 확인: `pnpm run verify`
 
 ---
 
@@ -283,7 +295,8 @@ src/components/ComponentName/
 - [ ] 파일명 PascalCase, export 규칙 준수
 - [ ] 공통화한 게 있으면 `docs/COMMON.md` 갱신
 - [ ] 새 public API 는 `src/index.ts` 에 등록
-- [ ] `pnpm run typecheck` `pnpm run lint` 통과
-- [ ] 커밋 메시지에 AI 흔적 없음, author 가 jeff0410
+- [ ] `pnpm run verify` 통과
+- [ ] 화면을 바꿨다면 `pnpm run test:visual` 통과
+- [ ] 커밋 메시지가 Conventional Commits 형식, AI 흔적 없음, author 가 jeff0410
 - [ ] `docs/ACCOUNTS.md` 가 스테이징에 없음
 - [ ] PR 생성 시 `package.json` patch 버전을 1 올렸음 (PR 당 1회)

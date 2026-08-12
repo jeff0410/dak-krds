@@ -10,6 +10,9 @@
 [![license](https://img.shields.io/npm/l/dak-krds?color=0B50D0)](./LICENSE)
 [![React](https://img.shields.io/badge/React-19+-0B50D0?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-0B50D0?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Storybook](https://img.shields.io/badge/Storybook-데모%20보기-FF4785?logo=storybook&logoColor=white)](https://jeff0410.github.io/dak-krds/)
+
+**[컴포넌트 데모 보기 →](https://jeff0410.github.io/dak-krds/)**
 
 </div>
 
@@ -1036,6 +1039,10 @@ import { ChipGroup } from 'dak-krds';
 </details>
 
 > KRDS 55개 표준 컴포넌트 대비 구현 현황은 [docs/KRDS_COVERAGE.md](docs/KRDS_COVERAGE.md) 에서 확인할 수 있습니다.
+
+> 모든 컴포넌트는 [온라인 데모](https://jeff0410.github.io/dak-krds/)에서 바로 확인할 수 있습니다.
+> 로컬에서 띄우려면 `pnpm run storybook` 을 실행하세요.
+> 화면 변화를 자동으로 잡는 시각 회귀 테스트는 [docs/VISUAL_REGRESSION.md](docs/VISUAL_REGRESSION.md) 를 참고하세요.
 
 ---
 

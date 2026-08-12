@@ -1,0 +1,21 @@
+.stack {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 16px;
+}
+
+.panel {
+	width: 320px;
+}
+
+.wide {
+	width: 100%;
+	max-width: 720px;
+}
