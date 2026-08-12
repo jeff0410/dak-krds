@@ -6,6 +6,7 @@ import {
 	writeFileSync,
 } from "fs";
 import react from "@vitejs/plugin-react";
+import pkg from "./package.json" with { type: "json" };
 import { svgrPlugins } from "./build/svgr-plugins";
 import { resolve } from "path";
 import { defineConfig, type Plugin } from "vite";
@@ -14,16 +15,17 @@ import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 const FONT = "PretendardGOVVariable.woff2";
 
-const external = [
-	/^react($|\/)/,
-	/^react-dom($|\/)/,
-	/^@mui\//,
-	/^@emotion\//,
-	/^@fullcalendar\//,
-	/^material-react-table($|\/)/,
-	/^@js-joda\//,
-	/^lodash-es($|\/)/,
-];
+// 소비자가 설치하는 것은 번들에 넣지 않는다.
+// peerDependencies 와 dependencies 를 그대로 외부 모듈로 둔다.
+const externalNames = [
+	...Object.keys(pkg.peerDependencies ?? {}),
+	...Object.keys(pkg.dependencies ?? {}),
+].filter((name) => !name.startsWith("@types/"));
+
+const external = externalNames.map(
+	(name) =>
+		new RegExp(`^${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}($|/)`),
+);
 
 const plainCssName = (file: string) => file.replace(/\.module\.css$/, ".css");
 

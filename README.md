@@ -34,6 +34,7 @@
 - [빠른 시작](#빠른-시작)
 - [꼭 알아야 할 3가지](#꼭-알아야-할-3가지)
 - [컴포넌트 사용법](#컴포넌트-사용법) — KRDS 55개 전체
+- [번들 크기](#번들-크기)
 - [전체 컴포넌트 목록](#전체-컴포넌트-목록)
 - [TypeScript](#typescript)
 - [웹접근성](#웹접근성)
@@ -914,6 +915,30 @@ import { ChipGroup } from 'dak-krds';
 ```
 
 `ChipGroup` 은 `chipList` 가 아니라 **`options`/`selected`/`onChange(value, checked)`** 를 씁니다.
+
+---
+
+## 번들 크기
+
+컴포넌트 단위로 분할 배포되어 **쓴 것만 번들에 들어갑니다.** React 19 앱 기준 실측입니다.
+
+| 가져온 것 | 번들 | dak-krds 몫 |
+| --- | --- | --- |
+| React 만 | 193.1 kB (gzip 60.6) | — |
+| `Button` | 195.7 kB (gzip 61.9) | **+2.6 kB** |
+| `Tooltip` | 195.5 kB (gzip 61.4) | **+2.3 kB** |
+| `ScheduleCalendar` | 426.3 kB (gzip 130.9) | +233 kB |
+| `Table` | 1,119.4 kB (gzip 326.0) | +926 kB |
+
+대부분의 컴포넌트는 몇 kB 수준입니다. 다만 아래 넷은 무거운 외부 라이브러리를 함께 가져옵니다.
+
+| 컴포넌트 | 함께 들어오는 것 |
+| --- | --- |
+| `Table` · `MTable` | material-react-table + MUI |
+| `ScheduleCalendar` | FullCalendar |
+| `ClickTooltip` · `HoverTooltip` | MUI |
+
+`Tooltip` 은 MUI 를 쓰지 않습니다. MUI 기반이 필요할 때만 `ClickTooltip` · `HoverTooltip` 을 쓰세요.
 
 ---
 
