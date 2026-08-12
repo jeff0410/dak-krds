@@ -1,19 +1,11 @@
+import { createElement } from "react";
 import type * as React from "react";
 import { colors, getColor } from "src/styles/color/color";
 import styles from "./Display.module.css";
 import type { DisplayProps } from "./Display.type";
 
-/**
- * Display 컴포넌트 😸
- * 제목(헤딩) 텍스트
- *
- * @param props - Display 컴포넌트의 props
- * @param size - 제목 텍스트의 크기 (예: 's', 'm', 'l')
- * @param color - 제목 텍스트의 색상
- * @param children - 렌더링할 텍스트 또는 노드
- * @param className - 추가로 적용할 클래스 이름
- */
-export function Display<E extends React.ElementType = "h1">({
+export function Display<E extends React.ElementType = "div">({
+	as,
 	size = "m",
 	children,
 	color = "gray-90",
@@ -31,13 +23,14 @@ export function Display<E extends React.ElementType = "h1">({
 		colorStyle.color = color;
 	}
 
-	return (
-		<h1
-			className={`${displayClass} ${sizeClass} ${weightClass} ${className}`.trim()}
-			style={colorStyle}
-			{...props}
-		>
-			{children}
-		</h1>
+	return createElement(
+		as ?? "div",
+		{
+			className:
+				`${displayClass} ${sizeClass} ${weightClass} ${className}`.trim(),
+			style: colorStyle,
+			...props,
+		},
+		children,
 	);
 }

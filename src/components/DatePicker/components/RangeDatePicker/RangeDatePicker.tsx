@@ -243,6 +243,7 @@ export function RangeDatePicker({
 						<button
 							type="button"
 							title={"캘린더 열기"}
+							aria-label="캘린더 열기"
 							onClick={handleToggle}
 							className={styles.iconButton}
 							disabled={disabled}

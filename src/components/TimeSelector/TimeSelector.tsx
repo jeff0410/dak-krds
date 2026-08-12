@@ -38,6 +38,7 @@ export function TimeSelector({
 			<TextInput
 				className={styles.timeInput}
 				id={"time-selector"}
+				titleAttr={"시간 선택"}
 				width={width}
 				icon={<Icon icon={"Time"} />}
 				useIcon

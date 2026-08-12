@@ -142,6 +142,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 							ref={ref}
 							id={id}
 							title={titleAttr}
+							aria-label={titleAttr}
 							type={inputType}
 							className={`
             ${styles.input}

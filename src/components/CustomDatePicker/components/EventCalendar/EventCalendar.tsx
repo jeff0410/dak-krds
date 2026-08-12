@@ -198,6 +198,7 @@ export function CustomEventCalendar({
           <button
             type='button'
             className={styles.header}
+            aria-label="이전 달"
             onClick={goToPrevMonth}>
             <Icon size={20} viewBox='0 0 24 24' icon='ArrowLeft' />
           </button>
@@ -208,6 +209,7 @@ export function CustomEventCalendar({
           <button
             type='button'
             className={styles.header}
+            aria-label="다음 달"
             onClick={goToNextMonth}>
             <Icon size={20} viewBox='0 0 24 24' icon='ArrowRight' />
           </button>
@@ -217,6 +219,7 @@ export function CustomEventCalendar({
           <button
             type='button'
             className={styles.header}
+            aria-label="이전 달"
             onClick={goToPrevMonth}>
             <Icon size={20} viewBox='0 0 24 24' icon='ArrowLeft' />
           </button>
@@ -232,6 +235,7 @@ export function CustomEventCalendar({
           <button
             type='button'
             className={styles.header}
+            aria-label="다음 달"
             onClick={goToNextMonth}>
             <Icon size={20} viewBox='0 0 24 24' icon='ArrowRight' />
           </button>

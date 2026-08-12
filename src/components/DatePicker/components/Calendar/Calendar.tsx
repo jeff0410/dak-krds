@@ -49,6 +49,7 @@ export function Calendar({
 				<button
 					type={"button"}
 					className={styles.header}
+					aria-label="이전 달"
 					onClick={goToPrevMonth}
 				>
 					<Icon size={20} viewBox="0 0 20 20" icon="ArrowLeft" />
@@ -65,6 +66,7 @@ export function Calendar({
 				<button
 					type={"button"}
 					className={styles.header}
+					aria-label="다음 달"
 					onClick={goToNextMonth}
 				>
 					<Icon size={20} viewBox="0 0 20 20" icon="ArrowRight" />
