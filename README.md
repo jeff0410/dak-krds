@@ -24,7 +24,7 @@
 | 📦 **TypeScript** | 모든 컴포넌트에 타입 정의 제공, `any` 없음 |
 | 🎨 **디자인 토큰** | CSS 변수 기반 색상 · 타이포그래피 · 간격 |
 | 🚀 **Tree-shaking** | 컴포넌트 단위로 분할 배포 — 쓴 것만 번들에 포함 |
-| 🧩 **80+ 컴포넌트** | 입력 · 탐색 · 피드백 · 데이터 표시 |
+| 🧩 **KRDS 55개 전체** | 아이덴티티 · 탐색 · 레이아웃 · 액션 · 선택 · 피드백 · 도움 · 입력 · 설정 · 콘텐츠 · 모바일 |
 
 ---
 
@@ -33,7 +33,7 @@
 - [설치](#설치)
 - [빠른 시작](#빠른-시작)
 - [꼭 알아야 할 3가지](#꼭-알아야-할-3가지)
-- [컴포넌트 사용법](#컴포넌트-사용법)
+- [컴포넌트 사용법](#컴포넌트-사용법) — KRDS 55개 전체
 - [전체 컴포넌트 목록](#전체-컴포넌트-목록)
 - [TypeScript](#typescript)
 - [웹접근성](#웹접근성)
@@ -439,6 +439,481 @@ import { Icon } from 'dak-krds';
 <Icon icon="Search" size={24} />
 <Icon icon="Close" size={20} color="var(--krds-color-gray-60)" />
 ```
+
+---
+
+### 페이지 골격 — Header · Footer
+
+한 페이지를 구성하는 뼈대입니다. `Header` 는 건너뛰기 링크와 주메뉴를 안에 품고 있습니다.
+
+```tsx
+import { Header, Footer, Masthead, Identifier } from 'dak-krds';
+
+<Header
+  logo={<img src="/logo.svg" alt="안심예방접종" />}
+  logoHref="/"
+  masthead={<Masthead />}
+  sticky="auto-hide"
+  skipLinks={[
+    { label: '본문 바로가기', targetId: 'main-content' },
+    { label: '주메뉴 바로가기', targetId: 'gnb' },
+  ]}
+  utilityLinks={[
+    { label: '로그인', href: '/login' },
+    { label: '관련 사이트', href: 'https://www.krds.go.kr', external: true },
+  ]}
+  menu={[
+    { label: '소개', href: '/about', current: true },
+    {
+      label: '서비스',
+      description: '제공 서비스 안내',
+      groups: [
+        {
+          label: '접종',
+          items: [
+            { label: '예방접종', href: '/vac' },
+            { label: '이상반응', href: '/adr' },
+          ],
+        },
+      ],
+    },
+  ]}
+/>
+
+<Footer
+  logo={<img src="/logo-white.svg" alt="안심예방접종" />}
+  contacts={[
+    { label: '주소', value: '서울특별시 중구 세종대로 110' },
+    { label: '대표전화', value: '02-1234-5678', href: 'tel:0212345678' },
+  ]}
+  utilityLinks={[
+    { label: '질병관리청', href: 'https://www.kdca.go.kr', external: true },
+  ]}
+  policyLinks={[
+    { label: '개인정보처리방침', href: '/privacy', emphasis: true },
+    { label: '웹 접근성 정책', href: '/a11y' },
+  ]}
+  copyright="© Korea Disease Control and Prevention Agency."
+  identifier={<Identifier organization="질병관리청" variant="dark" />}
+/>
+```
+
+`Header sticky` — `none`(기본) · `always` · `auto-hide`(내리면 숨고 올리면 복귀)
+
+### 탐색 — SkipLink · MainMenu · SideNavigation · InPageNavigation · Breadcrumb
+
+```tsx
+import {
+  SkipLink,
+  MainMenu,
+  SideNavigation,
+  InPageNavigation,
+  Breadcrumb,
+} from 'dak-krds';
+
+{/* 문서 최상단. Header 를 쓰면 이미 포함돼 있습니다 */}
+<SkipLink items={[{ label: '본문 바로가기', targetId: 'main-content' }]} />
+
+<MainMenu
+  items={[
+    { label: '소개', href: '/about', current: true },
+    { label: '서비스', items: [{ label: '예방접종', href: '/vac' }] },
+  ]}
+/>
+
+<SideNavigation
+  title="서비스 안내"
+  titleHref="/service"
+  items={[
+    { label: '개요', href: '/service/intro' },
+    {
+      label: '접종 정보',
+      items: [
+        { label: '대상자', href: '/service/target', current: true },
+        { label: '일정', href: '/service/schedule' },
+      ],
+    },
+    { label: '문의', href: '/service/qna', dividerAfter: true },
+  ]}
+/>
+
+{/* 스크롤에 따라 현재 위치를 표시합니다 */}
+<InPageNavigation
+  items={[
+    { label: '신청 자격', targetId: 'eligibility' },
+    { label: '제출 서류', targetId: 'documents', level: 2 },
+  ]}
+  offset={80}
+/>
+
+<Breadcrumb
+  items={[
+    { label: '홈', value: 'home' },
+    { label: '서비스', value: 'service' },
+  ]}
+/>
+```
+
+### 레이아웃 — Accordion · Disclosure · Tabs · Table
+
+```tsx
+import { Accordion, Disclosure, Tabs, Table } from 'dak-krds';
+
+<Accordion
+  variant="line"
+  items={[
+    { id: 'q1', title: '접종 대상자는 누구인가요?', children: '만 65세 이상입니다.' },
+    { id: 'q2', title: '비용이 있나요?', children: '무료입니다.' },
+  ]}
+/>
+
+{/* 아코디언보다 가벼운 부가 정보. 기본은 접힘 */}
+<Disclosure title="추가 안내 사항">
+  본문을 보조하는 설명입니다.
+</Disclosure>
+
+<Tabs
+  variant="underline"
+  tabs={[
+    { id: 'overview', label: '개요', content: '서비스 개요입니다.' },
+    { id: 'howto', label: '이용방법', content: '이용 방법입니다.' },
+  ]}
+/>
+
+<Table
+  data={[{ no: '2026-001', name: '홍길동', status: '처리중' }]}
+  columns={[
+    { accessorKey: 'no', header: '접수번호' },
+    { accessorKey: 'name', header: '성명' },
+    { accessorKey: 'status', header: '상태' },
+  ]}
+/>
+```
+
+`Table` 의 `columns` 는 material-react-table 규격입니다. `key`/`label` 이 아니라 **`accessorKey`/`header`** 를 씁니다.
+
+### 목록과 이미지 — StructuredList · TextList · Image · Carousel
+
+```tsx
+import { StructuredList, TextList, Image, Carousel } from 'dak-krds';
+
+{/* 항목과 값을 짝지어 보여줍니다 (dl/dt/dd) */}
+<StructuredList
+  title="접수 정보"
+  rows={[
+    { term: '접수번호', description: '2026-08-0001' },
+    { term: '처리상태', description: '검토 중' },
+  ]}
+/>
+
+<TextList
+  variant="ordered"
+  items={[
+    { content: '신청서를 작성합니다.' },
+    {
+      content: '서류를 첨부합니다.',
+      items: [{ content: '신분증 사본' }],
+    },
+  ]}
+/>
+
+<Image
+  src="/guide.png"
+  alt="이용 안내"
+  ratio="16:9"
+  rounded
+  caption="접종 절차 안내도"
+  longDescription="접수부터 접종까지 네 단계를 도식으로 표현한 이미지입니다."
+/>
+
+{/* dataList 에 요소를 직접 넣습니다 */}
+<Carousel
+  dataList={[<div key="1">첫 번째</div>, <div key="2">두 번째</div>]}
+  onChange={(index) => console.log(index)}
+/>
+```
+
+`Image` 의 `longDescription` 은 `aria-describedby` 로 연결됩니다. 복잡한 이미지에 씁니다.
+
+### 알림 — CriticalAlerts · Snackbar
+
+```tsx
+import { CriticalAlerts, Snackbar } from 'dak-krds';
+
+{/* 본문 최상단 전체 폭. KRDS 규정상 닫기 버튼을 제공하지 않습니다 */}
+<CriticalAlerts
+  level="high"
+  message="재난 상황 발생. 즉시 확인하세요."
+  linkLabel="상세 보기"
+  linkHref="/notice"
+/>
+
+{/* 되돌리기 같은 후속 행동이 필요할 때. 작업 버튼은 최대 1개 */}
+<Snackbar
+  open={open}
+  title="저장했습니다"
+  description="변경 내용이 반영됐습니다."
+  actionLabel="되돌리기"
+  onAction={handleUndo}
+  onClose={() => setOpen(false)}
+/>
+```
+
+`CriticalAlerts level` — `high`(재난·장애) · `medium`(사전 예고) · `low`(인지 필요)
+
+`ToastBar` 와 `Snackbar` 는 KRDS 상 별개입니다. 작업 버튼이 필요하면 `Snackbar` 를 씁니다.
+
+### 진행 표시 — StepIndicator · ProgressBar · Spinner
+
+```tsx
+import { StepIndicator, ProgressBar, Spinner } from 'dak-krds';
+
+<StepIndicator
+  steps={[
+    { description: '약관 동의' },
+    { description: '정보 입력' },
+    { description: '완료' },
+  ]}
+  currentStepIndex={1}
+  onClickStep={setStep}
+  focusable
+/>
+
+<ProgressBar length={3} currentProgress={2} />
+
+<Spinner size="m" />
+```
+
+`StepIndicator` 의 각 단계는 `label` 이 아니라 **`description`** 입니다.
+
+### 도움 — Tooltip · ContextualHelp · HelpPanel · TutorialPanel · CoachMark
+
+```tsx
+import {
+  Tooltip,
+  ContextualHelp,
+  HelpPanel,
+  TutorialPanel,
+  CoachMark,
+} from 'dak-krds';
+
+<Tooltip content="보조 설명입니다." placement="top-center">
+  <button type="button">도움말</button>
+</Tooltip>
+
+{/* 사용자가 요청할 때만 열립니다. i(정보) 와 ?(도움) 두 유형 */}
+<ContextualHelp variant="help" title="본인인증이란?" placement="bottom-start">
+  휴대전화 또는 공동인증서로 본인을 확인하는 절차입니다.
+</ContextualHelp>
+
+<HelpPanel
+  open={helpOpen}
+  onClose={() => setHelpOpen(false)}
+  title="도움말"
+  links={[{ label: '자주 묻는 질문', href: '/faq' }]}
+>
+  화면 우측에 붙는 보조 패널입니다.
+</HelpPanel>
+
+<TutorialPanel
+  open={tutorialOpen}
+  onClose={() => setTutorialOpen(false)}
+  title="신청 따라하기"
+  steps={[
+    { title: '1. 약관 동의', content: '필수 약관에 동의합니다.' },
+    { title: '2. 정보 입력', content: '본인 정보를 입력합니다.' },
+  ]}
+/>
+
+{/* 대상 요소를 스포트라이트로 강조합니다. 사용자가 요청할 때만 실행 */}
+<CoachMark
+  open={coachOpen}
+  onClose={() => setCoachOpen(false)}
+  steps={[
+    {
+      targetId: 'search-button',
+      title: '1. 검색',
+      instruction: '여기서 접종 기관을 찾습니다.',
+    },
+  ]}
+/>
+```
+
+`Tooltip` 은 `text`/`position` 이 아니라 **`content`/`placement`** 를 씁니다.
+
+### 모바일 — BottomSheet · TabBars · BackButton · QuantityToggle · RangeSlider · SplashScreen
+
+```tsx
+import {
+  BottomSheet,
+  TabBars,
+  BackButton,
+  QuantityToggle,
+  RangeSlider,
+  SplashScreen,
+  Icon,
+} from 'dak-krds';
+
+<BackButton title="예방접종 상세" confirmMessage="작성 중인 내용이 사라집니다." />
+
+<BottomSheet
+  open={sheetOpen}
+  onClose={() => setSheetOpen(false)}
+  title="접종 기관 선택"
+  description="가까운 기관을 선택하세요."
+>
+  <ul>{/* 목록 */}</ul>
+</BottomSheet>
+
+{/* 화면 하단 고정. 5개 이내로 제한됩니다 */}
+<TabBars
+  items={[
+    { label: '홈', icon: <Icon icon="Home" size={22} />, href: '/', current: true },
+    { label: '접종', icon: <Icon icon="Check" size={22} />, href: '/vac', badge: 3 },
+  ]}
+/>
+
+<QuantityToggle label="접종 회차" value={count} onChange={setCount} min={1} max={5} unit="회" />
+
+<RangeSlider label="검색 반경" value={radius} onChange={setRadius} min={0} max={100} step={10} unit="km" />
+
+<SplashScreen logo={<img src="/logo.svg" alt="" />} message="불러오는 중입니다" />
+```
+
+### 설정과 접근성 — LanguageSwitcher · Resize · VisuallyHidden · AccessibleMedia · TextToSpeech
+
+```tsx
+import {
+  LanguageSwitcher,
+  Resize,
+  VisuallyHidden,
+  AccessibleMedia,
+  TextToSpeech,
+} from 'dak-krds';
+
+{/* 언어가 둘이면 링크형, 셋 이상이면 드롭다운으로 자동 전환됩니다 */}
+<LanguageSwitcher
+  current={lang}
+  onSelect={setLang}
+  languages={[
+    { code: 'ko', nativeName: '한국어' },
+    { code: 'en', nativeName: 'English', localName: '영어' },
+    { code: 'zh', nativeName: '中文', localName: '중국어' },
+  ]}
+/>
+
+{/* 90 · 100 · 110 · 130 · 150% 다섯 단계 */}
+<Resize value={scale} onChange={setScale} targetSelector="#main-content" />
+
+<VisuallyHidden>스크린 리더 전용 안내</VisuallyHidden>
+
+<AccessibleMedia
+  src="/guide.mp4"
+  title="이용 안내 영상"
+  tracks={[
+    { kind: 'captions', src: '/guide.ko.vtt', srcLang: 'ko', label: '한국어', default: true },
+  ]}
+  transcript="영상의 전체 대본입니다."
+/>
+
+<TextToSpeech targetSelector="#main-content" />
+```
+
+`TextToSpeech` 는 Web Speech API 를 지원하지 않는 환경에서는 렌더하지 않습니다.
+
+### 파일 업로드 — FileUpload · FileButtonUpload
+
+```tsx
+import { DakFileUpload, FileButtonUpload, type DakFileItem } from 'dak-krds';
+
+const [files, setFiles] = useState<DakFileItem[]>([]);
+
+<DakFileUpload value={files} onChange={setFiles} maxFiles={3} accept=".pdf,.png" />
+
+<FileButtonUpload label="파일 선택" accept=".pdf,.png" maxFiles={3} />
+```
+
+### 액션 — Link · LinkButton · FloatingButton
+
+```tsx
+import { Link, LinkButton, FloatingButton, Icon } from 'dak-krds';
+
+<Link title="관련 사이트로 이동" useIcon>관련 사이트</Link>
+
+<LinkButton href="/detail" title="자세히 보기" variant="accent">자세히 보기</LinkButton>
+
+{/* 우측 하단 고정. 확장형은 3개까지 */}
+<FloatingButton
+  icon={<Icon icon="Plus" size={24} />}
+  label="빠른 메뉴"
+  actions={[
+    { label: '맨 위로', icon: <Icon icon="ArrowUp" size={20} />, href: '#top' },
+  ]}
+/>
+```
+
+### 아이덴티티 — Masthead · Identifier · Favicon
+
+```tsx
+import { Masthead, Identifier, Favicon } from 'dak-krds';
+
+{/* 공식 배너. 문서 최상단 */}
+<Masthead maxWidth="1200px" />
+
+{/* 운영기관 식별자. 푸터 마지막 구획에 둡니다 */}
+<Identifier organization="질병관리청" logoSrc="/kdca.svg" variant="dark" />
+
+{/* head 에 link · meta 를 넣습니다. 이미지는 서비스가 준비합니다 */}
+<Favicon
+  svg="/favicon.svg"
+  light="/favicon-light.png"
+  dark="/favicon-dark.png"
+  appleTouchIcon="/apple-touch-icon.png"
+  themeColor="#256ef4"
+  sizes={[{ href: '/favicon-32.png', sizes: '32x32' }]}
+/>
+```
+
+### RadioButton
+
+```tsx
+import { RadioButton, RadioButtonGroup } from 'dak-krds';
+
+<RadioButtonGroup
+  name="agree"
+  options={[
+    { value: 'yes', label: '동의' },
+    { value: 'no', label: '미동의' },
+  ]}
+  selectedValue={value}
+  onChange={setValue}
+  direction="horizontal"
+/>
+
+<RadioButton name="single" value="only" checked label="단일 선택" onChange={setValue} />
+```
+
+### ChipGroup
+
+```tsx
+import { ChipGroup } from 'dak-krds';
+
+<ChipGroup
+  type="multi"
+  options={[
+    { value: 'react', label: 'React' },
+    { value: 'ts', label: 'TypeScript' },
+  ]}
+  selected={selected}
+  onChange={(value, checked) =>
+    setSelected((list) =>
+      checked ? [...list, value] : list.filter((v) => v !== value),
+    )
+  }
+/>
+```
+
+`ChipGroup` 은 `chipList` 가 아니라 **`options`/`selected`/`onChange(value, checked)`** 를 씁니다.
 
 ---
 

@@ -9,3 +9,6 @@ coverage
 dak-krds-*.tgz
 
 docs/ACCOUNTS.md
+
+.docs-check.ts
+tsconfig.docs.json

@@ -1,6 +1,6 @@
 {
   "name": "dak-krds",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "DAK React UI Component Design System",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -33,7 +33,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "verify:dist": "node scripts/verify-dist.mjs"
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "verify:docs": "node scripts/verify-docs.mjs"
   },
   "keywords": [
     "react",
