@@ -26,12 +26,6 @@ const preview: Preview = {
 			},
 		},
 	},
-	globalTypes: {
-		viewport: { description: "화면 폭" },
-	},
-	initialGlobals: {
-		viewport: { value: "responsive" },
-	},
 };
 
 export default preview;
