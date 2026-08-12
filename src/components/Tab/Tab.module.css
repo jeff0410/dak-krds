@@ -20,6 +20,13 @@
 	display: flex;
 	align-items: center;
 	flex: 1;
+	min-width: 0;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.tabListInner::-webkit-scrollbar {
+	display: none;
 }
 
 .sideButtonContainer {
