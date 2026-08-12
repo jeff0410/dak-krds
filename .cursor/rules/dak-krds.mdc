@@ -10,7 +10,7 @@ alwaysApply: true
 
 ## 절대 규칙
 
-1. **AI 흔적 금지** — 커밋 / PR / 푸시에 `Co-Authored-By`, `Generated with`, AI 언급을 절대 넣지 않는다. author 는 항상 `jeff0410 <pazwsx@naver.com>`. 커밋 메시지는 `Feat:` `Fix:` `Chore:` `Refactor:` `Docs:` 접두사 사용.
+1. **AI 흔적 금지** — 커밋 / PR / 푸시에 `Co-Authored-By`, `Generated with`, AI 언급을 절대 넣지 않는다. author 는 항상 `jeff0410 <pazwsx@naver.com>`. 커밋 메시지는 Conventional Commits (`feat(scope): 소문자 영문 요약`) 형식.
 2. **주석 금지** — 한 줄/블록/JSX 주석 모두 금지. 주석 대신 이름과 작은 함수로 의도를 드러낸다. 예외는 `@ts-expect-error` 같은 지시자 주석뿐.
 3. **공통화는 md로** — 공통 컴포넌트/훅/유틸/스타일을 만들면 반드시 `docs/COMMON.md` 에 등록하고 `docs/common/<주제>.md` 에 상세를 적는다. 같은 커밋에 포함한다.
 4. **반복 감지 시 제안** — 같은 작업이나 요구사항이 3회 이상 반복되면 작업을 끝낸 뒤 "OO를 md로 정리할까요?" 라고 먼저 묻는다.

@@ -8,7 +8,8 @@
 
 1. AI 흔적 금지 — 커밋 / PR / 푸시에 Co-Authored-By, Generated with, AI 언급을 절대 넣지 않습니다.
    author 는 항상 jeff0410 <pazwsx@naver.com> 입니다.
-   커밋 메시지 접두사: Feat: Fix: Chore: Refactor: Docs: Style: Test:
+   커밋 메시지는 Conventional Commits: feat(scope): 소문자 영문 요약
+   타입: feat fix refactor perf test docs style build ci chore revert
 2. 주석 금지 — 한 줄, 블록, JSX 주석 모두 금지합니다. 주석 대신 이름과 작은 함수로 의도를 드러냅니다.
    예외는 @ts-expect-error 같은 지시자 주석뿐입니다.
 3. 공통화는 md로 — 공통 컴포넌트/훅/유틸/스타일을 만들면 반드시 docs/COMMON.md 에 등록하고
