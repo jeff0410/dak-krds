@@ -5,7 +5,17 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
 	{
-		ignores: ["dist", "example", "node_modules", "*.config.js", "*.config.ts"],
+		ignores: [
+			"dist",
+			"example",
+			"node_modules",
+			"storybook-static",
+			"playwright-report",
+			"test-results",
+			"tests/visual/.output",
+			"*.config.js",
+			"*.config.ts",
+		],
 	},
 	js.configs.recommended,
 	tseslint.configs.recommended,

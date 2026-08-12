@@ -7,6 +7,10 @@ dist
 coverage
 .turbo
 dak-krds-*.tgz
+storybook-static
+playwright-report
+tests/visual/.output
+test-results
 
 docs/ACCOUNTS.md
 
