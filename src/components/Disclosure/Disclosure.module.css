@@ -1,0 +1,48 @@
+.disclosure {
+	width: 100%;
+}
+
+.trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 0;
+	border: 0;
+	background-color: transparent;
+	font-family: inherit;
+	font-size: 0.938rem;
+	color: var(--krds-color-gray-80);
+	text-align: left;
+	cursor: pointer;
+}
+
+.trigger:hover,
+.trigger:focus-visible {
+	color: var(--krds-color-primary-60);
+	text-decoration: underline;
+}
+
+.chevron {
+	flex-shrink: 0;
+	width: 7px;
+	height: 7px;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(-45deg) translate(-1px, 1px);
+	transition: transform 0.15s;
+}
+
+.trigger[aria-expanded="true"] .chevron {
+	transform: rotate(45deg) translate(-2px, -2px);
+}
+
+.title {
+	word-break: keep-all;
+}
+
+.panel {
+	padding: 4px 0 12px 15px;
+	font-size: 0.938rem;
+	line-height: 1.6;
+	color: var(--krds-color-gray-70);
+}

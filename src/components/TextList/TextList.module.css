@@ -1,0 +1,83 @@
+.textList {
+	width: 100%;
+	color: var(--krds-color-gray-80);
+}
+
+.m {
+	font-size: 0.938rem;
+	line-height: 1.6;
+}
+
+.s {
+	font-size: 0.875rem;
+	line-height: 1.6;
+}
+
+.list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.nested {
+	margin-top: 4px;
+	padding-left: 16px;
+}
+
+.item {
+	position: relative;
+	padding-left: 14px;
+	margin-bottom: 4px;
+	word-break: keep-all;
+}
+
+.item:last-child {
+	margin-bottom: 0;
+}
+
+.bullet > .item::before {
+	content: "";
+	position: absolute;
+	left: 2px;
+	top: 0.65em;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background-color: var(--krds-color-gray-60);
+}
+
+.dash > .item::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.75em;
+	width: 7px;
+	height: 1px;
+	background-color: var(--krds-color-gray-60);
+}
+
+.none > .item {
+	padding-left: 0;
+}
+
+.ordered {
+	counter-reset: text-list;
+}
+
+.ordered > .item {
+	counter-increment: text-list;
+	padding-left: 22px;
+}
+
+.ordered > .item::before {
+	content: counter(text-list) ".";
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-weight: 700;
+	color: var(--krds-color-gray-70);
+}
+
+.content {
+	display: inline;
+}

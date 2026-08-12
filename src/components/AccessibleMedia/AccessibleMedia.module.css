@@ -1,0 +1,38 @@
+.accessibleMedia {
+	margin: 0;
+	width: 100%;
+}
+
+.title {
+	margin: 0 0 8px;
+	font-size: 1.063rem;
+	font-weight: 700;
+	color: var(--krds-color-gray-90);
+	word-break: keep-all;
+}
+
+.media {
+	display: block;
+	width: 100%;
+	border-radius: 8px;
+	background-color: var(--krds-color-gray-90);
+}
+
+.audio {
+	display: block;
+	width: 100%;
+}
+
+.description {
+	margin-top: 8px;
+	font-size: 0.875rem;
+	line-height: 1.6;
+	color: var(--krds-color-gray-60);
+	word-break: keep-all;
+}
+
+.transcript {
+	margin-top: 8px;
+	padding-top: 8px;
+	border-top: 1px solid var(--krds-color-gray-10);
+}
