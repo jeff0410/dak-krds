@@ -503,7 +503,7 @@ import { Icon } from 'dak-krds';
 <details>
 <summary><b>데이터 표시 · 레이아웃</b></summary>
 
-`Table` `GroupedTable` `MTable` `Accordion` `Disclosure` `Carousel` `Drawer` `Portal` `Calendar` `ScheduleCalendar` `CustomEventCalendar` `StructuredList` `TextList` `Image` `CriticalAlerts`
+`Table` `GroupedTable` `MTable` `Accordion` `Disclosure` `Carousel` `Drawer` `Portal` `Calendar` `ScheduleCalendar` `CustomEventCalendar` `StructuredList` `TextList` `Image` `CriticalAlerts` `Favicon`
 
 </details>
 

@@ -21,6 +21,7 @@ export * from "./Disclosure";
 export * from "./Display";
 export * from "./Drawer";
 export * from "./ErrorPage";
+export * from "./Favicon";
 export * from "./FileButtonUpload";
 export * from "./FileUpload";
 export * from "./FloatingButton";
