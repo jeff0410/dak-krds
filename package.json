@@ -1,6 +1,6 @@
 {
   "name": "dak-krds",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "DAK React UI Component Design System",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -146,6 +146,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jeff0410/dak-krds.git"
+  },
+  "homepage": "https://jeff0410.github.io/dak-krds/",
+  "bugs": {
+    "url": "https://github.com/jeff0410/dak-krds/issues"
   },
   "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad"
 }

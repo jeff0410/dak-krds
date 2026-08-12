@@ -3,6 +3,12 @@
 컴포넌트를 눈으로 확인하는 카탈로그(Storybook)와, 그 카탈로그를 기준선 삼아
 "의도하지 않은 화면 변화"를 잡아내는 회귀 테스트(Playwright)를 함께 둔다.
 
+공개 주소: **<https://jeff0410.github.io/dak-krds/>**
+
+`main` 에 반영되면 `.github/workflows/storybook.yml` 이 스토리북을 빌드해 GitHub
+Pages 로 올린다. `package.json` 의 `homepage` 가 같은 주소를 가리키므로 npm
+패키지 페이지에도 링크가 뜬다.
+
 ## 명령
 
 | 명령 | 하는 일 |
