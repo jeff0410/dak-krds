@@ -1037,6 +1037,9 @@ import { ChipGroup } from 'dak-krds';
 
 > KRDS 55개 표준 컴포넌트 대비 구현 현황은 [docs/KRDS_COVERAGE.md](docs/KRDS_COVERAGE.md) 에서 확인할 수 있습니다.
 
+> 모든 컴포넌트를 브라우저에서 직접 확인하려면 `pnpm run storybook` 을 실행하세요.
+> 화면 변화를 자동으로 잡는 시각 회귀 테스트는 [docs/VISUAL_REGRESSION.md](docs/VISUAL_REGRESSION.md) 를 참고하세요.
+
 ---
 
 ## TypeScript

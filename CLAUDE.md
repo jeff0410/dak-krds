@@ -77,3 +77,4 @@ pnpm run typecheck
 - [docs/AI_RULES.md](docs/AI_RULES.md) — 작업 규칙 원본
 - [docs/COMMON.md](docs/COMMON.md) — 공통화 인덱스
 - [docs/KRDS_COVERAGE.md](docs/KRDS_COVERAGE.md) — KRDS 55개 컴포넌트 대비 구현 현황
+- [docs/VISUAL_REGRESSION.md](docs/VISUAL_REGRESSION.md) — 스토리북 · 시각 회귀 테스트

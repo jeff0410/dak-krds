@@ -19,7 +19,8 @@
 
 | 항목 | 경로 | 문서 |
 | --- | --- | --- |
-| _(아직 없음)_ | | |
+| 스토리 공용 자산 (data URI 이미지 · 영상 포스터) | `src/stories/assets.ts` | [VISUAL_REGRESSION.md](VISUAL_REGRESSION.md) |
+| 스토리 공용 레이아웃 클래스 (`.stack` `.row` `.panel` `.wide`) | `src/stories/stories.css` | [VISUAL_REGRESSION.md](VISUAL_REGRESSION.md) |
 
 ## 공통 스타일 / 토큰
 
