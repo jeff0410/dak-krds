@@ -20,6 +20,19 @@ export default tseslint.config(
 		},
 	},
 	{
+		files: ["scripts/**/*.mjs", "build/**/*.ts", "*.config.mts"],
+		languageOptions: {
+			globals: globals.node,
+			sourceType: "module",
+		},
+	},
+	{
+		files: ["src/**/*.test.{ts,tsx}", "src/setupTests.ts"],
+		languageOptions: {
+			globals: { ...globals.browser, ...globals.node },
+		},
+	},
+	{
 		files: ["**/*.{ts,tsx}"],
 		languageOptions: {
 			ecmaVersion: 2020,
