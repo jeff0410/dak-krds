@@ -1,4 +1,5 @@
 import { useId, useState } from "react";
+import { useAutoHideOnScroll } from "../../hooks/use-auto-hide-on-scroll";
 import a11y from "../../styles/a11y.module.css";
 import { MainMenu } from "../MainMenu";
 import { SkipLink } from "../SkipLink";
@@ -13,6 +14,7 @@ export function Header({
 	iconActions = [],
 	masthead,
 	variant = "horizontal",
+	sticky = "none",
 	skipLinks,
 	skipTargetId = "main-content",
 	skipLabel = "본문 바로가기",
@@ -22,9 +24,13 @@ export function Header({
 	const baseId = useId();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const menuId = `${baseId}-menu`;
+	const isHidden = useAutoHideOnScroll(sticky === "auto-hide" && !isMenuOpen);
 
 	return (
-		<header className={`${styles.header} ${className}`.trim()} {...props}>
+		<header
+			className={`${styles.header} ${sticky !== "none" ? styles.sticky : ""} ${isHidden ? styles.hidden : ""} ${className}`.trim()}
+			{...props}
+		>
 			<SkipLink
 				items={skipLinks ?? [{ label: skipLabel, targetId: skipTargetId }]}
 			/>
