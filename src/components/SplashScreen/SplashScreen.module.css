@@ -1,0 +1,51 @@
+.splashScreen {
+	position: fixed;
+	inset: 0;
+	z-index: 2000;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	padding: 24px;
+	background-color: var(--krds-color-primary-60);
+	box-sizing: border-box;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--krds-color-gray-0);
+	animation: fadeIn 600ms ease-out;
+}
+
+.message {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: var(--krds-color-gray-0);
+	text-align: center;
+	word-break: keep-all;
+	animation: fadeIn 800ms ease-out;
+}
+
+.spinner {
+	margin-top: 8px;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.logo,
+	.message {
+		animation: none;
+	}
+}

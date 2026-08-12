@@ -4,7 +4,7 @@
 기준 버전: `dak-krds@0.1.15`
 최종 확인: 2026-08-11
 
-**전체 55개 중 32개 구현 (58%) · 부분 구현 2개 · 미구현 21개**
+**전체 55개 중 39개 구현 (71%) · 부분 구현 1개 · 미구현 15개**
 
 구현 수치는 ✅ 만 셉니다. 🟡 는 별도로 표기합니다.
 
@@ -18,10 +18,10 @@
 | 탐색 (Navigation) | 6 / 6 | 100% |
 | 아이덴티티 (Identity) | 4 / 4 | 100% |
 | 도움 (Help) | 1 / 6 | 17% |
-| 모바일 (Mobile) | 1 / 8 (🟡 1) | 13% |
+| 모바일 (Mobile) | 8 / 8 | 100% |
 | 설정 (Settings) | 0 / 2 | 0% |
 | 콘텐츠 (Content) | 0 / 2 | 0% |
-| **합계** | **32 / 55 (🟡 2)** | **58%** |
+| **합계** | **39 / 55 (🟡 1)** | **71%** |
 
 범례: ✅ 구현 · 🟡 부분 구현 · ❌ 미구현
 
@@ -128,14 +128,14 @@
 
 | 상태 | KRDS (KO) | KRDS (EN) | 프로젝트 컴포넌트 |
 | --- | --- | --- | --- |
-| ❌ | 범위슬라이드 | Range slider | |
-| ❌ | 뒤로가기 버튼 | Back button | |
-| 🟡 | 바텀시트 | Bottom sheet | `Drawer position="bottom"` 으로 부분 대체. 전용 컴포넌트 없음 |
-| ❌ | 수량 토글 | Quantity toggle | `NumberInput` 과 다름 (−/+ 스테퍼) |
+| ✅ | 범위슬라이드 | Range slider | `RangeSlider` — 레이블·선택값·범위 표기, aria-valuetext |
+| ✅ | 뒤로가기 버튼 | Back button | `BackButton` — 상단바 좌측, 제목 동반, 이탈 경고 |
+| ✅ | 바텀시트 | Bottom sheet | `BottomSheet` — 오버레이·핸들 드래그·닫기 버튼, role=dialog |
+| ✅ | 수량 토글 | Quantity toggle | `QuantityToggle` — 레이블 필수, 최소/최대 도달 시 버튼 비활성 |
 | ✅ | 토스트 | Toast | `ToastBar` |
-| ❌ | 스낵바 | Snackbar | `ToastBar` 와 별개 |
-| ❌ | 탭바 | Tab bars | `MScrollTab` 과 다름 (하단 고정 내비게이션) |
-| ❌ | 스플래시 스크린 | Splash screen | |
+| ✅ | 스낵바 | Snackbar | `Snackbar` — 작업 버튼 1개, 하단 중앙, role=status |
+| ✅ | 탭바 | Tab bars | `TabBars` — 5개 제한, 배지, 하단 고정, aria-current |
+| ✅ | 스플래시 스크린 | Splash screen | `SplashScreen` — 로고·메시지·스피너, 애니메이션 축소 대응 |
 
 ---
 
@@ -167,14 +167,6 @@ KRDS 목록에는 없지만 이 라이브러리가 제공하는 것들입니다.
 - 콘텐츠 내 탐색 (In-page navigation)
 - 구조화 목록 (Structured list) / 텍스트 목록 (Text list)
 - 디스클로저 (Disclosure)
-
-**3순위 — 모바일 대응**
-
-- 바텀시트 전용 컴포넌트
-- 탭바 (Tab bars)
-- 스낵바 (Snackbar)
-- 범위슬라이드 (Range slider)
-- 수량 토글 (Quantity toggle)
 
 ---
 

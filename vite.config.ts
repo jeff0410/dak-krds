@@ -5,6 +5,7 @@ import {
 	renameSync,
 	writeFileSync,
 } from "fs";
+import svgr from "@svgr/rollup";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import { defineConfig, type Plugin } from "vite";
@@ -23,6 +24,15 @@ const external = [
 	/^@js-joda\//,
 	/^lodash-es($|\/)/,
 ];
+
+const rawSvgLoader = (): Plugin => ({
+	name: "dak-krds-raw-svg",
+	enforce: "pre",
+	load(id) {
+		if (!id.endsWith(".svg")) return null;
+		return readFileSync(id, "utf-8");
+	},
+});
 
 const plainCssName = (file: string) => file.replace(/\.module\.css$/, ".css");
 
@@ -70,6 +80,8 @@ const emitFontAndBundledCss = (): Plugin => ({
 
 export default defineConfig({
 	plugins: [
+		rawSvgLoader(),
+		{ ...svgr({ exportType: "default" }), enforce: "pre" },
 		react(),
 		libInjectCss(),
 		dts({
