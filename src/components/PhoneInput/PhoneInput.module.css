@@ -37,6 +37,17 @@
 	flex: 1 1 0;
 	min-width: 6rem;
 }
+
+/* 좁은 화면에서는 칸이 줄어들어야 가로 스크롤이 생기지 않는다 */
+@media (max-width: 480px) {
+	.inputGroup {
+		width: 100%;
+	}
+
+	.input {
+		min-width: 0;
+	}
+}
 .separator {
 	color: var(--krds-color-gray-70);
 	font-size: 1.0625rem;
