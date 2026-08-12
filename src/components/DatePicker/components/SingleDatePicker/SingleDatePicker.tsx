@@ -157,6 +157,7 @@ export function SingleDatePicker({
 						icon={
 							<button
 								title={"캘린더 열기"}
+							aria-label="캘린더 열기"
 								type="button"
 								onClick={handleToggle}
 								className={styles.iconButton}
