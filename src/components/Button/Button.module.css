@@ -129,14 +129,14 @@
 }
 
 .success {
-	background: var(--krds-color-success-40);
+	background: var(--krds-color-success-50);
 	color: var(--krds-color-gray-0);
 }
 .success:hover:not(.disabled) {
-	background: var(--krds-color-success-50);
+	background: var(--krds-color-success-60);
 }
 .success:active:not(.disabled) {
-	background: var(--krds-color-success-60);
+	background: var(--krds-color-success-70);
 }
 .success-secondary {
 	background: var(--krds-color-success-5);
