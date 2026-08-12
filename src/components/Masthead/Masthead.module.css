@@ -1,13 +1,18 @@
 .masthead {
+	width: 100%;
+	box-sizing: border-box;
+	background-color: var(--krds-color-secondary-5);
+}
+
+.inner {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 8px;
 	min-height: 32px;
-	padding-left: 22.5rem;
-	width: 100%;
+	margin: 0 auto;
+	padding: 0 24px;
 	box-sizing: border-box;
-	background-color: var(--krds-color-secondary-5);
 }
 
 .flag {
@@ -19,12 +24,15 @@
 .label {
 	font-weight: 400;
 	font-size: 0.938rem;
-	white-space: nowrap;
 }
 
 @media (max-width: 768px) {
-	.masthead {
-		padding-left: 0;
+	.inner {
 		justify-content: center;
+		padding: 4px 16px;
+	}
+
+	.label {
+		word-break: keep-all;
 	}
 }
