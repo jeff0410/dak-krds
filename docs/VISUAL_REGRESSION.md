@@ -17,6 +17,7 @@ Pages 로 올린다. `package.json` 의 `homepage` 가 같은 주소를 가리�
 | `pnpm run build-storybook` | 정적 산출물을 `storybook-static/` 에 만든다. |
 | `pnpm run test:visual` | 스토리북을 새로 빌드한 뒤 기준선과 비교한다. |
 | `pnpm run test:visual:update` | 기준선을 다시 만든다. **화면 변화가 의도한 것일 때만.** |
+| `pnpm run test:contrast` | 명도 대비만 따로 검사한다. |
 | `pnpm run verify` | 린트 · 타입 · 단위테스트 · 빌드 · 산출물 · 문서 검증을 한 번에. |
 
 `test:visual` 은 항상 스토리북을 먼저 빌드한다. 빌드를 건너뛰면 **바뀌기 전 화면을
@@ -80,8 +81,32 @@ placehold.co / MDN 영상을 참조해 실행할 때마다 결과가 달랐다.
 지금은 **로컬 게이트**다. 스타일이나 마크업을 건드린 PR 을 올리기 전에
 `pnpm run test:visual` 을 돌린다. 릴리스 워크플로에는 `verify` 계열만 들어간다.
 
+## 명도 대비 검사
+
+`tests/visual/contrast.spec.ts` 가 스토리마다 모든 글자의 전경 · 배경 색을 실제로
+읽어 WCAG 2.1 AA 기준(일반 4.5:1, 큰 글자 3:1)과 비교한다. 기준선 이미지가 아니라
+계산이므로 기기나 글꼴에 좌우되지 않고, `test:visual` 에 함께 들어간다.
+
+배경은 조상 쪽으로 거슬러 올라가며 **반투명을 차례로 합성**한다. 이 처리를 빼면
+`rgba(0,0,0,0.25)` 같은 값을 그대로 배경으로 잡아 오탐이 난다. 실제로 긴급공지가
+1.30:1 로 잘못 걸렸었다.
+
+검사에서 빼는 것:
+
+- 비활성 요소 (WCAG 1.4.3 은 disabled 를 대상에서 제외한다)
+- `aria-hidden="true"` 안의 내용
+- 조상에 `opacity < 1` 이 걸린 요소 — 최종 색을 신뢰할 수 없다
+- 배경이 그림이나 그러데이션인 요소 — 단일 색으로 계산할 수 없다
+
+이 검사도 일부러 색을 흐리게 바꿔 잡히는지 확인했다. 버튼 `primary` 의 글자색을
+회색으로 바꾸자 실패가 2건에서 8건으로 늘었고, 되돌리자 원래대로 돌아왔다.
+
+**스토리에 없는 조합은 검사되지 않는다.** 배지의 `default` + `stroke` 조합이 그랬다.
+그래서 배지 스토리는 변형 9종 × 표현 3종을 전부 그린다. 새 컴포넌트를 넣을 때는
+스토리가 실제 사용 조합을 덮는지 확인한다.
+
 ## 접근성 패널
 
 `@storybook/addon-a11y` 가 붙어 있어 스토리마다 axe 결과를 패널에서 볼 수 있다.
-자동 실패 게이트는 아니며, 자동 검사는 `src/components/__tests__/accessibility.test.tsx`
-(vitest) 가 맡는다.
+자동 실패 게이트는 아니며, 자동 검사는 위 대비 검사와
+`src/components/__tests__/accessibility.test.tsx` (vitest) 가 맡는다.

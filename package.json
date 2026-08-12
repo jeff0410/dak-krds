@@ -1,6 +1,6 @@
 {
   "name": "dak-krds",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "DAK React UI Component Design System",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -39,7 +39,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o storybook-static",
     "test:visual": "pnpm run build-storybook && playwright test",
-    "test:visual:update": "pnpm run build-storybook && playwright test --update-snapshots"
+    "test:visual:update": "pnpm run build-storybook && playwright test --update-snapshots",
+    "test:contrast": "pnpm run build-storybook && playwright test tests/visual/contrast.spec.ts"
   },
   "keywords": [
     "react",
