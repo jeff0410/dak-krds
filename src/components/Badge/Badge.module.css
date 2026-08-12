@@ -16,15 +16,15 @@
 .defaultStroke {
 	background-color: transparent;
 	border: 1px solid var(--krds-color-gray-40);
-	color: var(--krds-color-gray-40);
+	color: var(--krds-color-gray-60);
 }
 .defaultFillStrong {
 	background-color: var(--krds-color-gray-10);
-	color: var(--krds-color-gray-50);
+	color: var(--krds-color-gray-60);
 }
 .defaultFillSoft {
 	background-color: var(--krds-color-gray-10);
-	color: var(--krds-color-gray-50);
+	color: var(--krds-color-gray-60);
 }
 .primaryStroke {
 	background: transparent;

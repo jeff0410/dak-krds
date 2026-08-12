@@ -122,7 +122,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 						<Label
 							id="text-input-description"
 							size="xs"
-							style={{ color: getColor("gray-40"), fontWeight: 400 }}
+							style={{ color: getColor("gray-60"), fontWeight: 400 }}
 						>
 							{description}
 						</Label>

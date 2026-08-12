@@ -188,14 +188,39 @@ export const 캐러셀: Story = {
 	},
 };
 
+const BADGE_VARIANTS = [
+	"default",
+	"primary",
+	"secondary",
+	"information",
+	"success",
+	"warning",
+	"point",
+	"danger",
+	"error",
+] as const;
+
+const BADGE_APPEARANCES = ["stroke", "fill-strong", "fill-soft"] as const;
+
 export const 배지: Story = {
 	render: () => (
-		<div className="row">
-			<Badge label="기본" />
-			<Badge label="정보" variant="information" />
-			<Badge label="성공" variant="success" appearance="fill-soft" />
-			<Badge label="경고" variant="warning" appearance="stroke" />
-			<Badge label="위험" variant="danger" size="s" />
+		<div className="stack">
+			{BADGE_APPEARANCES.map((appearance) => (
+				<div key={appearance} className="row">
+					{BADGE_VARIANTS.map((variant) => (
+						<Badge
+							key={variant}
+							label={variant}
+							variant={variant}
+							appearance={appearance}
+						/>
+					))}
+				</div>
+			))}
+			<div className="row">
+				<Badge label="작게" size="s" />
+				<Badge label="크게" size="m" />
+			</div>
 		</div>
 	),
 };

@@ -76,7 +76,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 					<Label
 						id={`${inputId}-description`}
 						size="xs"
-						style={{ color: getColor("gray-40"), fontWeight: 400 }}
+						style={{ color: getColor("gray-60"), fontWeight: 400 }}
 					>
 						{description}
 					</Label>
