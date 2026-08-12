@@ -1,6 +1,7 @@
 // export * from './create-excluded-days-event';
 export * from "./date-util";
 export * from "./use-animation-toggle";
+export * from "./use-auto-hide-on-scroll";
 export * from "./use-block-document-scroll";
 export * from "./use-custom-event-listener";
 export * from "./use-delay-toggle";

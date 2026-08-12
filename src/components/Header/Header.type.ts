@@ -4,6 +4,8 @@ import type { SkipLinkItem } from "../SkipLink";
 
 export type HeaderVariant = "horizontal" | "vertical";
 
+export type HeaderSticky = "none" | "always" | "auto-hide";
+
 export type HeaderUtilityLink = {
 	label: string;
 	href: string;
@@ -25,6 +27,7 @@ export type HeaderProps = {
 	iconActions?: HeaderIconAction[];
 	masthead?: React.ReactNode;
 	variant?: HeaderVariant;
+	sticky?: HeaderSticky;
 	skipLinks?: SkipLinkItem[];
 	skipTargetId?: string;
 	skipLabel?: string;
