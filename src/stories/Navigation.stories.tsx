@@ -101,7 +101,8 @@ export const 콘텐츠내탐색: Story = {
 				items={[
 					{ label: "신청 자격", targetId: "s1" },
 					{ label: "제출 서류", targetId: "s2", level: 2 },
-					{ label: "처리 절차", targetId: "s3" },
+					{ label: "신분증 사본", targetId: "s3", level: 3 },
+					{ label: "처리 절차", targetId: "s4" },
 				]}
 			/>
 			<div>

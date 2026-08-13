@@ -35,6 +35,42 @@ export const 전체: Story = {
 	),
 };
 
+export const 크기와굵기: Story = {
+	render: () => (
+		<div className="stack">
+			{([1, 2, 3, 4, 5] as const).map((size) => (
+				<Heading key={size} size={size}>
+					Heading {size}
+				</Heading>
+			))}
+			{(["xxl", "xl", "l", "m", "s", "xs"] as const).map((size) => (
+				<Title key={size} size={size}>
+					Title {size}
+				</Title>
+			))}
+			{(["bold", "semi-bold", "medium", "regular"] as const).map((weight) => (
+				<Title key={weight} size="m" weight={weight}>
+					Title m — {weight}
+				</Title>
+			))}
+			{([1, 2] as const).map((size) =>
+				(["regular", "semibold", "bold"] as const).map((weight) => (
+					<Body key={`${size}-${weight}`} size={size} weight={weight}>
+						Body {size} — {weight}
+					</Body>
+				)),
+			)}
+			{(["l", "m", "s"] as const).map((size) =>
+				(["regular", "bold"] as const).map((weight) => (
+					<Detail key={`${size}-${weight}`} size={size} weight={weight}>
+						Detail {size} — {weight}
+					</Detail>
+				)),
+			)}
+		</div>
+	),
+};
+
 export const Display태그: Story = {
 	name: "Display — 기본은 div, as 로 지정",
 	render: () => (

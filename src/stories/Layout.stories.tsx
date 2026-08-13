@@ -42,15 +42,21 @@ export const 긴급공지: Story = {
 
 export const 구조화목록: Story = {
 	render: () => (
-		<div className="panel">
-			<StructuredList
-				title="접수 정보"
-				rows={[
-					{ term: "접수번호", description: "2026-08-0001" },
-					{ term: "접수일", description: "2026년 8월 12일" },
-					{ term: "처리상태", description: "검토 중" },
-				]}
-			/>
+		<div className="row">
+			{(["horizontal", "vertical"] as const).map((layout) => (
+				<div key={layout} className="panel">
+					<StructuredList
+						title={`접수 정보 — ${layout}`}
+						layout={layout}
+						bordered
+						rows={[
+							{ term: "접수번호", description: "2026-08-0001" },
+							{ term: "접수일", description: "2026년 8월 12일" },
+							{ term: "처리상태", description: "검토 중" },
+						]}
+					/>
+				</div>
+			))}
 		</div>
 	),
 };
@@ -58,12 +64,14 @@ export const 구조화목록: Story = {
 export const 텍스트목록: Story = {
 	render: () => (
 		<div className="row">
-			<div className="panel">
-				<TextList
-					variant="bullet"
-					items={[{ content: "불릿 하나" }, { content: "불릿 둘" }]}
-				/>
-			</div>
+			{(["bullet", "dash", "none"] as const).map((variant) => (
+				<div key={variant} className="panel">
+					<TextList
+						variant={variant}
+						items={[{ content: `${variant} 하나` }, { content: `${variant} 둘` }]}
+					/>
+				</div>
+			))}
 			<div className="panel">
 				<TextList
 					variant="ordered"
@@ -91,6 +99,28 @@ export const 디스클로저: Story = {
 };
 
 export const 아코디언: Story = {
+	render: () => (
+		<div className="stack">
+			{(["line", "plain"] as const).map((variant) => (
+				<div key={variant} className="wide">
+					<Accordion
+						variant={variant}
+						items={[
+							{
+								id: `${variant}-q1`,
+								title: `${variant} — 접종 대상자는 누구인가요?`,
+								children: "만 65세 이상 어르신과 기저질환자입니다.",
+							},
+						]}
+					/>
+				</div>
+			))}
+		</div>
+	),
+};
+
+export const 아코디언_기본: Story = {
+	name: "아코디언 — 여러 항목",
 	render: () => (
 		<div className="wide">
 			<Accordion
@@ -123,6 +153,21 @@ export const 탭: Story = {
 	),
 };
 
+export const 표_빈목록: Story = {
+	name: "표 — 데이터 없음",
+	render: () => (
+		<div className="wide">
+			<Table
+				data={[]}
+				columns={[
+					{ accessorKey: "no", header: "접수번호" },
+					{ accessorKey: "name", header: "성명" },
+				]}
+			/>
+		</div>
+	),
+};
+
 export const 표: Story = {
 	render: () => (
 		<div className="wide">
@@ -143,15 +188,23 @@ export const 표: Story = {
 
 export const 이미지: Story = {
 	render: () => (
-		<div className="panel">
-			<Image
-				src={SAMPLE_IMAGE}
-				alt="예시 이미지"
-				ratio="16:9"
-				rounded
-				caption="이미지 설명 문구"
-				longDescription="파란 배경에 KRDS 글자가 적힌 예시 이미지입니다."
-			/>
+		<div className="row">
+			{(["cover", "contain"] as const).map((fit) => (
+				<div key={fit} className="panel">
+					<Image
+						src={SAMPLE_IMAGE}
+						alt={`예시 이미지 — ${fit}`}
+						ratio="1:1"
+						fit={fit}
+						rounded
+						caption={`fit=${fit}`}
+						longDescription="파란 배경에 KRDS 글자가 적힌 예시 이미지입니다."
+					/>
+				</div>
+			))}
+			<div className="panel">
+				<Image src={SAMPLE_IMAGE} alt="설명 없는 이미지" ratio="1:1" />
+			</div>
 		</div>
 	),
 };
