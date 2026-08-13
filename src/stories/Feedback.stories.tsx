@@ -142,6 +142,22 @@ export const 맥락적도움말: Story = {
 	),
 };
 
+export const 툴팁_열린상태: Story = {
+	name: "툴팁 — 초점으로 열린 상태",
+	play: async ({ canvasElement }) => {
+		canvasElement.querySelector<HTMLElement>("[data-tooltip-trigger]")?.focus();
+	},
+	render: () => (
+		<div style={{ padding: 80 }}>
+			<Tooltip content="초점을 받으면 열립니다. Esc 로 닫습니다." placement="bottom-center">
+				<button type="button" data-tooltip-trigger>
+					도움말
+				</button>
+			</Tooltip>
+		</div>
+	),
+};
+
 const HELP_PLACEMENTS = [
 	"top-start",
 	"top",
