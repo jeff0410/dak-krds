@@ -84,6 +84,36 @@ const collect = () => {
 
 	const findings: Finding[] = [];
 
+	// placeholder 는 의사 요소라 텍스트 노드로 잡히지 않는다.
+	// 따로 보지 않으면 흐린 안내 문구가 통과해 버린다.
+	for (const field of Array.from(
+		document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+			"input[placeholder], textarea[placeholder]",
+		),
+	)) {
+		if (field.disabled || !field.placeholder || field.value) continue;
+
+		const behind = backdrop(field);
+		if (!behind) continue;
+
+		const style = getComputedStyle(field, "::placeholder");
+		const foreground = toRgba(style.color);
+		const blended =
+			foreground[3] >= 0.999 ? foreground : over(foreground, behind);
+		const ratio = contrast(blended, behind);
+
+		if (ratio + 0.005 < 4.5) {
+			findings.push({
+				ratio: Number(ratio.toFixed(2)),
+				required: 4.5,
+				text: `${field.placeholder.slice(0, 24)} (placeholder)`,
+				color: style.color,
+				background: `rgb(${behind.slice(0, 3).map(Math.round).join(", ")})`,
+				selector: describe(field),
+			});
+		}
+	}
+
 	for (const element of Array.from(document.querySelectorAll("*"))) {
 		const text = Array.from(element.childNodes)
 			.filter((node) => node.nodeType === Node.TEXT_NODE)

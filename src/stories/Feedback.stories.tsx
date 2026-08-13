@@ -32,13 +32,28 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const ALERT_VARIANTS = [
+	"information",
+	"success",
+	"warning",
+	"danger",
+	"secondary",
+] as const;
+
 export const 알림: Story = {
 	render: () => (
 		<div className="stack">
-			<Alert variant="information" title="안내" description="정보 메시지입니다." />
-			<Alert variant="success" title="완료" description="정상 처리됐습니다." />
-			<Alert variant="warning" title="주의" description="확인이 필요합니다." />
-			<Alert variant="danger" title="오류" description="처리에 실패했습니다." />
+			{ALERT_VARIANTS.map((variant) => (
+				<Alert
+					key={variant}
+					variant={variant}
+					title={variant}
+					description={`${variant} 메시지입니다.`}
+				/>
+			))}
+			{ALERT_VARIANTS.map((variant) => (
+				<Alert key={`${variant}-plain`} variant={variant} description="제목 없는 형태" />
+			))}
 		</div>
 	),
 };
@@ -62,6 +77,16 @@ export const 진행표시: Story = {
 				<div className="wide">
 					<ProgressBar length={4} currentProgress={step + 1} />
 				</div>
+				<StepIndicator
+					steps={[
+						{ description: "신청" },
+						{ description: "심사" },
+						{ description: "완료" },
+					]}
+					currentStepIndex={1}
+					variant="box"
+					align="left"
+				/>
 				<div className="row">
 					<Spinner size="s" />
 					<Spinner size="m" />
@@ -113,6 +138,31 @@ export const 맥락적도움말: Story = {
 					툴팁 보기
 				</Button>
 			</Tooltip>
+		</div>
+	),
+};
+
+const HELP_PLACEMENTS = [
+	"top-start",
+	"top",
+	"top-end",
+	"bottom-start",
+	"bottom",
+	"bottom-end",
+] as const;
+
+export const 맥락적도움말_배치: Story = {
+	name: "맥락적 도움말 — 배치 6종",
+	render: () => (
+		<div className="stack">
+			{HELP_PLACEMENTS.map((placement) => (
+				<p key={placement} style={{ display: "flex", alignItems: "center" }}>
+					{placement}
+					<ContextualHelp title={placement} placement={placement}>
+						{placement} 위치에 열리는 도움말입니다.
+					</ContextualHelp>
+				</p>
+			))}
 		</div>
 	),
 };
@@ -193,6 +243,73 @@ export const 코치마크: Story = {
 	},
 };
 
+export const 열린상태: Story = {
+	name: "열린 상태 — 코치마크 · 바텀시트 · 스플래시",
+	parameters: { layout: "fullscreen" },
+	render: () => (
+		<div className="stack">
+			<div style={{ position: "relative", height: 320, padding: 24 }}>
+				<Button id="coach-open" width="auto">
+					코치마크 대상
+				</Button>
+				<CoachMark
+					open
+					onClose={() => {}}
+					steps={[
+						{
+							targetId: "coach-open",
+							title: "1. 시작 버튼",
+							instruction: "이 버튼을 눌러 안내를 시작합니다.",
+						},
+						{
+							targetId: "coach-open",
+							title: "2. 마무리",
+							instruction: "마치기를 누르면 안내가 끝납니다.",
+						},
+					]}
+				/>
+			</div>
+			<div style={{ position: "relative", height: 360 }}>
+				<BottomSheet
+					open
+					onClose={() => {}}
+					title="접종 기관 선택"
+					description="가까운 기관을 선택하세요."
+				>
+					<p>기관 목록이 들어갑니다.</p>
+				</BottomSheet>
+			</div>
+			<div style={{ position: "relative", height: 320 }}>
+				<SplashScreen logo={<strong>안심예방접종</strong>} message="불러오는 중입니다" />
+			</div>
+		</div>
+	),
+};
+
+export const 따라하기패널_마지막단계: Story = {
+	name: "따라하기 패널 — 마지막 단계",
+	parameters: { layout: "fullscreen" },
+	render: function TutorialLastStepStory() {
+		const [open, setOpen] = useState(true);
+		return (
+			<div style={{ height: 480, padding: 24 }}>
+				<TutorialPanel
+					open={open}
+					onClose={() => setOpen(false)}
+					title="신청 따라하기"
+					step={2}
+					onStepChange={() => {}}
+					steps={[
+						{ title: "1. 약관 동의", content: "필수 약관에 동의합니다." },
+						{ title: "2. 정보 입력", content: "본인 정보를 입력합니다." },
+						{ title: "3. 제출", content: "내용을 확인하고 제출합니다." },
+					]}
+				/>
+			</div>
+		);
+	},
+};
+
 export const 음성지원과숨긴콘텐츠: Story = {
 	name: "음성지원 · 숨긴 콘텐츠",
 	render: () => (
@@ -216,6 +333,13 @@ export const 접근가능한미디어: Story = {
 				description="자막과 대본을 함께 제공하는 미디어 예시입니다."
 				transcript="영상에는 꽃이 피는 장면이 담겨 있습니다."
 			/>
+			<AccessibleMedia
+				src={SAMPLE_VIDEO}
+				type="audio"
+				title="안내 음성"
+				description="음성 자료에는 대본을 함께 제공합니다."
+				transcript="음성에는 예방접종 안내가 담겨 있습니다."
+			/>
 		</div>
 	),
 };
@@ -236,6 +360,13 @@ export const 설정: Story = {
 					]}
 				/>
 				<Resize value={scale} onChange={setScale} />
+				<LanguageSwitcher
+					current="ko"
+					languages={[
+						{ code: "ko", nativeName: "한국어", href: "#" },
+						{ code: "en", nativeName: "English", href: "#", external: true },
+					]}
+				/>
 			</div>
 		);
 	},

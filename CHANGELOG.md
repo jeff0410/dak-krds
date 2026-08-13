@@ -3,6 +3,20 @@
 이 문서는 사용자에게 영향이 있는 변경만 적습니다.
 버전 규칙은 [유의적 버전](https://semver.org/lang/ko/)을 따릅니다.
 
+## 1.0.5
+
+### 고침
+
+스토리에 없어서 그동안 검사되지 않던 곳에서 명도 대비 미달을 더 찾아 고쳤습니다.
+
+- `Button` 의 `success-secondary` 글자색을 `success-50` 에서 `success-60` 으로
+  바꿨습니다. 4.12:1 이었습니다. `primary` · `danger` 의 secondary 가 이미 60 단계를
+  쓰고 있어 일관성도 함께 맞췄습니다
+- `Select` 의 placeholder 글자색을 `gray-40` 에서 `gray-60` 으로 바꿨습니다. 3.08:1
+  이었습니다
+- `TextInput` `TextArea` 의 입력칸 placeholder 도 같은 이유로 `gray-60` 으로
+  바꿨습니다
+
 ## 1.0.4
 
 ### 고침

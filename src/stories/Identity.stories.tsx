@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Favicon, Footer, Header, Identifier, Masthead } from "../components";
+import { Favicon, Footer, Header, Icon, Identifier, Masthead } from "../components";
 
 const meta = {
 	title: "아이덴티티/개요",
@@ -79,6 +79,13 @@ export const 푸터: Story = {
 			]}
 			utilityLinks={[
 				{ label: "질병관리청", href: "https://www.kdca.go.kr", external: true },
+			]}
+			socials={[
+				{
+					label: "블로그",
+					href: "https://example.gov.kr/blog",
+					icon: <Icon icon="Home" size={20} />,
+				},
 			]}
 			policyLinks={[
 				{ label: "개인정보처리방침", href: "#", emphasis: true },
