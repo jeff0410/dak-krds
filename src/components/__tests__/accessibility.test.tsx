@@ -12,6 +12,7 @@ import {
 	PhoneInput,
 	SkipLink,
 	TimeSelector,
+	Tooltip,
 } from "../index";
 
 const iconOnlyButtonsWithoutName = (container: HTMLElement) =>
@@ -220,5 +221,83 @@ describe("Header / Footer — 랜드마크와 구조", () => {
 		expect(link).toHaveAttribute("target", "_blank");
 		expect(link.getAttribute("rel")).toContain("noopener");
 		expect(link.textContent).toContain("새 창 열림");
+	});
+});
+
+describe("Tooltip 키보드 접근", () => {
+	it("초점만으로 열리고 초점을 잃으면 닫힌다", async () => {
+		const user = userEvent.setup();
+		render(
+			<Tooltip content="보조 설명입니다">
+				<button type="button">도움말</button>
+			</Tooltip>,
+		);
+
+		expect(screen.queryByRole("tooltip")).toBeNull();
+
+		await user.tab();
+		expect(screen.getByRole("button", { name: "도움말" })).toHaveFocus();
+		expect(screen.getByRole("tooltip")).toHaveTextContent("보조 설명입니다");
+
+		await user.tab();
+		expect(screen.queryByRole("tooltip")).toBeNull();
+	});
+
+	it("Esc 로 닫히고 초점은 그대로 남는다", async () => {
+		const user = userEvent.setup();
+		render(
+			<Tooltip content="보조 설명입니다">
+				<button type="button">도움말</button>
+			</Tooltip>,
+		);
+
+		await user.tab();
+		expect(screen.getByRole("tooltip")).not.toBeNull();
+
+		await user.keyboard("{Escape}");
+		expect(screen.queryByRole("tooltip")).toBeNull();
+		expect(screen.getByRole("button", { name: "도움말" })).toHaveFocus();
+	});
+
+	it("초점을 받는 요소가 없으면 감싸는 쪽이 대신 받는다", async () => {
+		const user = userEvent.setup();
+		const { container } = render(
+			<Tooltip content="보조 설명입니다">설명이 필요한 문구</Tooltip>,
+		);
+
+		const trigger = container.querySelector("[tabindex='0']");
+		expect(trigger).not.toBeNull();
+
+		await user.tab();
+		expect(trigger).toHaveFocus();
+		expect(screen.getByRole("tooltip")).not.toBeNull();
+	});
+
+	it("버튼을 감싸면 탭 정거장을 늘리지 않는다", () => {
+		const { container } = render(
+			<Tooltip content="보조 설명입니다">
+				<button type="button">도움말</button>
+			</Tooltip>,
+		);
+		expect(container.querySelector("[tabindex='0']")).toBeNull();
+	});
+
+	it("닫혀 있을 때는 없는 요소를 가리키지 않는다", async () => {
+		const user = userEvent.setup();
+		const { container } = render(
+			<Tooltip content="보조 설명입니다">
+				<button type="button">도움말</button>
+			</Tooltip>,
+		);
+
+		const describedBy = () =>
+			container.querySelector("[aria-describedby]")?.getAttribute("aria-describedby");
+
+		expect(describedBy()).toBeUndefined();
+
+		await user.tab();
+		const id = describedBy();
+		expect(id).toBeTruthy();
+		expect(document.getElementById(id as string)).not.toBeNull();
 	});
 });
