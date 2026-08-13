@@ -47,7 +47,7 @@
 	box-shadow: 0 0 0 1px var(--krds-color-primary-40);
 }
 .textarea::placeholder {
-	color: var(--krds-color-gray-40);
+	color: var(--krds-color-gray-60);
 }
 .textarea:disabled::placeholder,
 .textareaDisabled::placeholder {

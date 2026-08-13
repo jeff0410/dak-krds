@@ -140,7 +140,7 @@
 }
 .success-secondary {
 	background: var(--krds-color-success-5);
-	color: var(--krds-color-success-50);
+	color: var(--krds-color-success-60);
 	border: 1px solid var(--krds-color-success-50);
 }
 .success-secondary:hover:not(.disabled) {
