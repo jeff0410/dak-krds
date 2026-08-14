@@ -10,7 +10,7 @@ export const BlueButton = ({
 		<Button
 			{...props}
 			label="확인"
-			width="78px"
+			width="auto"
 			onClick={onClick}
 		>
 			{children}

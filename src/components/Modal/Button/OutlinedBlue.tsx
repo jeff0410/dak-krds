@@ -11,7 +11,7 @@ export const OutlinedBlueButton = ({
 		size="m"
 		variant="outline"
 		label="닫기"
-		width="78px"
+		width="auto"
 		onClick={onClick}
 	>
 		{children}

@@ -13,7 +13,7 @@ export const RedButton = ({
 			className={className}
 			variant="danger"
 			label="삭제"
-			width="fit-content"
+			width="auto"
 			onClick={onClick}
 		>
 			{children}
