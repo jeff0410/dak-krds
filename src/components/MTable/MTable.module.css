@@ -25,3 +25,12 @@
 .mTableItemTitle {
 	font-size: 17px;
 }
+
+.mTableEmpty {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 40px 16px;
+	min-height: 56px;
+	color: var(--krds-color-gray-70);
+}
