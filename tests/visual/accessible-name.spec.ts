@@ -41,7 +41,18 @@ test.describe("접근 가능한 이름 (WCAG 4.1.2)", () => {
 			await page.goto(`/iframe.html?id=${story.id}&viewMode=story`);
 			await settle(page);
 
-			const snapshot = await page.locator("#storybook-root").ariaSnapshot();
+			// 모달 · 토스트는 document.body 로 포털된다. #storybook-root 만 보면
+			// 화면에 떠 있는데도 검사에서 통째로 빠진다.
+			await page.evaluate(() => {
+				for (const id of [
+					"storybook-docs",
+					"storybook-highlights-root",
+					"storybook-a11y-vision-filters",
+				]) {
+					document.getElementById(id)?.setAttribute("aria-hidden", "true");
+				}
+			});
+			const snapshot = await page.locator("body").ariaSnapshot();
 			const unnamed = snapshot
 				.split("\n")
 				.map((line) => line.match(UNNAMED)?.[1])
