@@ -8,6 +8,7 @@ import styles from "./MTable.module.css";
 export function MTable<T extends TableRowData>({
 	data,
 	columns,
+	noData,
 	idKey = "id",
 	title,
 	excludes,
@@ -23,6 +24,10 @@ export function MTable<T extends TableRowData>({
 		},
 		{} as MTableLabelMap<T>,
 	);
+
+	if (data.length === 0 && noData) {
+		return <div className={styles.mTableEmpty}>{noData}</div>;
+	}
 
 	return (
 		<div>
