@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { readFileSync } from "node:fs";
+import { settle } from "./settle";
 
 type StoryIndex = {
 	entries: Record<string, { id: string; title: string; name: string; type: string }>;
@@ -171,8 +172,7 @@ test.describe("명도 대비 (WCAG 2.1 AA)", () => {
 	for (const story of stories) {
 		test(`${story.title} — ${story.name}`, async ({ page }) => {
 			await page.goto(`/iframe.html?id=${story.id}&viewMode=story`);
-			await page.waitForSelector("#storybook-root", { state: "attached" });
-			await page.evaluate(() => document.fonts.ready);
+			await settle(page);
 
 			const findings: Finding[] = await page.evaluate(collect);
 
