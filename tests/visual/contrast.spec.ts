@@ -24,9 +24,50 @@ type Finding = {
 };
 
 const collect = () => {
+	const canvas = document.createElement("canvas");
+	canvas.width = 1;
+	canvas.height = 1;
+	const paint = canvas.getContext("2d", { willReadFrequently: true });
+
+	// getComputedStyle 이 늘 rgb() 를 주지는 않는다. oklch() lab() color-mix() 는
+	// 그대로 나온다. 숫자만 긁어 rgb 로 치면 엉뚱한 값이 나온다. 실제로 Tailwind 4
+	// 를 쓰는 앱에서 oklch(0.985 …) 를 rgb(1, 0, 248) 로 읽어 오탐을 냈다.
+	// 브라우저에게 sRGB 로 그려 달라고 하고 그 픽셀을 읽는다.
+	const viaCanvas = (value: string): [number, number, number, number] | null => {
+		if (!paint) return null;
+		paint.clearRect(0, 0, 1, 1);
+		paint.fillStyle = "#000";
+		paint.fillStyle = value;
+		if (paint.fillStyle === "#000" && !/^#0{3,8}$|black/i.test(value)) return null;
+		paint.clearRect(0, 0, 1, 1);
+		paint.fillRect(0, 0, 1, 1);
+		const [r, g, b, a] = paint.getImageData(0, 0, 1, 1).data;
+		if (a === 0) return [0, 0, 0, 0];
+		// getImageData 는 알파를 곱한 값을 준다. 원래 색으로 되돌린다.
+		const alpha = a / 255;
+		return [r / alpha, g / alpha, b / alpha, alpha];
+	};
+
+	const unresolved: string[] = [];
+
 	const toRgba = (value: string): [number, number, number, number] => {
-		const parts = (value.match(/[\d.]+/g) ?? []).map(Number);
-		return [parts[0] ?? 0, parts[1] ?? 0, parts[2] ?? 0, parts[3] ?? 1];
+		const plain = value.match(
+			/^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)(?:[\s,/]+([\d.%]+))?\s*\)$/,
+		);
+		if (plain) {
+			const alpha = plain[4]?.endsWith("%")
+				? Number.parseFloat(plain[4]) / 100
+				: Number(plain[4] ?? 1);
+			return [Number(plain[1]), Number(plain[2]), Number(plain[3]), alpha];
+		}
+		if (value === "transparent") return [0, 0, 0, 0];
+
+		const painted = viaCanvas(value);
+		if (painted) return painted;
+
+		// 조용히 틀린 값을 쓰느니 못 읽었다고 알린다.
+		unresolved.push(value);
+		return [0, 0, 0, 0];
 	};
 
 	const over = (
@@ -165,6 +206,17 @@ const collect = () => {
 		}
 	}
 
+	for (const value of [...new Set(unresolved)]) {
+		findings.push({
+			ratio: 0,
+			required: 0,
+			text: `색을 읽지 못했다: ${value}`,
+			color: value,
+			background: "-",
+			selector: "-",
+		});
+	}
+
 	return findings;
 };
 
@@ -177,10 +229,11 @@ test.describe("명도 대비 (WCAG 2.1 AA)", () => {
 			const findings: Finding[] = await page.evaluate(collect);
 
 			const report = findings
-				.map(
-					(f) =>
-						`${f.ratio}:1 (기준 ${f.required}:1) "${f.text}" — ${f.selector}\n` +
-						`    글자 ${f.color} / 배경 ${f.background}`,
+				.map((f) =>
+					f.required === 0
+						? f.text
+						: `${f.ratio}:1 (기준 ${f.required}:1) "${f.text}" — ${f.selector}\n` +
+							`    글자 ${f.color} / 배경 ${f.background}`,
 				)
 				.join("\n");
 
