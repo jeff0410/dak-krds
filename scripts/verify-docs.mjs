@@ -67,6 +67,11 @@ const PROPS_TYPE = {
 	LinkButton: 'LinkButtonProps<"a">',
 	Display: 'DisplayProps<"div">',
 	Label: 'LabelProps<"label">',
+	// 조립형 모달은 컨테이너 타입을 공유한다
+	SmallModal: "ModalContainerProps",
+	MediumModal: "ModalContainerProps",
+	LargeModal: "ModalContainerProps",
+	DialogModal: "ModalContainerProps",
 };
 
 // KRDS 55개 컴포넌트가 모두 예제를 갖는지 확인한다
