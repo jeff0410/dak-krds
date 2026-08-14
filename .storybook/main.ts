@@ -10,6 +10,8 @@ const LIBRARY_ONLY_PLUGINS = [
 
 const config: StorybookConfig = {
 	stories: ["../src/**/*.stories.@(ts|tsx)"],
+	// 에이전트가 읽는 manifest.json · llms.txt 를 카탈로그와 같은 주소로 낸다.
+	staticDirs: ["../public"],
 	addons: ["@storybook/addon-a11y", "@storybook/addon-docs"],
 	framework: {
 		name: "@storybook/react-vite",
