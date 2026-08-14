@@ -12,6 +12,7 @@ import {
 	PhoneInput,
 	MainMenu,
 	SkipLink,
+	SmallModal,
 	TimeSelector,
 	Tooltip,
 } from "../index";
@@ -340,4 +341,25 @@ describe("MainMenu 열림 상태", () => {
 		await user.keyboard("{Escape}");
 		expect(screen.queryByRole("link", { name: "예방접종" })).toBeNull();
 	});
+});
+
+describe("모달 푸터 버튼", () => {
+	const BUTTONS = [
+		["SecondaryButton", SmallModal.SecondaryButton],
+		["PrimaryButton", SmallModal.PrimaryButton],
+		["DangerousButton", SmallModal.DangerousButton],
+		["TeriaryButton", SmallModal.TeriaryButton],
+		["OutlinedBlueButton", SmallModal.OutlinedBlueButton],
+	] as const;
+
+	for (const [name, Component] of BUTTONS) {
+		it(`${name} 이 넘긴 onClick 을 그대로 호출한다`, async () => {
+			const user = userEvent.setup();
+			const onClick = vi.fn();
+			render(<Component onClick={onClick}>확인</Component>);
+
+			await user.click(screen.getByRole("button", { name: "확인" }));
+			expect(onClick).toHaveBeenCalledTimes(1);
+		});
+	}
 });

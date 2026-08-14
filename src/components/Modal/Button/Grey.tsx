@@ -11,7 +11,7 @@ export const GreyButton = ({
 		variant="gray"
 		size="m"
 		label="닫기"
-		width="78px"
+		width="auto"
 		onClick={onClick}
 	>
 		{children}

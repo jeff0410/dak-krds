@@ -8,6 +8,14 @@
 	margin-left: 10px;
 }
 
+/* 푸터 버튼은 높이와 최소 폭을 맞춘다. 예전에는 버튼마다 size 와 width 를 따로
+   지정해 취소는 40px, 삭제는 48px 로 높이가 어긋났다. */
+.buttonWrap button,
+.buttonWrapDialog button {
+	width: auto;
+	min-width: 78px;
+}
+
 .buttonWrapSmall {
 	padding: 0.625rem 1rem 1rem;
 }
