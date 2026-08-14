@@ -366,7 +366,7 @@ import { Alert } from 'dak-krds';
 `ModalManager` 로 앱을 감싼 뒤, 어디서든 `modalService` 로 모달을 띄웁니다.
 
 ```tsx
-import { ModalManager, modalService } from 'dak-krds';
+import { ModalManager, modalService, SmallModal } from 'dak-krds';
 
 // 1. 앱 최상단에 배치
 function App() {
@@ -378,10 +378,29 @@ function App() {
 }
 
 // 2. 어디서든 호출
-modalService.push(<div>정말 삭제하시겠습니까?</div>);
+modalService.push(
+  <SmallModal>
+    <SmallModal.Header title="정말 삭제하시겠습니까?" />
+    <SmallModal.Content>삭제한 내용은 되돌릴 수 없습니다.</SmallModal.Content>
+    <SmallModal.Footer>
+      <SmallModal.SecondaryButton onClick={() => modalService.pop()}>
+        취소
+      </SmallModal.SecondaryButton>
+      <SmallModal.DangerousButton onClick={() => modalService.pop()}>
+        삭제
+      </SmallModal.DangerousButton>
+    </SmallModal.Footer>
+  </SmallModal>,
+);
+
 modalService.pop();      // 최상단 모달 닫기
 modalService.popAll();   // 전부 닫기
 ```
+
+**컨테이너를 넣어야 합니다.** `SmallModal` `MediumModal` `LargeModal` `DialogModal` 중
+하나로 감싸세요. 이들이 배경 딤 · 가운데 정렬 · 초점 가둠 · Esc 닫기를 제공합니다.
+`modalService.push(<div>…</div>)` 처럼 맨 요소를 넣으면 배경 없이 화면 왼쪽 위에
+그대로 붙습니다.
 
 ### ToastBar
 

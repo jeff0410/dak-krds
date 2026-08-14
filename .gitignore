@@ -8,6 +8,8 @@ coverage
 .turbo
 dak-krds-*.tgz
 storybook-static
+public/manifest.json
+public/llms.txt
 playwright-report
 tests/visual/.output
 test-results

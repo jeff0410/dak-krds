@@ -117,7 +117,11 @@ export function MainMenu({
 										>
 											{group.label &&
 												(group.href ? (
-													<a href={group.href} className={styles.groupTitle}>
+													<a
+														href={group.href}
+														className={styles.groupTitle}
+														onClick={() => close()}
+													>
 														{group.label}
 													</a>
 												) : (
@@ -135,6 +139,7 @@ export function MainMenu({
 															href={leaf.href}
 															className={styles.subLink}
 															aria-current={leaf.current ? "page" : undefined}
+															onClick={() => close()}
 															{...linkTargetProps(leaf)}
 														>
 															{leaf.label}

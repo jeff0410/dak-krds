@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 import { Heading, Icon } from "../../index";
 import styles from "./Header.module.css";
 import type { ModalLargeHeaderProps } from "./Header.type";
@@ -7,12 +7,17 @@ export const LargeModalHeader = forwardRef<
 	HTMLDivElement,
 	ModalLargeHeaderProps
 >(({ title, icon, subTitle, extra }, ref) => {
+	const titleId = useId();
+
 	return (
 		<div
 			className={`${styles.modalHeaderLarge} ${styles.modalHeader}`}
 			ref={ref}
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby={titleId}
 		>
-			<Heading size={3} className={styles.modalHeaderLargeTitle}>
+			<Heading id={titleId} size={3} className={styles.modalHeaderLargeTitle}>
 				{icon && (
 					<span>
 						<Icon icon={icon} size={24} />

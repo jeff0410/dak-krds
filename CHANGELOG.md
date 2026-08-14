@@ -3,6 +3,35 @@
 이 문서는 사용자에게 영향이 있는 변경만 적습니다.
 버전 규칙은 [유의적 버전](https://semver.org/lang/ko/)을 따릅니다.
 
+## 1.0.10
+
+### 고침
+
+`LargeModal` 과 `DialogModal` 에 `role="dialog"` · `aria-modal` · 제목 연결이 없어
+스크린 리더가 대화상자로 알리지 못하던 문제를 고쳤습니다. `SmallModal` ·
+`MediumModal` 에는 있었습니다.
+
+모달을 겹쳐 열 때 제목 id 가 `modal-title` 로 고정돼 있어, **위에 뜬 모달이 아래
+모달의 제목으로 읽히던** 문제를 고쳤습니다. 이제 모달마다 고유한 id 를 씁니다.
+
+`MainMenu` 에서 하위 항목을 골라도 메뉴가 닫히지 않던 문제를 고쳤습니다. 화면은
+이동하는데 펼쳐진 메뉴가 그대로 남아 있었습니다. Esc 와 바깥 클릭으로만 닫혔습니다.
+
+### 문서
+
+`modalService.push()` 예제를 실제로 동작하는 형태로 고쳤습니다. 이전 예제처럼 맨
+요소를 넣으면 **배경 딤도 가운데 정렬도 없이 화면 왼쪽 위에 그대로 붙습니다.**
+`SmallModal` `MediumModal` `LargeModal` `DialogModal` 중 하나로 감싸야 합니다.
+
+### 더함
+
+에이전트 · 검색 엔진이 라이브러리를 찾고 바로 쓸 수 있도록 자료를 추가했습니다.
+
+- `dak-krds/manifest.json` — 컴포넌트 85개의 props · 타입 · 예제를 담은 기계용 파일.
+  <https://jeff0410.github.io/dak-krds/manifest.json> 에서도 받을 수 있습니다
+- <https://jeff0410.github.io/dak-krds/llms.txt> — 무엇을 언제 쓰는지 요약
+- npm 검색어와 설명에 KRDS · 정부 디자인시스템 · 웹접근성을 넣었습니다
+
 ## 1.0.9
 
 ### 고침

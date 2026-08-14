@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useId } from "react";
 import { Heading, Icon } from "../../index";
 import styles from "./Header.module.css";
 import type { ModalHeaderProps } from "./Header.type";
@@ -11,16 +11,18 @@ export const MediumModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
     };
     const onClick = _onClose ?? onClose;
  */
+		const titleId = useId();
+
 		return (
 			<div
 				ref={ref}
 				className={`${styles.modalHeaderMedium}  ${styles.modalHeader}`}
 				role="dialog"
 				aria-modal="true"
-				aria-labelledby="modal-title"
+				aria-labelledby={titleId}
 			>
 				<Heading
-					id="modal-title"
+					id={titleId}
 					size={3}
 					className={styles.modalHeaderMediumTitle}
 				>

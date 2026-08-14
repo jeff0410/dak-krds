@@ -1,7 +1,7 @@
 {
   "name": "dak-krds",
-  "version": "1.0.9",
-  "description": "DAK React UI Component Design System",
+  "version": "1.0.10",
+  "description": "KRDS(Korea Design System, 대한민국 정부 디자인시스템) 기반 React UI 컴포넌트 라이브러리. 공공 웹사이트·전자정부 서비스를 위한 55개 표준 컴포넌트, WCAG 2.1 AA 웹접근성 준수, TypeScript.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -18,13 +18,14 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./manifest.json": "./dist/manifest.json"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node scripts/build-manifest.mjs",
     "dev": "vite build --watch",
     "dev:test": "cd example && pnpm dev",
     "lint": "eslint .",
@@ -37,16 +38,31 @@
     "verify:dist": "node scripts/verify-dist.mjs",
     "verify:docs": "node scripts/verify-docs.mjs",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o storybook-static",
+    "build-storybook": "pnpm run build && node scripts/build-agent-assets.mjs && storybook build -o storybook-static",
     "test:visual": "pnpm run build-storybook && playwright test",
     "test:visual:update": "pnpm run build-storybook && playwright test --update-snapshots",
     "test:contrast": "pnpm run build-storybook && playwright test tests/visual/contrast.spec.ts",
     "test:a11y": "pnpm run build-storybook && playwright test tests/visual/accessible-name.spec.ts"
   },
   "keywords": [
+    "krds",
+    "korea-design-system",
+    "대한민국-정부-디자인시스템",
+    "정부-디자인시스템",
+    "공공-웹사이트",
+    "전자정부",
+    "웹접근성",
+    "accessibility",
+    "wcag",
+    "wcag-2-1-aa",
+    "korea",
+    "korean",
+    "government",
     "react",
+    "react-components",
     "ui",
-    "components",
+    "ui-library",
+    "component-library",
     "design-system",
     "typescript"
   ],

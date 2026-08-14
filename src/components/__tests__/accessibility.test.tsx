@@ -10,6 +10,7 @@ import {
 	Identifier,
 	Masthead,
 	PhoneInput,
+	MainMenu,
 	SkipLink,
 	TimeSelector,
 	Tooltip,
@@ -299,5 +300,44 @@ describe("Tooltip 키보드 접근", () => {
 		const id = describedBy();
 		expect(id).toBeTruthy();
 		expect(document.getElementById(id as string)).not.toBeNull();
+	});
+});
+
+describe("MainMenu 열림 상태", () => {
+	const items = [
+		{
+			label: "서비스",
+			groups: [
+				{
+					label: "접종",
+					items: [
+						{ label: "예방접종", href: "#vaccine" },
+						{ label: "이상반응", href: "#adverse" },
+					],
+				},
+			],
+		},
+	];
+
+	it("하위 항목을 고르면 메뉴가 닫힌다", async () => {
+		const user = userEvent.setup();
+		render(<MainMenu items={items} />);
+
+		await user.click(screen.getByRole("button", { name: /서비스/ }));
+		expect(screen.getByRole("link", { name: "예방접종" })).toBeVisible();
+
+		await user.click(screen.getByRole("link", { name: "예방접종" }));
+		expect(screen.queryByRole("link", { name: "예방접종" })).toBeNull();
+	});
+
+	it("Esc 로도 닫힌다", async () => {
+		const user = userEvent.setup();
+		render(<MainMenu items={items} />);
+
+		await user.click(screen.getByRole("button", { name: /서비스/ }));
+		expect(screen.getByRole("link", { name: "예방접종" })).toBeVisible();
+
+		await user.keyboard("{Escape}");
+		expect(screen.queryByRole("link", { name: "예방접종" })).toBeNull();
 	});
 });
