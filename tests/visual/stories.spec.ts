@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { settle } from "./settle";
 
 type StoryIndex = {
 	entries: Record<string, { id: string; title: string; name: string; type: string }>;
@@ -33,9 +34,7 @@ test.describe("스토리 시각 회귀", () => {
 	for (const story of stories) {
 		test(`${story.title} — ${story.name}`, async ({ page }) => {
 			await page.goto(`/iframe.html?id=${story.id}&viewMode=story`);
-			await page.waitForSelector("#storybook-root", { state: "attached" });
-			await page.evaluate(() => document.fonts.ready);
-			await page.waitForTimeout(150);
+			await settle(page);
 
 			await expect(page).toHaveScreenshot(`${story.id}.png`, {
 				fullPage: true,

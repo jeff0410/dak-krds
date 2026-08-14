@@ -163,6 +163,7 @@ export function CustomRangeDatePicker({
               type='button'
               onClick={handleToggle}
               className={styles.iconButton}
+              aria-label='달력 열기'
               disabled={disabled}>
               <Icon icon='Calendar' className={styles.icon} />
             </button>
