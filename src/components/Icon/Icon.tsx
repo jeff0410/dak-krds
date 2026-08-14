@@ -18,7 +18,7 @@ export const Icon = ({
 	secondary,
 	className = "",
 	fillRule = "evenodd",
-	viewBox = "0 0 24 24",
+	viewBox,
 	...props
 }: IconProps) => {
 	const SvgIcon = ICON_IMPORT_CONFIG[iconComponent] as React.ComponentType<
@@ -44,7 +44,9 @@ export const Icon = ({
 			fillRule={fillRule}
 			width={size}
 			height={size}
-			viewBox={viewBox}
+			// 아이콘마다 그려진 캔버스가 다르다. 24 로 못 박으면 20·16·12 짜리는
+			// 작게 좌측 상단에 몰리고, 32·40 짜리는 잘린다. 원본을 그대로 쓴다.
+			{...(viewBox ? { viewBox } : {})}
 			className={iconClassName}
 			style={
 				{
