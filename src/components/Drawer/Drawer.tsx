@@ -63,6 +63,7 @@ export function Drawer({
 								{title && <h2 className={styles.title}>{title}</h2>}
 								<button
 									type={"button"}
+									aria-label="닫기"
 									onClick={() => {
 										setOpen(false);
 										const container = document.getElementById(parentId);

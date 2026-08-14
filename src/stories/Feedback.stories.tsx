@@ -148,7 +148,7 @@ export const 툴팁_열린상태: Story = {
 		canvasElement.querySelector<HTMLElement>("[data-tooltip-trigger]")?.focus();
 	},
 	render: () => (
-		<div style={{ padding: 80 }}>
+		<div style={{ padding: "80px 240px" }}>
 			<Tooltip content="초점을 받으면 열립니다. Esc 로 닫습니다." placement="bottom-center">
 				<button type="button" data-tooltip-trigger>
 					도움말
