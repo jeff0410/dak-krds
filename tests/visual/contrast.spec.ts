@@ -156,6 +156,83 @@ const collect = () => {
 		}
 	}
 
+	// 아이콘만 있는 조작 요소는 글자가 없어 위 검사에 걸리지 않는다. 스낵바 닫기 X 가
+	// 어두운 배경에 어두운 회색이라 거의 보이지 않았는데도 통과했다.
+	// WCAG 2.1 SC 1.4.11 은 조작 요소에 3:1 을 요구한다.
+	// 화면에서 안 보이는 글자는 아이콘을 대신하지 못한다. 스낵바 닫기 버튼은
+	// 스크린 리더용 "닫기" 를 품고 있어, 글자 유무로만 거르면 검사에서 빠진다.
+	const hasVisibleText = (element: Element) => {
+		for (const node of Array.from(element.querySelectorAll("*"))) {
+			const own = Array.from(node.childNodes)
+				.filter((child) => child.nodeType === Node.TEXT_NODE)
+				.map((child) => child.textContent ?? "")
+				.join("")
+				.trim();
+			if (!own) continue;
+			const box = node.getBoundingClientRect();
+			if (box.width > 1 && box.height > 1) return true;
+		}
+		const direct = Array.from(element.childNodes)
+			.filter((child) => child.nodeType === Node.TEXT_NODE)
+			.map((child) => child.textContent ?? "")
+			.join("")
+			.trim();
+		return Boolean(direct);
+	};
+
+	for (const control of Array.from(
+		document.querySelectorAll("button, a[href], [role=button]"),
+	)) {
+		if (hasVisibleText(control)) continue;
+		if (control.closest("[disabled], [aria-disabled='true'], [aria-hidden='true']")) continue;
+
+		const svg = control.querySelector("svg");
+		if (!svg) continue;
+
+		const box = svg.getBoundingClientRect();
+		if (box.width < 2 || box.height < 2) continue;
+
+		const behind = backdrop(control);
+		if (!behind) continue;
+
+		// 아이콘은 여러 겹으로 그려지기도 한다. Delete 는 옅은 원 위에 진한 X 가
+		// 얹혀 있어, 첫 도형만 보면 장식용 원을 재고 1.54:1 이라고 잘못 보고했다.
+		// 가장 또렷한 겹을 기준으로 본다. 하나라도 보이면 아이콘은 식별된다.
+		let best = 0;
+		let bestInk = "";
+		for (const painted of Array.from(
+			svg.querySelectorAll("path, circle, rect, polygon"),
+		)) {
+			const shape = getComputedStyle(painted);
+			const ink =
+				shape.fill && shape.fill !== "none" ? shape.fill : shape.stroke;
+			if (!ink || ink === "none") continue;
+
+			const foreground = toRgba(ink);
+			if (foreground[3] === 0) continue;
+			const blended =
+				foreground[3] >= 0.999 ? foreground : over(foreground, behind);
+			const ratio = contrast(blended, behind);
+			if (ratio > best) {
+				best = ratio;
+				bestInk = ink;
+			}
+		}
+
+		const ratio = best;
+		const ink = bestInk;
+		if (ink && ratio + 0.005 < 3) {
+			findings.push({
+				ratio: Number(ratio.toFixed(2)),
+				required: 3,
+				text: `${describe(control)} 의 아이콘`,
+				color: ink,
+				background: `rgb(${behind.slice(0, 3).map(Math.round).join(", ")})`,
+				selector: describe(control),
+			});
+		}
+	}
+
 	for (const element of Array.from(document.querySelectorAll("*"))) {
 		const text = Array.from(element.childNodes)
 			.filter((node) => node.nodeType === Node.TEXT_NODE)
