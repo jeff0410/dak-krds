@@ -25,6 +25,10 @@ export const svgrPlugins = (): Plugin[] => [
 						name: "preset-default",
 						params: { overrides: { removeViewBox: false } },
 					},
+					// 기본 회색만 currentColor 로 바꾼다. 그래야 아이콘이 놓인 곳의
+					// 글자색을 따라간다. 파란 버튼 위에서 회색으로 남던 문제가 이것이다.
+					// 파랑·빨강·다색 아이콘은 고유한 색이므로 건드리지 않는다.
+					{ name: "convertColors", params: { currentColor: "#33363D" } },
 				],
 			},
 		}),
