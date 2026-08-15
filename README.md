@@ -380,7 +380,7 @@ function App() {
 // 2. 어디서든 호출
 modalService.push(
   <SmallModal>
-    <SmallModal.Header title="정말 삭제하시겠습니까?" />
+    <SmallModal.Header>정말 삭제하시겠습니까?</SmallModal.Header>
     <SmallModal.Content>삭제한 내용은 되돌릴 수 없습니다.</SmallModal.Content>
     <SmallModal.Footer>
       <SmallModal.SecondaryButton onClick={() => modalService.pop()}>
@@ -401,6 +401,14 @@ modalService.popAll();   // 전부 닫기
 하나로 감싸세요. 이들이 배경 딤 · 가운데 정렬 · 초점 가둠 · Esc 닫기를 제공합니다.
 `modalService.push(<div>…</div>)` 처럼 맨 요소를 넣으면 배경 없이 화면 왼쪽 위에
 그대로 붙습니다.
+
+네 종류 모두 같은 방식으로 씁니다. 제목은 `title` prop 으로 넘겨도 되고, 빨간 버튼은
+`DangerButton` 으로 불러도 됩니다.
+
+```tsx
+<SmallModal.Header title="정말 삭제하시겠습니까?" />   {/* 위와 동일 */}
+<SmallModal.DangerButton>삭제</SmallModal.DangerButton>  {/* 위와 동일 */}
+```
 
 ### ToastBar
 

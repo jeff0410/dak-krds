@@ -3,6 +3,19 @@
 이 문서는 사용자에게 영향이 있는 변경만 적습니다.
 버전 규칙은 [유의적 버전](https://semver.org/lang/ko/)을 따릅니다.
 
+## 1.0.15
+
+### 더함
+
+모달 네 종류의 사용법이 서로 달랐던 것을 맞췄습니다. **기존 코드는 그대로 동작합니다.**
+
+- 헤더 제목을 `title` prop 과 children 어느 쪽으로 넣어도 됩니다.
+  `Small` · `Medium` · `Large` 는 `title` 만, `DialogModal` 은 children 만 받았습니다.
+- 빨간 버튼을 `DangerousButton` 과 `DangerButton` 어느 이름으로도 부를 수 있습니다.
+  `Small` · `Medium` · `Large` 는 앞의 것, `DialogModal` 은 뒤의 것만 있었습니다.
+
+문서와 예제는 children · `DangerousButton` 하나로 통일했습니다.
+
 ## 1.0.14
 
 ### 더함

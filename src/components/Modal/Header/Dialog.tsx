@@ -1,8 +1,8 @@
-import type { PropsWithChildren } from "react";
 import { useId } from "react";
 import styles from "./Header.module.css";
+import type { ModalHeaderProps } from "./Header.type";
 
-export const DialogModalHeader = ({ children }: PropsWithChildren) => {
+export const DialogModalHeader = ({ title, children }: ModalHeaderProps) => {
 	const titleId = useId();
 
 	return (
@@ -12,7 +12,7 @@ export const DialogModalHeader = ({ children }: PropsWithChildren) => {
 			aria-modal="true"
 			aria-labelledby={titleId}
 		>
-			<span id={titleId}>{children}</span>
+			<span id={titleId}>{title ?? children}</span>
 		</div>
 	);
 };

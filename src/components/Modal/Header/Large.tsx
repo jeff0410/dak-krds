@@ -6,7 +6,7 @@ import type { ModalLargeHeaderProps } from "./Header.type";
 export const LargeModalHeader = forwardRef<
 	HTMLDivElement,
 	ModalLargeHeaderProps
->(({ title, icon, subTitle, extra }, ref) => {
+>(({ title, children, icon, subTitle, extra }, ref) => {
 	const titleId = useId();
 
 	return (
@@ -23,7 +23,7 @@ export const LargeModalHeader = forwardRef<
 						<Icon icon={icon} size={24} />
 					</span>
 				)}
-				<div>{title}</div>
+				<div>{title ?? children}</div>
 			</Heading>
 
 			<div className={styles.modalHeaderRight}>
