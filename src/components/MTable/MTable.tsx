@@ -8,7 +8,7 @@ import styles from "./MTable.module.css";
 export function MTable<T extends TableRowData>({
 	data,
 	columns,
-	noData,
+	noData = "조회된 결과가 없습니다.",
 	idKey = "id",
 	title,
 	excludes,
@@ -25,7 +25,7 @@ export function MTable<T extends TableRowData>({
 		{} as MTableLabelMap<T>,
 	);
 
-	if (data.length === 0 && noData) {
+	if (data.length === 0) {
 		return <div className={styles.mTableEmpty}>{noData}</div>;
 	}
 
