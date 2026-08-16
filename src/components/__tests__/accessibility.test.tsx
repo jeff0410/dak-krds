@@ -395,6 +395,7 @@ describe("MTable 빈 목록", () => {
 		);
 		expect(screen.queryByText("조회된 결과가 없습니다.")).toBeNull();
 	});
+});
 
 describe("모달 헤더 · 버튼 이름", () => {
 	const MODALS = [
