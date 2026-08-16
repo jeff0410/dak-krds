@@ -4,11 +4,14 @@ import { describe, expect, it, vi } from "vitest";
 import {
 	CriticalAlerts,
 	DatePicker,
+	DialogModal,
 	Display,
 	Footer,
 	Header,
 	Identifier,
+	LargeModal,
 	Masthead,
+	MediumModal,
 	PhoneInput,
 	MainMenu,
 	MTable,
@@ -392,4 +395,30 @@ describe("MTable 빈 목록", () => {
 		);
 		expect(screen.queryByText("조회된 결과가 없습니다.")).toBeNull();
 	});
+});
+
+describe("모달 헤더 · 버튼 이름", () => {
+	const MODALS = [
+		["SmallModal", SmallModal],
+		["MediumModal", MediumModal],
+		["LargeModal", LargeModal],
+		["DialogModal", DialogModal],
+	] as const;
+
+	for (const [name, Modal] of MODALS) {
+		it(`${name} 헤더가 title 과 children 을 모두 받는다`, () => {
+			const { unmount } = render(<Modal.Header title="제목입니다" />);
+			expect(screen.getByText("제목입니다")).toBeVisible();
+			unmount();
+
+			render(<Modal.Header>다른 제목</Modal.Header>);
+			expect(screen.getByText("다른 제목")).toBeVisible();
+		});
+
+		it(`${name} 이 빨간 버튼을 두 이름으로 모두 낸다`, () => {
+			expect(Modal.DangerousButton).toBeDefined();
+			expect(Modal.DangerButton).toBeDefined();
+			expect(Modal.DangerousButton).toBe(Modal.DangerButton);
+		});
+	}
 });

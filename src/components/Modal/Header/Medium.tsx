@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 import type { ModalHeaderProps } from "./Header.type";
 
 export const MediumModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
-	({ title, onClose: _onClose, icon, extra }, ref) => {
+	({ title, children, onClose: _onClose, icon, extra }, ref) => {
 		/*     const onClose = () => {
       const customEvent = new CustomEvent('pop');
       document.dispatchEvent(customEvent);
@@ -31,7 +31,7 @@ export const MediumModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
 							<Icon icon={icon} size={24} />
 						</span>
 					)}
-					<div>{title}</div>
+					<div>{title ?? children}</div>
 				</Heading>
 				<div className={styles.modalHeaderRight}>
 					{extra && <div className={styles.modalHeaderExtra}>{extra}</div>}

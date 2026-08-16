@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 import type { ModalHeaderProps } from "./Header.type";
 
 export const SmallModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
-	({ title, onClose: _onClose, icon }, ref) => {
+	({ title, children, onClose: _onClose, icon }, ref) => {
 		/*     const onClose = () => {
       const customEvent = new CustomEvent('pop');
       document.dispatchEvent(customEvent);
@@ -31,7 +31,7 @@ export const SmallModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
 							<Icon icon={icon} size={24} />
 						</span>
 					)}
-					{title}
+					{title ?? children}
 				</Heading>
 				{/*   {useClose && (
           <button
