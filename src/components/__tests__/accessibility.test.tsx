@@ -11,6 +11,7 @@ import {
 	Masthead,
 	PhoneInput,
 	MainMenu,
+	MTable,
 	SkipLink,
 	SmallModal,
 	TimeSelector,
@@ -362,4 +363,33 @@ describe("모달 푸터 버튼", () => {
 			expect(onClick).toHaveBeenCalledTimes(1);
 		});
 	}
+});
+
+describe("MTable 빈 목록", () => {
+	const columns = [{ accessorKey: "no", header: "접수번호" }];
+
+	it("데이터가 없으면 기본 문구를 보여준다", () => {
+		render(<MTable data={[]} columns={columns} idKey="no" />);
+		expect(screen.getByText("조회된 결과가 없습니다.")).toBeVisible();
+	});
+
+	it("noData 를 넘기면 그 내용을 보여준다", () => {
+		render(
+			<MTable
+				data={[]}
+				columns={columns}
+				idKey="no"
+				noData="접수 내역이 없습니다."
+			/>,
+		);
+		expect(screen.getByText("접수 내역이 없습니다.")).toBeVisible();
+		expect(screen.queryByText("조회된 결과가 없습니다.")).toBeNull();
+	});
+
+	it("데이터가 있으면 빈 문구를 보여주지 않는다", () => {
+		render(
+			<MTable data={[{ no: "2026-001" }]} columns={columns} idKey="no" />,
+		);
+		expect(screen.queryByText("조회된 결과가 없습니다.")).toBeNull();
+	});
 });
