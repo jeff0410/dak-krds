@@ -33,6 +33,12 @@
 }
 .linkButton:focus {
 	color: var(--krds-color-primary-60);
+	/* outline 을 지웠으면 대신 보이는 표시를 줘야 한다. 색만 바뀌면 초점이
+	   어디 있는지 알 수 없다. Button 과 같은 테두리를 쓴다. */
+	outline: none;
+	box-shadow:
+		0 0 0 2px var(--krds-color-gray-0),
+		0 0 0 4px var(--krds-color-primary-40);
 }
 
 .linkButtonSmall {
